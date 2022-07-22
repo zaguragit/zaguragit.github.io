@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700&display=swap');
+*{padding:0;margin:0;left:0;top:0;box-sizing:border-box;}
+a{color:var(--color-accent);}
+h1,h2,h3,h4{color:var(--base-foreground-strong);}
+
+:root {
+  --font-primary: 'Oxanium',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji","linja-nanpa","Fairfax HD","insa pi supa lape";
+  --font-monospace: "JetBrains Mono",SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace,"linja-nanpa","Fairfax HD","insa pi supa lape";
+
+  --color-purple: #cfbefa;
+  --color-purple-bg: #cfbefa24;
+  --color-blue: #95C5E8;
+  --color-pink: #cc8fa7;
+  --color-red: #dc3545;
+  --color-orange: #FF6B57;
+  --color-yellow: #EAC77A;
+  --color-green: #98B849;
+  --color-teal: #6699B1;
+  --color-white: #ffffff;
+
+  --color-accent: var(--color-purple);
+  --color-success: var(--color-green);
+  --color-info: var(----color-teal);
+  --color-warning: var(--color-yellow);
+  --color-danger: var(--color-red);
+  --borders: rgba(255, 255, 255, 0.2);
+  --borders-strong: rgba(255, 255, 255, 1);
+  --card-border-radius: 8px;
+  --base-background: #17101e;
+  --base-background-clear: #17101e88;
+  --base-foreground: #d3c2ff;
+  --base-foreground-strong: #ffffff;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  background-color: var(--base-background);
+  color: var(--base-foreground);
+}
+
+::selection {
+  background-color: var(--base-foreground);
+  color: var(--base-background);
+  text-shadow: none;
+}
+
+
+body {
+  width: 100%;
+  max-width: 960px;
+  margin: 64px auto;
+}
+
+#matrix_bg {
+	position: fixed;
+	z-index: -9;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: var(--base-background-clear);
+	color: #654dc633;
+	--extra-color: #654dc688;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+
+#me {
+  padding: 1em;
+  background-size: 100% auto;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+}
+
+#me > * {
+  vertical-align: middle;
+}
+
+#me .avatar {
+  width: 192px;
+  height: 192px;
+  margin: 8px;
+}
+
+#me > span {
+  margin-left: 16px;
+  align-self: center;
+}
+
+#me > span > h1 {
+  font-weight: 700;
+  margin-bottom: .2em;
+  font-size: 2em;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.8), 0 2px 2em rgba(0, 0, 0, 0.2);
+}
+
+#me > span > p {
+  font-size: 1em;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.8), 0 2px 1em rgba(0, 0, 0, 0.2);
+}
+
+#me > span > .badges {
+  margin-top: .5em;
+}
+
+#support {
+  margin-right: 1.5em;
+  float: right;
+}
+
+#links {
+  margin-left: 1.5em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em;
+}
+
+
+#blog {
+  margin: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#blog > div {
+  margin-bottom: 1em;
+  padding: .5em;
+  flex: 0 0 46%;
+}
+
+#blog > div > h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+#blog > div > p {
+  font-size: 1em;
+}
+
+#blog > div > .links {
+  margin-top: .5em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em;
+}
+
+
+.chip,
+.button {
+  text-decoration: none;
+  display: inline-block;
+  color: var(--normal-foreground);
+  background: var(--normal-background);
+  --normal-background: var(--color-purple-bg);
+  --normal-foreground: var(--color-purple);
+  --hover-background: #d3c2ff36;
+  box-shadow:
+    inset 0 0 0 1px var(--color-purple-bg);
+  border-radius: 4px;
+  padding-top: .4em;
+  padding-bottom: .4em;
+  text-align: center;
+  transition: color .1s, background .2s;
+}
+
+.button:hover {
+  color: var(--hover-foreground, var(--normal-foreground));
+  background: var(--hover-background, var(--normal-background));
+  box-shadow:
+    inset 0 0 0 1px var(--color-purple);
+  transition: box-shadow .1s;
+}
+
+.button:not(.icon) > i {
+  margin-right: .5em;
+}
+
+.button:not(.icon)::before,
+.button:not(.icon)::after {
+  content: "";
+  display: inline-block;
+  width: .5em;
+  height: .5em;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  opacity: 0;
+  transition: transform .6s, opacity .3s;
+  transition-timing-function: ease;
+}
+
+.button:not(.icon)::before {
+  transform: rotate(45deg);
+  margin-right: .5em;
+  margin-left: .2em;
+}
+
+.button:not(.icon)::after {
+  transform: rotate(-135deg);
+  margin-left: .5em;
+  margin-right: .2em;
+}
+
+.button:not(.icon):hover::before,
+.button:not(.icon):hover::after {
+  opacity: 1;
+  transition: transform .4s, opacity .1s;
+  transition-timing-function: ease;
+}
+
+.button:not(.icon):hover::before {
+  transform: translate(4px, 0) scale(1, .8) rotate(45deg);
+}
+
+.button:not(.icon):hover::after {
+  transform: translate(-4px, 0) scale(1, .8) rotate(-135deg);
+}
+
+.chip,
+.button.icon {
+  padding: .4em;
+}
+
+.button.icon {
+  line-height: 0;
+}
+
+.chip > i::before,
+.button.icon > i::before {
+  font-size: 1.1em;
+}
+
+.chip > i,
+.button.icon > i {
+  vertical-align: -.125em;
+}
+
+.chip {
+  vertical-align: top;
+  padding-right: 0;
+  line-height: 0;
+}
+
+.chip > span {
+content: "";
+  display: inline;
+  padding-top: .45em;
+  padding-bottom: .45em;
+  padding-right: .6em;
+  padding-left: .6em;
+  margin-left: .4em;
+  border-radius: 0 4px 4px 0;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow:
+    inset 0 0 0 1px var(--color-purple-bg);
+}
+
+.chip > span > span {
+  font-size: .8em;
+}
+
+@media only screen and (max-width:720px) {
+  #blog > div {
+    flex: 0 0 100%;
+  }
+}
+
+@media only screen and (max-width:480px) {
+  #me {
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+  }
+
+  #me .avatar {
+    width: 96px;
+    height: 96px;
+    margin: 0;
+    margin-left: .5em;
+    margin-bottom: 24px;
+  }
+
+  #me > span {
+    margin-left: .5em;
+    margin-right: .5em;
+    align-self: center;
+  }
+}
