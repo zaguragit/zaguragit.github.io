@@ -2,9 +2,13 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;}
 a{color:var(--color-accent);}
 h1,h2,h3,h4{color:var(--base-foreground-strong);}
-
+/* latin-ext */
+@font-face {
+  font-family: 'nasin nanpa';
+  src: url(nasin-nanpa-2.5.1.otf);
+}
 :root {
-  --font-primary: 'Oxanium',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji","linja-nanpa","Fairfax HD","insa pi supa lape";
+  --font-primary: 'Oxanium',"Noto Color Emoji",'a',"nasin nanpa","Fairfax HD","insa pi supa lape";
   --font-monospace: "JetBrains Mono",SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace,"linja-nanpa","Fairfax HD","insa pi supa lape";
 
   --color-purple: #cfbefa;
