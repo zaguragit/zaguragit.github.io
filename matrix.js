@@ -18,7 +18,7 @@ function clear () {
 }
 
 function draw () {
-    ctx.font = '10pt Fairfax HD';
+    ctx.font = '10pt nasin nanpa';
 	yPositions.map ((y, index) => {
         var text = String.fromCodePoint (0xf1900 + parseInt (Math.random () * 0x88));
         var x = (index * 18);
