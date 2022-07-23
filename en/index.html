@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset=utf-8>
 <meta name=copyright content=Zagura>
-<meta name=language content=tok>
+<meta name=language content=en>
 <meta name=author content=Zagura>
 <meta name=web-author content=Zagura>
 <meta name=description content="Human interested in code & art">
@@ -12,120 +12,128 @@
 <meta name=viewport content=width=device-width,initial-scale=1,shrink-to-fit=no>
 <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <link rel=stylesheet href=../style.css>
-<link rel=icon href=../assets/me.png>
-<title>jan Sajuwa</title>
-<body>
-  <canvas id="matrix_bg" width="100" height="100"></canvas>
-  <div id=me>
-    <img class=avatar src=../assets/me.png>
-    <span>
-      <h1>Zagura</h1>
-      <p role=doc-subtitle>I like programming, drawing & toki pona</p>
-      <div class=badges>
-        <img src="https://img.shields.io/badge/lang-en%2C%20es%2C%20cat%2C%20tok%2C%20ru-94a66c">
-        <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?logo=intellij-idea&logoColor=white">
-        <img src="https://img.shields.io/badge/Gnome_Builder-000000?logo=gnome&logoColor=white">
-        <img src="https://img.shields.io/badge/Gtk-libadwaita-3d3846?labelColor=3b86e2&logo=gtk&logoColor=white">
-        <img src="https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white">
-        <img src="https://img.shields.io/badge/RSS-FFA500?logo=rss&logoColor=white">
-        <img src="https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=white">
-        <img src="https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=white">
-        <img src="https://img.shields.io/badge/android-3DDC84?logo=android&logoColor=white">
-        <img src="https://img.shields.io/badge/LLVM_IR-262D3A?logo=llvm&logoColor=white">
-        <img src="https://img.shields.io/badge/OpenGL-5586A4?logo=opengl&logoColor=white">
-        <img src="https://img.shields.io/badge/Krita-203759?logo=krita&logoColor=EEF37B">
-        <img src="https://img.shields.io/badge/GIMP-5C5543?logo=gimp&logoColor=white">
-        <img src="https://img.shields.io/badge/Inkscape-000000?logo=Inkscape&logoColor=white">
-      </div>
-    </span>
-  </div>
-  <div id=support>
-    <script src="https://liberapay.com/Zagura/widgets/button.js"></script>
-    <noscript><a href="https://liberapay.com/Zagura/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
-  </div>
-  <div id=links>
-    <a class="button icon" aria-label="Mastodon" title="Mastodon - zagura@social.linux.pizza" rel=me href="https://social.linux.pizza/@zagura"><i class="bi bi-mastodon"></i></a>
-    <a class="button icon" aria-label="Instagram" title="Instagram" href="https://instagram.com/_zagura"><i class="bi bi-instagram"></i></a>
-    <a class="button icon" aria-label="Gitlab" title="Gitlab" href="https://gitlab.com/_zagura"><i class="bi bi-git"></i></a>
-    <a class="button icon" aria-label="Github" title="Github" href="https://github.com/zaguragit"><i class="bi bi-github"></i></a>
-    <div class="chip" aria-label="Mail"><i class="bi bi-envelope"></i><span><span>zagura@posidon.io</span></span></div>
-    <div class="chip" aria-label="Phone"><i class="bi bi-phone"></i><span><span>+34 616 39 46 06</span></span></div>
-  </div>
-  <div id=blog>
-    <div class=item>
-      <h1>Paper</h1>
-      <img src="https://img.shields.io/flathub/downloads/io.posidon.Paper">
-      <img src="https://badgen.net/gitlab/last-commit/posidon_software/paper">
-      <p>Take notes in Markdown</p>
-      <div class=links>
-        <a class=button href="https://gitlab.com/posidon_software/paper">Source</a>
-        <a class=button href="https://flathub.org/apps/details/io.posidon.Paper">Download</a>
-        <a class=button href="https://posidon.io/paper">Website</a>
-      </div>
+<link id=favicon rel=icon href=../assets/me.png>
+<script>
+const favicon = document.getElementById("favicon");
+const is_dark = window.matchMedia("(prefers-color-scheme: dark)");
+function change_favicon () {
+  if (is_dark.matches) favicon.href = "../assets/me-dark.png";
+  else favicon.href = "../assets/me-light.png";
+};
+is_dark.addEventListener ("change", change_favicon);
+change_favicon ();
+</script>
+<title>Zagura</title>
+<canvas id="matrix_bg" width="100" height="100"></canvas>
+<div id=me>
+  <img class=avatar src=../assets/me.png>
+  <span>
+    <h1>Zagura</h1>
+    <p role=doc-subtitle>I like programming, drawing & toki pona</p>
+    <div class=badges>
+      <img src="https://img.shields.io/badge/lang-en%2C%20es%2C%20cat%2C%20tok%2C%20ru-94a66c">
+      <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?logo=intellij-idea&logoColor=white">
+      <img src="https://img.shields.io/badge/Gnome_Builder-000000?logo=gnome&logoColor=white">
+      <img src="https://img.shields.io/badge/Gtk-libadwaita-3d3846?labelColor=3b86e2&logo=gtk&logoColor=white">
+      <img src="https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white">
+      <img src="https://img.shields.io/badge/RSS-FFA500?logo=rss&logoColor=white">
+      <img src="https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=white">
+      <img src="https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=white">
+      <img src="https://img.shields.io/badge/android-3DDC84?logo=android&logoColor=white">
+      <img src="https://img.shields.io/badge/LLVM_IR-262D3A?logo=llvm&logoColor=white">
+      <img src="https://img.shields.io/badge/OpenGL-5586A4?logo=opengl&logoColor=white">
+      <img src="https://img.shields.io/badge/Krita-203759?logo=krita&logoColor=EEF37B">
+      <img src="https://img.shields.io/badge/GIMP-5C5543?logo=gimp&logoColor=white">
+      <img src="https://img.shields.io/badge/Inkscape-000000?logo=Inkscape&logoColor=white">
     </div>
-    <div class=item>
-      <h1>Slab Launcher</h1>
-      <img src="https://img.shields.io/github/stars/zaguragit/android.SlabLauncher">
-      <img src="https://img.shields.io/github/last-commit/zaguragit/android.SlabLauncher">
-      <p>A minimalistic launcher inspited in YASAN & Ratio launcher</p>
-      <div class=links>
-        <a class=button href="https://github.com/zaguragit/android.SlabLauncher">Source</a>
-        <a class=button href="https://posidon.io/launcher">Website</a>
-      </div>
-    </div>
-    <div class=item>
-      <h1>Mastodon Redirector</h1>
-      <img src="https://img.shields.io/amo/users/mastodon_redirector@posidon.io">
-      <img src="https://img.shields.io/github/last-commit/zaguragit/mastodon_redirector">
-      <p>Replaces the follow button on other instances with a button, that redirects you to your instance, so that you can follow, or interact with a user's content</p>
-      <div class=links>
-        <a class=button href="https://github.com/zaguragit/mastodon_redirector">Source</a>
-        <a class=button href="https://addons.mozilla.org/en-US/firefox/addon/mastodon-redirector">Download</a>
-      </div>
-    </div>
-    <div class=item>
-      <h1>Posidon Walls</h1>
-      <p>A collection of original wallpapers. It's a bit clunky, I'll probably redo it</p>
-      <div class=links>
-        <a class=button href="https://github.com/lposidon/walls">Source</a>
-        <a class=button href="https://walls.posidon.io">See</a>
-      </div>
-    </div>
-    <div class=item>
-      <h1>Posidon Launcher</h1>
-      <img src="https://img.shields.io/github/license/lposidon/posidonLauncher?color=ff8800">
-      <p>A one-page launcher with an rss feed. It's <b>discontinued</b> now, but maybe somebody will find the source code useful</p>
-      <div class=links>
-        <a class=button href="https://github.com/lposidon/posidonLauncher">Source</a>
-        <a class=button href="https://www.f-droid.org/packages/posidon.launcher">F-Droid</a>
-        <a class=button href="https://play.google.com/store/apps/details?id=posidon.launcher">Google Play</a>
-        <a class=button href="https://posidon.io/posidon_launcher">Website</a>
-      </div>
-    </div>
-    <div class=item>
-      <h1>Mango Programming Language</h1>
-      <p>My first ever attempt at a programming language. It's <b>not usable</b> as an actual language, but maybe it could help somebody developing their own language. Also, it compiles using LLVM, which is cool</p>
-      <div class=links>
-        <a class=button href="https://github.com/zaguragit/mangoLang_kt">Source</a>
-      </div>
-    </div>
-    <div class=item>
-      <h1>Posidon Notes</h1>
-      <p>A very lame, very <b>unmantained</b> note-taking app</p>
-      <div class=links>
-        <a class=button href="https://github.com/lposidon/posidonNotes">Source</a>
-        <a class=button href="https://play.google.com/store/apps/details?id=posidon.notes">Download</a>
-      </div>
-    </div>
-    <div class=item>
-      <h1>Posidon Tasks</h1>
-      <img src="https://img.shields.io/github/license/zaguragit/posidonTasks?color=ff8800">
-      <p>A very lame, very <b>unmantained</b> todo list app</p>
-      <div class=links>
-        <a class=button href="https://github.com/zaguragit/posidonTasks">Source</a>
-        <a class=button href="https://play.google.com/store/apps/details?id=posidon.tasks">Download</a>
-      </div>
+  </span>
+</div>
+<div id=support>
+  <script src="https://liberapay.com/Zagura/widgets/button.js"></script>
+  <noscript><a href="https://liberapay.com/Zagura/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+</div>
+<div id=links class=button-list>
+  <a class="button icon" aria-label="Mastodon" title="Mastodon - zagura@social.linux.pizza" rel=me href="https://social.linux.pizza/@zagura"><i class="bi bi-mastodon"></i></a>
+  <a class="button icon" aria-label="Instagram" title="Instagram" href="https://instagram.com/_zagura"><i class="bi bi-instagram"></i></a>
+  <a class="button icon" aria-label="Gitlab" title="Gitlab" href="https://gitlab.com/_zagura"><i class="bi bi-git"></i></a>
+  <a class="button icon" aria-label="Github" title="Github" href="https://github.com/zaguragit"><i class="bi bi-github"></i></a>
+  <div class="chip" aria-label="Mail"><i class="bi bi-envelope"></i><span><span>zagura@posidon.io</span></span></div>
+  <div class="chip" aria-label="Phone"><i class="bi bi-phone"></i><span><span>+34 616 39 46 06</span></span></div>
+</div>
+<div id=blog>
+  <div class=item>
+    <h1>Paper</h1>
+    <img src="https://img.shields.io/flathub/downloads/io.posidon.Paper">
+    <img src="https://badgen.net/gitlab/last-commit/posidon_software/paper">
+    <p>Take notes in Markdown</p>
+    <div class=button-list>
+      <a class=button href="https://gitlab.com/posidon_software/paper">Source</a>
+      <a class=button href="https://flathub.org/apps/details/io.posidon.Paper">Download</a>
+      <a class=button href="https://posidon.io/paper">Website</a>
     </div>
   </div>
-  <script src=../matrix.js></script>
-</body>
+  <div class=item>
+    <h1>Slab Launcher</h1>
+    <img src="https://img.shields.io/github/stars/zaguragit/android.SlabLauncher">
+    <img src="https://img.shields.io/github/last-commit/zaguragit/android.SlabLauncher">
+    <p>A minimalistic launcher inspited in YASAN & Ratio launcher</p>
+    <div class=button-list>
+      <a class=button href="https://github.com/zaguragit/android.SlabLauncher">Source</a>
+      <a class=button href="../slab_launcher">Website</a>
+    </div>
+  </div>
+  <div class=item>
+    <h1>Mastodon Redirector</h1>
+    <img src="https://img.shields.io/amo/users/mastodon_redirector@posidon.io">
+    <img src="https://img.shields.io/github/last-commit/zaguragit/mastodon_redirector">
+    <p>Replaces the follow button on other instances with a button, that redirects you to your instance, so that you can follow, or interact with a user's content</p>
+    <div class=button-list>
+      <a class=button href="https://github.com/zaguragit/mastodon_redirector">Source</a>
+      <a class=button href="https://addons.mozilla.org/en-US/firefox/addon/mastodon-redirector">Download</a>
+    </div>
+  </div>
+  <div class=item>
+    <h1>Posidon Walls</h1>
+    <p>A collection of original wallpapers. It's a bit clunky, I'll probably redo it</p>
+    <div class=button-list>
+      <a class=button href="https://github.com/lposidon/walls">Source</a>
+      <a class=button href="https://walls.posidon.io">See</a>
+    </div>
+  </div>
+  <div class=item>
+    <h1>Posidon Launcher</h1>
+    <img src="https://img.shields.io/github/license/lposidon/posidonLauncher?color=ff8800">
+    <p>A one-page launcher with an rss feed. It's <b>discontinued</b> now, but maybe somebody will find the source code useful</p>
+    <div class=button-list>
+      <a class=button href="https://github.com/lposidon/posidonLauncher">Source</a>
+      <a class=button href="https://www.f-droid.org/packages/posidon.launcher">F-Droid</a>
+      <a class=button href="https://play.google.com/store/apps/details?id=posidon.launcher">Google Play</a>
+      <a class=button href="https://posidon.io/posidon_launcher">Website</a>
+    </div>
+  </div>
+  <div class=item>
+    <h1>Mango Programming Language</h1>
+    <p>My first ever attempt at a programming language. It's <b>not usable</b> as an actual language, but maybe it could help somebody developing their own language. Also, it compiles using LLVM, which is cool</p>
+    <div class=button-list>
+      <a class=button href="https://github.com/zaguragit/mangoLang_kt">Source</a>
+    </div>
+  </div>
+  <div class=item>
+    <h1>Posidon Notes</h1>
+    <p>A very lame, very <b>unmantained</b> note-taking app</p>
+    <div class=button-list>
+      <a class=button href="https://github.com/lposidon/posidonNotes">Source</a>
+      <a class=button href="https://play.google.com/store/apps/details?id=posidon.notes">Download</a>
+    </div>
+  </div>
+  <div class=item>
+    <h1>Posidon Tasks</h1>
+    <img src="https://img.shields.io/github/license/zaguragit/posidonTasks?color=ff8800">
+    <p>A very lame, very <b>unmantained</b> todo list app</p>
+    <div class=button-list>
+      <a class=button href="https://github.com/zaguragit/posidonTasks">Source</a>
+      <a class=button href="https://play.google.com/store/apps/details?id=posidon.tasks">Download</a>
+    </div>
+  </div>
+</div>
+<script src=../matrix.js></script>

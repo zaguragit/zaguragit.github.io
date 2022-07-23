@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700&display=swap');
+@font-face {font-family:'nasin nanpa';src:url(nasin-nanpa-2.5.1.otf);}
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;}
 a{color:var(--color-accent);}
 h1,h2,h3,h4{color:var(--base-foreground-strong);}
-/* latin-ext */
-@font-face {
-  font-family: 'nasin nanpa';
-  src: url(nasin-nanpa-2.5.1.otf);
-}
+.absolute-center {
+	position:fixed;
+	display:flex;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  align-items:center;
+  flex-direction:column;}
 :root {
   --font-primary: 'Oxanium',"Noto Color Emoji",'a',"nasin nanpa","Fairfax HD","insa pi supa lape";
   --font-monospace: "JetBrains Mono",SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace,"linja-nanpa","Fairfax HD","insa pi supa lape";
@@ -69,6 +73,12 @@ body {
   border-radius: 50%;
 }
 
+.button-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em;
+}
+
 
 #me {
   padding: 1em;
@@ -93,6 +103,7 @@ body {
   align-self: center;
 }
 
+.description > h1,
 #me > span > h1 {
   font-weight: 700;
   margin-bottom: .2em;
@@ -116,9 +127,6 @@ body {
 
 #links {
   margin-left: 1.5em;
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5em;
 }
 
 
@@ -128,6 +136,11 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.description {
+  margin: 1em;
+  padding: .5em;
 }
 
 #blog > div {
@@ -141,15 +154,9 @@ body {
   font-weight: 700;
 }
 
-#blog > div > p {
-  font-size: 1em;
-}
-
-#blog > div > .links {
+.description > .button-list,
+#blog > div > .button-list {
   margin-top: .5em;
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5em;
 }
 
 

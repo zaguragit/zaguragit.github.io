@@ -1,0 +1,88 @@
+<!doctype html><meta charset=utf-8><title>Slab Launcher</title>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"MobileApplication","name":"Slab Launcher","operatingSystem":"Android","applicationCategory":"DesktopEnhancementApplication","offers": {"@type":"Offer","price":"0"}}</script>
+<meta name=description content="Slab Launcher">
+<meta name=keywords content="slab launcher,launcher,one,page,scroll,home,homescreen,android,customization,personalization,custom,tile,search,blur,fluend design">
+<link rel=stylesheet href=../style.css>
+<link rel=stylesheet href=style.css>
+<meta name=theme-color content=#000000>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta property=og:url content=https://posidon.io/launcher>
+<meta name=twitter:card content=summary_large_image>
+<meta name=twitter:site content=@posidon>
+<meta name=twitter:creator content=@posidon>
+<meta name=twitter:image:src content=https://posidon.io/img/banner.png>
+<meta name=twitter:app:id:googleplay content=posidon.launcher>
+<meta property=og:title content="Slab Launcher">
+<meta property=og:description content="An android launcher with a scrolling feed instead of pages">
+<meta property=og:type content=website>
+<meta property=og:image content=http://posidon.io/img/banner.png>
+<link id=favicon rel=icon href=favicon.svg>
+<script>
+const favicon = document.getElementById("favicon");
+const is_dark = window.matchMedia("(prefers-color-scheme: dark)");
+function change_favicon () {
+  if (is_dark.matches) favicon.href = "favicon-dark.svg";
+  else favicon.href = "favicon.svg";
+};
+is_dark.addEventListener ("change", change_favicon);
+change_favicon ();
+</script>
+<canvas id="matrix_bg" width="100" height="100"></canvas>
+<center>
+	<div class=carousel>
+		<div id=scrn0 draggable=false class="screenshot faded left"></div>
+		<div id=scrn1 draggable=false class=screenshot></div>
+		<div id=scrn2 draggable=false class="screenshot faded right"></div>
+	</div>
+</center>
+<script>
+	var screenshots=12,r1=Math.floor(Math.random()*screenshots);
+	document.getElementById("scrn0").style.backgroundImage="url(screenshot/home"+r1+".webp)";
+	var r2=Math.floor(Math.random()*(screenshots-1));
+	if(r2==r1)r2++;
+	document.getElementById("scrn1").style.backgroundImage="url(screenshot/home"+r2+".webp)";
+	var r3=1+Math.floor(Math.random()*(screenshots-3));
+	if(r3==r2)r3++;
+	else if(r3==r1){r3+=2;if(r3==r2||r3>screenshots-1)r3-=3;}
+	document.getElementById("scrn2").style.backgroundImage="url(screenshot/home"+r3+".webp)";
+</script>
+<div class=description>
+  <h1>Slab Launcher</h1>
+  <img src="https://img.shields.io/github/stars/zaguragit/android.SlabLauncher">
+  <img src="https://img.shields.io/github/last-commit/zaguragit/android.SlabLauncher">
+  <p>
+    Slab Launcher draws inspiration from YASAN & Ratio launcher, it has a simple tile-like grid of apps on the main page, with a dash, that shows you relevant information 
+  </p>
+  <div class=button-list>
+    <a class=button href=https://github.com/zaguragit/android.SlabLauncher>Source</a>
+    <a class=button href=https://discord.gg/V4uzzGh6kY>Discord</a>
+    <a class=button href=https://t.me/slablauncher>Telegram Chat</a>
+    <a class=button href=https://t.me/slabrelease>Telegram Channel</a>
+  </div>
+</div>
+<div id=blog>
+  <div class=item>
+    <h1>General Features</h1>
+    <ul>
+      <li>Blur everywhere</li>
+      <li>Color palette generation from the wallpaper (different algorythms available)</li>
+    </ul>
+  </div>
+  <div class=item>
+    <h1>Dash Features</h1>
+    <ul>
+      <li>Relevant notifications</li>
+      <li>Next alarm</li>
+      <li>Media player</li>
+    </ul>
+  </div>
+  <div class=item>
+    <h1>Search Features</h1>
+    <ul>
+      <li><a href=https://duckduckgo.com>DuckDuckGo</a> instant answers</li>
+      <li>App shortcuts</li>
+      <li>Contacts</li>
+    </ul>
+  </div>
+</div>
+<script src=../matrix.js></script>
