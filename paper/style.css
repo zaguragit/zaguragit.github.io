@@ -1,0 +1,17 @@
+@keyframes alpha-in{from{opacity:0;}to{opacity:100%;}}
+.screenshot{
+  width: 90%;
+	animation-name:alpha-in;
+	animation-duration:0.4s;
+	margin:0;}
+.getItOnBadge{animation-name:alpha-in;animation-duration:1.2s;text-decoration:none;float:right;}
+@media only screen and (max-width:720px){.getItOnBadge{float:none;}}
+.screenshot.mobile{
+  max-width: 90%;
+  width: auto;
+  height: 420px;}
+.mobile {display: none;}
+@media only screen and (max-width:720px) {
+  .desktop {display: none;}
+  .mobile {display: unset;}
+}
