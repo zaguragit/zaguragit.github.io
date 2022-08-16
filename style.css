@@ -15,8 +15,9 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
   --font-primary: 'Oxanium',"Noto Color Emoji",'a',"nasin nanpa","Fairfax HD","insa pi supa lape";
   --font-monospace: "JetBrains Mono",SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace,"linja-nanpa","Fairfax HD","insa pi supa lape";
 
-  --color-purple: #cfbefa;
-  --color-purple-bg: #cfbefa24;
+  --color-purple: #ae8dff;
+  --color-purple-bg: #ae8dff24;
+  --color-purple-bright: #ffed36;
   --color-blue: #95C5E8;
   --color-pink: #cc8fa7;
   --color-red: #dc3545;
@@ -127,6 +128,7 @@ body {
 
 #links {
   margin-left: 1.5em;
+  display: flex;
 }
 
 
@@ -164,34 +166,30 @@ body {
 .button {
   text-decoration: none;
   display: inline-block;
-  color: var(--normal-foreground);
-  background: var(--normal-background);
-  --normal-background: var(--color-purple-bg);
-  --normal-foreground: var(--color-purple);
-  --hover-background: #d3c2ff36;
-  box-shadow:
-    inset 0 0 0 1px var(--color-purple-bg);
-  border-radius: 4px;
+  color: var(--color-purple);
   padding-top: .4em;
   padding-bottom: .4em;
   text-align: center;
   transition: color .1s, background .2s;
 }
 
-.button:hover {
-  color: var(--hover-foreground, var(--normal-foreground));
-  background: var(--hover-background, var(--normal-background));
-  box-shadow:
-    inset 0 0 0 1px var(--color-purple);
+.icon {
+  text-decoration: none;
+  display: inline-block;
+  color: var(--color-purple);
+  transition: color .1s;
+  padding: .4em;
+  line-height: 0;
+}
+
+.button:hover,
+.icon:hover {
+  color: var(--color-purple-bright);
   transition: box-shadow .1s;
 }
 
-.button:not(.icon) > i {
-  margin-right: .5em;
-}
-
-.button:not(.icon)::before,
-.button:not(.icon)::after {
+.button::before,
+.button::after {
   content: "";
   display: inline-block;
   width: .5em;
@@ -203,56 +201,51 @@ body {
   transition-timing-function: ease;
 }
 
-.button:not(.icon)::before {
+.button::before {
   transform: rotate(45deg);
   margin-right: .5em;
-  margin-left: .2em;
+  margin-left: -1em;
 }
 
-.button:not(.icon)::after {
+.button::after {
   transform: rotate(-135deg);
   margin-left: .5em;
-  margin-right: .2em;
 }
 
-.button:not(.icon):hover::before,
-.button:not(.icon):hover::after {
+.button:hover::before,
+.button:hover::after {
   opacity: 1;
   transition: transform .4s, opacity .1s;
   transition-timing-function: ease;
 }
 
-.button:not(.icon):hover::before {
+.button:hover::before {
   transform: translate(4px, 0) scale(1, .8) rotate(45deg);
 }
 
-.button:not(.icon):hover::after {
+.button:hover::after {
   transform: translate(-4px, 0) scale(1, .8) rotate(-135deg);
 }
 
-.chip,
-.button.icon {
+.chip {
+  background: var(--color-purple-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--color-purple-bg);
+  border-radius: 12px 0;
   padding: .4em;
-}
-
-.button.icon {
+  vertical-align: top;
+  padding-right: 0;
   line-height: 0;
 }
 
 .chip > i::before,
-.button.icon > i::before {
+.icon > i::before {
   font-size: 1.1em;
 }
 
 .chip > i,
-.button.icon > i {
+.icon > i {
   vertical-align: -.125em;
-}
-
-.chip {
-  vertical-align: top;
-  padding-right: 0;
-  line-height: 0;
 }
 
 .chip > span {
@@ -263,7 +256,7 @@ content: "";
   padding-right: .6em;
   padding-left: .6em;
   margin-left: .4em;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 0 12px 0;
   background: rgba(0, 0, 0, 0.3);
   box-shadow:
     inset 0 0 0 1px var(--color-purple-bg);
@@ -297,5 +290,31 @@ content: "";
     margin-left: .5em;
     margin-right: .5em;
     align-self: center;
+  }
+
+  .button-list {
+    display: grid;
+    gap: .5em;
+    grid-template-columns: repeat(2, calc(50% - .5em/2));
+  }
+  .button::before,
+  .button::after {
+    content: none;
+  }
+  
+  .button {
+    color: var(--color-purple);
+    background: var(--color-purple-bg);
+    box-shadow:
+      inset 0 0 0 1px var(--color-purple-bg);
+    border-radius: 8px 0;
+    padding-top: .4em;
+    padding-bottom: .4em;
+    text-align: center;
+    transition: color .1s, background .2s;
+  }
+  
+  .button > i {
+    margin-right: .5em;
   }
 }
