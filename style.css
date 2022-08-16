@@ -40,7 +40,8 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
   --base-foreground: #d3c2ff;
   --base-foreground-strong: #ffffff;
   font-family: var(--font-primary);
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.5;
   background-color: var(--base-background);
   color: var(--base-foreground);
 }
@@ -110,6 +111,7 @@ body {
   margin-bottom: .2em;
   font-size: 2em;
   text-shadow: 0 1px rgba(0, 0, 0, 0.8), 0 2px 2em rgba(0, 0, 0, 0.2);
+  line-height: 1;
 }
 
 #me > span > p {
