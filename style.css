@@ -184,10 +184,23 @@ main > p {
 }
 
 div.box {
-  padding: 1.5em;
+  padding: .8em;
   border: .1em solid currentColor;
-  margin: .4em;
+  margin: .1em;
   border-radius: .3em;
+}
+div.box > h3 {
+  font-size: 1em;
+}
+div.box > h3::after {
+  content: "";
+  color: var(--base-foreground);
+  display: block;
+  height: .2em;
+  border-top: .1em solid currentColor;
+  border-bottom: .1em solid currentColor;
+  margin-top: .3em;
+  margin-bottom: .3em;
 }
 
 
