@@ -1,5 +1,13 @@
-@keyframes alpha-in-faded-right{0%{opacity:0;transform:translate(-70px,0);}60%{transform:translate(0,0);}100%{opacity:60%;}}
-@keyframes alpha-in-faded-left{0%{opacity:0;transform:translate(70px,0);}60%{transform:translate(0,0);}100%{opacity:60%;}}
+@keyframes alpha-in-faded-right{
+    0%{filter:blur(18px);opacity:0;transform:translate(-70px,0);}
+    60%{filter:none;transform:translate(0,0);}
+    100%{opacity:60%;}
+}
+@keyframes alpha-in-faded-left{
+    0%{filter:blur(18px);opacity:0;transform:translate(70px,0);}
+    60%{filter:none;transform:translate(0,0);}
+    100%{opacity:60%;}
+}
 @keyframes alpha-in{from{opacity:0;}to{opacity:100%;}}
 .screenshot{
     display:inline-block;
@@ -29,7 +37,7 @@
     z-index:-1;}
 .screenshot.right{animation-name:alpha-in-faded-right;}
 .screenshot.left{animation-name:alpha-in-faded-left;}
-.carousel{margin-top:48px;min-height:550px;}
+.carousel{margin:48px 0;min-height:550px;}
 @media only screen and (max-width:720px){.getItOnBadge{float:none;}}
 @media only screen and (max-width:800px){.screenshot.faded{display:none;}}
 @media only screen and (max-width:580px){.screenshot{
