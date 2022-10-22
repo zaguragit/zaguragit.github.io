@@ -11,7 +11,6 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
 :root {
   --color-header: #ae8dff;
   --color-accent: #66ffc6;
-  --color-accent-bright: #66ffc6;
   --color-accent-bg: #66ddc133;
   --borders: rgba(255, 255, 255, 0.2);
   --borders-strong: rgba(255, 255, 255, 1);
@@ -19,8 +18,8 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
   --base-background: #17101e;
   --base-foreground: #d1aeff;
   --base-foreground-strong: #ffffff;
-  font-family: monospace;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.5;
   background-color: var(--base-background);
   color: var(--base-foreground);
@@ -57,36 +56,32 @@ h3::after {
 
 a {
   color: var(--color-accent);
-  font-weight: 600;
-  text-decoration: none;
-}
-a:hover {
-  color: var(--color-accent-bright);
-  outline: .2em solid var(--color-accent);
-  outline-offset: .1em;
+  text-decoration: underline wavy currentColor 1px;
 }
 
 em {
   color: var(--base-foreground-strong);
   font-style: unset;
-  font-weight: 500;
+  font-weight: 700;
+}
+
+small {
+  color: rgba(99,99,99,.8);
+  font-size: .6em;
 }
 
 ::selection {
   background-color: var(--color-accent-bg);
-  color: var(--color-accent-bright);
+  color: var(--color-accent);
   text-shadow: none;
 }
 
 
-div.header {
-  filter: blur(0.025rem);
-}
+.badge-list a,
 div.header a {
-  outline: none;
+  text-decoration: none;
 }
 main {
-  filter: blur(0.025rem);
   text-shadow: 0 0 1px #0f0, -0.5px 0 0.5px #f00, 0.5px 0 0.5px #00f;
 }
 @keyframes scroll{from{transform:translateY(0px)}to{transform:translateY(6px)}}
@@ -112,9 +107,9 @@ body::before {
 
 body {
   width: 100%;
-  max-width: 800px;
+  max-width: 804px;
   margin: 32px auto;
-  padding: 0 1em;
+  padding: 0 2em;
 }
 
 span.invisible {
@@ -128,6 +123,12 @@ span.invisible {
   padding-top: .5em;
   padding-bottom: .5em;
 }
+.button-list a {
+  text-decoration: none;
+}
+.button-list a:hover {
+  text-decoration: underline wavy currentColor 1px;
+}
 
 
 #me {
@@ -136,9 +137,8 @@ span.invisible {
 }
 #me .avatar {
   width: auto;
-  height: 12em;
+  height: 6em;
   margin-right: 1em;
-  border-radius: 0 60%;
 }
 #me header {
   font-weight: 700;
@@ -166,6 +166,13 @@ div.header::after {
   background: repeating-linear-gradient(90deg,var(--color-header),var(--color-header) 3px,transparent 0,transparent 10px);
   display: inline;
   flex-grow: 2;
+}
+
+
+.badge-list img {
+  width: 88px;
+  height: 31px;
+  image-rendering: pixelated;
 }
 
 
@@ -216,16 +223,6 @@ div.box {
 }
 
 @media only screen and (max-width:480px) {
-  #me {
-    flex-wrap: wrap;
-  }
-  #me .avatar {
-    width: 96px;
-    height: 96px;
-    margin: 0;
-    margin-bottom: 1em;
-  }
-
   .button-list {
     display: grid;
     --gap: .2em;
@@ -235,6 +232,8 @@ div.box {
   .button-list a {
     padding: .1em .4em;
     border: .2em solid currentColor;
-    outline: none;
+  }
+  .button-list a:hover {
+    text-decoration: none;
   }
 }
