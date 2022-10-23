@@ -10,6 +10,7 @@
 <meta name=theme-color content=#38244c>
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <link rel=stylesheet href=../style.css>
+<link rel=stylesheet href=style.css>
 <title>Zagura's Art</title>
 <div class=header>
   <a href="/">Zagura's Website</a>
@@ -21,5 +22,48 @@
 </div>
 <main>
   <h1>My Art</h1>
-  <p>Nothing here yet, i have some art at <a rel=me href=https://tech.lgbt/@zagura>@zagura@tech.lgbt</a> sometimes tho</p>
+  <p>This page loads art posts from <a rel=me href=https://tech.lgbt/@zagura>@zagura@tech.lgbt</a></p>
+  <div class=image-grid></div>
 </main>
+<script>
+  const loadRss = url => fetch(url)
+    .then(async (x) => await x.text())
+    .then(str => new DOMParser().parseFromString(str, "text/xml"))
+    .then(data => {
+      const items = data.getElementsByTagName("item");
+      let html = ``;
+      for (const el of items) {
+        let isArt = false;
+        for (const x of el.getElementsByTagName("category")) {
+          if (["art", "mastoart", "inktober"].includes(x.innerHTML)) {
+            isArt = true;
+            break;
+          }
+        }
+        if (!isArt)
+          continue;
+        const image = el.getElementsByTagNameNS("http://search.yahoo.com/mrss/", "content")[0];
+        if (!image)
+          continue;
+        const text = el.getElementsByTagName("description")[0].textContent.replace( /(<([^>]+)>)/ig, '').replace(/"/g, '&quot;');
+        const alt = image.getElementsByTagNameNS("http://search.yahoo.com/mrss/", "description")[0]
+          ?.textContent.replace( /(<([^>]+)>)/ig, '').replace(/"/g, '&quot;') ?? text;
+        html += `
+          <article>
+            <a href="${el.getElementsByTagName("link")[0].innerHTML}" title="${text}" target="_blank" rel="noopener">
+              <img src="${image.attributes["url"].value}" alt="${alt}">
+            </a>
+          </article>
+        `;
+      }
+      document.body.querySelector(".image-grid").insertAdjacentHTML("beforeend", html);
+    })
+    .catch(err => { throw err });
+
+  const load = async (url) => {
+    await loadRss("https://tech.lgbt/users/zagura.rss");
+    await loadRss("https://social.linux.pizza/users/zagura.rss");
+  }
+
+  load();
+</script>
