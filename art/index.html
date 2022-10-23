@@ -45,7 +45,7 @@
         const image = el.getElementsByTagNameNS("http://search.yahoo.com/mrss/", "content")[0];
         if (!image)
           continue;
-        const text = el.getElementsByTagName("description")[0].textContent.replace( /(<([^>]+)>)/ig, '').replace(/"/g, '&quot;');
+        const text = el.getElementsByTagName("description")[0].textContent.replace(/<(b|h)r *\/?>/ig, '\n').replace( /(<([^>]+)>)/ig, '').replace(/"/g, '&quot;');
         const alt = image.getElementsByTagNameNS("http://search.yahoo.com/mrss/", "description")[0]
           ?.textContent.replace( /(<([^>]+)>)/ig, '').replace(/"/g, '&quot;') ?? text;
         html += `

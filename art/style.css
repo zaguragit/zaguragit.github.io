@@ -3,6 +3,7 @@
     display: grid;
     gap: 1em;
     grid-template-columns: repeat(3, auto);
+    image-rendering: auto;
 }
 
 .image-grid img {
