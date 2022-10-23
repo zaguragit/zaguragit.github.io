@@ -1,13 +1,5 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;}
 h1,h2,h3,h4{color:var(--base-foreground-strong);}
-.absolute-center {
-	position:fixed;
-	display:flex;
-  justify-content:center;
-  width:100%;
-  height:100%;
-  align-items:center;
-  flex-direction:column;}
 :root {
   --color-header: #ae8dff;
   --color-accent: #66ffc6;
@@ -120,6 +112,9 @@ div.header > a {
   max-width: 100%;
   text-decoration: none;
   color: #000;
+  font-weight: 700;
+  font-family: monospace;
+  text-transform: uppercase;
 }
 div.header > .spacer {
   flex-grow: 1;
@@ -130,6 +125,7 @@ div.header > nav {
   display: flex;
   flex-direction: row;
   gap: 15px;
+  font-family: monospace;
 }
 div.header > nav > a {
   text-align: center;
@@ -244,6 +240,12 @@ div.box {
   }
   .button-list a:hover {
     text-decoration: none;
+  }
+  div.header > a, div.header > .spacer {
+    display: none;
+  }
+  div.header {
+    display: inline;
   }
   div.header > nav {
     position: fixed;

@@ -5,28 +5,28 @@
 <meta name="theme-color" content="#000000">
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name="robots" content="noindex">
-<link id=favicon rel=icon href=/assets/me.png>
-<script>
-const favicon = document.getElementById("favicon");
-const is_dark = window.matchMedia("(prefers-color-scheme: dark)");
-function change_favicon () {
-  if (is_dark.matches) favicon.href = "/assets/me-dark.png";
-  else favicon.href = "/assets/me-light.png";
-};
-is_dark.addEventListener ("change", change_favicon);
-change_favicon ();
-</script>
-<div class="absolute-center">
+<div class=header>
+  <a href="/">zagura on cyberspace</a>
+  <div class=spacer></div>
+  <nav>
+    <a href="/">/home</a>
+    <a href=/dev>/dev</a>
+    <a href=/art>/art</a>
+  </nav>
+</div>
+<center>
   <h1 class="brutal" data-text="404"><span>404</span></h1>
   <h3 class="brutal" data-text="Page not found"><span>Page not found</span></h3>
-</div>
+</center>
 <style>
 h1.brutal {
-  font-size: 128px;
+  font-size: 96px;
+  letter-spacing: .2em;
+  border: none;
 }
 .brutal {
   position: relative;
-  letter-spacing: .2em;
+  font-family: monospace;
   filter: drop-shadow(0 0 .07em #88ddff44) drop-shadow(0 0 .03em #ffffff77);
 }
 .brutal::before,
@@ -49,8 +49,6 @@ h1.brutal {
   color: #00ffff55;
   animation: paths 2s step-end infinite, opacity 10s step-end infinite,
     font 7s step-end infinite, movement 8s step-end infinite;
-}
-.brutal span {
 }
 
 @keyframes paths {
