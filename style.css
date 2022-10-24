@@ -14,11 +14,16 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+  background-color: var(--base-background);
   background-image: url("assets/bg_tile.png");
   background-size: 128px;
   image-rendering: pixelated;
 }
-
+::selection {
+  background-color: var(--color-accent-bg);
+  color: var(--color-accent);
+  text-shadow: none;
+}
 body {
   width: 100%;
   max-width: 800px;
@@ -26,7 +31,7 @@ body {
   padding: 18px;
   background-color: var(--base-background);
   color: var(--base-foreground);
-  image-rendering: optimizeSpeed;
+  image-rendering: auto;
 }
 
 h1 {
@@ -60,7 +65,7 @@ h3::after {
 
 a {
   color: var(--color-accent);
-  text-decoration: underline wavy currentColor 1px;
+  text-decoration: underline wavy transparent 1px;
 }
 
 em {
@@ -74,10 +79,15 @@ small {
   font-size: .6em;
 }
 
-::selection {
-  background-color: var(--color-accent-bg);
-  color: var(--color-accent);
-  text-shadow: none;
+dl {
+  display: grid;
+  grid-template-columns: auto auto;
+  line-height: 2;
+}
+dl dt {
+  text-align: center;
+  border-right: 1px solid currentColor;
+  margin-right: 1em;
 }
 
 
