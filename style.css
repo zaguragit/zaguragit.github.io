@@ -15,8 +15,8 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
   font-weight: 400;
   line-height: 1.5;
   background-color: var(--base-background);
-  background-image: url("assets/bg_tile.png");
-  background-size: 128px;
+  background-image: url("assets/bg_tile.gif");
+  background-size: 640px 480px;
   image-rendering: pixelated;
 }
 ::selection {
