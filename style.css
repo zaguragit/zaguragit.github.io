@@ -109,7 +109,7 @@ h3::after {
 
 a {
   color: var(--color-accent);
-  text-decoration: underline wavy transparent 1px;
+  text-decoration: underline wavy var(--color-accent) 1px;
 }
 
 em {
