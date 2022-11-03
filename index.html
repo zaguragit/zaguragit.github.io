@@ -13,6 +13,7 @@
     <meta name=theme-color content=#38244c>
     <meta name="color-scheme" content="dark">
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel=icon href=assets/me.png>
     <link rel=stylesheet href=style.css>
     <link rel="webmention" href="https://webmention.io/zagura.one/webmention">
     <link rel="pingback" href="https://webmention.io/zagura.one/xmlrpc">
@@ -28,13 +29,15 @@
         <a href=/art>/art</a>
       </nav>
     </div>
-    <main>
+    <main class="h-card">
       <div id=me>
-        <img class=avatar src=assets/me.png>
+        <img class="u-logo avatar" alt="Drawing of Zagura" title="Zagura" src=assets/me.png>
         <span>
-          <header>Hi, I'm <em>Zagura</em></header>
+          <header>Hi, I'm <em class="p-name">Zagura</em></header>
+          <a class="u-url handle" rel=me href=https://zagura.one>zagura.one</a>
         </span>
       </div>
+      <p class="p-note">Enby <span class="p-job-title">programmer (in theory) (plz hire)</span>, who also likes to draw</p>
       <p>
         For better i18n, each syllable has an alt version:
         <code>(z|s)a (g|j|y)u (r|w|l)a</code><br>
@@ -43,12 +46,34 @@
       </p>
       <div class=box>
         <dl>
-          <dt>pronouns</dt><dd><em>they/them</em></dd>
-          <dt>speaks</dt><dd>english, spanish, catalan, russian, <a href=https://tokipona.org>toki pona</a></dd>
-          <dt>into</dt><dd>gtk, linux, fediverse, css, men, voxels &amp; procedural generation</dd>
-          <dt>location</dt><dd>Barcelona, Catalonia</dd>
-          <dt>uwu</dt><dd>single<small style=margin-left:4em>uwu</small><br></dd>
-          <dt>hotel</dt><dd>trivago<small style=margin-left:4em>im not actually that faimiliar with this meme</small><br></dd>
+          <dt>pronouns</dt><dd><em>
+            <span class="p-x-pronoun-nominative">they</span>/
+            <span class="p-x-pronoun-oblique">them</span>/
+            <span class="p-x-pronoun-possessive">their</span>
+          </em></dd>
+          <dt>speaks</dt><dd>
+            <span class="p-language">english</span>,
+            <span class="p-language">spanish</span>,
+            <span class="p-language">catalan</span>,
+            <span class="p-language">russian</span>,
+            <span class="p-language"><a href=https://tokipona.org>toki pona</a></span>
+          </dd>
+          <dt>into</dt><dd>
+            gtk, linux, fediverse, css, men, voxels &amp; procedural generation
+          </dd>
+          <dt>location</dt><dd>
+            <address class="p-adr h-adr">
+              <span class="p-region">Barcelona</span>,
+              <span class="p-locality">Catalonia</span>,
+              <span class="p-country-name">Spain</span>
+            </address>
+          </dd>
+          <dt>uwu</dt><dd>
+            <span class="p-relationship-status">single</span><small style=margin-left:4em>uwu</small>
+          </dd>
+          <dt>hotel</dt><dd>
+            trivago<small style=margin-left:4em>im not actually that faimiliar with this meme</small>
+          </dd>
         </dl>
       </div>
       <center>
@@ -78,8 +103,8 @@
         </div>
         <div class=box>
           <h3>Talk to Me <small style=float:right>like, actually, i want more friends</small></h3>
-          email: <a rel=me href=mailto:me@zagura.one>me@zagura.one</a><br>
-          fedi: <a rel=me href=https://tech.lgbt/@zagura>@zagura@tech.lgbt</a><br> 
+          email: <a rel=me class="u-email" href=mailto:me@zagura.one>me@zagura.one</a><br>
+          fedi: <a rel=me href=https://tech.lgbt/@zagura>@zagura@tech.lgbt</a><br>
           discord: zagura#4140<br>
         </div>
       </div>
@@ -178,6 +203,15 @@
           <a href="https://liberapay.com/Zagura/donate" title="Donate using Liberapay">Liberapay</a>,
           otherwise better donate to some charity or something
       </p>
+      <p id=mentions></p>
     </main>
+    <script>
+      fetch("https://webmention.io/api/count?target=https://zagura.one")
+        .then(response => response.json())
+        .then(responseJson => {
+          let html = `<p>Webmentions: ${responseJson.count}</p>`;
+          document.body.querySelector("#mentions").insertAdjacentHTML("beforeend", html);
+        });
+    </script>
   </body>
 </html>

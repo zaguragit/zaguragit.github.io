@@ -112,6 +112,11 @@ a {
   text-decoration: underline wavy var(--color-accent) 1px;
 }
 
+a.handle {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
 em {
   color: var(--base-foreground-strong);
   font-style: unset;
