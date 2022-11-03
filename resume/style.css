@@ -1,0 +1,27 @@
+
+.datetime {
+  opacity: 0.6;
+  font-size: .8em;
+}
+
+.box .summary {
+  font-size: .8em;
+}
+
+.box .datetime {
+  float: right;
+}
+
+.experience {
+  margin: 2em 0;
+}
+
+.experience a:not(:hover) {
+  text-decoration: none;
+}
+
+.box .spacer::after,
+.experience .spacer::after {
+  content: " :: ";
+  font-family: JetBrainsMono;
+}

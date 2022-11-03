@@ -9,12 +9,13 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
   src: url("assets/JetBrainsMono.ttf");
 }
 :root {
-  --color-header: #ae8dff;
+  --color-header-lines: #ae8dff;
+  --color-header: #67e6ca;
   --color-accent: #66ffc6;
   --color-accent-bg: #66ddc133;
   --card-border-radius: 8px;
-  --base-background: #102;
-  --base-foreground: #d1aeff;
+  --base-background: rgb(22, 14, 31);
+  --base-foreground: #c2a9e4;
   --base-foreground-strong: #ffffff;
   font-family: Bitter;
   font-size: 16px;
@@ -92,7 +93,7 @@ h1::after {
   width: 100%;
 }
 
-h3 {
+h3, h4 {
   font-size: 1em;
   font-weight: 700;
 }
@@ -201,7 +202,7 @@ div.header > a {
 }
 div.header > .spacer {
   flex-grow: 1;
-  background: repeating-linear-gradient(90deg,var(--color-header),var(--color-header) 3px,transparent 0,transparent 10px);
+  background: repeating-linear-gradient(90deg,var(--color-header-lines),var(--color-header-lines) 3px,transparent 0,transparent 10px);
   display: inline;
 }
 div.header > nav {
@@ -245,7 +246,7 @@ main > p {
   margin: 1em 0;
 }
 main a {
-  text-shadow: 0 0 3px var(--color-accent-bg), 0 0 1px #8f8, -0.5px 0 0.5px #f05, 0.5px 0 0.5px #00f;
+  text-shadow: 0 0 3px var(--color-accent-bg), 0 0 1px #0ff, -0.5px 0 0.5px #8f0, 0.5px 0 0.5px #00f;
 }
 main em {
   text-shadow: 0 0 6px #fff4, 0 0 1px #8f8, -0.5px 0 0.5px #f05, 0.5px 0 0.5px #00f;
@@ -256,6 +257,10 @@ div.box {
   border: .1em solid currentColor;
   margin: .1em;
   border-radius: .3em;
+}
+
+div.box > ul {
+  margin-left: 1em;
 }
 
 .button-list {
@@ -307,9 +312,10 @@ div.box {
 
 .grid {
   display: grid;
+  --columns: 2;
   --gap: 3em;
   grid-gap: var(--gap);
-  grid-template-columns: repeat(2, calc(50% - var(--gap)/2));
+  grid-template-columns: repeat(var(--columns), calc((100% - var(--gap)) / var(--columns)));
 }
 
 
