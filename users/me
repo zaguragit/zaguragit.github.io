@@ -1,11 +1,20 @@
 {
-	"@context":["https://www.w3.org/ns/activitystreams","https://w3id.org/security/v1",{"schema":"http://schema.org#","PropertyValue":"schema:PropertyValue","value":"schema:value"}],
-	"id":"https://zagura.one",
+	"@context":[
+		"https://www.w3.org/ns/activitystreams",
+		{
+      "toot": "http://joinmastodon.org/ns#",
+      "discoverable": "toot:discoverable",
+			"PropertyValue":"schema:PropertyValue",
+			"value":"schema:value"
+		}
+	],
+	"id":"https://zagura.one/users/me",
 	"type":"Person",
 	"preferredUsername":"me",
 	"name":"Zagura",
 	"url":"https://zagura.one",
 	"owner":"https://zagura.one",
+	"discoverable":true,
 	"attachment":[
 		{"type":"PropertyValue","name":"pronouns","value":"they/them"},
 	],
