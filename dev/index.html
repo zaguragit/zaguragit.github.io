@@ -2,7 +2,7 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <meta http-equiv=Content-Security-Policy content="default-src 'self'; img-src https://*;">
+    <meta http-equiv=Content-Security-Policy content="default-src 'none';img-src 'self';form-action 'self';base-uri 'self';style-src 'self';">
     <meta name=copyright content=Zagura>
     <meta name=language content=en>
     <meta name=author content=Zagura>
@@ -12,9 +12,9 @@
     <meta name="referrer" content="no-referrer">
     <meta name=theme-color content=#38244c>
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel=icon href=../assets/me/icon.png>
     <link rel=stylesheet href=../style.css>
-    <link rel="webmention" href="https://webmention.io/zagura.one/webmention">
-    <link rel="pingback" href="https://webmention.io/zagura.one/xmlrpc">
+    <link rel=stylesheet href=style.css>
     <title>Zagura's Projects</title>
   </head>
   <body>
@@ -31,14 +31,14 @@
     <main>
       <h1>My Projects</h1>
       <div class=grid>
-        <div>
+        <div class=box>
           <h3>Cute</h3>
           <p>A general purpose language aimed at conciseness & readability</p>
           <div class=button-list>
             <a href="https://github.com/cutelang">Source</a>
           </div>
         </div>
-        <div>
+        <div class=box>
           <h3>Paper</h3>
           <p>Take notes in Markdown</p>
           <div class=button-list>
@@ -47,7 +47,7 @@
             <a href="paper">Website</a>
           </div>
         </div>
-        <div>
+        <div class=box>
           <h3>Slab Launcher</h3>
           <p>A minimalistic launcher inspited in YASAN & Ratio launcher</p>
           <div class=button-list>
@@ -55,7 +55,7 @@
             <a href="slab_launcher">Website</a>
           </div>
         </div>
-        <div>
+        <div class=box>
           <h3>Mastodon Redirector</h3>
           <p>Replaces the follow button on other instances with a button, that redirects you to your instance, so that you can follow, or interact with a user's content</p>
           <div class=button-list>
@@ -63,7 +63,7 @@
             <a href="https://addons.mozilla.org/en-US/firefox/addon/mastodon-redirector">Download</a>
           </div>
         </div>
-        <div>
+        <div class=box>
           <h3>Posidon Launcher</h3>
           <p>A one-page launcher with an rss feed. It's <b>discontinued</b> now, but maybe somebody will find the source code useful</p>
           <div class=button-list>
@@ -71,7 +71,7 @@
             <a href="https://www.f-droid.org/packages/posidon.launcher">F-Droid</a>
           </div>
         </div>
-        <div>
+        <div class=box>
           <h3>Mango Programming Language</h3>
           <p>My first ever attempt at a programming language. It's <b>not usable</b> as an actual language, but maybe it could help somebody developing their own language. Also, it compiles using LLVM, which is cool</p>
           <div class=button-list>

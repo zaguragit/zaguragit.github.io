@@ -2,11 +2,11 @@
 h1,h2,h3,h4{color:var(--base-foreground-strong);}
 @font-face {
   font-family: Bitter;
-  src: url("assets/Bitter.ttf");
+  src: url("assets/font/Bitter.ttf");
 }
 @font-face {
   font-family: JetBrainsMono;
-  src: url("assets/JetBrainsMono.ttf");
+  src: url("assets/font/JetBrainsMono.ttf");
 }
 :root {
   --color-header-lines: #ae8dff;
@@ -22,9 +22,18 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
   font-weight: 400;
   line-height: 1.5;
   background-color: var(--base-background);
-  background-image: url("assets/bg_tile.gif");
-  background-size: 640px 480px;
   image-rendering: pixelated;
+}
+
+.THEBUNNY {
+  float: right;
+  margin-top: -32px;
+  position: relative;
+  z-index: -100;
+}
+
+.hide {
+  display: none;
 }
 
 * {
@@ -113,20 +122,20 @@ a {
   text-decoration: underline wavy var(--color-accent) 1px;
 }
 
-a.handle {
-  color: var(--color-accent);
-  text-decoration: none;
-}
-
 em {
   color: var(--base-foreground-strong);
   font-style: unset;
   font-weight: 700;
 }
 
-small {
+small, aside {
   color: rgba(99,99,99,.8);
   font-size: .6em;
+  display: inline;
+}
+
+aside {
+  margin-left: 4em;
 }
 
 dl {
@@ -263,20 +272,6 @@ div.box > ul {
   margin-left: 1em;
 }
 
-.button-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  padding-top: .5em;
-  padding-bottom: .5em;
-}
-.button-list a {
-  text-decoration: none;
-}
-.button-list a:hover {
-  text-decoration: underline wavy currentColor 1px;
-}
-
 
 #me {
   margin-bottom: 1em;
@@ -313,9 +308,12 @@ div.box > ul {
 .grid {
   display: grid;
   --columns: 2;
-  --gap: 3em;
+  --gap: 1em;
   grid-gap: var(--gap);
   grid-template-columns: repeat(var(--columns), calc((100% - var(--gap)) / var(--columns)));
+}
+.grid.c3 {
+  --columns: 3;
 }
 
 
@@ -326,19 +324,6 @@ div.box > ul {
 }
 
 @media only screen and (max-width:480px) {
-  .button-list {
-    display: grid;
-    --gap: .2em;
-    gap: var(--gap);
-    grid-template-columns: repeat(2, calc(50% - var(--gap)/2));
-  }
-  .button-list a {
-    padding: .1em .4em;
-    border: .2em solid currentColor;
-  }
-  .button-list a:hover {
-    text-decoration: none;
-  }
   div.header > a, div.header > .spacer {
     display: none;
   }

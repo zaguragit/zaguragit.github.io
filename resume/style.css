@@ -25,3 +25,9 @@
   content: " :: ";
   font-family: JetBrainsMono;
 }
+
+.box-column {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-gap: 1em;
+}

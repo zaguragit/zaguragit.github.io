@@ -6,7 +6,15 @@
     image-rendering: auto;
 }
 
-.image-grid img {
-    width: 100%;
+.image-grid article {
     aspect-ratio: 1;
+    place-content: center;
+    display: flex;
+    background-color: #000;
+}
+
+.image-grid article img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
 }

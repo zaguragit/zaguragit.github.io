@@ -2,21 +2,22 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <!-- TODO: (host my art on the website) <meta http-equiv=Content-Security-Policy content="default-src 'self'; img-src https://*;"> -->
+    <meta http-equiv=Content-Security-Policy content="default-src 'none';img-src 'self';form-action 'self';base-uri 'self';style-src 'self';">
     <meta name=copyright content=Zagura>
     <meta name=language content=en>
     <meta name=author content=Zagura>
     <meta name=web-author content=Zagura>
-    <meta name=description content="Zagura's projects">
+    <meta name=description content="Zagura's Art">
     <meta name=rating content=adult>
     <meta name=no-email-collection>
-    <meta name="referrer" content="no-referrer">
+    <meta name=referrer content=no-referrer>
     <meta name=theme-color content=#38244c>
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel=icon href=../assets/me/icon.png>
     <link rel=stylesheet href=../style.css>
     <link rel=stylesheet href=style.css>
-    <link rel="webmention" href="https://webmention.io/zagura.one/webmention">
-    <link rel="pingback" href="https://webmention.io/zagura.one/xmlrpc">
+    <link rel=webmention href=https://webmention.io/zagura.one/webmention>
+    <link rel=pingback href=https://webmention.io/zagura.one/xmlrpc>
     <title>Zagura's Art</title>
   </head>
   <body>
@@ -35,54 +36,67 @@
       <h3>88x31 GIFs</h3>
       <p class=badge-list>
         Made these myself<br>
-        <img src=88x31/trans-rights-now.gif>
-        <img src=88x31/nb-sunset.gif>
+        <img src=../assets/badges/made/trans-rights-now.gif>
+        <img src=../assets/badges/made/nb-sunset.gif>
       </p>
       <h3>Drawing Grid</h3>
-      <p>This loads art posts from <a rel=me href=https://tech.lgbt/@zagura>@zagura@tech.lgbt</a></p>
-      <div class=image-grid></div>
+      <p>Hover over the images to see notes</p>
+      <div class=image-grid>
+        <article>
+          <img
+            src=../assets/img/made/2022-09-01.png
+            title="Couldn't decide on what a gargoyles anatomy is (was doing an inktober prompt), so drew the 2 extremes"
+            alt="Shirtless lean demon guy with a cute gargoyle on their shoulder">
+        </article>
+        <article>
+          <img
+            src=../assets/img/made/2022-08-02.png
+            title="Old avatar"
+            alt="Like tiefling, but no horns, not elf. Has blue skin with white undercut hair (the head side parts of the hair are dark)">
+        </article>
+        <article>
+          <img
+            src=../assets/img/made/2022-07-25.png
+            title="Merman, but not a senpai uwu yaoi protagonist, actually a being that looks aquatic (still has a 6-pack & pecs tho, cuz obviously)"
+            alt="Merman in a kelp forest">
+        </article>
+        <article>
+          <img
+            src=../assets/img/made/2022-07-23.png
+            title="Tiefling with golden jewelery"
+            alt="Tiefling with golden jewelery">
+        </article>
+        <article>
+          <img
+            src=../assets/img/made/2022-07-22.png
+            title="Boring, but atleast they didn't skip leg day"
+            alt="Muscular (artistically nude) blue guy with a tail walking underwater">
+        </article>
+        <article>
+          <img
+            src=../assets/img/made/2022-07-10.png
+            title="In case you couldn't tell, I'm obsessed with anatomical necks"
+            alt="Tiefling, but instead of horns it's very short antennas or something, looking up at implied pink vines or something like that">
+        </article>
+        <article>
+          <img
+            src=../assets/img/made/2022-07-02.png
+            title="Was planning on making this into a physical painting, failed"
+            alt="Sunset. A siloughette of a drone carrying a package to a floating city in the distance">
+        </article>
+        <article>
+          <img
+            src=../assets/img/made/2022-06-03.png
+            title="Idk what to say about this, enjoy I guess"
+            alt="Muscular dude in a desert, wearing a cape and a loin cloth thingie with 2 belts & a small bag attached to one of them">
+        </article>
+        <article>
+          <img
+            src=../assets/img/made/2022-03-01.png
+            title="#goals"
+            alt="Siloughette of 2 humanoids sharing a moment infront of a green sunset">
+        </article>
+      </div>
     </main>
   </body>
-  <script>
-    const loadRss = url => fetch(url)
-      .then(async (x) => await x.text())
-      .then(str => new DOMParser().parseFromString(str, "text/xml"))
-      .then(data => {
-        const items = data.getElementsByTagName("item");
-        let html = ``;
-        for (const el of items) {
-          let isArt = false;
-          for (const x of el.getElementsByTagName("category")) {
-            if (["art", "mastoart", "inktober"].includes(x.innerHTML)) {
-              isArt = true;
-              break;
-            }
-          }
-          if (!isArt)
-            continue;
-          const image = el.getElementsByTagNameNS("http://search.yahoo.com/mrss/", "content")[0];
-          if (!image)
-            continue;
-          const text = el.getElementsByTagName("description")[0].textContent.replace(/<(b|h)r *\/?>/ig, '\n').replace( /(<([^>]+)>)/ig, '').replace(/"/g, '&quot;');
-          const alt = image.getElementsByTagNameNS("http://search.yahoo.com/mrss/", "description")[0]
-            ?.textContent.replace( /(<([^>]+)>)/ig, '').replace(/"/g, '&quot;') ?? text;
-          html += `
-            <article>
-              <a href="${el.getElementsByTagName("link")[0].innerHTML}" title="${text}" target="_blank" rel="noopener">
-                <img src="${image.attributes["url"].value}" alt="${alt}">
-              </a>
-            </article>
-          `;
-        }
-        document.body.querySelector(".image-grid").insertAdjacentHTML("beforeend", html);
-      })
-      .catch(err => { throw err });
-
-    const load = async (url) => {
-      await loadRss("https://tech.lgbt/users/zagura.rss");
-      await loadRss("https://social.linux.pizza/users/zagura.rss");
-    }
-
-    load();
-  </script>
 </html>
