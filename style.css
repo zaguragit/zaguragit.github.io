@@ -149,6 +149,19 @@ dl dd:last-child {
   padding-bottom: .8em;
 }
 
+.pronunciation {
+  color: var(--base-foreground);
+  text-shadow: none;
+  opacity: 0.5;
+}
+.pronunciation::before, .pronunciation::after {
+  content: '/';
+  color: var(--base-foreground);
+  font-size: 1.2em;
+  position: relative;
+  bottom: -.1em;
+}
+
 
 .badge-list a,
 div.header a {
