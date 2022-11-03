@@ -1,0 +1,13 @@
+{
+	"@context":["https://www.w3.org/ns/activitystreams","https://w3id.org/security/v1",{"schema":"http://schema.org#","PropertyValue":"schema:PropertyValue","value":"schema:value"}],
+	"id":"https://zagura.one",
+	"type":"Person",
+	"preferredUsername":"me",
+	"name":"Zagura",
+	"url":"https://zagura.one",
+	"owner":"https://zagura.one",
+	"attachment":[
+		{"type":"PropertyValue","name":"pronouns","value":"they/them"},
+	],
+	"icon":{"type":"Image","mediaType":"image/png","url":"https://zagura.one/assets/me.png"},
+}
