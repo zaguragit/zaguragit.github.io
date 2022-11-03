@@ -2,6 +2,7 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
+    <meta http-equiv=Content-Security-Policy content="default-src 'self'; img-src https://*;">
     <meta name=copyright content=Zagura>
     <meta name=language content=en>
     <meta name=author content=Zagura>
@@ -10,6 +11,7 @@
     <meta name=abstract content="A little website for my stuff, with pretty css">
     <meta name=rating content=adult>
     <meta name=no-email-collection>
+    <meta name="referrer" content="no-referrer">
     <meta name=theme-color content=#38244c>
     <meta name="color-scheme" content="dark">
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
@@ -129,6 +131,12 @@
       </p>
       <h3>Stuff</h3>
       <p class=badge-list>
+        <a href=https://rainmirage.neocities.org>
+          <img src=https://rainmirage.neocities.org/images/rainsspacebutton.png>
+        </a>
+        <a href=https://joppiesaus.neocities.org>
+          <img src=https://joppiesaus.neocities.org/img/joppiesaus-banner-1.png>
+        </a>
         <a href=https://zoidart.neocities.org>
           <img src=https://zoidart.neocities.org/image/button/personal/v1.gif>
         </a>
@@ -210,7 +218,7 @@
         </a>
       </p>
       <p>
-        If I've stolen ur graphics without giving credit, pls tell me and ill credit u (or remove them, whatever u want)
+        If I've accidentally stolen ur graphics without giving credit, pls tell me and ill credit u (or remove them, whatever u want)
       </p>
       <p>
         If u have too much money & are feeling generous, u can donate to me on
@@ -219,13 +227,5 @@
       </p>
       <p id=mentions></p>
     </main>
-    <script>
-      fetch("https://webmention.io/api/count?target=https://zagura.one")
-        .then(response => response.json())
-        .then(responseJson => {
-          let html = `<p>Webmentions: ${responseJson.count}</p>`;
-          document.body.querySelector("#mentions").insertAdjacentHTML("beforeend", html);
-        });
-    </script>
   </body>
 </html>
