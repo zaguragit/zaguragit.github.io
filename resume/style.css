@@ -23,7 +23,7 @@
 .box .spacer::after,
 .experience .spacer::after {
   content: " :: ";
-  font-family: JetBrainsMono;
+  font-family: monospace;
 }
 
 .box-column {

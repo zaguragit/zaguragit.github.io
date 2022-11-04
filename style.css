@@ -1,13 +1,5 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;}
 h1,h2,h3,h4{color:var(--base-foreground-strong);}
-@font-face {
-  font-family: Bitter;
-  src: url("assets/font/Bitter.ttf");
-}
-@font-face {
-  font-family: JetBrainsMono;
-  src: url("assets/font/JetBrainsMono.ttf");
-}
 :root {
   --color-header-lines: #ae8dff;
   --color-header: #67e6ca;
@@ -17,7 +9,7 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
   --base-background: rgb(22, 14, 31);
   --base-foreground: #c2a9e4;
   --base-foreground-strong: #ffffff;
-  font-family: Bitter;
+  font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
@@ -42,7 +34,6 @@ h1,h2,h3,h4{color:var(--base-foreground-strong);}
 ::selection {
   background-color: var(--color-accent-bg);
   color: var(--color-accent);
-  text-shadow: none;
 }
 body {
   --padding: 24px;
@@ -119,7 +110,7 @@ h3::after {
 
 a {
   color: var(--color-accent);
-  text-decoration: underline wavy var(--color-accent) 1px;
+  text-decoration: underline var(--color-accent) 1px;
 }
 a:focus,
 [tabindex]:focus {
@@ -174,7 +165,6 @@ dl dd:last-child {
 
 .pronunciation {
   color: var(--base-foreground);
-  text-shadow: none;
   opacity: 0.5;
 }
 .pronunciation::before, .pronunciation::after {
@@ -219,7 +209,7 @@ div.header > a {
   text-decoration: none;
   color: #000;
   font-weight: 700;
-  font-family: JetBrainsMono;
+  font-family: monospace;
   text-transform: uppercase;
 }
 div.header > .spacer {
@@ -231,7 +221,7 @@ div.header > nav {
   display: flex;
   flex-direction: row;
   gap: 15px;
-  font-family: JetBrainsMono;
+  font-family: monospace;
   color: #000;
 }
 div.header > nav > a {
@@ -241,9 +231,6 @@ div.header > nav > a {
 }
 
 
-main {
-  text-shadow: 0 0 1px #0f0, -0.5px 0 0.5px #f00, 0.5px 0 0.5px #00f;
-}
 main > h1 {
   margin-bottom: 1em;
 }
@@ -266,12 +253,6 @@ main > hr::after {
 }
 main > p {
   margin: 1em 0;
-}
-main a {
-  text-shadow: 0 0 3px var(--color-accent-bg), 0 0 1px #0ff, -0.5px 0 0.5px #8f0, 0.5px 0 0.5px #00f;
-}
-main em {
-  text-shadow: 0 0 6px #fff4, 0 0 1px #8f8, -0.5px 0 0.5px #f05, 0.5px 0 0.5px #00f;
 }
 
 div.box {
@@ -301,17 +282,35 @@ div.box > ul {
 #me header {
   font-size: 2em;
   line-height: 1;
+  font-family: sans-serif;
 }
 
+
+.webring {
+  display: flex;
+  flex-direction: row;
+}
+.webring a {
+  text-decoration: none;
+}
+.webring .spread {
+  flex-grow: 1;
+  text-align: center;
+}
+.webring .arrow {
+  text-decoration: none;
+  font-family: monospace;
+}
 
 .add-banner {
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 728px;
+  max-height: 90px;
   width: 100%;
-  height: 90px;
   border: none;
+  aspect-ratio: 728/90;
 }
 
 
