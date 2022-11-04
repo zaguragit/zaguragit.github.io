@@ -2,7 +2,7 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <meta http-equiv=Content-Security-Policy content="default-src 'none';img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
+    <meta http-equiv=Content-Security-Policy content="default-src 'none';frame-src https://john.citrons.xyz/embed?ref=zagura.one;img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
     <meta name=copyright content=Zagura>
     <meta name=language content=en>
     <meta name=author content=Zagura>
@@ -35,11 +35,11 @@
     <main class="h-card">
       <div id=me>
         <img class="u-photo avatar" alt="Drawing of Zagura" title="Zagura" src=assets/me/avatar.png>
-        <span>
+        <div>
           <header>Hi, I'm <em class="p-name">Zagura</em></header>
           <a class="u-url hide" rel=me href=https://zagura.one>zagura.one</a>
           <p class="p-ipa pronunciation">zɑɡurɑ</p>
-        </span>
+        </div>
       </div>
       <p class="p-note"><span class="p-gender-identity">Enby</span> <span class="p-job-title"><span class="p-category">programmer</span> (in theory) (plz hire)</span>, who also likes to draw</p>
       <p>
@@ -91,7 +91,7 @@
       </div>
       <br>
       <hr>
-      <img src=assets/gif/bunny.gif class=THEBUNNY>
+      <img src=assets/gif/bunny.gif decoding=async class=THEBUNNY alt="A GIF of a holographic bunny, jumping &amp; rotating">
       <p>
         I am indeed quite the FOSS enthusiast.<br>
         Primarily developing my own programming language, "Cute".<br>
@@ -214,14 +214,15 @@
         </a>
       </p>
       <p>
-        If I've accidentally stolen ur graphics without giving credit, pls tell me and ill credit u (or remove them, whatever u want)
+        If I've accidentally stolen ur graphics without giving credit, pls tell me and ill credit u (or remove them, whatever u want)<br>
+        And also if u have feedback about the website's accessibility, pls tell me that too<br>
       </p>
       <p>
         If u have too much money & are feeling generous, u can donate to me on
           <a href="https://liberapay.com/Zagura/donate" title="Donate using Liberapay">Liberapay</a>,
           otherwise better donate to some charity or something
       </p>
-      <p id=mentions></p>
+      <iframe src="https://john.citrons.xyz/embed?ref=zagura.one" class=add-banner></iframe>
     </main>
   </body>
 </html>
