@@ -68,6 +68,15 @@ body::after {
   will-change: transform;
   transform: translateY(0px);
 }
+.bg-sprite {
+  position: absolute;
+  image-rendering: pixelated;
+  z-index: -100;
+}
+.bg-sprite.right {
+  left: auto;
+  right: 0;
+}
 
 h1 {
   font-size: 2em;
