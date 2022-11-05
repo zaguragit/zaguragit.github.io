@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta http-equiv=Content-Security-Policy content="default-src 'none';img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
+    <meta name=copyright content=Zagura>
+    <meta name=language content=en>
+    <meta name=author content=Zagura>
+    <meta name=web-author content=Zagura>
+    <meta name=description content="A language">
+    <meta name=no-email-collection>
+    <meta name=referrer content=no-referrer>
+    <meta name=theme-color content=#38244c>
+    <meta name=color-scheme content=dark>
+    <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel=icon href=../assets/gif/cute.gif>
+    <link rel=stylesheet href=../style.css>
+    <link rel=stylesheet href=style.css>
+    <title>Cute</title>
+  </head>
+  <body>
+    <div class=header>
+      <a href="/">zagura on cyberspace</a>
+      <div class=spacer></div>
+      <nav>
+        <a href="/">/home</a>
+        <a href=/dev>/dev</a>
+        <a href=/art>/art</a>
+        <a href=/resume>/resume</a>
+      </nav>
+    </div>
+    <main>
+      <center>
+        <img src=../assets/gif/cute.gif height=128px class=pixelart>
+        <h1>Cute</h1><br>
+        <p>A multipurpose language aimed at simplicity, with a novel syntax (page under construction)</p>
+      </center>
+      <a href=https://github.com/cutelang class=gemini>Source</a>
+      <h1>Syntax</h1>
+
+      <h3>Intentions</h3>
+      <p>
+        My intentions with this language are to make the most optimal syntax, without limiting myself to familiarity.
+        Also, the language should ideally strive towards cuteness, so short, friendly-looking keywords, concise syntax & no overly sharp/noisy symbols
+      </p>
+
+      <h3>List of reserved keywords</h3>
+      <p>
+        <code class=kw>using</code>, <code class=kw>module</code>, <code class=kw>extern</code>, <code class=kw>enum</code>,
+        <code class=kw>class</code>, <code class=kw>impl</code>, <code class=kw>when</code>, <code class=kw>loop</code>,
+        <code class=kw>break</code>, <code class=kw>return</code>, <code class=kw>mut</code>, <code class=kw>and</code>,
+        <code class=kw>or</code>, <code class=kw>try</code>, <code class=kw>my</code>, <code class=kw>our</code>,
+        <code class=kw>new</code>, <code class=kw>type</code><br>
+        Also there's <code class=literal>yes</code> & <code class=literal>no</code>, but they're values & not just tokens
+      </p>
+      <h3>Comments</h3>
+      <p>
+        2 types of comments are supported, 
+        the compiler completely ignores them
+      </p>
+      <p>
+        <ul>
+          <li>Single-line comments: <code class=comment>-- comment</code></li>
+          <li>Multi-line comments: <code class=comment>--( comment )--</code></li>
+        </ul>
+      </p>
+
+      <h3>Operators</h3>
+      <p>
+        <h4>Binary Mathematical Operators</h4>
+        <p><pre>+   -   *   /   %  ^  &&  ||  ^|  &gt;&gt;  &lt;&lt;  &lt;&lt;&lt;  &gt;&gt;&gt;</pre></p>
+        <p>
+          <ul>
+            <li><code>^&nbsp;</code>: means left to the power of right</li>
+            <li><code>^|</code>: performs an xor operation</li>
+            <li><code>+&nbsp;</code>: concatenates strings (if left is string, but right isn't, the compiler will search for a <code>to_string</code> method, to convert it), and also combines arrays & arrays with items</li>
+          </ul>
+        </p>
+        <p>Bitwise operators are only allowed on types with explicit bit sizes</p>
+        <h4>Unary Mathematical Operators</h4>
+        <p>
+          <ul>
+            <li><code>~</code> : Flips bits, when used on booleans, basically does a not operation</li>
+            <li><code>-</code> : Negates number</li>
+            <li><code>+</code> : Absolute value</li>
+          </ul>
+        </p>
+        <h4>Logical Operators</h4>
+        <p>
+          <pre><span class=kw>and  or</span></pre>
+        </p>
+        <p>
+          Please note, <code>&&</code>/<code>||</code> is used for bit-wise operations,
+          while <code class=kw>and</code>/<code class=kw>or</code> is for logical operations
+          (which means that it short-circuits)
+        </p>
+        <h4>Comparison Operators</h4>
+        <p>
+          <pre>&gt;  &lt;  &gt;=  &lt;=  =  ~=  ==  ~==</pre>
+        </p>
+        <p>
+          <ul>
+            <li><code>=</code> : checks for equality</li>
+            <li><code>==</code> : checks for identity</li>
+          </ul> 
+        </p>
+        <h4>Mutability Operators</h4>
+        <p>
+          <ul>
+            <li><code>&lt;-</code> : Assigns right to left and evaluates to right, so that assignment chains are possible</li>
+            <li><code>*&nbsp;</code> : (unary) Get the value of the operand</li>
+          </ul>
+        </p>
+        <p>This applies to the <code class=kw>mut</code> datatype, which is created using the <code class=kw>mut</code> unary operator</p>
+        <h4>Operator precedence</h4>
+        <p>
+          <ul>
+            <li>All unary operators</li>
+            <li><code>^</code></li>
+            <li><code>*  /</code></li>
+            <li><code>+  -  %</code></li>
+            <li><code>&lt;&lt;  &gt;&gt;  &lt;&lt;&lt;  &gt;&gt;&gt;</code></li>
+            <li><code>&&  ||  ^|</code></li>
+            <li><code>&lt;  &gt;  =  &gt;=  &lt;=  ~=  ==  ~==</code></li>
+            <li><code class=kw>and  or</code></li>
+            <li><code>&lt;-</code></li>
+          </ul>
+        </p>
+        <p>The operators that can be overloaded are:</p>
+        <p>
+          <pre>+   -   *   /   %  ^  &&  ||  ^|  &gt;&gt;  &lt;&lt;  &lt;&lt;&lt;  &gt;&gt;&gt;  &lt;-  =  ~</pre>
+        </p>
+        <p>
+          If the <code>=</code> is overloaded, <code>~=</code> can be used to get the inverse result<br>
+          If one of the 2 expressions of <code>=</code> is, or might be, <code class=literal>()</code>,
+          the program will first check that & if both sides aren't <code class=literal>()</code> they'll bet compared using the overloaded operator<br>
+        </p>
+        <p>Only the <code>&lt;-</code> operator chains from right to left</p>
+      </p>
+
+      <h3>Fields</h3>
+      <p>AKA variables</p>
+      <p>Fields are immutable, and have a very simple syntax:</p>
+      <pre><span class=kw>my</span> field_name = field_value</pre>
+      <p>One can specify the type by adding <code>: <span class=type>type_name</span></code> after the value</p>
+      <p>Here are some examples:</p>
+      <p>
+        <pre><span class=kw>my</span> a = <span class=literal>5</span>
+<span class=kw>my</span> b = <span class=literal>5</span> : <span class=type>Int</span>
+<span class=kw>my</span> c = <span class=literal>5</span> : <span class=type>Num</span>
+<span class=kw>my</span> d = <span class=literal>0'6</span> : <span class=type>Num</span>
+<span class=kw>my</span> e = <span class=literal>0'6</span> : <span class=type>ℚ</span>
+<span class=kw>my</span> f = <span class=literal>1</span> : <span class=type>ℤ</span>
+<span class=kw>my</span> g = <span class=literal>2'4</span> : [<span class=literal>0'0</span>...]
+<span class=kw>my</span> h = <span class=literal>"blablabla"</span>
+<span class=kw>my</span> i = <span class=literal>"blablabla"</span> : <span class=type>String</span></pre>    
+      </p>
+      <h3>Mutability</h3>
+      <p>
+        All fields are immutable,
+        but Cute has a <code><span class=kw>mut</span> t</code> datatype,
+        which allows to get & set its value,
+        using the operators <code>&lt;-</code> (assignment) & <code>*</code> (unboxing)
+      </p>
+      <p>To understand it easier for people coming from C, it's like a pointer, but you can't do math with it, & it doesn't cause a segfault</p>
+      <p>To create a mutable value, use the <code class=kw>mut</code> keyword with a value after it</p>
+      <p>Example:</p>
+      <p>
+        <pre>
+<span class=kw>my</span> a = <span class=kw>mut</span> <span class=literal>5</span>
+<span class=comment>-- a is of type mut int</span>
+<span class=kw>my</span> b = *a
+<span class=comment>-- b is 5, of type int</span>
+<span class=kw>my</span> c = a
+<span class=comment>-- c is 5, of type mut int</span>
+a &lt;- *a + <span class=literal>3</span>
+<span class=comment>-- a is 8, c is 8, b is 5</span></pre>
+      </p>
+      <h3>Parentheses</h3>
+      <p>The parentheses in cute aren't only for math, they also act as scoped code blocks</p>
+      <p>A block evaluates to the common type of its return statements & its last statement/expression</p>
+      <p>Using the <code class=kw>return</code> keyword will make the block evaluate to the value returned (or <code class=literal>()</code>, if nothing is returned), and jump out of the block</p>
+      <h3>Branching</h3>
+      <p>AKA If/Else</p>
+      <p>This is the base syntax for branching:</p>
+      <pre><span class=kw>my</span> thing = <span class=kw>when</span>
+  | condition_a: <span class=fn>foo</span> ()
+  | condition_b: <span class=fn>bar</span> ()
+  | condition_c: <span class=fn>baz</span> ()
+  |: <span class=fn>do_something_else</span> ()</pre>
+      <p>The first <code>|</code> is optional, so that the one-liner syntax is cleaner</p>
+      <pre>
+<span class=kw>my</span> my_field_0 = <span class=kw>when</span>
+  | condition_a: <span class=fn>foo</span> ()
+  |: <span class=fn>bar</span> ()
+
+<span class=kw>my</span> my_field_1 = <span class=kw>when</span> | condition_a: <span class=fn>foo</span> () |: <span class=fn>bar</span> ()
+
+<span class=kw>my</span> my_field_2 = <span class=kw>when</span> condition_a: <span class=fn>foo</span> () |: <span class=fn>bar</span> ()
+
+<span class=kw>when</span> condition_a <span class=kw>or</span> condition_b:
+    <span class=fn>foo</span> ()
+
+<span class=kw>when</span> condition_a <span class=kw>or</span> condition_b: (
+    <span class=fn>bar</span> ()
+    <span class=fn>baz</span> ()
+)</pre>
+      <h3>Loop</h3>
+      <p>
+        Using the <code class=kw>loop</code> keyword makes the next expression loop forever
+        (unless the <code class=kw>break</code> keyword is used, in which case it will make the
+        loop evaluate to the value returned & jump out of the loop)
+      </p>
+      <p>Examples:</p>
+      <pre>
+<span class=kw>my</span> i = <span class=kw>mut</span> <span class=literal>0</span>
+<span class=kw>my</span> thing = <span class=kw>loop</span> (
+    i <- *i + <span class=literal>1</span>
+    <span class=fn>cmd::ln</span> (i)
+    <span class=kw>when</span> i = <span class=literal>12</span>: <span class=kw>break</span> <span class=literal>3</span>
+)
+<span class=comment>-- thing is 3</span></pre>
+      <p>Loops can use any expression, so this is also valid:</p>
+      <p>
+        <pre><span class=kw>loop</span> <span class=fn>do_something</span> ()</pre>
+      </p>
+      <h3>Break &amp; Return</h3>
+      Both `break` & `return` keywords act almost the same, except `return` jumps out of a code block, while `break` jumps out of a loop. If `return` is used inside a code block in a loop, it works like "continue" in C-like languages
+      
+      You can append `@label` to the keyword, to point to a specific loop/block (defaults to the closest one), the label name is the same as the field you assign the loop/block to, for example:
+      ```lua
+      let my_loop = loop {
+          break@my_loop
+      }
+      let my_block = {
+          return@my_loop
+      }
+      ```
+      
+      You can also append an expression to make the loop/block evaluate to it:
+      ```lua
+      let i = mut 0
+      let thing = loop {
+          i <- *i + 1
+          when i = 12: break@thing 4
+      }
+      -- thing is 4
+      ```
+      
+      
+      ## Functions & Lambdas
+      
+      In Cute, functions are written as fields with lambda values
+      
+      A lambda is written as: `(x) -> expression` or `(p0: some_type -> return_type) -> expression`
+      
+      The return type can't be omitted in global functions
+      
+      To add type arguments to the function put `param1, param2 =>` after the first paren, like so `(t => p0: mut t -> t) -> *p0`
+      
+      Some examples:
+      ```swift
+      let pow = (x: int, y: int -> int) -> x ^ y
+      let sum = (x, y) -> x + y
+      let div = (x: int, y: int) -> x / y
+      let do_stuff = (x: int, y: int) -> (
+          cmd::ln ("Hello World!")
+      )
+      let just_return = (t => x: t -> t) -> x
+      let print_and_return = (t: text::describable => x: t -> t) -> {
+          cmd::ln (t \ to_string ())
+          x
+      }
+      ```
+      
+      You can call functions normally: `function_name (arg0, arg1, some_param: arg2)`
+      Or with method/pipe first syntax: `arg0 \ function_name (arg1, some_param: arg2)`
+      Or even with simple pipe syntax: `arg0 \: function_name` or `arg0 \: x -> (x + 4) * x * 4`
+      
+      To overload an operator, write it between braces as the field's name:
+      ```nim
+      let (=) = (a: v3, b: v3 -> bool) -> a.x = b.x and a.y = b.y and a.z = b.z
+      ```
+      
+      
+      ## Types
+      
+      There are 2 main, multipurpose numeric types: `int` & `num` (can also be written as `ℤ` & `ℚ`), which don't have an explicit size
+      For specific bit size, use one of `b8, b16, b32, b64`
+      
+      `int` & `num` are the widest integer & decimal ranges
+      Smaller range types can be written as `[min..max]`, `[min...]`, or `[...max]`
+      ```rust
+      let a = 32'4 : [5'0..50]
+      ```
+      
+      Tuple types are written as `{` + params + `}`
+      ```
+      { x: float, y: float, z: float }
+      ```
+      
+      To declare a generic tuple, add the type params after the `{`
+      ```swift
+      let container = new type { t =>
+          value: t,
+      }
+      ```
+      
+      `never` is the type used for operations that never return a value, like `break` & `return`
+      
+      `any` is the parent type of everything
+      
+      Other builtin types are: `bool`, `string`, `array t`, `mut t`, `nil`
+      
+      ### Declarations
+      Like functions, types are declared by being assigned to a field
+      Use the `type` keyword before writing the type notation
+      Use the `new` keyword to make a new type, otherwise it will make an alias
+      ```swift
+      let v3 = new type {
+          x: float,
+          y: float,
+          z: float,
+      }
+      ```
+      
+      All newtypes have a constructor with a single param of it's parent:
+      ```swift
+      let position = v3 ({3, 6, 2})
+      ```
+      
+      ### Unions
+      Types can be combined into union types using the `|` operator
+      
+      ### Optional & Nil
+      Cute has first class optional types, like Kotlin. They're written as `?type_name`, which is a shorthand for `type_name|nil`. `nil` has only 1 possible value, `nil`, yes, they're both written the same way. Also, there's no `void` type, `nil` fully replaces it
+      
+      ### Generics
+      Generic types are written as `type_name (some_type, some_other_type)`
+      
+      If only 1 arg is needed, the `()` can be skipped, for example: `mut (array (mut (int)))` can be written as `mut array mut int`
+      
+      Some examples:
+      ```swift
+      let get_at_index = (array: array int, index: int) -> ( array / index )
+      let set_to_0 = (x: mut int) -> ( x <- 0 )
+      let a = mut 4 : mut int
+      ```
+      
+      
+      ## Tuples
+      
+      Tuples can have names or unnamed fields
+      ```swift
+      let v3 = { x: 3, y: 65, z: 12 }
+      let v3 = { 3, 65, 12 }
+      ```
+      If enough information is available for type inference, the tuple can be converted to its descendant type
+      ```swift
+      let position = { 3, 6, 2 } : v3
+      ```
+      
+      ### Field access
+      
+      Tuple fields are accessed like in Kotlin: `position.y`
+      
+      If the value (in this example `position`) is of an optional type, `position?.y` (nil safety) must be used, otherwise, the compiler will give you an error
+      
+      If the fields aren't named explicitly, the position of the field in the tuple is used as the name `my_vector.0`
+      
+      
+      ## Nil Safety
+      
+      The nil safety operator `?` can only be used inside a `try` expression
+      ```rust
+      let a = try my_vector?.x
+      ```
+      if the operand is null, the entire try expression will evaluate to null, otherwise it will continue
+      
+      
+      ## Namespaces
+      
+      You can assign a namespace to a file by having a namespace declaration, like so: `namespace path::to::stuff`
+      
+      You can also import stuff from a namespace like so: `using path::to::stuff`
+      
+      If a file has no namespace, it's an entry file, and it's contents are treated kinda like a main function (probably won't actually go with that)
+      
+      
+      ## Metadata
+      
+      Metadata can be provided after the `let` keyword for fields & change their behaviour using attributes
+      
+      The syntax of metadata is `[` + comma-separated attributes + `]`
+      
+      The syntax of an attribute is the same as of a function call, except the parens are optional if there's no more than 1 argument & it's not named
+      
+      These are the builtin annotations:
+      - `inline` tells the compiler that this function must be inlined
+      - `entry` tells what function to execute on startup
+      - `builtin (name: string)` can only be applied to `extern` fields, maps the function/field to an operation that doesn't have it's own syntax, like conversion between primitive numeric types
+      - `c (name: string)` low-level field metadata (currently just the linking name)
+      
+      Example
+      ```rust
+      let [
+          inline,
+          c (name: "sum"),
+          operator "plus",
+          deprecated (
+              since: "0.2",
+              reason: "just felt like it",
+          ),
+      ]
+      my_function = (x: int, y: int -> int) -> x + y
+      ```
+      
+      
+      ## Traits
+      
+      Traits (aka type classes) are defined as `trait` + generic type names + `[` + required fields + `]`
+      Example
+      ```lua
+      let describable = trait s [
+          to_string: (s -> string)
+      ]
+      ```
+      
+      Trait implementations (aka type class instances) are written as `impl` + trait name + `(` + comma-separated types `)` + `[` + required fields + `]`
+      Example:
+      ```lua
+      impl text::describable (int) [
+          let to_string = (i: int -> string) -> i \ to_string (10)
+      ]
+      -- Now you can do 12 \ to_string ()
+      ```
+      When implementing a trait, return types can be omitted, since they're explicitly stated in the trait declaration
+      ```lua
+      impl text::describable (int) [
+          let to_string = (i: int) -> i \ to_string (10)
+      ]
+      ```
+      To use a trait in a function, use the `#` after the type params, like so:
+      ```lua
+      let println = (t # describable t => x: t) (
+          println (x \ to_string ())
+      )
+      ```
+      
+      
+      ## Literals
+      
+      Floats are written in base 10, with a `'` between the integral & decimal parts: `3'5`, `2'00001`, `5'0`, `0'1`
+      Integers are written in base 10 by default: `10`, `42`; but can be written in any base less than 36, by prepending them by the base number & a colon: `16:00ff88`, `8:1244`
+      
+      Int literals are automatically converted into floats if a float is needed instead
+      
+      Booleans use the `yes` & `no` keywords
+      
+      `nil` is `nil`
+      
+      Strings are written using double quotes `"`, with the typical character escapes: `\n, \t, \r, \\, \", \0`, + unicode character escapes: `\u1234`
+      Example: `"Hello World! \n"`
+      
+      ### Arrays
+      There are 2 ways to write an array literal:
+      Just items: `[` + comma-separated items +  `]`
+      ```lua
+      [a, b, c, d]
+      ```
+      Dynamically allocated: `[` + amount of items + `|` + initializer + `]`
+      ```lua
+      [12 | x -> x * 2] -- an array of 12 items, each being the double of its index
+      ```
+      
+      # Undecided Areas
+      
+      ## Shadowed fields
+      Might use the `@label` syntax from `break`/`return` to specify from which block/scope the field is
+
+
+      <div>
+        <pre>
+        </pre>
+        <pre>
+<span class=comment>-- you can assign types to fields, if you</span>
+<span class=comment>-- use the type keyword before the type syntax</span>
+<span class=kw>my</span> <span class=type>AliasToTuple</span> = <span class=kw>type</span> (
+  a: <span class=type>ℤ</span>,
+  b: <span class=type>ℤ</span>,
+)
+<span class=comment>-- btw, this is how you create a tuple</span>
+<span class=kw>my</span> stuff = (<span class=literal>"hi"</span>, <span class=literal>6</span>, <span class=literal>2'2</span>)
+
+<span class=comment>-- you can create new types by placing</span>
+<span class=comment>-- the new keyword before the type expression</span>
+<span class=kw>my</span> <span class=type>V3</span> = <span class=kw>new</span> <span class=kw>type</span> (
+  x: <span class=type>ℚ</span>,
+  y: <span class=type>ℚ</span>,
+  z: <span class=type>ℚ</span>,
+)
+<span class=comment>-- this is how you create a value of type V3,</span>
+<span class=comment>-- basically put the underlying type in a</span>
+<span class=comment>-- function with the name of the type</span>
+<span class=kw>my</span> vector = V3 ((<span class=literal>4</span>, <span class=literal>2</span>, <span class=literal>2</span>))
+
+<span class=comment>-- the underlying type is still assignable to the descendant & viceversa</span>
+<span class=comment>-- but descendants aren't assignable to each other</span>
+<span class=kw>my</span> vector = (<span class=literal>4</span>, <span class=literal>2</span>, <span class=literal>2</span>) : V3
+
+<span class=kw>my</span> <span class=fn>function</span> = (q: <span class=type>V3</span>) -> q.y
+        </pre>
+    </main>
+  </body>
+</html>

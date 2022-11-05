@@ -1,0 +1,50 @@
+
+:root {
+  --color-blue: #95C5E8;
+  --color-pink: #cc8fa7;
+  --color-red: #dc3545;
+  --color-yellow: #EAC77A;
+  --color-teal: #6699B1;
+  --color-white: #ffffff;
+  --color-gray: #95797F;
+}
+
+pre .comment,
+code .comment,
+code.comment {
+  opacity: 0.5;
+}
+
+pre .literal,
+code .literal,
+code.literal {
+  color: var(--color-purple);
+}
+
+pre .kw,
+code .kw,
+code.kw {
+  color: var(--base-foreground-strong);
+  font-weight: 700;
+}
+
+pre .type,
+code .type,
+code.type {
+  color: var(--color-green);
+}
+
+pre .fn,
+code .fn,
+code.fn {
+  color: var(--color-teal);
+}
+
+a.gemini {
+  text-decoration: none;
+}
+a.gemini::before {
+  content: "=>";
+  font-family: monospace;
+  margin-right: .5em;
+}
