@@ -38,13 +38,13 @@
       <a href=https://github.com/cutelang class=gemini>Source</a>
       <h1>Syntax</h1>
 
-      <h3>Intentions</h3>
+      <h2>Intentions</h2>
       <p>
         My intentions with this language are to make the most optimal syntax, without limiting myself to familiarity.
         Also, the language should ideally strive towards cuteness, so short, friendly-looking keywords, concise syntax & no overly sharp/noisy symbols
       </p>
 
-      <h3>List of reserved keywords</h3>
+      <h2>List of reserved keywords</h2>
       <p>
         <code class=kw>using</code>, <code class=kw>module</code>, <code class=kw>extern</code>, <code class=kw>enum</code>,
         <code class=kw>class</code>, <code class=kw>impl</code>, <code class=kw>when</code>, <code class=kw>loop</code>,
@@ -53,7 +53,7 @@
         <code class=kw>new</code>, <code class=kw>type</code><br>
         Also there's <code class=literal>yes</code> & <code class=literal>no</code>, but they're values & not just tokens
       </p>
-      <h3>Comments</h3>
+      <h2>Comments</h2>
       <p>
         2 types of comments are supported, 
         the compiler completely ignores them
@@ -65,9 +65,9 @@
         </ul>
       </p>
 
-      <h3>Operators</h3>
+      <h2>Operators</h2>
       <p>
-        <h4>Binary Mathematical Operators</h4>
+        <h3>Binary Mathematical Operators</h3>
         <p><pre>+   -   *   /   %  ^  &&  ||  ^|  &gt;&gt;  &lt;&lt;  &lt;&lt;&lt;  &gt;&gt;&gt;</pre></p>
         <p>
           <ul>
@@ -77,7 +77,7 @@
           </ul>
         </p>
         <p>Bitwise operators are only allowed on types with explicit bit sizes</p>
-        <h4>Unary Mathematical Operators</h4>
+        <h3>Unary Mathematical Operators</h3>
         <p>
           <ul>
             <li><code>~</code> : Flips bits, when used on booleans, basically does a not operation</li>
@@ -85,7 +85,7 @@
             <li><code>+</code> : Absolute value</li>
           </ul>
         </p>
-        <h4>Logical Operators</h4>
+        <h3>Logical Operators</h3>
         <p>
           <pre><span class=kw>and  or</span></pre>
         </p>
@@ -94,7 +94,7 @@
           while <code class=kw>and</code>/<code class=kw>or</code> is for logical operations
           (which means that it short-circuits)
         </p>
-        <h4>Comparison Operators</h4>
+        <h3>Comparison Operators</h3>
         <p>
           <pre>&gt;  &lt;  &gt;=  &lt;=  =  ~=  ==  ~==</pre>
         </p>
@@ -104,7 +104,7 @@
             <li><code>==</code> : checks for identity</li>
           </ul> 
         </p>
-        <h4>Mutability Operators</h4>
+        <h3>Mutability Operators</h3>
         <p>
           <ul>
             <li><code>&lt;-</code> : Assigns right to left and evaluates to right, so that assignment chains are possible</li>
@@ -112,7 +112,7 @@
           </ul>
         </p>
         <p>This applies to the <code class=kw>mut</code> datatype, which is created using the <code class=kw>mut</code> unary operator</p>
-        <h4>Operator precedence</h4>
+        <h3>Operator precedence</h3>
         <p>
           <ul>
             <li>All unary operators</li>
@@ -138,7 +138,7 @@
         <p>Only the <code>&lt;-</code> operator chains from right to left</p>
       </p>
 
-      <h3>Fields</h3>
+      <h2>Fields</h2>
       <p>AKA variables</p>
       <p>Fields are immutable, and have a very simple syntax:</p>
       <pre><span class=kw>my</span> field_name = field_value</pre>
@@ -155,7 +155,7 @@
 <span class=kw>my</span> h = <span class=literal>"blablabla"</span>
 <span class=kw>my</span> i = <span class=literal>"blablabla"</span> : <span class=type>String</span></pre>    
       </p>
-      <h3>Mutability</h3>
+      <h2>Mutability</h2>
       <p>
         All fields are immutable,
         but Cute has a <code><span class=kw>mut</span> t</code> datatype,
@@ -176,11 +176,11 @@
 a &lt;- *a + <span class=literal>3</span>
 <span class=comment>-- a is 8, c is 8, b is 5</span></pre>
       </p>
-      <h3>Parentheses</h3>
+      <h2>Parentheses</h2>
       <p>The parentheses in cute aren't only for math, they also act as scoped code blocks</p>
       <p>A block evaluates to the common type of its return statements & its last statement/expression</p>
       <p>Using the <code class=kw>return</code> keyword will make the block evaluate to the value returned (or <code class=literal>()</code>, if nothing is returned), and jump out of the block</p>
-      <h3>Branching</h3>
+      <h2>Branching</h2>
       <p>AKA If/Else</p>
       <p>This is the base syntax for branching:</p>
       <pre><span class=kw>my</span> thing = <span class=kw>when</span>
@@ -205,7 +205,7 @@ a &lt;- *a + <span class=literal>3</span>
     <span class=fn>bar</span> ()
     <span class=fn>baz</span> ()
 )</pre>
-      <h3>Loop</h3>
+      <h2>Loop</h2>
       <p>
         Using the <code class=kw>loop</code> keyword makes the next expression loop forever
         (unless the <code class=kw>break</code> keyword is used, in which case it will make the
@@ -224,7 +224,7 @@ a &lt;- *a + <span class=literal>3</span>
       <p>
         <pre><span class=kw>loop</span> <span class=fn>do_something</span> ()</pre>
       </p>
-      <h3>Break &amp; Return</h3>
+      <h2>Break &amp; Return</h2>
       Both `break` & `return` keywords act almost the same, except `return` jumps out of a code block, while `break` jumps out of a loop. If `return` is used inside a code block in a loop, it works like "continue" in C-like languages
       
       You can append `@label` to the keyword, to point to a specific loop/block (defaults to the closest one), the label name is the same as the field you assign the loop/block to, for example:

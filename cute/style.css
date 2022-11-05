@@ -1,12 +1,6 @@
-
-:root {
-  --color-blue: #95C5E8;
-  --color-pink: #cc8fa7;
-  --color-red: #dc3545;
-  --color-yellow: #EAC77A;
-  --color-teal: #6699B1;
-  --color-white: #ffffff;
-  --color-gray: #95797F;
+code {
+  display: inline-block;
+  padding: 0 .1em;
 }
 
 pre .comment,
@@ -37,7 +31,7 @@ code.type {
 pre .fn,
 code .fn,
 code.fn {
-  color: var(--color-teal);
+  color: var(--color-yellow);
 }
 
 a.gemini {

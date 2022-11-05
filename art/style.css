@@ -1,20 +1,30 @@
 
 .image-grid {
-    display: grid;
-    gap: 3px;
-    grid-template-columns: repeat(3, auto);
-    image-rendering: auto;
+  display: grid;
+  gap: 3px;
+  grid-template-columns: repeat(3, auto);
+  image-rendering: auto;
 }
 
 .image-grid article {
-    aspect-ratio: 1;
-    place-content: center;
-    display: flex;
-    background-color: #000;
+  aspect-ratio: 1;
+  place-content: center;
+  display: flex;
+  background-color: #000;
 }
 
 .image-grid article img {
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.bg-sprite {
+  position: absolute;
+  image-rendering: pixelated;
+  z-index: -100;
+}
+.bg-sprite.right {
+  left: auto;
+  right: 0;
 }
