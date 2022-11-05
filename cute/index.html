@@ -137,11 +137,12 @@
         </p>
         <p>Only the <code>&lt;-</code> operator chains from right to left</p>
       </p>
-
       <h2>Fields</h2>
       <p>AKA variables</p>
       <p>Fields are immutable, and have a very simple syntax:</p>
-      <pre><span class=kw>my</span> field_name = field_value</pre>
+      <p><pre><span class=kw>my</span> field_name = field_value</pre></p>
+      <p>Cute uses the <code class=kw>my</code> keyword for private or local fields & the <code class=kw>our</code> keyword for public ones</p>
+      <p><pre><span class=kw>our</span> field_name = field_value</pre></p>
       <p>One can specify the type by adding <code>: <span class=type>type_name</span></code> after the value</p>
       <p>Here are some examples:</p>
       <p>
@@ -225,132 +226,129 @@ a &lt;- *a + <span class=literal>3</span>
         <pre><span class=kw>loop</span> <span class=fn>do_something</span> ()</pre>
       </p>
       <h2>Break &amp; Return</h2>
-      Both `break` & `return` keywords act almost the same, except `return` jumps out of a code block, while `break` jumps out of a loop. If `return` is used inside a code block in a loop, it works like "continue" in C-like languages
-      
-      You can append `@label` to the keyword, to point to a specific loop/block (defaults to the closest one), the label name is the same as the field you assign the loop/block to, for example:
-      ```lua
-      let my_loop = loop {
-          break@my_loop
-      }
-      let my_block = {
-          return@my_loop
-      }
-      ```
-      
-      You can also append an expression to make the loop/block evaluate to it:
-      ```lua
-      let i = mut 0
-      let thing = loop {
-          i <- *i + 1
-          when i = 12: break@thing 4
-      }
-      -- thing is 4
-      ```
-      
-      
-      ## Functions & Lambdas
-      
-      In Cute, functions are written as fields with lambda values
-      
-      A lambda is written as: `(x) -> expression` or `(p0: some_type -> return_type) -> expression`
-      
-      The return type can't be omitted in global functions
-      
-      To add type arguments to the function put `param1, param2 =>` after the first paren, like so `(t => p0: mut t -> t) -> *p0`
-      
-      Some examples:
-      ```swift
-      let pow = (x: int, y: int -> int) -> x ^ y
-      let sum = (x, y) -> x + y
-      let div = (x: int, y: int) -> x / y
-      let do_stuff = (x: int, y: int) -> (
-          cmd::ln ("Hello World!")
-      )
-      let just_return = (t => x: t -> t) -> x
-      let print_and_return = (t: text::describable => x: t -> t) -> {
-          cmd::ln (t \ to_string ())
-          x
-      }
-      ```
-      
-      You can call functions normally: `function_name (arg0, arg1, some_param: arg2)`
-      Or with method/pipe first syntax: `arg0 \ function_name (arg1, some_param: arg2)`
-      Or even with simple pipe syntax: `arg0 \: function_name` or `arg0 \: x -> (x + 4) * x * 4`
-      
-      To overload an operator, write it between braces as the field's name:
-      ```nim
-      let (=) = (a: v3, b: v3 -> bool) -> a.x = b.x and a.y = b.y and a.z = b.z
-      ```
-      
-      
-      ## Types
-      
-      There are 2 main, multipurpose numeric types: `int` & `num` (can also be written as `ℤ` & `ℚ`), which don't have an explicit size
-      For specific bit size, use one of `b8, b16, b32, b64`
-      
-      `int` & `num` are the widest integer & decimal ranges
-      Smaller range types can be written as `[min..max]`, `[min...]`, or `[...max]`
-      ```rust
-      let a = 32'4 : [5'0..50]
-      ```
-      
-      Tuple types are written as `{` + params + `}`
-      ```
-      { x: float, y: float, z: float }
-      ```
-      
-      To declare a generic tuple, add the type params after the `{`
-      ```swift
-      let container = new type { t =>
-          value: t,
-      }
-      ```
-      
-      `never` is the type used for operations that never return a value, like `break` & `return`
-      
-      `any` is the parent type of everything
-      
-      Other builtin types are: `bool`, `string`, `array t`, `mut t`, `nil`
-      
-      ### Declarations
-      Like functions, types are declared by being assigned to a field
-      Use the `type` keyword before writing the type notation
-      Use the `new` keyword to make a new type, otherwise it will make an alias
-      ```swift
-      let v3 = new type {
-          x: float,
-          y: float,
-          z: float,
-      }
-      ```
-      
-      All newtypes have a constructor with a single param of it's parent:
-      ```swift
-      let position = v3 ({3, 6, 2})
-      ```
-      
-      ### Unions
-      Types can be combined into union types using the `|` operator
-      
-      ### Optional & Nil
-      Cute has first class optional types, like Kotlin. They're written as `?type_name`, which is a shorthand for `type_name|nil`. `nil` has only 1 possible value, `nil`, yes, they're both written the same way. Also, there's no `void` type, `nil` fully replaces it
-      
-      ### Generics
-      Generic types are written as `type_name (some_type, some_other_type)`
-      
-      If only 1 arg is needed, the `()` can be skipped, for example: `mut (array (mut (int)))` can be written as `mut array mut int`
-      
-      Some examples:
-      ```swift
-      let get_at_index = (array: array int, index: int) -> ( array / index )
-      let set_to_0 = (x: mut int) -> ( x <- 0 )
-      let a = mut 4 : mut int
-      ```
-      
-      
-      ## Tuples
-      
-      Tuples can have names or unnamed fields
+      <p>
+        Both <code>break</code> & <code>return</code> keywords act almost the same,
+        except <code>return</code> jumps out of a code block, while <code>break</code> jumps out of a loop.
+        If <code>return</code> is used inside a code block in a loop, it works like "continue" in C-like languages
+      </p>
+      <p>
+        You can append <code>@label</code> to the keyword, to point to a specific loop/block (defaults to the closest one),
+        the label name is the same as the field you assign the loop/block to, for example:
+      </p>
+      <p>
+        <pre>
+<span class=kw>my</span> my_loop = <span class=kw>loop</span> {
+  <span class=kw>break</span><span class=literal>@my_loop</span>
+}
+<span class=kw>my</span> my_block = {
+  <span class=kw>return</span><span class=literal>@my_block</span>
+}</pre>
+      </p>
+      <p>You can also append an expression to make the loop/block evaluate to it:</p>
+      <p>
+        <pre>
+<span class=kw>my</span> i = <span class=kw>mut</span> <span class=literal>0</span>
+<span class=kw>my</span> thing = <span class=kw>loop</span> {
+    i <- *i + <span class=literal>1</span>
+    <span class=kw>when</span> i = <span class=literal>12</span>: <span class=kw>break</span><span class=literal>@thing 4</span>
+}
+<span class=comment>-- thing is 4</span></pre>
+      </p>
+      <h2>Functions & Lambdas</h2>
+      <p>In Cute, functions are written as fields with lambda values</p>
+      <p>A lambda is written as: <code>(x) -> expression</code> or <code>(p0: <span class=type>some_type</span> -> <span class=type>return_type</span>) -> expression</code></p>
+      <p>The return type can't be omitted in global functions</p>
+      <p>
+        To add type arguments to the function put <code>a, b =></code> after the first paren,
+        like so <code>(<span class=type>t</span> => p0: <span class=kw>mut</span> <span class=type>t</span> -> <span class=type>t</span>) -> *p0</code>
+      </p>
+      <p>Some examples:</p>
+      <p>
+        <pre>
+<span class=kw>my</span> pow = (x: <span class=type>Int</span>, y: <span class=type>Int</span> -> <span class=type>Int</span>) -> x ^ y
+<span class=kw>my</span> sum = (x, y) -> x + y
+<span class=kw>my</span> div = (x: <span class=type>Int</span>, y: <span class=type>Int</span>) -> x / y
+<span class=kw>my</span> do_stuff = (x: <span class=type>Int</span>, y: <span class=type>Int</span>) -> (
+    <span class=fn>cmd::ln</span> (<span class=literal>"Hello World!"</span>)
+)
+<span class=kw>my</span> just_return = (<span class=type>t</span> => x: <span class=type>t</span> -> <span class=type>t</span>) -> x
+<span class=kw>my</span> print_and_return = (<span class=type>t</span> => x: <span class=type>t</span> -> <span class=type>t</span> # <span class=literal>text::Textual</span> <span class=type>t</span>) -> {
+    <span class=fn>cmd::ln</span> (t \ <span class=fn>to_string</span>)
+    x
+}</pre>
+      </p>
+      <p>You can call functions normally: <code><span class=fn>function_name</span> (arg0, arg1, some_param: arg2)</code></p>
+      <p>Or with method/pipe first syntax: <code>arg0 \ <span class=fn>function_name</span> (arg1, some_param: arg2)</code></p>
+      <p>Or even with simple pipe syntax: <code>arg0 \: <span class=fn>function_name</span></code> or <code>arg0 \: x -> (x + <span class=literal>4</span>) * x * <span class=literal>4</span></code></p>
+      <p>To overload an operator, write it between braces as the field's name:</p>
+      <p><pre><span class=kw>my</span> (<span class=fn>=</span>) = (a: <span class=type>V3</span>, b: <span class=type>V3</span> -> <span class=type>Bool</span>) -> a.x = b.x <span class=kw>and</span> a.y = b.y <span class=kw>and</span> a.z = b.z</pre></p>
+      <h2>Types</h2>
+      <p>
+        There are 2 main, multipurpose numeric types: <code class=type>Int</code> & <code class=type>Num</code> (can also be written as <code class=type>ℤ</code> & <code class=type>ℚ</code>), which don't have an explicit size.<br>
+        For specific bit size, use one of <code class=type>B8</code>, <code class=type>B16</code>, <code class=type>B32</code>, <code class=type>B64</code>
+      </p>
+      <p>
+        <code class=type>Int</code> & <code class=type>Num</code> are the widest integer & decimal ranges<br>
+        Smaller range types can be written as <code>[min..max]</code>, <code>[min...]</code>, or <code>[...max]</code>
+      </p>
+      <p><pre><span class=kw>my</span> a = <span class=literal>32'4</span> : [<span class=literal>5'0</span>..<span class=literal>50</span>]</pre></p>
+      <p>Tuple types are written as <code>(</code> + params + <code>)</code></p>
+      <p><pre>(x: <span class=type>ℚ</span>, y: <span class=type>ℚ</span>, z: <span class=type>ℚ</span>)</pre></p>
+      <p>To declare a generic tuple, add the type params after the <code>(</code></p>
+      <p>
+        <pre>
+<span class=kw>our</span> <span class=type>Container</span> = <span class=kw>new type</span> ( <span class=type>t</span> =>
+    value: <span class=type>t</span>,
+)</pre>
+      </p>
+      <p>To express an array type, use the <code>[]<span class=type>t</span></code> syntax, where you can optionally add a range between the brackets</p>
+      <p><code class=type>Never</code> is the type used for operations that never return a value, like <code class=kw>break</code> & <code class=kw>return</code></p>
+      <p><code class=type>Any</code> is the parent type of everything</p>
+      <p><code class=type>Bool</code> is the boolean type, duh, it accepts the values <code class=literal>yes</code> & <code class=literal>no</code></p>
+      <p><code class=type>String</code> is an alias to an array of <code class=type>B8</code></p>
+      <p><code class=literal>()</code> is both the nil value, and the type, and it replaces "Unit" or "void"</p>
+      <p><code><span class=kw>mut</span> <span class=type>t</span></code> is a mutable reference to <code class=type>t</code></p>
+      <h3>Declarations</h3>
+      <p>
+        Like functions, types are declared by being assigned to a field<br>
+        Use the <code class=kw>type</code> keyword before writing the type notation<br>
+        Use the <code class=kw>new</code> keyword to make a new type, otherwise it will make an alias<br>
+      </p>
+      <p>
+        <pre>
+<span class=kw>our</span> <span class=type>V3</span> = <span class=kw>new type</span> (
+    x: <span class=type>ℚ</span>,
+    y: <span class=type>ℚ</span>,
+    z: <span class=type>ℚ</span>,
+)</pre>
+      </p>
+      <p>All newtypes have a constructor with a single param of it's parent:</p>
+      <p><pre><span class=kw>my</span> position = <span class=type>V3</span> ((<span class=literal>3</span>, <span class=literal>6</span>, <span class=literal>2</span>))</pre></p>
+      <h3>Unions</h3>
+      <p>Types can be combined into union types using the <code>|</code> operator</p>
+      <h3>Optional & ()</h3>
+      <p>
+        Cute has first class optional types, like Kotlin.
+        They're written as <code class=type>?type_name</code>, which is a shorthand for <code class=type>type_name|()</code>.
+        <code class=literal>()</code> has only 1 possible value, <code class=literal>()</code>, yes, they're both written the same way.
+        Also, there's no Void or Unit type, <code class=literal>()</code> fully replaces it
+      </p>
+      <h3>Generics</h3>
+      <p>Generic types are written as <code><span class=type>type_name</span> (<span class=type>some_type</span>, <span class=type>some_other_type</span>)</code></p>
+      <p>
+        If only 1 arg is needed, the <code class=literal>()</code> can be skipped, for example:
+        <code><span class=kw>mut</span> (<span class=type>Box</span> (<span class=kw>mut</span> (<span class=type>Int</span>)))</code>
+        can be written as <code><span class=kw>mut</span> <span class=type>Box</span> <span class=kw>mut</span> <span class=type>Int</span></code>
+      </p>
+      <p>Some examples:</p>
+      <p>
+        <pre>
+<span class=kw>my</span> get_at_index = (array: []<span class=type>ℤ</span>, index: <span class=type>ℤ</span>) -> array[index]
+<span class=kw>my</span> set_to_0 = (x: <span class=kw>mut</span> <span class=type>ℤ</span>) -> (x &lt;- <span class=literal>0</span>)
+<span class=kw>my</span> a = <span class=kw>mut</span> <span class=literal>4</span> : <span class=kw>mut</span> <span class=type>ℤ</span></pre>
+      </p>
+      <h2>Tuples</h2>
+      <p>Tuples can have names or unnamed fields</p>
       ```swift
       let v3 = { x: 3, y: 65, z: 12 }
       let v3 = { 3, 65, 12 }
@@ -480,8 +478,6 @@ a &lt;- *a + <span class=literal>3</span>
 
 
       <div>
-        <pre>
-        </pre>
         <pre>
 <span class=comment>-- you can assign types to fields, if you</span>
 <span class=comment>-- use the type keyword before the type syntax</span>
