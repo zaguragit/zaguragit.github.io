@@ -355,11 +355,12 @@ div.box > ul {
 }
 
 @media only screen and (max-width:480px) {
-  div.header > a, div.header > .spacer {
+  div.header > .spacer {
     display: none;
   }
-  div.header {
-    display: inline;
+  div.header > a {
+    width: 100%;
+    text-align: center;
   }
   div.header > nav {
     position: fixed;
@@ -367,10 +368,10 @@ div.box > ul {
     bottom: 0;
     left: 0;
     right: 0;
-    color: var(--base-foreground);
+    color: var(--color-header);
+    background-color: var(--base-background);
     border-top: 1px solid currentColor;
-    background-color: #0166;
-    backdrop-filter: blur(5px);
+    z-index: 100;
   }
   #me .avatar {
     margin-bottom: 1em;
