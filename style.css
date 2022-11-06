@@ -240,19 +240,11 @@ div.box > ul {
 
 
 .webring {
-  display: flex;
-  flex-direction: row;
-}
-.webring a {
-  text-decoration: none;
-}
-.webring .spread {
-  flex-grow: 1;
   text-align: center;
-}
-.webring .arrow {
-  text-decoration: none;
   font-family: monospace;
+}
+.webring a:not(:hover) {
+  text-decoration: none;
 }
 
 .add-banner {
