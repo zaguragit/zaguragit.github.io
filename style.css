@@ -1,6 +1,9 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--color-header) transparent;}
 h1,h2,h3,h4,em{color:var(--base-foreground-strong);font-style:unset;font-weight:700;}
 .hide{display:none;}
+.float-right{float:right;}
+.send-to-back{position:relative;z-index:-100;}
+.push-up {margin-top:-32px;}
 :root {
   --color-green: #67e6ca;
   --color-purple: #ae8dff;
@@ -22,13 +25,6 @@ h1,h2,h3,h4,em{color:var(--base-foreground-strong);font-style:unset;font-weight:
 ::selection {
   background-color: var(--color-accent-bg);
   color: var(--color-accent);
-}
-
-.THEBUNNY {
-  float: right;
-  margin-top: -32px;
-  position: relative;
-  z-index: -100;
 }
 body {
   width: 100%;
@@ -60,15 +56,18 @@ body::after {
 h1 {
   font-size: 2em;
   font-weight: 700;
-  --border: .1em dotted currentColor;
-  border-bottom: var(--border);
+  margin-bottom: 1em;
 }
 h1::after {
   content: "";
+  --border: .1em dotted currentColor;
   border-top: var(--border);
+  border-bottom: var(--border);
   height: .1em;
   display: block;
   width: 100%;
+  position: relative;
+  z-index: -200;
 }
 
 h2, h3 {
@@ -84,6 +83,24 @@ h2::after {
   border-bottom: .1em solid currentColor;
   margin-top: .3em;
   margin-bottom: .3em;
+}
+
+hr {
+  color: unset;
+  font-size: 2em;
+  --border: .1em dotted currentColor;
+  border: none;
+  border-top: var(--border);
+  position: relative;
+  z-index: -100;
+}
+hr::before,
+hr::after {
+  content: "";
+  border-bottom: var(--border);
+  height: .1em;
+  display: block;
+  width: 100%;
 }
 
 a {
@@ -187,27 +204,6 @@ div.header > nav > a {
   color: currentColor;
 }
 
-
-main > h1 {
-  margin-bottom: 1em;
-}
-main > hr {
-  color: unset;
-  font-size: 2em;
-  --border: .1em dotted currentColor;
-  border: none;
-  border-top: var(--border);
-  position: relative;
-  z-index: -100;
-}
-main > hr::before,
-main > hr::after {
-  content: "";
-  border-bottom: var(--border);
-  height: .1em;
-  display: block;
-  width: 100%;
-}
 main > p {
   margin: 1em 0;
 }
