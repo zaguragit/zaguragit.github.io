@@ -2,7 +2,7 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <meta http-equiv=Content-Security-Policy content="default-src 'none';frame-src https://john.citrons.xyz/embed?ref=zagura.one;img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
+    <meta http-equiv=Content-Security-Policy content="default-src 'none';img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
     <meta name=copyright content=Zagura>
     <meta name=language content=en>
     <meta name=author content=Zagura>
@@ -19,21 +19,21 @@
     <link rel=stylesheet href=style.css>
     <link rel="webmention" href="https://webmention.io/zagura.one/webmention">
     <link rel="pingback" href="https://webmention.io/zagura.one/xmlrpc">
-    <title>Zagura on Cyberspace</title>
+    <title>Zagura</title>
   </head>
   <body>
     <div class=header>
       <a href="/">zagura on cyberspace</a>
       <div class=spacer></div>
       <nav>
-        <a href="/">/home</a>
+        <a href=/about>/about</a>
         <a href=/dev>/dev</a>
         <a href=/art>/art</a>
+        <a href=/lists>/lists</a>
         <a href=/resume>/resume</a>
       </nav>
     </div>
     <main class="h-card">
-      <img src=assets/made/pixelart/xeniacomputer.gif width=205px decoding=async class="pixelart float-right send-to-back" alt="Xenia using a computer" title="Xenia, the official Linux mascot">
       <div id=me>
         <img class="u-photo avatar" alt="Drawing of Zagura" title="Zagura" decoding=async src=assets/me/avatar.jpg>
         <div>
@@ -43,183 +43,55 @@
         </div>
       </div>
       <p class="p-note"><span class="p-gender-identity">Enby</span> <span class="p-job-title"><span class="p-category">programmer</span> (in theory) (plz hire)</span>, who also likes to draw</p>
-      <p>
-        For better i18n, each consonant has an alt version:
-        (z | s) a (g | j | y) u (r | w | l) a<br>
-        Both j & y stand for the same sound; and yes, i only did the alt letters cuz of toki pona.<br>
-        The 1st syllable is the stressed one
-      </p>
-      <div class=box>
-        <dl>
-          <dt>pronouns</dt><dd><em>
-            <span class="p-x-pronoun-nominative">they</span> /
-            <span class="p-x-pronoun-oblique">them</span> /
-            <span class="p-x-pronoun-possessive">their</span>
-          </em></dd>
-          <dt>speaks</dt><dd>
-            <span class="p-language">english</span>,
-            <span class="p-language">spanish</span>,
-            <span class="p-language">catalan</span>,
-            <span class="p-language">russian</span>,
-            <a href=https://tokipona.org><span class="p-language">toki pona</span></a>
-          </dd>
-          <dt>into</dt><dd>
-            <span class="p-category">gtk</span>,
-            <span class="p-category">linux</span>,
-            <span class="p-category">fediverse</span>,
-            <span class="p-category">css</span>,
-            <span class="p-interested-in">men</span>,
-            <span class="p-category">voxels</span> &amp;
-            <span class="p-category">procedural generation</span>
-          </dd>
-          <dt>location</dt><dd>
-            <address class="p-adr h-adr">
-              <span class="p-region">Barcelona</span>,
-              <span class="p-locality">Catalonia</span>,
-              <span class="p-country-name">Spain</span>
-            </address>
-          </dd>
-          <dt>diet</dt><dd>
-            <span class="p-dietary-preference">flexitarian</span>
-          </dd>
-          <dt>rel. status</dt><dd>
-            <span class="p-relationship-status">single</span><aside>uwu</aside>
-          </dd>
-          <dt>hotel</dt><dd>
-            trivago<aside>im not actually that faimiliar with this meme</aside>
-          </dd>
-        </dl>
-      </div>
-      <br>
-      <hr>
-      <img src=assets/gif/bunny.gif width=200px decoding=async class="pixelart float-right send-to-back push-up" alt="A GIF of a holographic bunny, jumping &amp; rotating">
-      <p>
-        I am indeed quite the FOSS enthusiast.<br>
-        Primarily developing my own programming language, "Cute".<br>
-        I work on (or start over) my game engine every once in a while.<br>
-        I will one day make the voxel game of my dreams, you'll see!!<br>
-        <br>
-        I like to draw shmexy guys with strong muscle definition (it's easier to draw then other builds).<br>
-        I'm a very lazy artist, so backgrounds are the vain of my existence.<br>
-        <br>
-        There's a lot of "I"s in this text, kinda makes me feel weird<br>
-      </p>
       <div class=grid>
         <div class=box>
-          <h2>My Code</h2>
-          best: <a href=dev>/dev</a><br>
-          gitlab: <a rel=me href=https://gitlab.com/_zagura>@_zagura</a><br>
-          github: <a rel=me href=https://github.com/zaguragit>@zaguragit</a><br>
+          <dl>
+            <dt>pronouns</dt><dd><em>
+              <span class="p-x-pronoun-nominative">they</span>/<span class="p-x-pronoun-oblique">them</span>/<span class="p-x-pronoun-possessive">their</span>
+            </em></dd>
+            <dt>speaks</dt><dd>
+              <span class="p-language">english</span>,
+              <span class="p-language">spanish</span>,
+              <span class="p-language">catalan</span>,
+              <span class="p-language">russian</span>,
+              <a href=https://tokipona.org><span class="p-language">toki&nbsp;pona</span></a>
+            </dd>
+            <dt>into</dt><dd>
+              <span class="p-category">Gtk</span>,
+              <span class="p-category">Linux</span>,
+              <span class="p-category">Fediverse</span>,
+              <span class="p-category">CSS</span>,
+              <span class="p-interested-in">men</span>,
+              <span class="p-category">voxels</span> &amp;
+              <span class="p-category">procedural&nbsp;generation</span>
+            </dd>
+            <dt>location</dt><dd>
+              <address class="p-adr h-adr">
+                <span class="p-region">Barcelona</span>,
+                <span class="p-locality">Catalonia</span>,
+                <span class="p-country-name">Spain</span>
+              </address>
+            </dd>
+            <dt>diet</dt><dd>
+              <span class="p-dietary-preference">flexitarian</span>
+            </dd>
+          </dl>
         </div>
         <div class=box>
-          <h2>Talk to Me <aside>like, actually, i want more friends</aside></h2>
-          email: <a rel="me nofollow" class="u-email" href=mailto:me@zagura.one>me@zagura.one</a><br>
-          fedi: <a rel=me href=https://tech.lgbt/@zagura>@zagura@tech.lgbt</a><br>
-          discord: zagura#4140<br>
+          <p>
+            This page has all the <a href=https://microformats.org/wiki/h-card>h-card</a> info, if u wanna know more about me, read the <a class="u-url" href=about>/about</a> page, or talk to me on fedi, I don't bite &lt;3
+          </p>
+          <p>
+            email: <a rel="me nofollow" class="u-email" href=mailto:me@zagura.one>me@zagura.one</a><br>
+            fedi: <a rel=me href=https://tech.lgbt/@zagura>@zagura@tech.lgbt</a><br>
+            gitlab: <a rel=me href=https://gitlab.com/_zagura>@_zagura</a><br>
+            github: <a rel=me href=https://github.com/zaguragit>@zaguragit</a><br>
+            discord: zagura#4140<br>
+          </p>
+          <img class=pixelart src=button.gif title="You can use this 88x31 banner to link to my page, isn't that neat">
         </div>
       </div>
-      <p>
-        Also here's the 88x31 banner if u wanna link to this site:
-        <span class=badge-list><img src=button.gif></span>
-      </p>
-      <p>
-        This indie web thing is rly interesting, if u can help me implement more of its tech on this <em>static</em> website, pls do!
-      </p>
-      <p>
-        If I've accidentally stolen ur graphics without giving credit, pls tell me and ill credit u (or remove them, whatever u want)<br>
-        And also if u have feedback about the website's accessibility, pls tell me that too<br>
-      </p>
-      <h2>Stuff</h2>
-      <p class=badge-list>
-        <a href=https://rainmirage.neocities.org>
-          <img src=assets/badges/preloaded/rainsspacebutton.png>
-        </a>
-        <a href=https://joppiesaus.neocities.org>
-          <img src=assets/badges/preloaded/joppiesaus-banner-1.png>
-        </a>
-        <a href=https://zoidart.neocities.org>
-          <img src=assets/badges/preloaded/zoidart.gif>
-        </a>
-        <a href=https://loni.neocities.org>
-          <img src=assets/badges/preloaded/lonibutton.png>
-        </a>
-        <a href=https://combatbaby.neocities.org>
-          <img src=assets/badges/preloaded/combat.gif>
-        </a>
-        <a href=https://maia.crimew.gay>
-          <img src=assets/badges/preloaded/maia.crimew.gay.gif alt="maia crimew">
-        </a>
-        <a href=https://kiyoshi.games>
-          <img src=assets/badges/preloaded/kiyoshi.games.png alt="Kiyo's Site">
-        </a>
-        <a href=https://devurandom.xyz>
-          <img src=assets/badges/preloaded/devurandom.xyz.png alt="rnd's corner">
-        </a>
-        <a href=https://cyber.dabamos.de/88x31>
-          <img src=assets/badges/88x31.png>
-        </a>
-        <a href=https://88by31.neocities.org>
-          <img src=assets/badges/88by31.png>
-        </a>
-        <a href=https://textures.neocities.org>
-          <img src=assets/badges/preloaded/textures.gif>
-        </a>
-        <a href=https://yesterweb.org>
-          <img src=assets/badges/preloaded/yesterweb.png>
-        </a>
-        <a href=https://ngmi.work>
-          <img src=assets/badges/preloaded/ngmibutton.gif>
-        </a>
-        <a href="https://jigsaw.w3.org/css-validator/validator?uri=zagura.one">
-          <img src=assets/badges/madewithcss.png>
-        </a>
-        <a href=https://ceph-a-lopod.neocities.org>
-          <img src=assets/badges/transyourgender.gif>
-        </a>
-        <a href=https://scp-wiki.wikidot.com/fantem-s-poi-file>
-          <img src=assets/badges/hailsatan.gif>
-        </a>
-        <a href=https://scp-wiki.wikidot.com/fantem-s-poi-file>
-          <img src=assets/badges/thissitesogay.gif>
-        </a>
-        <a href=https://tech.lgbt/@zagura>
-          <img src=assets/badges/mastodon.png>
-        </a>
-        <a href=https://toki.social/@sajuwa>
-          <img src=assets/badges/mastodon_tp.png>
-        </a>
-        <a href=https://web.archive.org/web/20000817070058/http://www.early.com/~emackey/linux>
-          <img src=assets/badges/CGG_small.png alt="Xenia">
-        </a>
-        <a href=https://msx.gay/buttons.htm>
-          <img src=assets/badges/made_with_pride.png alt="Made With Pride!">
-        </a>
-        <a href=https://yesterweb.org/no-to-web3>
-          <img src=assets/badges/web3.gif alt="Keep the web free, say no to Web3">
-        </a>
-        <a href=https://war.ukraine.ua>
-          <img src=assets/badges/ukraine-flag.png alt="Stand with Ukraine">
-         </a>
-        <img src=assets/badges/codedwithpride.gif>
-        <img src=assets/badges/anythingbut.png>
-        <img src=assets/badges/firefox4.gif>
-        <img src=assets/badges/www.gif>
-        <img src=assets/badges/made/trans-rights-now.gif>
-        <img src=assets/badges/made/nb-sunset.gif>
-        <img src=assets/badges/right2repair.png>
-        <img src=assets/badges/black-lives-matter.gif>
-        <img src=assets/badges/antinft.png>
-        <img src=assets/badges/nftbutton.gif>
-        <img src=assets/badges/trans_rights.png>
-        <img src=assets/badges/iwishicouldskipthisbs.gif>
-        <img src=assets/badges/neo-fedi.gif>
-        <img src=assets/badges/mute_lukin.png alt="jan li lukin e lipu ni lon tenpo mute">
-      </p>
-      <p>
-        If u have too much money & are feeling generous, u can donate to me on
-          <a href="https://liberapay.com/Zagura/donate" title="Donate using Liberapay">Liberapay</a>,
-          otherwise better donate to some charity or something
-      </p>
+      <br>
       <p class=webring>
         <a class=arrow href="https://xn--sr8hvo.ws/%F0%9F%91%9C%E2%8F%B1%F0%9F%8E%88/previous">???</a> //
         <a class=arrow href="https://xn--sr8hvo.ws/%F0%9F%91%9C%E2%8F%B1%F0%9F%8E%88/previous">&lt;&lt;</a>

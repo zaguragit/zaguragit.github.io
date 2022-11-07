@@ -1,0 +1,35 @@
+
+.badge-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.badge-list a,
+.badge-list > img {
+  width: 88px;
+  height: 31px;
+  image-rendering: pixelated;
+  transition: scale .1s;
+  z-index: 0;
+}
+
+.badge-list a:hover,
+.badge-list > img:hover {
+  scale: 2;
+  z-index: 100;
+}
+
+.badge-list a {
+  text-decoration: none;
+}
+
+.add {
+  display: block;
+  margin: 32px auto;
+  max-width: 728px;
+  max-height: 90px;
+  width: 100%;
+  border: none;
+  aspect-ratio: 728/90;
+}

@@ -2,5 +2,5 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  padding-top: .5em;
+  margin-top: -.5em;
 }
