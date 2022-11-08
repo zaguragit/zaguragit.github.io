@@ -22,7 +22,7 @@
 .bg-sprite {
   position: absolute;
   image-rendering: pixelated;
-  z-index: -100;
+  z-index: -1000;
 }
 .bg-sprite.right {
   left: auto;
