@@ -126,7 +126,7 @@ dl dd:last-child {
   padding-bottom: .8em;
 }
 
-.webring a:not(:hover),div.header>a:not(:hover),div.header>nav>a:not(:hover){text-decoration:none;}
+a.no-deco,.webring a:not(:hover),div.header>a:not(:hover),div.header>nav>a:not(:hover){text-decoration:none;}
 
 .phonetical {
   color: var(--base-foreground);
