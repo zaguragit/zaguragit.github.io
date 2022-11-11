@@ -60,7 +60,7 @@ body::after {
   transform: translateY(0px);
 }
 
-h1{font-size:2em;font-weight:700;margin-bottom:.5em;}
+h1{font-size:2em;margin-bottom:.5em;}
 h1::after {
   content: "";
   --border: .1em dotted currentColor;
@@ -73,7 +73,7 @@ h1::after {
   z-index: -200;
 }
 
-h2,h3{font-size:1em;font-weight:700;}
+h2,h3{font-size:1em;}
 h2::after {
   content: "";
   color: var(--base-foreground);
