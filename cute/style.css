@@ -12,26 +12,26 @@ code.comment {
 pre .literal,
 code .literal,
 code.literal {
-  color: var(--color-green);
+  color: #70d2f8;
 }
 
 pre .kw,
 code .kw,
 code.kw {
-  color: var(--base-foreground-strong);
+  color: #e5f9cb;
   font-weight: 700;
 }
 
 pre .type,
 code .type,
 code.type {
-  color: var(--color-blue);
+  color: #8d8a35;
 }
 
 pre .fn,
 code .fn,
 code.fn {
-  color: var(--color-yellow);
+  color: #33db65;
 }
 
 a.gemini {
