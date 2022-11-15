@@ -1,4 +1,4 @@
-*{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--color-header) transparent;}
+*{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--color-header-bg) transparent;}
 h1,h2,h3,h4,em{color:var(--base-foreground-strong);font-style:unset;font-weight:700;}
 p{margin:1em 0;}
 a{color:var(--color-accent);text-decoration:underline currentColor 1px;}
@@ -12,12 +12,13 @@ a:focus-visible{outline:3px solid;}
 .pixelart{image-rendering:pixelated;}
 
 :root {
-  --color-header: #e6ea7a;
-  --color-accent: #f9ff49;
-  --color-accent-bg: #deff4933;
+  --color-header-fg: #021a0f;
+  --color-header-bg: #aad38e;
+  --color-accent: #d0a7ff;
+  --color-accent-bg: #d0a7ff33;
   --card-border-radius: 8px;
-  --base-background: rgb(10, 23, 17);
-  --base-foreground: #d9e3aa;
+  --base-background: #021a0f;
+  --base-foreground: #aad38e;
   --base-foreground-strong: #ffffff;
   font-family: sans-serif;
   font-size: 16px;
@@ -150,26 +151,24 @@ div.header {
 div.header > nav,
 div.header > a {
   padding: 5px 10px;
-  background-color: var(--color-header);
+  color: var(--color-header-fg);
+  background-color: var(--color-header-bg);
+  font-family: monospace;
 }
 div.header > a {
   max-width: 100%;
-  color: #000;
   font-weight: 700;
-  font-family: monospace;
   text-transform: uppercase;
 }
 div.header > .spacer {
   flex-grow: 1;
-  background: repeating-linear-gradient(90deg,var(--color-header),var(--color-header) 3px,transparent 0,transparent 10px);
+  background: repeating-linear-gradient(90deg,var(--color-header-bg),var(--color-header-bg) 3px,transparent 0,transparent 10px);
   display: inline;
 }
 div.header > nav {
   display: flex;
   flex-direction: row;
   gap: 15px;
-  font-family: monospace;
-  color: #000;
 }
 div.header > nav > a {
   text-align: center;
@@ -231,9 +230,6 @@ div.box > ul {
     bottom: 0;
     left: 0;
     right: 0;
-    color: var(--color-header);
-    background-color: var(--base-background);
-    border-top: 1px solid currentColor;
     z-index: 100;
   }
   #me .avatar {
