@@ -13,7 +13,7 @@ a:focus-visible{outline:3px solid;}
 
 :root {
   --color-green: #67e6ca;
-  --color-purple: #ae8dff;
+  --color-blue: #27c5ff;
   --color-yellow: #EAC77A;
   --color-header: var(--color-yellow);
   --color-accent: #66ffc6;

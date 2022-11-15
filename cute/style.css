@@ -12,7 +12,7 @@ code.comment {
 pre .literal,
 code .literal,
 code.literal {
-  color: var(--color-purple);
+  color: var(--color-green);
 }
 
 pre .kw,
@@ -25,7 +25,7 @@ code.kw {
 pre .type,
 code .type,
 code.type {
-  color: var(--color-green);
+  color: var(--color-blue);
 }
 
 pre .fn,
