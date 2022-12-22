@@ -199,7 +199,7 @@ div.box > ul {
 }
 #me .avatar {
   width: auto;
-  height: 6em;
+  height: 7em;
   margin-right: 1em;
   clip-path: polygon(0 0, 0 80%, 20% 100%, 100% 100%, 100% 20%, 80% 0);
 }
