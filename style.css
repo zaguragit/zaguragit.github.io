@@ -12,12 +12,11 @@ a:focus-visible{outline:3px solid;}
 .pixelart{image-rendering:pixelated;}
 
 :root {
-  --color-header-fg: #051125;
-  --color-header-bg: #a4ebc3;
-  --color-accent: #ddaeff;
-  --color-accent-bg: #ae7cff56;
+  --color-header-fg: #e299ff;
+  --color-header-bg: #ae7cff26;
+  --color-accent: #e299ff;
   --card-border-radius: 8px;
-  --base-background: #051125;
+  --base-background: #070e1a;
   --base-foreground: #a4ebc3;
   --base-foreground-strong: #fffcd5;
   font-family: sans-serif;
@@ -28,7 +27,7 @@ a:focus-visible{outline:3px solid;}
   color: var(--base-foreground);
 }
 ::selection {
-  background-color: var(--color-accent-bg);
+  background-color: #ae7cff56;
   color: var(--color-accent);
 }
 body {
@@ -36,26 +35,6 @@ body {
   max-width: 960px;
   margin: 0 auto;
   padding: 24px;
-}
-@keyframes scroll{from{transform:translateY(0px)}to{transform:translateY(3px)}}
-body::after {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: calc(100% + 3px);
-  top: -3px;
-  left: 0;
-  background: repeating-linear-gradient(0, #00f, #f00 1px, #0f0 2px, #00f 3px);
-  opacity: 0.5;
-  z-index: -1;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  animation-name: scroll;
-  animation-iteration-count: infinite;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  will-change: transform;
-  transform: translateY(0px);
 }
 
 h1{font-size:2em;margin-bottom:.5em;}
@@ -130,13 +109,6 @@ a.no-deco,.webring a:not(:hover),div.header>a:not(:hover),div.header>nav>a:not(:
   color: var(--base-foreground);
   opacity: 0.5;
 }
-.phonetical::before, .phonetical::after {
-  content: '/';
-  color: var(--base-foreground);
-  font-size: 1.2em;
-  position: relative;
-  bottom: -.1em;
-}
 
 .webring {
   text-align: center;
@@ -194,6 +166,9 @@ div.box > ul {
   flex-wrap: wrap;
   place-items: center;
 }
+#me > div {
+  flex-grow: 2;
+}
 #me p {
   margin: 0;
 }
@@ -205,8 +180,10 @@ div.box > ul {
 }
 #me header {
   font-size: 2em;
-  line-height: 1;
   font-family: sans-serif;
+}
+#me .uid {
+  text-decoration: none;
 }
 
 .grid {
