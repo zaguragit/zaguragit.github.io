@@ -23,13 +23,3 @@
 .badge-list a {
   text-decoration: none;
 }
-
-.add {
-  display: block;
-  margin: 32px auto;
-  max-width: 728px;
-  max-height: 90px;
-  width: 100%;
-  border: none;
-  aspect-ratio: 728/90;
-}
