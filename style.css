@@ -9,8 +9,6 @@ a:focus,[tabindex]:focus{outline:3px solid;}
 a:focus-visible{outline:3px solid;}
 .hide{display:none;}
 .float-right{float:right;}
-.send-to-back{position:relative;z-index:-100;}
-.push-up{margin-top:-32px;}
 .pixelart{image-rendering:pixelated;}
 
 :root {
@@ -93,38 +91,13 @@ a.no-deco,.webring a:not(:hover){text-decoration:none;}
   font-size: 0.6em;
 }
 
-pre, div.box {
-  padding: .8em;
-  border: .1em solid var(--base-foreground-weak);
-  margin: .1em;
-  border-radius: .3em;
-}
-div.box p {
-  margin: .5em 0;
-}
-div.box > ul {
-  margin-left: 1em;
-}
+ul { line-height: 2; }
+ul.links { list-style-type: none; }
+ul.links a { text-decoration: none; }
+ul.links a::before { content: "=> "; }
+ul.links a:hover { text-decoration: underline solid currentColor 1px; }
 
-ul {
-  line-height: 2;
-  list-style-type: none;
-}
-ul.links a {
-  text-decoration: none;
-}
-ul.links a::before {
-  content: "=>";
-  font-family: monospace;
-  margin-right: .5em;
-}
-ul.links a:hover {
-  text-decoration: underline solid currentColor 1px;
-}
-
-.back-to-main {
-  color: var(--base-foreground-weak);
-}
+.back-to-main { color: var(--base-foreground-weak); }
 
 header.me {
   margin-bottom: 2em;
@@ -132,24 +105,16 @@ header.me {
   flex-wrap: wrap;
   place-items: center;
 }
-header.me > div {
-  flex-grow: 2;
-}
-header.me p {
-  margin: 0;
-}
+header.me > div { flex-grow: 2; }
+header.me p { margin: 0; }
 header.me .avatar {
   width: auto;
   height: 5em;
   margin-right: 1em;
   clip-path: polygon(0 0, 0 80%, 20% 100%, 100% 100%, 100% 20%, 80% 0);
 }
-header.me h1 {
-  font-weight: normal;
-}
-header.me .uid {
-  text-decoration: none;
-}
+header.me h1 { font-weight: normal; }
+header.me .uid { text-decoration: none; }
 
 .grid {
   display: grid;

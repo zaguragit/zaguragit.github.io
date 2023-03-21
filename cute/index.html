@@ -7,455 +7,150 @@
     <meta name=language content=en>
     <meta name=author content=Zagura>
     <meta name=web-author content=Zagura>
-    <meta name=description content="A language">
+    <meta name=description content="A multipurpose language aimed at simplicity (work very in progress)">
     <meta name=no-email-collection>
     <meta name=referrer content=no-referrer>
     <meta name=theme-color content=#38244c>
     <meta name=color-scheme content=dark>
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <link rel=icon href=../assets/gif/cute.gif>
+    <link rel=icon href=../assets/cute/logo.svg>
     <link rel=stylesheet href=../style.css>
     <link rel=stylesheet href=style.css>
     <title>Cute</title>
   </head>
   <body>
     <main>
-      <center>
-        <img src=../assets/gif/cute.gif height=128px class=pixelart>
-        <h1>Cute</h1><br>
-        <p>A multipurpose language aimed at simplicity, with a novel syntax (page under construction)</p>
-      </center>
-      <a href=https://github.com/cutelang class=gemini>Source</a>
-      <h1>Syntax</h1>
-
-      <h2>Intentions</h2>
-      <p>
-        My intentions with this language are to make the most optimal syntax, without limiting myself to familiarity.
-        Also, the language should ideally strive towards cuteness, so short, friendly-looking keywords, concise syntax & no overly sharp/noisy symbols
-      </p>
-
-      <h2>List of reserved keywords</h2>
-      <p>
-        <code class=kw>using</code>, <code class=kw>module</code>, <code class=kw>extern</code>, <code class=kw>enum</code>,
-        <code class=kw>class</code>, <code class=kw>impl</code>, <code class=kw>when</code>, <code class=kw>loop</code>,
-        <code class=kw>break</code>, <code class=kw>return</code>, <code class=kw>mut</code>, <code class=kw>and</code>,
-        <code class=kw>or</code>, <code class=kw>try</code>, <code class=kw>my</code>, <code class=kw>our</code>,
-        <code class=kw>new</code>, <code class=kw>type</code><br>
-        Also there's <code class=literal>yes</code> & <code class=literal>no</code>, but they're values & not just tokens
-      </p>
-      <h2>Comments</h2>
-      <p>
-        2 types of comments are supported, 
-        the compiler completely ignores them
-      </p>
-      <p>
-        <ul>
-          <li>Single-line comments: <code class=comment>-- comment</code></li>
-          <li>Multi-line comments: <code class=comment>--( comment )--</code></li>
+      <header>
+        <img src=../assets/cute/logo.svg height=128px>
+        <h1>The Cute Programming Language</h1>
+        <span class=back-to-main>main page: <a class="u-url u-uid uid" rel=me href=https://zagura.one>zagura.one</a></span>
+      </header>
+      <section>
+        <p>A multipurpose language aimed at simplicity (work very in progress)</p>
+        <ul class=links>
+          <a href=https://github.com/cutelang>Source</a>
         </ul>
-      </p>
-
-      <h2>Operators</h2>
-      <p>
-        <h3>Binary Mathematical Operators</h3>
-        <p><pre>+   -   *   /   %  ^  &&  ||  ^|  &gt;&gt;  &lt;&lt;  &lt;&lt;&lt;  &gt;&gt;&gt;</pre></p>
-        <p>
-          <ul>
-            <li><code>^&nbsp;</code>: means left to the power of right</li>
-            <li><code>^|</code>: performs an xor operation</li>
-            <li><code>+&nbsp;</code>: concatenates strings (if left is string, but right isn't, the compiler will search for a <code>to-string</code> method, to convert it), and also combines arrays & arrays with items</li>
-          </ul>
-        </p>
-        <p>Bitwise operators are only allowed on types with explicit bit sizes</p>
-        <h3>Unary Mathematical Operators</h3>
-        <p>
-          <ul>
-            <li><code>~</code> : Flips bits, when used on booleans, basically does a not operation</li>
-            <li><code>-</code> : Negates number</li>
-            <li><code>+</code> : Absolute value</li>
-          </ul>
-        </p>
-        <h3>Logical Operators</h3>
-        <p>
-          <pre><span class=kw>and  or</span></pre>
-        </p>
-        <p>
-          Please note, <code>&&</code>/<code>||</code> is used for bit-wise operations,
-          while <code class=kw>and</code>/<code class=kw>or</code> is for logical operations
-          (which means that it short-circuits)
-        </p>
-        <h3>Comparison Operators</h3>
-        <p>
-          <pre>&gt;  &lt;  &gt;=  &lt;=  =  ~=  ==  ~==</pre>
-        </p>
-        <p>
-          <ul>
-            <li><code>=</code> : checks for equality</li>
-            <li><code>==</code> : checks for identity</li>
-          </ul> 
-        </p>
-        <h3>Mutability Operators</h3>
-        <p>
-          <ul>
-            <li><code>&lt;-</code> : Assigns right to left and evaluates to right, so that assignment chains are possible</li>
-            <li><code>*&nbsp;</code> : (unary) Get the value of the operand</li>
-          </ul>
-        </p>
-        <p>This applies to the <code class=kw>mut</code> datatype, which is created using the <code class=kw>mut</code> unary operator</p>
-        <h3>Operator precedence</h3>
-        <p>
-          <ul>
-            <li>All unary operators</li>
-            <li><code>^</code></li>
-            <li><code>*  /</code></li>
-            <li><code>+  -  %</code></li>
-            <li><code>&lt;&lt;  &gt;&gt;  &lt;&lt;&lt;  &gt;&gt;&gt;</code></li>
-            <li><code>&&  ||  ^|</code></li>
-            <li><code>&lt;  &gt;  =  &gt;=  &lt;=  ~=  ==  ~==</code></li>
-            <li><code class=kw>and  or</code></li>
-            <li><code>&lt;-</code></li>
-          </ul>
-        </p>
-        <p>The operators that can be overloaded are:</p>
-        <p>
-          <pre>+   -   *   /   %  ^  &&  ||  ^|  &gt;&gt;  &lt;&lt;  &lt;&lt;&lt;  &gt;&gt;&gt;  &lt;-  =  ~</pre>
-        </p>
-        <p>
-          If the <code>=</code> is overloaded, <code>~=</code> can be used to get the inverse result<br>
-          If one of the 2 expressions of <code>=</code> is, or might be, <code class=literal>()</code>,
-          the program will first check that & if both sides aren't <code class=literal>()</code> they'll bet compared using the overloaded operator<br>
-        </p>
-        <p>Only the <code>&lt;-</code> operator chains from right to left</p>
-      </p>
-      <h2>Fields</h2>
-      <p>AKA variables</p>
-      <p>Fields are immutable, and have a very simple syntax:</p>
-      <p><pre><span class=kw>my</span> field-name = field-value</pre></p>
-      <p>Cute uses the <code class=kw>my</code> keyword for private or local fields & the <code class=kw>our</code> keyword for public ones</p>
-      <p><pre><span class=kw>our</span> field-name = field-value</pre></p>
-      <p>One can specify the type by adding <code>: <span class=type>type-name</span></code> after the value</p>
-      <p>Here are some examples:</p>
-      <p>
-        <pre><span class=kw>my</span> a = <span class=literal>5</span>
-<span class=kw>my</span> b = <span class=literal>5</span> : <span class=type>Int</span>
-<span class=kw>my</span> c = <span class=literal>5</span> : <span class=type>Num</span>
-<span class=kw>my</span> d = <span class=literal>0'6</span> : <span class=type>Num</span>
-<span class=kw>my</span> e = <span class=literal>0'6</span> : <span class=type>ℚ</span>
-<span class=kw>my</span> f = <span class=literal>1</span> : <span class=type>ℤ</span>
-<span class=kw>my</span> g = <span class=literal>2'4</span> : [<span class=literal>0'0</span>...]
-<span class=kw>my</span> h = <span class=literal>"blablabla"</span>
-<span class=kw>my</span> i = <span class=literal>"blablabla"</span> : <span class=type>String</span></pre>    
-      </p>
-      <h2>Mutability</h2>
-      <p>
-        All fields are immutable,
-        but Cute has a <code><span class=kw>mut</span> t</code> datatype,
-        which allows to get & set its value,
-        using the operators <code>&lt;-</code> (assignment) & <code>*</code> (unboxing)
-      </p>
-      <p>To understand it easier for people coming from C, it's like a pointer, but you can't do math with it, & it doesn't cause a segfault</p>
-      <p>To create a mutable value, use the <code class=kw>mut</code> keyword with a value after it</p>
-      <p>Example:</p>
-      <p>
-        <pre>
-<span class=kw>my</span> a = <span class=kw>mut</span> <span class=literal>5</span>
-<span class=comment>-- a is of type mut int</span>
-<span class=kw>my</span> b = *a
-<span class=comment>-- b is 5, of type int</span>
-<span class=kw>my</span> c = a
-<span class=comment>-- c is 5, of type mut int</span>
-a &lt;- *a + <span class=literal>3</span>
-<span class=comment>-- a is 8, c is 8, b is 5</span></pre>
-      </p>
-      <h2>Parentheses</h2>
-      <p>The parentheses in cute aren't only for math, they also act as scoped code blocks</p>
-      <p>A block evaluates to the common type of its return statements & its last statement/expression</p>
-      <p>Using the <code class=kw>return</code> keyword will make the block evaluate to the value returned (or <code class=literal>()</code>, if nothing is returned), and jump out of the block</p>
-      <h2>Branching</h2>
-      <p>AKA If/Else</p>
-      <p>This is the base syntax for branching:</p>
-      <pre><span class=kw>my</span> thing = <span class=kw>when</span>
-  | condition-a: <span class=fn>foo</span> ()
-  | condition-b: <span class=fn>bar</span> ()
-  | condition-c: <span class=fn>baz</span> ()
-  |: <span class=fn>do-something-else</span> ()</pre>
-      <p>The first <code>|</code> is optional, so that the one-liner syntax is cleaner</p>
-      <pre>
-<span class=kw>my</span> my-field-0 = <span class=kw>when</span>
-  | condition-a: <span class=fn>foo</span> ()
-  |: <span class=fn>bar</span> ()
-
-<span class=kw>my</span> my-field-1 = <span class=kw>when</span> | condition-a: <span class=fn>foo</span> () |: <span class=fn>bar</span> ()
-
-<span class=kw>my</span> my-field-2 = <span class=kw>when</span> condition-a: <span class=fn>foo</span> () |: <span class=fn>bar</span> ()
-
-<span class=kw>when</span> condition-a <span class=kw>or</span> condition-b:
-    <span class=fn>foo</span> ()
-
-<span class=kw>when</span> condition-a <span class=kw>or</span> condition-b: (
-    <span class=fn>bar</span> ()
-    <span class=fn>baz</span> ()
-)</pre>
-      <h2>Loop</h2>
-      <p>
-        Using the <code class=kw>loop</code> keyword makes the next expression loop forever
-        (unless the <code class=kw>break</code> keyword is used, in which case it will make the
-        loop evaluate to the value returned & jump out of the loop)
-      </p>
-      <p>Examples:</p>
-      <pre>
-<span class=kw>my</span> i = <span class=kw>mut</span> <span class=literal>0</span>
-<span class=kw>my</span> thing = <span class=kw>loop</span> (
-    i <- *i + <span class=literal>1</span>
-    <span class=fn>cmd::ln</span> (i)
-    <span class=kw>when</span> i = <span class=literal>12</span>: <span class=kw>break</span> <span class=literal>3</span>
-)
-<span class=comment>-- thing is 3</span></pre>
-      <p>Loops can use any expression, so this is also valid:</p>
-      <p>
-        <pre><span class=kw>loop</span> <span class=fn>do-something</span> ()</pre>
-      </p>
-      <h2>Break &amp; Return</h2>
-      <p>
-        Both <code>break</code> & <code>return</code> keywords act almost the same,
-        except <code>return</code> jumps out of a code block, while <code>break</code> jumps out of a loop.
-        If <code>return</code> is used inside a code block in a loop, it works like "continue" in C-like languages
-      </p>
-      <p>
-        You can append <code>@label</code> to the keyword, to point to a specific loop/block (defaults to the closest one),
-        the label name is the same as the field you assign the loop/block to, for example:
-      </p>
-      <p>
-        <pre>
-<span class=kw>my</span> my-loop = <span class=kw>loop</span> {
-  <span class=kw>break</span><span class=literal>@my-loop</span>
-}
-<span class=kw>my</span> my-block = {
-  <span class=kw>return</span><span class=literal>@my-block</span>
-}</pre>
-      </p>
-      <p>You can also append an expression to make the loop/block evaluate to it:</p>
-      <p>
-        <pre>
-<span class=kw>my</span> i = <span class=kw>mut</span> <span class=literal>0</span>
-<span class=kw>my</span> thing = <span class=kw>loop</span> {
-    i <- *i + <span class=literal>1</span>
-    <span class=kw>when</span> i = <span class=literal>12</span>: <span class=kw>break</span><span class=literal>@thing 4</span>
-}
-<span class=comment>-- thing is 4</span></pre>
-      </p>
-      <h2>Functions & Lambdas</h2>
-      <p>In Cute, functions are written as fields with lambda values</p>
-      <p>A lambda is written as: <code>(x) -> expression</code> or <code>(p0: <span class=type>some-type</span> -> <span class=type>return-type</span>) -> expression</code></p>
-      <p>The return type can't be omitted in global functions</p>
-      <p>
-        To add type arguments to the function put <code>a, b =></code> after the first paren,
-        like so <code>(<span class=type>t</span> => p0: <span class=kw>mut</span> <span class=type>t</span> -> <span class=type>t</span>) -> *p0</code>
-      </p>
-      <p>Some examples:</p>
-      <p>
-        <pre>
-<span class=kw>my</span> <span class=fn>pow</span> = (x: <span class=type>Int</span>, y: <span class=type>Int</span> -> <span class=type>Int</span>) -> x ^ y
-<span class=kw>my</span> <span class=fn>sum</span> = (x, y) -> x + y
-<span class=kw>my</span> <span class=fn>div</span> = (x: <span class=type>Int</span>, y: <span class=type>Int</span>) -> x / y
-<span class=kw>my</span> <span class=fn>do-stuff</span> = (x: <span class=type>Int</span>, y: <span class=type>Int</span>) -> (
-    <span class=fn>cmd::ln</span> (<span class=literal>"Hello World!"</span>)
-)
-<span class=kw>my</span> <span class=fn>just-return</span> = (<span class=type>t</span> => x: <span class=type>t</span> -> <span class=type>t</span>) -> x
-<span class=kw>my</span> <span class=fn>print-and-return</span> = (<span class=type>t</span> => x: <span class=type>t</span> -> <span class=type>t</span> # <span class=fn>text::Textual</span> <span class=type>t</span>) -> {
-    <span class=fn>cmd::ln</span> (t <span class=fn>\ to-string</span>)
-    x
-}</pre>
-      </p>
-      <p>You can call functions normally: <code><span class=fn>function-name</span> (arg0, arg1, some-param: arg2)</code></p>
-      <p>Or with method/pipe first syntax: <code>arg0 \ <span class=fn>function-name</span> (arg1, some-param: arg2)</code></p>
-      <p>Or even with simple pipe syntax: <code>arg0 \: <span class=fn>function-name</span></code> or <code>arg0 \: x -> (x + <span class=literal>4</span>) * x * <span class=literal>4</span></code></p>
-      <p>To overload an operator, write it between braces as the field's name:</p>
-      <p><pre><span class=kw>my</span> (<span class=fn>=</span>) = (a: <span class=type>V3</span>, b: <span class=type>V3</span> -> <span class=type>Bool</span>) -> a.x = b.x <span class=kw>and</span> a.y = b.y <span class=kw>and</span> a.z = b.z</pre></p>
-      <h2>Types</h2>
-      <p>
-        There are 2 main, multipurpose numeric types: <code class=type>Int</code> & <code class=type>Num</code> (can also be written as <code class=type>ℤ</code> & <code class=type>ℚ</code>), which don't have an explicit size.<br>
-        For specific bit size, use one of <code class=type>B8</code>, <code class=type>B16</code>, <code class=type>B32</code>, <code class=type>B64</code>
-      </p>
-      <p>
-        <code class=type>Int</code> & <code class=type>Num</code> are the widest integer & decimal ranges<br>
-        Smaller range types can be written as <code>[min..max]</code>, <code>[min...]</code>, or <code>[...max]</code>
-      </p>
-      <p><pre><span class=kw>my</span> a = <span class=literal>32'4</span> : [<span class=literal>5'0</span>..<span class=literal>50</span>]</pre></p>
-      <p>Tuple types are written as <code>(</code> + params + <code>)</code></p>
-      <p><pre>(x: <span class=type>ℚ</span>, y: <span class=type>ℚ</span>, z: <span class=type>ℚ</span>)</pre></p>
-      <p>To declare a generic tuple, add the type params after the <code>(</code></p>
-      <p>
-        <pre>
-<span class=kw>our</span> <span class=type>Container</span> = <span class=kw>new type</span> ( <span class=type>t</span> =>
-    value: <span class=type>t</span>,
-)</pre>
-      </p>
-      <p>To express an array type, use the <code>[]<span class=type>t</span></code> syntax, where you can optionally add a range between the brackets</p>
-      <p><code class=type>Never</code> is the type used for operations that never return a value, like <code class=kw>break</code> & <code class=kw>return</code></p>
-      <p><code class=type>Any</code> is the parent type of everything</p>
-      <p><code class=type>Bool</code> is the boolean type, duh, it accepts the values <code class=literal>yes</code> & <code class=literal>no</code></p>
-      <p><code class=type>String</code> is an alias to an array of <code class=type>B8</code></p>
-      <p><code class=literal>()</code> is both the nil value, and the type, and it replaces "Unit" or "void"</p>
-      <p><code><span class=kw>mut</span> <span class=type>t</span></code> is a mutable reference to <code class=type>t</code></p>
-      <h3>Declarations</h3>
-      <p>
-        Like functions, types are declared by being assigned to a field<br>
-        Use the <code class=kw>type</code> keyword before writing the type notation<br>
-        Use the <code class=kw>new</code> keyword to make a new type, otherwise it will make an alias<br>
-      </p>
-      <p>
-        <pre>
-<span class=kw>our</span> <span class=type>AliasToTuple</span> = <span class=kw>type</span> (
-    a: <span class=type>ℤ</span>,
-    b: <span class=type>ℤ</span>,
-)
-<span class=kw>our</span> <span class=type>V3</span> = <span class=kw>new type</span> (
-    x: <span class=type>ℚ</span>,
-    y: <span class=type>ℚ</span>,
-    z: <span class=type>ℚ</span>,
-)</pre>
-      </p>
-      <p>All newtypes have a constructor with a single param of it's parent:</p>
-      <p><pre><span class=kw>my</span> position = <span class=type>V3</span> ((<span class=literal>3</span>, <span class=literal>6</span>, <span class=literal>2</span>))</pre></p>
-      <h3>Unions</h3>
-      <p>Types can be combined into union types using the <code>|</code> operator</p>
-      <h3>Optional & ()</h3>
-      <p>
-        Cute has first class optional types, like Kotlin.
-        They're written as <code class=type>?type-name</code>, which is a shorthand for <code class=type>type-name|()</code>.
-        <code class=literal>()</code> has only 1 possible value, <code class=literal>()</code>, yes, they're both written the same way.
-        Also, there's no Void or Unit type, <code class=literal>()</code> fully replaces it
-      </p>
-      <h3>Generics</h3>
-      <p>Generic types are written as <code><span class=type>type-name</span> (<span class=type>some-type</span>, <span class=type>some-other-type</span>)</code></p>
-      <p>
-        If only 1 arg is needed, the <code class=literal>()</code> can be skipped, for example:
-        <code><span class=kw>mut</span> (<span class=type>Box</span> (<span class=kw>mut</span> (<span class=type>Int</span>)))</code>
-        can be written as <code><span class=kw>mut</span> <span class=type>Box</span> <span class=kw>mut</span> <span class=type>Int</span></code>
-      </p>
-      <p>Some examples:</p>
-      <p>
-        <pre>
-<span class=kw>my</span> <span class=fn>get-at-index</span> = (array: []<span class=type>ℤ</span>, index: <span class=type>ℤ</span>) -> array[index]
-<span class=kw>my</span> <span class=fn>set-to-0</span> = (x: <span class=kw>mut</span> <span class=type>ℤ</span>) -> (x &lt;- <span class=literal>0</span>)
-<span class=kw>my</span> a = <span class=kw>mut</span> <span class=literal>4</span> : <span class=kw>mut</span> <span class=type>ℤ</span></pre>
-      </p>
-      <h2>Tuples</h2>
-      <p>Tuples can have names or unnamed fields</p>
-      <p>
-        <pre>
-<span class=kw>my</span> v3 = (x: <span class=literal>3</span>, y: <span class=literal>65</span>, z: <span class=literal>12</span>)
-<span class=kw>my</span> v3 = (<span class=literal>3</span>, <span class=literal>65</span>, <span class=literal>12</span>)</pre>
-      </p>
-      <p>
-        If enough information is available for type inference, the tuple can be converted to its descendant type
-      </p>
-      <p>
-        <pre>
-<span class=kw>my</span> position = (<span class=literal>3</span>, <span class=literal>6</span>, <span class=literal>2</span>) : <span class=type>V3</span></pre>
-      </p>
-      <h3>Field access</h3>
-      <p>Tuple fields are accessed like in Kotlin: <code>position.y</code></p>
-      <p>
-        If the value (in this example <code>position</code>) is of an optional type,
-        <code>position?.y</code> (nil safety) must be used, otherwise, the compiler will give you an error
-      </p>
-      <p>If the fields aren't named explicitly, the position of the field in the tuple is used as the name <code>my-vector.0</code></p>
-      <h2>Nil Safety</h2>
-      <p>The nil safety operator <code>?</code> can only be used inside a <code class=kw>try</code> expression</p>
-      <p>
-        <pre>
-<span class=kw>my</span> a = <span class=kw>try</span> my-vector?.x</pre>
-      </p>
-      <p>if the operand is null, the entire try expression will evaluate to null, otherwise it will continue</p>
-      <h2>Modules</h2>
-      <p>You can assign a namespace/module to a file by having a module declaration, like so: <code><span class=kw>module</span> path::to::stuff</code></p>
-      <p>You can also import stuff from a module like so: <code><span class=kw>using</span> path::to::stuff</code></p>
-      <h2>Metadata</h2>
-      <p>Metadata can be provided after the <code class=kw>my</code>/<code class=kw>our</code> keyword for fields &amp; change their behaviour using attributes</p>
-      <p>The syntax of metadata is <code>[</code> + comma-separated attributes + <code>]</code></p>
-      <p>The syntax of an attribute is the same as of a function call, except the parens are optional if there's no more than 1 argument &amp; it's not named</p>
-      <p>
-        These are the builtin annotations:
-        <ul>
-          <li>`inline` tells the compiler that this function must be inlined</li>
-          <li>`entry` tells what function to execute on startup</li>
-          <li>`builtin (name: string)` can only be applied to `extern` fields, maps the function/field to an operation that doesn't have it's own syntax, like conversion between primitive numeric types</li>
-          <li>`c (name: string)` low-level field metadata (currently just the linking name)</li>
+      </section>
+      <section>
+        <h2>Table of Contents</h2>
+        <ul class=links>
+          <li><a href=#intentions>Intentions</a></li>
+          <li><a href=#reserved-keywords>List of Reserved Keywords</a></li>
+          <li><a href=#comments>Comments</a></li>
+          <li><a href=#operators>Operators</a></li>
+          <li><a href=#definitions>Definitions</a></li>
         </ul>
-      </p>
-      <p>Example</p>
-      <p>
-        <pre>
-<span class=kw>my</span> [
-    inline,
-    c (name: <span class=literal>"sum"</span>),
-    deprecated (
-        since: <span class=literal>"0.2"</span>,
-        reason: <span class=literal>"just felt like it"</span>,
-    ),
-] <span class=fn>my-function</span> = (x: <span class=type>Int</span>, y: <span class=type>Int</span> -> <span class=type>Int</span>) -> x + y</pre>
-      </p>
-      <h2>Type Classes (aka Traits)</h2>
-      <p>Type classes are defined as <code class=kw>class</code> + generic type names + <code>[</code> + required fields + <code>]</code></p>
-      <p>Example:</p>
-      <p>
-        <pre>
-<span class=kw>my</span> describable = <span class=kw>class</span> <span class=type>s</span> [
-    to-string: (<span class=type>s</span> -> <span class=type>String</span>)
-]</pre>
-      </p>
-      <p>Type class instances (aka trait implementations) are written as <code class=kw>impl</code> + name + <code>(</code> + comma-separated types <code>)</code> + <code>[</code> + required fields + <code>]</code></p>
-      <p>Example:</p>
-      <p>
-        <pre>
-<span class=kw>impl</span> <span class=fn>text::Textual</span> (<span class=type>Int</span>) [
-  <span class=kw>our</span> to-string = (i: <span class=type>Int</span> -> <span class=type>String</span>) -> i <span class=fn>\ to-string</span> (<span class=literal>10</span>)
-]
-<span class=comment>-- Now you can do 12 \ to-string ()</span></pre>
-      </p>
-      <p>When implementing a trait, return types can be omitted, since they're explicitly stated in the trait declaration</p>
-      <p>
-        <pre>
-<span class=kw>impl</span> <span class=fn>text::Textual</span> (<span class=type>Int</span>) [
-  <span class=kw>our</span> to-string = (i: <span class=type>Int</span>) -> i <span class=fn>\ to-string</span> (<span class=literal>10</span>)
-]
-<span class=comment>-- Now you can do 12 \ to-string ()</span></pre>
-      </p>
-      <p>To use a trait in a function, use the <code>#</code> after the return type, like so:</p>
-      <p>
-        <pre>
-<span class=kw>our</span> <span class=fn>println</span> = (<span class=type>t</span> => x: <span class=type>t</span> # <span class=fn>Textual</span> <span class=type>t</span>) (
-  <span class=fn>println</span> (x <span class=fn>\ to-string</span> ())
-)</pre>
-      </p>
-      <h2>Literals</h2>
-      <p>
-        Floats are written in base 10, with a <code>'</code> between the integral &amp; decimal parts: <code class=literal>3'5</code>, <code class=literal>2'00001</code>, <code class=literal>5'0</code>, <code class=literal>0'1</code>
-      </p>
-      <p>
-        Integers are written in base 10 by default: <code class=literal>10</code>, <code class=literal>42</code>; but can be written in any base less than 36,
-        by prepending them by the base number &amp; a colon: <code class=literal>16:00ff88</code>, <code class=literal>8:1244</code>
-      </p>
-      <p>Int literals are automatically converted into floats if a float is needed instead</p>
-      <p>Booleans use the <code class=literal>yes</code> &amp; <code class=literal>no</code> keywords</p>
-      <p><code class=literal>()</code> is the nil value</p>
-      <p>Strings are written using double quotes <code>"</code>, with the typical character escapes: <code>\n, \t, \r, \\, \", \0</code>, + unicode character escapes: <code>\u1234</code></p>
-      <p>Example: <code class=literal>"Hello World! \n"</code></p>
-      <h3>Arrays</h3>
-      <p>There are 2 ways to write an array literal:</p>
-      <p>Just items: <code>[</code> + comma-separated items + <code>]</code></p>
-      <p>
-        <pre>[a, b, c, d]</pre>
-      </p>
-      <p>Dynamically allocated: <code>[</code> + amount of items + <code>|</code> + initializer + <code>]</code></p>
-      <p>
-        <pre>[<span class=literal>12</span> | x -> x * <span class=literal>2</span>] <span class=comment>-- an array of 12 items, each being the double of its index</span></pre>
-      </p>
-      <h1>Undecided Areas</h1>
-      <h2>Shadowed fields</h2>
-      <p>Might use the `@label` syntax from `break`/`return` to specify from which block/scope the field is</p>
+      </section>
+      <section id=intentions>
+        <h2>Intentions</h2>
+        <p>
+          My intentions with this language are to make the most optimal syntax,
+          one of tha ways i'll try to archieve this is by avoiding nesting,
+          like putting functions inside a class/module.
+        </p>
+        <p>
+          Also, the language should ideally strive towards cuteness,
+          so short, friendly-looking keywords, concise syntax & no overly sharp/noisy symbols
+        </p>
+      </section>
+      <section id=reserved-keywords>
+        <h2>List of Reserved Keywords</h2>
+        <p>
+          <code class=kw>my</code>, <code class=kw>our</code>, <code class=kw>has</code>, <code class=kw>impl</code>,
+          <code class=kw>and</code>, <code class=kw>or</code>, <code class=kw>not</code>, <code class=kw>use</code>,
+          <code class=kw>if</code>, <code class=kw>elif</code>, <code class=kw>else</code>, <code class=kw>match</code>,
+          <code class=kw>is</code>, <code class=kw>mut</code>, <code class=kw>const</code>, <code class=kw>for</code>,
+          <code class=kw>in</code>, <code class=kw>extern</code><br>
+          Also there's <code class=literal>yes</code> & <code class=literal>no</code>, but they're values & not just tokens
+        </p>
+      </section>
+      <section id=comments>
+        <h2>Comments</h2>
+        <p>
+          Comments can't be just written anywhere,
+          they must be put either before a field/function/type... declaration, to document it,
+          or before an expression to form a commented expression, to explain the code
+        </p>
+        <p>
+          <ul>
+            <li>span somments: <code class=comment>btw, insert comment here;</code></li>
+            <li>line comments: <code class=comment>btw, insert comment here</code></li>
+            <li>multi-line comments:
+              <pre>
+<span class=comment>btw, insert comment here
+| insert more comment here
+| moorrrre commentttt</span>
+
+<span class=comment>btw,
+| you don't have to put stuff right after the 'btw,'</span></pre>
+            </li>
+          </ul>
+        </p>
+      </section>
+      <section id=operators>
+        <h2>Operators</h2>
+        <p>
+          <h3>Binary Operators</h3>
+          <p><pre>+   -   *   /   %  <span class=kw>and</span>  <span class=kw>or</span></pre></p>
+          <p>
+            <code>+</code> also concatenates strings or arrays, and also combines arrays with items
+            <code class=kw>and</code> &amp; <code class=kw>or</code> are logical operators (they short-cirquit)
+          </p>
+          <h3>Unary Operators</h3>
+          <p><pre>-  <span class=kw>not</span></pre></p>
+          <h3>Comparison Operators</h3>
+          <p>
+            <pre>&gt;  &lt;  &gt;=  &lt;=  =  /=</pre>
+          </p>
+          <h3>Operator precedence</h3>
+          <p>
+            <ul>
+              <li>All unary operators</li>
+              <li><code>*  /  %</code></li>
+              <li><code>+  -</code></li>
+              <li><code>&lt;  &gt;  =  &gt;=  &lt;=  /=</code></li>
+              <li><code class=kw>and  or</code></li>
+            </ul>
+          </p>
+          <p>The operators that can be overloaded are:</p>
+          <p>
+            <pre>+   -   *   /   %   =   <span class=kw>not</span></pre>
+          </p>
+          <p>
+            If the <code>=</code> is overloaded, <code>/=</code> can be used to get the inverse result
+          </p>
+        </p>
+      </section>
+      <section id=definitions>
+        <h2>Definitions</h2>
+        <p>
+          You can define constants, functions, types & typeclasses.
+          Any definition starts with either <code class=kw>my</code> (for private) or <code class=kw>our</code> (for public)
+        </p>
+        <dl>
+          <dt>constant:</dt><dd>
+            <code><span class=kw>our</span> some-name: <span class=type>SomeType</span> = <span class=literal>69</span></code>
+          </dd>
+          <dt>function:</dt><dd>
+            <code><span class=kw>our</span> <span class=fn>some-name</span>(p0: <span class=type>Int</span>, p1: <span class=type>Fpt</span>): <span class=type>SomeType</span> = <span class=literal>69</span></code>
+          </dd>
+          <dt>type:</dt><dd>
+            <code><span class=kw>our</span> :<span class=type>Maybe T</span> = <span class=fn>Yes</span>(<span class=type>T</span>)  <span class=fn>No</span></code>
+          </dd>
+          <dt>typeclass:</dt><dd>
+            <code><span class=kw>our</span> :: <span class=class>Ord</span> <span class=type>T</span> = <span class=kw>has</span> <span class=fn>cmp</span>(a: <span class=type>T</span>, b: <span class=type>T</span>): <span class=type>Ordering</span></code>
+          </dd>
+        </dl>
+        <p>
+          The types of constants can be omitted thanks to type inference
+        </p>
+      </section>
+      <section id=aaaaaaaa>
+      </section>
+      <section id=aaaaaaaa>
+      </section>
+      <section id=aaaaaaaa>
+      </section>
     </main>
   </body>
 </html>

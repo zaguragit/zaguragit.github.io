@@ -3,6 +3,13 @@ code {
   padding: 0 .1em;
 }
 
+pre {
+  padding: .8em;
+  border: .1em solid var(--base-foreground-weak);
+  margin: .1em;
+  border-radius: .3em;
+}
+
 pre .comment,
 code .comment,
 code.comment {
@@ -12,33 +19,32 @@ code.comment {
 pre .literal,
 code .literal,
 code.literal {
-  color: #70d2f8;
+  color: #adf870;
 }
 
 pre .kw,
 code .kw,
 code.kw {
-  color: #e5f9cb;
+  color: #fffd6d;
   font-weight: 700;
+  font-style: italic;
 }
 
 pre .type,
 code .type,
 code.type {
-  color: #8d8a35;
+  color: #3fbabe;
+  font-style: italic;
 }
 
 pre .fn,
 code .fn,
 code.fn {
-  color: #33db65;
+  color: #ce3e6e;
 }
 
-a.gemini {
-  text-decoration: none;
-}
-a.gemini::before {
-  content: "=>";
-  font-family: monospace;
-  margin-right: .5em;
+pre .class,
+code .class,
+code.class {
+  color: #ab6af5;
 }
