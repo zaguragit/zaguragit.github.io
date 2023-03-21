@@ -1,13 +1,14 @@
 code {
   display: inline-block;
   padding: 0 .1em;
+  color: #b1a799;
 }
 
 pre {
-  padding: .8em;
-  border: .1em solid var(--base-foreground-weak);
-  margin: .1em;
-  border-radius: .3em;
+  padding: .6em;
+  border: 1px solid var(--base-foreground-weak);
+  color: #b1ad99;
+  line-height: 1.6;
 }
 
 pre .comment,

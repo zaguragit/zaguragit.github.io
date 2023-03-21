@@ -39,6 +39,9 @@
           <li><a href=#comments>Comments</a></li>
           <li><a href=#operators>Operators</a></li>
           <li><a href=#definitions>Definitions</a></li>
+          <li><a href=#literals>Literals</a></li>
+          <li><a href=#types>Types</a></li>
+          <li><a href=#typeclasses>Typeclasses</a></li>
         </ul>
       </section>
       <section id=intentions>
@@ -145,11 +148,77 @@
           The types of constants can be omitted thanks to type inference
         </p>
       </section>
-      <section id=aaaaaaaa>
+      <section id=literals>
+        <h2>Literals</h2>
+
+        <p>
+          By default, integers are written in base 10 (<code class=literal>56</code>, <code class=literal>42</code>),
+          but can be written in any base less than 36,
+          by prepending them by the base number & a colon, like so: <code class=literal>16:00ff88</code>, <code class=literal>8:1244</code>, <code class=literal>2:010111010</code>
+        </p>
+        <p>
+          Floats are written exactly like ints, but with a point somewhere in the number.
+          Int literals are automatically converted into floats if a float is needed instead
+        </p>
+        <p>
+          Booleans are written as either <code class=literal>yes</code> or <code class=literal>no</code>
+        </p>
+        <p>
+          Strings are written using single quotes (<code>'</code>)
+          with some typical character escapes: \\, \', \n, \t, \0,
+          and unicode character escapes: \u1234<br>
+          Example: <code class=literal>'Hello World!\n'</code>
+        </p>
+        <p>
+          Arrays are written as <code class>[a, b, c, d, e]</code>
+        </p>
+        <p>
+          Ranges are written as <code class>[a..b]</code>
+        </p>
       </section>
-      <section id=aaaaaaaa>
+      <section id=types>
+        <h2>Types</h2>
+        <p>
+          These are the builtin types:
+        </p>
+        <dl>
+          <dt>integer:</dt><dd>
+            <code class=type>Int</code>, <code class=type>Int32</code>, <code class=type>Int16</code>, <code class=type>Int8</code>
+          </dd>
+          <dt>natural:</dt><dd>
+            <code class=type>Nat</code>, <code class=type>Nat32</code>, <code class=type>Nat16</code>, <code class=type>Nat8</code>
+          </dd>
+          <dt>float:</dt><dd>
+            <code class=type>Fpt</code>, <code class=type>Fpt32</code>
+          </dd>
+          <dt>boolean:</dt><dd>
+            <code class=type>Bool</code>
+          </dd>
+          <dt>string:</dt><dd>
+            <code class=type>Str</code>
+          </dd>
+          <dt>closure:</dt><dd>
+            <code>|<span class=type>Int</span>| <span class=type>Int</span></code><br>
+            <code>|<span class=type>Int</span>, <span class=type>Int</span>| <span class=type>Int</span></code><br>
+            <code>|x: <span class=type>Int</span>, y: <span class=type>Int</span>| <span class=type>Int</span></code>
+          </dd>
+          <dt>array:</dt><dd>
+            <code>[<span class=type>Int</span>]</code>
+          </dd>
+          <dt>tuple:</dt><dd>
+            <code>(<span class=type>Int</span>, <span class=type>Int</span>)</code><br>
+            <code>(x: <span class=type>Int</span>, y: <span class=type>Int</span>)</code><br>
+            <code>()</code>
+          </dd>
+          <dt>params:</dt><dd>
+            <code class=type>Maybe Int</code><br>
+            <code><span class=type>Map</span>[<span class=type>Str</span>, <span class=type>Int</span>]</code><br>
+            <code><span class=type>List Maybe</span> (<span class=type>Str</span>, <span class=type>Int</span>)</code>
+          </dd>
+        </dl>
       </section>
-      <section id=aaaaaaaa>
+      <section id=typeclasses>
+        <h2>Typeclasses</h2>
       </section>
     </main>
   </body>
