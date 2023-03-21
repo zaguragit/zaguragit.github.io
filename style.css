@@ -1,6 +1,7 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--base-foreground-weak) transparent;}
 h1,h2,h3,h4,em{color:var(--base-foreground-strong);font-style:unset;font-weight:700;}
-h2{font-size:1.2em;font-family: sans-serif;}
+h1{font-size:2em;font-family:sans-serif;}
+h2{font-size:1.2em;font-family:sans-serif;}
 p{margin:1em 0;}
 a{color:var(--color-accent);text-decoration:underline currentColor 1px;}
 a:focus,[tabindex]:focus{outline:3px solid;}
@@ -109,16 +110,20 @@ ul {
   line-height: 2;
   list-style-type: none;
 }
-section.links a {
+ul.links a {
   text-decoration: none;
 }
-section.links a::before {
+ul.links a::before {
   content: "=>";
   font-family: monospace;
   margin-right: .5em;
 }
-section.links a:hover {
+ul.links a:hover {
   text-decoration: underline solid currentColor 1px;
+}
+
+.back-to-main {
+  color: var(--base-foreground-weak);
 }
 
 header.me {
@@ -140,8 +145,6 @@ header.me .avatar {
   clip-path: polygon(0 0, 0 80%, 20% 100%, 100% 100%, 100% 20%, 80% 0);
 }
 header.me h1 {
-  font-size: 2em;
-  font-family: sans-serif;
   font-weight: normal;
 }
 header.me .uid {
