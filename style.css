@@ -2,6 +2,7 @@
 h1,h2,h3,h4,em{color:var(--base-foreground-strong);font-style:unset;font-weight:700;}
 h1{font-size:2em;font-family:sans-serif;}
 h2{font-size:1.2em;font-family:sans-serif;}
+h3{font-size:1em;font-family:sans-serif;}
 p{margin:1em 0;}
 a{color:var(--color-accent);text-decoration:underline currentColor 1px;}
 a:focus,[tabindex]:focus{outline:3px solid;}
@@ -13,7 +14,6 @@ a:focus-visible{outline:3px solid;}
 
 :root {
   --color-accent: #e299ff;
-  --card-border-radius: 8px;
   --base-background: #181818;
   --base-foreground: #eedbc0;
   --base-foreground-weak: #8d7d76;
@@ -37,9 +37,7 @@ body {
   padding: 24px;
 }
 
-section {
-  margin: 2em 0;
-}
+section { margin: 2em 0; }
 
 hr {
   color: var(--base-foreground-weak);
@@ -126,12 +124,8 @@ header.me .uid { text-decoration: none; }
 
 @media only screen and (max-width:500px) {
   .grid { grid-template-columns: 100%; }
-  #me .avatar {
-    margin-bottom: 1em;
-  }
-  main {
-    margin-bottom: 32px;
-  }
+  #me .avatar { margin-bottom: 1em; }
+  main { margin-bottom: 32px; }
 }
 
 .add {
