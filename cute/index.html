@@ -38,8 +38,8 @@
           <li><a href=#reserved-keywords>List of Reserved Keywords</a></li>
           <li><a href=#comments>Comments</a></li>
           <li><a href=#operators>Operators</a></li>
-          <li><a href=#definitions>Definitions</a></li>
           <li><a href=#literals>Literals</a></li>
+          <li><a href=#definitions>Definitions</a></li>
           <li><a href=#types>Types</a></li>
           <li><a href=#typeclasses>Typeclasses</a></li>
         </ul>
@@ -48,7 +48,7 @@
         <h2>Intentions</h2>
         <p>
           My intentions with this language are to make the most optimal syntax,
-          one of tha ways i'll try to archieve this is by avoiding nesting,
+          one of the ways i'll try to archieve this is by avoiding nesting,
           like putting functions inside a class/module.
         </p>
         <p>
@@ -124,30 +124,6 @@
           </p>
         </p>
       </section>
-      <section id=definitions>
-        <h2>Definitions</h2>
-        <p>
-          You can define constants, functions, types & typeclasses.
-          Any definition starts with either <code class=kw>my</code> (for private) or <code class=kw>our</code> (for public)
-        </p>
-        <dl>
-          <dt>constant:</dt><dd>
-            <code><span class=kw>our</span> some-name: <span class=type>SomeType</span> = <span class=literal>69</span></code>
-          </dd>
-          <dt>function:</dt><dd>
-            <code><span class=kw>our</span> <span class=fn>some-name</span>(p0: <span class=type>Int</span>, p1: <span class=type>Fpt</span>): <span class=type>SomeType</span> = <span class=literal>69</span></code>
-          </dd>
-          <dt>type:</dt><dd>
-            <code><span class=kw>our</span> :<span class=type>Maybe T</span> = <span class=fn>Yes</span>(<span class=type>T</span>)  <span class=fn>No</span></code>
-          </dd>
-          <dt>typeclass:</dt><dd>
-            <code><span class=kw>our</span> :: <span class=class>Ord</span> <span class=type>T</span> = <span class=kw>has</span> <span class=fn>cmp</span>(a: <span class=type>T</span>, b: <span class=type>T</span>): <span class=type>Ordering</span></code>
-          </dd>
-        </dl>
-        <p>
-          The types of constants can be omitted thanks to type inference
-        </p>
-      </section>
       <section id=literals>
         <h2>Literals</h2>
 
@@ -176,16 +152,40 @@
           Ranges are written as <code class>[a..b]</code>
         </p>
       </section>
+      <section id=definitions>
+        <h2>Definitions</h2>
+        <p>
+          You can define constants, functions, types & typeclasses.
+          Any definition starts with either <code class=kw>my</code> (for private) or <code class=kw>our</code> (for public)
+        </p>
+        <dl>
+          <dt>constant:</dt><dd>
+            <code><span class=kw>our</span> some-name: <span class=type>SomeType</span> = <span class=literal>69</span></code>
+          </dd>
+          <dt>function:</dt><dd>
+            <code><span class=kw>our</span> <span class=fn>some-name</span>(p0: <span class=type>Int</span>, p1: <span class=type>Fpt</span>): <span class=type>SomeType</span> = <span class=literal>69</span></code>
+          </dd>
+          <dt>type:</dt><dd>
+            <code><span class=kw>our</span> :<span class=type>Maybe T</span> = <span class=fn>Yes</span>(<span class=type>T</span>)  <span class=fn>No</span></code>
+          </dd>
+          <dt>typeclass:</dt><dd>
+            <code><span class=kw>our</span> :: <span class=class>Ord</span> <span class=type>T</span> = <span class=kw>has</span> <span class=fn>cmp</span>(a: <span class=type>T</span>, b: <span class=type>T</span>): <span class=type>Ordering</span></code>
+          </dd>
+        </dl>
+        <p>
+          The types of constants can be omitted thanks to type inference
+        </p>
+      </section>
       <section id=types>
         <h2>Types</h2>
         <p>
           These are the builtin types:
         </p>
         <dl>
-          <dt>integer:</dt><dd>
+          <dt>signed:</dt><dd>
             <code class=type>Int</code>, <code class=type>Int32</code>, <code class=type>Int16</code>, <code class=type>Int8</code>
           </dd>
-          <dt>natural:</dt><dd>
+          <dt>unsigned:</dt><dd>
             <code class=type>Nat</code>, <code class=type>Nat32</code>, <code class=type>Nat16</code>, <code class=type>Nat8</code>
           </dd>
           <dt>float:</dt><dd>
@@ -219,6 +219,18 @@
       </section>
       <section id=typeclasses>
         <h2>Typeclasses</h2>
+        <p>
+          Typeclasses can be used in function definitions to require
+          certain functions for the given types to be present when
+          the defined function is invoked.
+        </p>
+        <p>
+          This is really good for writing generic functions, for example to operate on any types that constitute a map, this would be the typeclass:
+        </p>
+        <pre>
+<code class=kw>our</code> :: <code class=class>Map</code> <code class=type>K</code>, <code class=type>V</code>, <code class=type>M</code> =
+    <code class=kw>has</code> <code class=fn>get</code>(self: <code class=type>M</code>, key: <code class=type>K</code>): <code class=type>Maybe V</code>
+    <code class=kw>has</code> <code class=fn>set</code>(self: <code class=type>M</code>, key: <code class=type>K</code>, value: <code class=type>V</code>): ()</pre>
       </section>
     </main>
   </body>
