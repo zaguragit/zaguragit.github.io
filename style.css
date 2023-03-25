@@ -124,7 +124,7 @@ header.me .uid { text-decoration: none; }
 
 @media only screen and (max-width:500px) {
   .grid { grid-template-columns: 100%; }
-  #me .avatar { margin-bottom: 1em; }
+  header.me .avatar { margin-bottom: 1em; }
   main { margin-bottom: 32px; }
 }
 
