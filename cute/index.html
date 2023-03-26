@@ -34,30 +34,22 @@
       <section>
         <h2>Table of Contents</h2>
         <ul class=links>
-          <li><a href=#intentions>Intentions</a></li>
-          <li><a href=#reserved-keywords>List of Reserved Keywords</a></li>
+          <li><a href=#intro>Intro to Syntax</a></li>
           <li><a href=#comments>Comments</a></li>
           <li><a href=#operators>Operators</a></li>
           <li><a href=#literals>Literals</a></li>
+          <li><a href=#for>For Loops</a></li>
+          <li><a href=#lambdas>Lambdas</a></li>
+          <li><a href=#fn-invocations>Function Invocations</a></li>
           <li><a href=#definitions>Definitions</a></li>
           <li><a href=#types>Types</a></li>
           <li><a href=#typeclasses>Typeclasses</a></li>
         </ul>
       </section>
-      <section id=intentions>
-        <h2>Intentions</h2>
-        <p>
-          My intentions with this language are to make the most optimal syntax,
-          one of the ways i'll try to archieve this is by avoiding nesting,
-          like putting functions inside a class/module.
-        </p>
-        <p>
-          Also, the language should ideally strive towards cuteness,
-          so short, friendly-looking keywords, concise syntax & no overly sharp/noisy symbols
-        </p>
-      </section>
-      <section id=reserved-keywords>
-        <h2>List of Reserved Keywords</h2>
+      <section id=intro>
+        <h2>Intro to Syntax</h2>
+        <p>In Cute, instead of snake_case, kebab-case is used. Also, while the syntax is meant to make it look that way, Cute is NOT whitespace-sensitive</p>
+        <h3>List of Reserved Keywords</h3>
         <p>
           <code class=kw>my</code>, <code class=kw>our</code>, <code class=kw>has</code>, <code class=kw>impl</code>,
           <code class=kw>and</code>, <code class=kw>or</code>, <code class=kw>not</code>, <code class=kw>use</code>,
@@ -126,7 +118,6 @@
       </section>
       <section id=literals>
         <h2>Literals</h2>
-
         <p>
           By default, integers are written in base 10 (<code class=literal>56</code>, <code class=literal>42</code>),
           but can be written in any base less than 36,
@@ -150,6 +141,40 @@
         </p>
         <p>
           Ranges are written as <code class>[<span class=identifier>a</span>..<span class=identifier>b</span>]</code>
+        </p>
+      </section>
+      <section id=for>
+        <h2>For Loops</h2>
+        <p>
+          Cute has a for-loop construct, but it's actually just a sugared-up version of map and filter from other languages
+          (so it's actually an expression, not a statement).
+          This is what multiplying every element in the list by 2 would look like:
+        </p>
+        <pre>
+<span class=kw>for</span> <span class=identifier>x</span> <span class=kw>in</span> <span class=identifier>my-list</span>:
+    <span class=identifier>x</span> * <span class=literal>2</span></pre>
+        <p>
+          And this is what getting a list of all the prime numbers from another list would look like:
+        </p>
+        <pre>
+<span class=kw>for</span> <span class=identifier>x</span> <span class=kw>in</span> <span class=identifier>my-list</span> <span class=kw>if</span> <span class=identifier>x</span> &gt;- <span class=fn>is-prime</span>: <span class=identifier>x</span></pre>
+      </section>
+      <section id=lambdas>
+        <h2>Lambdas</h2>
+        <p>
+          To write a lambda, prefix an expression with a comma-separated list of param names, between pipes:
+          <code>|<span class=identifier>x</span>, <span class=identifier>y</span>| <span class=identifier>x</span> + <span class=identifier>y</span> * <span class=literal>2</span></code>
+        </p>
+      </section>
+      <section id=fn-invocations>
+        <h2>Function Invocations</h2>
+        <p>
+          Functions are invoked like in most languages:
+          <code><span class=fn>my-function</span>(<span class=identifier>a</span>, <span class=identifier>b</span>, <span class=identifier>c</span>)</code>,
+          but there's also a pipe-first syntax for chaining function calls:
+          <code><span class=identifier>a</span> &gt;- <span class=fn>my-function</span>(<span class=identifier>b</span>, <span class=identifier>c</span>)</code>.
+          To put any value after the <code>&gt;-</code>, use parentheses, like so:
+          <code><span class=identifier>a</span> &gt;- (|<span class=identifier>x</span>| <span class=identifier>x</span> * <span class=literal>2</span>)</code>
         </p>
       </section>
       <section id=definitions>
@@ -225,12 +250,26 @@
           the defined function is invoked.
         </p>
         <p>
-          This is really good for writing generic functions, for example to operate on any types that constitute a map, this would be the typeclass:
+          This is really good for writing generic functions,
+          for example to operate on any types that constitute a map,
+          this would be the typeclass:
         </p>
         <pre>
 <span class=kw>our</span> :: <span class=class>Map</span> <span class=type>K</span>, <span class=type>V</span>, <span class=type>M</span> =
     <span class=kw>has</span> <span class=fn>get</span>(<span class=identifier>self</span>: <span class=type>M</span>, <span class=identifier>key</span>: <span class=type>K</span>): <span class=type>Maybe V</span>
     <span class=kw>has</span> <span class=fn>set</span>(<span class=identifier>self</span>: <span class=type>M</span>, <span class=identifier>key</span>: <span class=type>K</span>, <span class=identifier>value</span>: <span class=type>V</span>): ()</pre>
+        <p>
+          And this would be a generic function using the typeclass (<code><span class=class>Map</span>[<span class=type>M</span>, <span class=type>K</span>, <span class=type>V</span>]</code>):
+        </p>
+        <pre>
+<span class=kw>our</span> <span class=fn>get-or</span>[<span class=type>K</span>, <span class=type>V</span>, <span class=type>M</span>](
+    <span class=identifier>self</span>: <span class=type>M</span>,
+    <span class=identifier>key</span>: <span class=type>K</span>,
+    <span class=identifier>default</span>: || <span class=type>V</span>,
+): <span class=type>V</span> :: <span class=class>Map</span>[<span class=type>M</span>, <span class=type>K</span>, <span class=type>V</span>] = <span class=identifier>self</span> &gt;- <span class=fn>get</span>(<span class=identifier>key</span>) &gt;- <span class=fn>or-else</span>(<span class=identifier>default</span>)</pre>
+        <p>
+          
+        </p>
       </section>
     </main>
   </body>
