@@ -143,13 +143,13 @@
           Strings are written using single quotes (<code>'</code>)
           with some typical character escapes: \\, \', \n, \t, \0,
           and unicode character escapes: \u1234<br>
-          Example: <code class=literal>'Hello World!\n'</code>
+          Example: <code class=str>'Hello World!<span class=literal>\n</span>'</code>
         </p>
         <p>
-          Arrays are written as <code class>[a, b, c, d, e]</code>
+          Arrays are written as <code class>[<span class=identifier>a</span>, <span class=identifier>b</span>, <span class=identifier>c</span>, <span class=identifier>d</span>, <span class=identifier>e</span>]</code>
         </p>
         <p>
-          Ranges are written as <code class>[a..b]</code>
+          Ranges are written as <code class>[<span class=identifier>a</span>..<span class=identifier>b</span>]</code>
         </p>
       </section>
       <section id=definitions>
@@ -160,16 +160,16 @@
         </p>
         <dl>
           <dt>constant:</dt><dd>
-            <code><span class=kw>our</span> some-name: <span class=type>SomeType</span> = <span class=literal>69</span></code>
+            <code><span class=kw>our</span> <span class=identifier>some-name</span>: <span class=type>SomeType</span> = <span class=literal>69</span></code>
           </dd>
           <dt>function:</dt><dd>
-            <code><span class=kw>our</span> <span class=fn>some-name</span>(p0: <span class=type>Int</span>, p1: <span class=type>Fpt</span>): <span class=type>SomeType</span> = <span class=literal>69</span></code>
+            <code><span class=kw>our</span> <span class=fn>some-name</span>(<span class=identifier>p0</span>: <span class=type>Int</span>, <span class=identifier>p1</span>: <span class=type>Fpt</span>): <span class=type>SomeType</span> = <span class=literal>69</span></code>
           </dd>
           <dt>type:</dt><dd>
             <code><span class=kw>our</span> :<span class=type>Maybe T</span> = <span class=fn>Yes</span>(<span class=type>T</span>)  <span class=fn>No</span></code>
           </dd>
           <dt>typeclass:</dt><dd>
-            <code><span class=kw>our</span> :: <span class=class>Ord</span> <span class=type>T</span> = <span class=kw>has</span> <span class=fn>cmp</span>(a: <span class=type>T</span>, b: <span class=type>T</span>): <span class=type>Ordering</span></code>
+            <code><span class=kw>our</span> :: <span class=class>Ord</span> <span class=type>T</span> = <span class=kw>has</span> <span class=fn>cmp</span>(<span class=identifier>a</span>: <span class=type>T</span>, <span class=identifier>b</span>: <span class=type>T</span>): <span class=type>Ordering</span></code>
           </dd>
         </dl>
         <p>
@@ -200,14 +200,14 @@
           <dt>closure:</dt><dd>
             <code>|<span class=type>Int</span>| <span class=type>Int</span></code><br>
             <code>|<span class=type>Int</span>, <span class=type>Int</span>| <span class=type>Int</span></code><br>
-            <code>|x: <span class=type>Int</span>, y: <span class=type>Int</span>| <span class=type>Int</span></code>
+            <code>|<span class=identifier>x</span>: <span class=type>Int</span>, <span class=identifier>y</span>: <span class=type>Int</span>| <span class=type>Int</span></code>
           </dd>
           <dt>array:</dt><dd>
             <code>[<span class=type>Int</span>]</code>
           </dd>
           <dt>tuple:</dt><dd>
             <code>(<span class=type>Int</span>, <span class=type>Int</span>)</code><br>
-            <code>(x: <span class=type>Int</span>, y: <span class=type>Int</span>)</code><br>
+            <code>(<span class=identifier>x</span>: <span class=type>Int</span>, <span class=identifier>y</span>: <span class=type>Int</span>)</code><br>
             <code>()</code>
           </dd>
           <dt>params:</dt><dd>
@@ -228,9 +228,9 @@
           This is really good for writing generic functions, for example to operate on any types that constitute a map, this would be the typeclass:
         </p>
         <pre>
-<code class=kw>our</code> :: <code class=class>Map</code> <code class=type>K</code>, <code class=type>V</code>, <code class=type>M</code> =
-    <code class=kw>has</code> <code class=fn>get</code>(self: <code class=type>M</code>, key: <code class=type>K</code>): <code class=type>Maybe V</code>
-    <code class=kw>has</code> <code class=fn>set</code>(self: <code class=type>M</code>, key: <code class=type>K</code>, value: <code class=type>V</code>): ()</pre>
+<span class=kw>our</span> :: <span class=class>Map</span> <span class=type>K</span>, <span class=type>V</span>, <span class=type>M</span> =
+    <span class=kw>has</span> <span class=fn>get</span>(<span class=identifier>self</span>: <span class=type>M</span>, <span class=identifier>key</span>: <span class=type>K</span>): <span class=type>Maybe V</span>
+    <span class=kw>has</span> <span class=fn>set</span>(<span class=identifier>self</span>: <span class=type>M</span>, <span class=identifier>key</span>: <span class=type>K</span>, <span class=identifier>value</span>: <span class=type>V</span>): ()</pre>
       </section>
     </main>
   </body>

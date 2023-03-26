@@ -25,6 +25,7 @@ a:focus-visible{outline:3px solid;}
   background-color: var(--base-background);
   background-image: url('assets/gif/bg.gif');
   color: var(--base-foreground);
+	color-scheme: dark;
 }
 ::selection {
   background-color: #ae7cff56;

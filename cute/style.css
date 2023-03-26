@@ -1,32 +1,42 @@
 code {
   display: inline-block;
-  padding: 0 .1em;
-  color: #b1a799;
+  padding: 0 .5em;
 }
 
 pre {
   padding: .6em;
-  border: 1px solid var(--base-foreground-weak);
-  color: #b1ad99;
+  border: 1px solid #49424d;
   line-height: 1.6;
+  border-radius: 4px;
+}
+
+code, pre {
+  color: #C1B99F;
+  background: #1c1a1d;
 }
 
 pre .comment,
 code .comment,
 code.comment {
-  opacity: 0.5;
+  color: #828679;
 }
 
 pre .literal,
 code .literal,
 code.literal {
-  color: #adf870;
+  color: #81df5c;
+}
+
+pre .str,
+code .str,
+code.str {
+  color: #717EEC;
 }
 
 pre .kw,
 code .kw,
 code.kw {
-  color: #fffd6d;
+  color: #ffffff;
   font-weight: 700;
   font-style: italic;
 }
@@ -34,18 +44,31 @@ code.kw {
 pre .type,
 code .type,
 code.type {
-  color: #3fbabe;
+  color: #6e718b;
   font-style: italic;
 }
 
 pre .fn,
 code .fn,
 code.fn {
-  color: #ce3e6e;
+  color: #CD6A6A;
+  font-style: italic;
+}
+
+pre .identifier,
+code .identifier,
+code.identifier {
+  color: #97c7ee;
 }
 
 pre .class,
 code .class,
 code.class {
-  color: #ab6af5;
+  color: #CD6A6A;
+}
+
+pre .meta,
+code .meta,
+code.meta {
+  color: #DE806B;
 }
