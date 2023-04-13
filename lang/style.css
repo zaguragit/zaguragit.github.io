@@ -7,8 +7,27 @@ table {
 
 table td, table th {
     text-align: center;
-    border: 1px solid var(--base-foreground-weak);
     padding: .2em 1ch;
+}
+
+table tr:nth-child(2n) td {
+    background: #8d7d7633;
+}
+
+table tr td {
+    background: #8d7d7622;
+}
+
+table tr {
+    border: 1px solid var(--base-foreground-weak);
+}
+
+table th {
+    color: var(--base-foreground-weak);
+}
+
+table.definitions {
+    width: 100%;
 }
 
 table.definitions td:nth-child(2) {
