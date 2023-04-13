@@ -10,3 +10,7 @@ table td, table th {
     border: 1px solid var(--base-foreground-weak);
     padding: .2em 1ch;
 }
+
+table.definitions td:nth-child(2) {
+    text-align: start;
+}
