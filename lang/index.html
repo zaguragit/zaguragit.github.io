@@ -63,15 +63,15 @@
             <td></td>
           </tr>
           <tr>
-            <th>Stop</th>
-            <td></td>
-            <td>t d</td>
-            <td>k g</td>
+            <th>Plosive</th>
+            <td>p</td>
+            <td>t</td>
+            <td>k</td>
           </tr>
           <tr>
             <th>Fricative</th>
             <td></td>
-            <td>s z</td>
+            <td>z</td>
             <td></td>
           </tr>
           <tr>
@@ -89,13 +89,11 @@
         </li>
         <li>
           Syllables must follow the structure (C)V(n, m, l).
-          The first consonant can only be omitted in first syllable
+          The first consonant can only be omitted in first syllable.
+          A word cannot start with /ji/
         </li>
         <li>
-          /t/, /k/, /s/ are used at the start of a word, unless followed by /a/, while /d/, /g/, /z/ are used elsewhere
-        </li>
-        <li>
-          The combinations ji/ij are not allowed
+          The combinations /ij/ &amp; /nm/ are not allowed
         </li>
       </ul>
     </section>
@@ -135,24 +133,28 @@
                 <td>/l/</td>
               </tr>
               <tr>
-                <td>N n</td>
+                <td>Ո n</td>
                 <td>/n/</td>
               </tr>
               <tr>
-                <td>Ƞ ƞ</td>
+                <td>Ƞ ŋ</td>
                 <td>/m/</td>
               </tr>
               <tr>
                 <td>T t</td>
-                <td>/t/, /d/</td>
+                <td>/t/</td>
               </tr>
               <tr>
-                <td>Q q</td>
-                <td>/k/, /g/</td>
+                <td>K k</td>
+                <td>/k/</td>
+              </tr>
+              <tr>
+                <td>P p</td>
+                <td>/p/</td>
               </tr>
               <tr>
                 <td>Z z</td>
-                <td>/s/, /z/</td>
+                <td>/z/</td>
               </tr>
             </tbody>
           </table>
@@ -181,9 +183,9 @@
       <h2>Syntax</h2>
       <p>
         ⟨Untitled Conlang Experiment⟩ has an SVO (subject, verb, object) structure.
-        Adjectives follow nouns, adverbs follow verbs.
+        Adjectives follow nouns, adverbs &amp; predicatives follow verbs.
         There's no distinction between adjectives, nouns &amp; pronouns:
-        the first one is treated as a nound, and the rest as modifiers.
+        the first one is treated as a noun, and the rest as modifiers.
         The one exception are numerals, which precede their noun
       </p>
       <h3>Proper Names &amp; Foreign Words</h3>
@@ -196,7 +198,7 @@
       <p>The number system is seximal (base 6)</p>
       <p>Single-digit numbers &amp; 10 are represented with these words:</p>
       <table>
-        <caption>Digit Words</caption>
+        <caption>Number Words</caption>
         <tbody>
           <tr>
             <th>0</th>
@@ -205,29 +207,29 @@
             <th>3</th>
             <th>4</th>
             <th>5</th>
+            <th>10</th>
+            <th>100</th>
           </tr>
           <tr>
             <td>nil</td>
             <td>un</td>
+            <td>qu</td>
+            <td>ŋi</td>
             <td>li</td>
-            <td>ƞi</td>
-            <td>ƞin</td>
-            <td>ƞil</td>
+            <td>qo</td>
+            <td>zʌn</td>
+            <td>zulʌ</td>
           </tr>
         </tbody>
       </table>
       <table>
-        <caption>Composition Words</caption>
+        <caption>Unexian Suffix</caption>
         <tbody>
           <tr>
-            <th>10</th>
-            <th>100</th>
             <th>10000</th>
           </tr>
           <tr>
-            <td>zʌn</td>
-            <td>lonʌ</td>
-            <td>lonȷʌ</td>
+            <td>-zol</td>
           </tr>
         </tbody>
       </table>
@@ -241,8 +243,8 @@
           </tr>
           <tr>
             <td><var>A</var></td>
-            <td>un|li|ƞi|ƞin|ƞil</td>
-            <td>[1, 5]</td>
+            <td>nil|un|qu|ŋi|zin|qon</td>
+            <td>[0, 5]</td>
           </tr>
           <tr>
             <td><var>B</var></td>
@@ -262,16 +264,16 @@
           <tr>
             <td><var>E</var></td>
             <td>
-              <var>D<sub>1</sub></var> lonʌ <var>D<sub>2</sub></var><br>
+              <var>D<sub>1</sub></var> zulʌ <var>D<sub>2</sub></var><br>
               (<var>D<sub>1</sub></var> = 1 if missing)<br>
               (<var>D<sub>2</sub></var> = 0 if missing)<br>
-              (lonʌ is optional if result is unambiguous)
+              (zulʌ is optional if result is unambiguous)
             </td>
             <td>(<var>D<sub>1</sub></var> * 100) + <var>D<sub>2</sub></var></td>
           </tr>
           <tr>
             <td><var>F</var></td>
-            <td><var>A</var>-lonȷʌ</td>
+            <td><var>A</var> + -zol</td>
             <td>10000 ^ <var>A</var></td>
           </tr>
           <tr>
@@ -289,20 +291,21 @@
       <h3>Examples</h3>
       <p>
         <ul>
-          <li>43 = ƞin-zʌn ƞi</li>
-          <li>100 = lonʌ</li>
-          <li>142 = un ƞin-zʌn li</li>
-          <li>513 = ƞil lonʌ zʌn ƞi / ƞil un-zʌn ƞi</li>
-          <li>4251 = ƞin-zʌn li ƞil-zʌn un</li>
-          <li>35 2042 = ƞi-zʌn ƞil un-lonjʌ li-zʌn nil ƞin-zʌn li / ƞi-zʌn ƞil un-lonjʌ li-zʌn lonʌ ƞin-zʌn li</li>
-          <li>300 0000 0000 = ƞi lonʌ li-lonjʌ</li>
+          <li>43 = li-zʌn ŋi</li>
+          <li>100 = zulʌ</li>
+          <li>142 = un li-zʌn qu</li>
+          <li>214 = qu un-zʌn li</li>
+          <li>513 = qo zulʌ zʌn ŋi</li>
+          <li>4251 = li-zʌn qu qo-zʌn un</li>
+          <li>35 2042 = ŋi-zʌn qo unzol qu-zʌn li-zʌn qu</li>
+          <li>300 0000 0000 = ŋi zulʌ quzol</li>
         </ul>
       </p>
     </section>
     <section>
       <h2>Example Sentenses</h2>
       <p>
-        <dt>Zo oƞlʌ ȷʌ o ʌqil zu</dt>
+        <dt>Zo oŋlʌ ȷʌ o ʌqil zu</dt>
         <dd>
           <span class=phonetical>[so ˈomla ja o ˈagil su]</span>
           <aside>I like your outfit (I feel positive about your decoration)</aside>
