@@ -164,7 +164,7 @@
           </p>
           <h3>Capitallization</h3>
           <ul>
-            <li>First letter in sentense</li>
+            <li>First letter in sentense, first letter of proper or foreign words</li>
           </ul>
           <h3>Numbers</h3>
           <p>
@@ -183,13 +183,18 @@
         ⟨Untitled Conlang Experiment⟩ has an SVO (subject, verb, object) structure.
         Adjectives follow nouns, adverbs follow verbs.
         There's no distinction between adjectives, nouns &amp; pronouns:
-        the first one is treated as a nound, and the rest as modifiers
+        the first one is treated as a nound, and the rest as modifiers.
+        The one exception are numerals, which precede their noun
+      </p>
+      <h3>Proper Names &amp; Foreign Words</h3>
+      <p>
+        Both proper names &amp; foreign words must be used as a modifier/adjective after a noun, and are always capitalized
       </p>
     </section>
     <section>
       <h2>Numbers</h2>
       <p>The number system is seximal (base 6)</p>
-      <p>Single-digit numbers are represented with digit words:</p>
+      <p>Single-digit numbers &amp; 10 are represented with these words:</p>
       <table>
         <caption>Digit Words</caption>
         <tbody>
@@ -205,13 +210,94 @@
             <td>nil</td>
             <td>un</td>
             <td>li</td>
-            <td>zʌn</td>
-            <td>zi</td>
-            <td>ziqo</td>
+            <td>ƞi</td>
+            <td>ƞin</td>
+            <td>ƞil</td>
           </tr>
         </tbody>
       </table>
-      <p>Haven't decided on how bigger numbers are made yet</p>
+      <table>
+        <caption>Composition Words</caption>
+        <tbody>
+          <tr>
+            <th>10</th>
+            <th>100</th>
+            <th>10000</th>
+          </tr>
+          <tr>
+            <td>zʌn</td>
+            <td>lonʌ</td>
+            <td>lonȷʌ</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class=definitions>
+        <caption>Quick Syntax Table</caption>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Syntax</th>
+            <th>Number</th>
+          </tr>
+          <tr>
+            <td><var>A</var></td>
+            <td>un|li|ƞi|ƞin|ƞil</td>
+            <td>[1, 5]</td>
+          </tr>
+          <tr>
+            <td><var>B</var></td>
+            <td><var>A</var>-zʌn</td>
+            <td><var>A</var> * 10</td>
+          </tr>
+          <tr>
+            <td><var>C</var></td>
+            <td><var>B</var> <var>A</var></td>
+            <td><var>B</var> + <var>A</var></td>
+          </tr>
+          <tr>
+            <td><var>D</var></td>
+            <td><var>A</var>|<var>B</var>|<var>C</var></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><var>E</var></td>
+            <td>
+              <var>D<sub>1</sub></var> lonʌ <var>D<sub>2</sub></var><br>
+              (<var>D<sub>1</sub></var> = 1 if missing)<br>
+              (<var>D<sub>2</sub></var> = 0 if missing)<br>
+              (lonʌ is optional if result is unambiguous)
+            </td>
+            <td>(<var>D<sub>1</sub></var> * 100) + <var>D<sub>2</sub></var></td>
+          </tr>
+          <tr>
+            <td><var>F</var></td>
+            <td><var>A</var>-lonȷʌ</td>
+            <td>10000 ^ <var>A</var></td>
+          </tr>
+          <tr>
+            <td><var>G</var></td>
+            <td><var>D</var>|<var>E</var></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><var>H</var></td>
+            <td><var>G</var> <var>F</var> <var>H</var></td>
+            <td>(<var>G</var> * <var>F</var>) + <var>H</var></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Examples</h3>
+      <p>
+        <ul>
+          <li>43 = ƞin-zʌn ƞi</li>
+          <li>100 = lonʌ</li>
+          <li>142 = un ƞin-zʌn li</li>
+          <li>513 = ƞil lonʌ zʌn ƞi / ƞil un-zʌn ƞi</li>
+          <li>4251 = ƞin-zʌn li ƞil-zʌn un</li>
+          <li>35 2042 = ƞi-zʌn ƞil un-lonjʌ li-zʌn nil ƞin-zʌn li / ƞi-zʌn ƞil un-lonjʌ li-zʌn lonʌ ƞin-zʌn li</li>
+          <li>300 0000 0000 = ƞi lonʌ li-lonjʌ</li>
+        </ul>
+      </p>
     </section>
     <section>
       <h2>Example Sentenses</h2>
