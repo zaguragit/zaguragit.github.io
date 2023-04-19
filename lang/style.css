@@ -1,4 +1,9 @@
 
+@font-face {
+    font-family: "Conlang";
+    src: url('./conlang.woff2') format("woff2");
+}
+
 table {
     border-spacing: 0;
     border-collapse: collapse;
@@ -32,4 +37,25 @@ table.definitions {
 
 table.definitions td:nth-child(2) {
     text-align: start;
+}
+
+.conlang {
+    font-family: "Conlang", serif;
+    font-size: 1.2em;
+}
+
+.translation {
+    color: var(--base-foreground-weak);
+}
+
+.translation::before {
+    content: "means: ";
+    opacity: 0.6;
+}
+
+.phonetical::before {
+    content: "sounds: ";
+    color: var(--base-foreground-weak);
+    font-family: monospace;
+    opacity: 0.6;
 }

@@ -67,8 +67,7 @@ dl dt {
 a.no-deco,.webring a:not(:hover){text-decoration:none;}
 
 .phonetical {
-  color: var(--base-foreground);
-  opacity: 0.5;
+  color: var(--base-foreground-weak);
   font-family: sans-serif;
 }
 
@@ -91,6 +90,7 @@ a.no-deco,.webring a:not(:hover){text-decoration:none;}
 }
 
 li { margin: .5em 0; }
+li > ul, li > ol { margin-left: 18px; }
 ul.links { list-style-type: none; }
 ul.links a { text-decoration: none; }
 ul.links a::before { content: "=> "; }
