@@ -4,33 +4,6 @@
     src: url('./conlang.woff2') format("woff2");
 }
 
-table {
-    border-spacing: 0;
-    border-collapse: collapse;
-    margin: 1em 0;
-}
-
-table td, table th {
-    text-align: center;
-    padding: .2em 1ch;
-}
-
-table tr:nth-child(2n) td {
-    background: #8d7d7633;
-}
-
-table tr td {
-    background: #8d7d7622;
-}
-
-table tr {
-    border: 1px solid var(--base-foreground-weak);
-}
-
-table th {
-    color: var(--base-foreground-weak);
-}
-
 table.definitions {
     width: 100%;
 }
@@ -51,6 +24,10 @@ table.definitions td:nth-child(2) {
 .translation::before {
     content: "means: ";
     opacity: 0.6;
+}
+
+.phonetical {
+    color: var(--base-foreground-weak);
 }
 
 .phonetical::before {
