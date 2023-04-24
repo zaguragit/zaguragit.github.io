@@ -32,7 +32,7 @@ a.no-deco,.webring a:not(:hover){text-decoration:none;}
   --base-foreground-strong: #fffcd5;
   --rainbow: repeating-linear-gradient(to right,
     #ff647e, #ffb374, #fdff6d, #4aff5f, #89caff, #ff7eff, #ff647e);
-  font-family: monospace;
+  font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
