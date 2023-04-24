@@ -4,14 +4,6 @@
     src: url('./conlang.woff2') format("woff2");
 }
 
-table.definitions {
-    width: 100%;
-}
-
-table.definitions td:nth-child(2) {
-    text-align: start;
-}
-
 .conlang {
     font-family: "Conlang", serif;
     font-size: 1.2em;
@@ -27,6 +19,7 @@ table.definitions td:nth-child(2) {
 }
 
 .phonetical {
+    font-family: sans-serif;
     color: var(--base-foreground-weak);
 }
 

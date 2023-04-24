@@ -4,20 +4,34 @@ h1{font-size:2em;font-family:sans-serif;}
 h2{font-size:1.2em;font-family:sans-serif;}
 h3{font-size:1em;font-family:sans-serif;}
 p{margin:1em 0;}
-a{color:var(--color-accent);text-decoration:underline currentColor 1px;}
-a:focus,[tabindex]:focus{outline:3px solid;}
+a:focus,[tabindex]:focus{outline:#fff 3px solid;}
 @supports selector(:focus-visible){a:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none;}}
-a:focus-visible{outline:3px solid;}
+a:focus-visible{outline:#fff 3px solid;}
+hr{border:none;position:relative;overflow:visible;}
 .hide{display:none;}
 .float-right{float:right;}
 .pixelart{image-rendering:pixelated;}
 
+a {
+  color: var(--color-accent);
+  font-weight: 700;
+  text-shadow: .1em .05em #000000;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline wavy #fff 1px;
+}
+
+a.no-deco,.webring a:not(:hover){text-decoration:none;}
+
 :root {
-  --color-accent: #e299ff;
+  --color-accent: #f582ff;
   --base-background: #181818;
   --base-foreground: #eedbc0;
   --base-foreground-weak: #8d7d76;
   --base-foreground-strong: #fffcd5;
+  --rainbow: repeating-linear-gradient(to right,
+    #ff647e, #ffb374, #fdff6d, #4aff5f, #89caff, #ff7eff, #ff647e);
   font-family: monospace;
   font-size: 16px;
   font-weight: 400;
@@ -41,31 +55,23 @@ body {
 section { margin: 2em 0; }
 
 table {
-    border-spacing: 0;
-    border-collapse: collapse;
-    margin: 1em 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 1em 0;
 }
 table td, table th {
-    text-align: center;
-    padding: .2em 1ch;
+  text-align: center;
+  padding: .2em 1ch;
 }
 table tr:nth-child(2n) td { background: #8d7d7633; }
 table tr td { background: #8d7d7622; }
-table tr { border: 1px solid var(--base-foreground-weak); }
+table tr {
+  border: 1px solid var(--base-foreground-weak);
+}
 table th { color: var(--base-foreground-weak); }
 
-hr {
-  color: var(--base-foreground-weak);
-  border: none;
-}
-hr::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: .2em;
-  border-top: .2em dotted currentColor;
-  border-bottom: .2em dotted currentColor;
-}
+table.definitions { width: 100%; }
+table.definitions td:nth-child(2) { text-align: start; }
 
 dl {
   display: grid;
@@ -78,12 +84,6 @@ dl dt {
   color: var(--base-foreground-weak);
 }
 
-a.no-deco,.webring a:not(:hover){text-decoration:none;}
-
-.phonetical {
-  font-family: sans-serif;
-}
-
 .webring {
   display: flex;
   flex-direction: row;
@@ -91,25 +91,63 @@ a.no-deco,.webring a:not(:hover){text-decoration:none;}
 .webring .center {
   flex-grow: 1;
   text-align: center;
-}
-.webring .hub {
-  font-weight: 700;
   color: var(--base-foreground);
   text-decoration: underline solid var(--color-accent) 2px !important;
-}
-.webring .extra {
-  color: var(--base-foreground-weak);
-  font-size: 0.6em;
 }
 
 li { margin: .5em 0; }
 li > ul, li > ol { margin-left: 18px; }
 ul.links { list-style-type: none; }
-ul.links a { text-decoration: none; }
-ul.links a::before { content: "λ: "; }
-ul.links a:hover { text-decoration: underline solid currentColor 1px; }
+ul.links li::before { content: "λ: "; color: var(--base-foreground-weak); }
 
 .back-to-main { color: var(--base-foreground-weak); }
+
+header.title {
+  text-align: center;
+  font-size: 1.2em;
+  position: relative;
+}
+@keyframes movebg-border {
+  0% {background-position-x: 0, 0;}
+  100% {background-position-x: 16px, 512px;}
+}
+hr::after,
+header.title::after {
+  content: '';
+  height: 1px;
+  display: block;
+  background-image: repeating-linear-gradient(to right, transparent 0, transparent 8px, #000 8px, #000 16px), var(--rainbow);
+  background-size: 512px 512px;
+  animation: movebg-border 3s linear 0ms infinite forwards running;
+}
+
+@keyframes movebg-h1 {
+  0% {background-position-x: 0;}
+  100% {background-position-x: 512px;}
+}
+header > h1 {
+  font-weight: 900;
+  font-size: 2.2em;
+  color: transparent;
+  filter: drop-shadow(.1em .05em #000000) drop-shadow(0 0 32px #6f00ff33);
+  background-image: var(--rainbow);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 512px 512px;
+  animation: movebg-h1 3s linear 0ms infinite forwards running;
+  position: relative;
+}
+header > h1::after {
+  content: attr(content);
+  background-image: var(--rainbow);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 512px 512px;
+  animation: movebg-h1 3s linear 0ms infinite forwards running;
+  position: absolute;
+  inset: 0;
+  filter: blur(18px) opacity(60%);
+}
 
 .grid {
   display: grid;
