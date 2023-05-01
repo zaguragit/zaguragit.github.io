@@ -64,3 +64,14 @@ header > aside.bunny {
   
   animation: float 1s linear var(--n) infinite forwards running;
 }
+
+#statuscafe {
+  padding: .5em .7em;
+  border: 1px solid var(--base-foreground-weak);
+  background-color: #8d7d7622;
+  position: relative;
+  line-height: 1.5;
+}
+#statuscafe-header {
+  color: var(--base-foreground-weak);
+}

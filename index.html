@@ -2,7 +2,7 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <meta http-equiv=Content-Security-Policy content="default-src 'none';frame-src https://john.citrons.xyz/embed?ref=zagura.one;img-src https://status.cafe/users/zagura/badge.png 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
+    <meta http-equiv=Content-Security-Policy content="default-src https://status.cafe;frame-src https://john.citrons.xyz/embed?ref=zagura.one;img-src https://status.cafe/users/zagura/badge.png 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
     <meta name=copyright content=Zagura>
     <meta name=language content=en>
     <meta name=author content=Zagura>
@@ -26,7 +26,7 @@
         <img src=assets/gif/bunny.gif width=150px decoding=async class="pixelart" alt="A GIF of a holographic bunny, jumping &amp; rotating">    
       </aside>
     </header>
-    <main class="h-card">
+    <main>
       <section>
         <img class=pixelart src=assets/badges/smol/theythem.png>
         <img class=pixelart src=assets/badges/smol/trans1.png>
@@ -34,12 +34,18 @@
           <img class=pixelart src=https://status.cafe/users/zagura/badge.png alt="Status Cafe Profile"/>
         </a>
       </section>
+      <script src=status.js defer></script>
       <section>
         <p>
           Hi, I'm Zagura, pronounced as /ˈðɑɡurɑ/,
           and this is my little website where I'll put <a href=/art>drawings</a>,
           links to programming projects, and other stuff that I make
         </p>
+      </section>
+      <section id=statuscafe>
+        <div id=statuscafe-header></div>
+        <div id=statuscafe-content></div>
+        <noscript>Needs JS to show status</noscript>
       </section>
       <section>
         <h2>About me</h2>
