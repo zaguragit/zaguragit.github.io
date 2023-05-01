@@ -1,14 +1,12 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--base-foreground-weak) transparent;}
-h1,h2,h3,h4,em{color:var(--base-foreground-strong);font-style:unset;font-weight:700;}
-h1{font-size:2em;font-family:sans-serif;}
-h2{font-size:1.2em;font-family:sans-serif;}
-h3{font-size:1em;font-family:sans-serif;}
+h2,h3,h4,em{color:var(--base-foreground-strong);font-weight:700;}
+h1{font-size:2em;}
+h2{font-size:1.2em;}
+h3{font-size:1em;}
 p{margin:1em 0;}
 a:focus,[tabindex]:focus{outline:#fff 3px solid;}
 @supports selector(:focus-visible){a:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none;}}
 a:focus-visible{outline:#fff 3px solid;}
-hr{border:none;position:relative;overflow:visible;}
-.hide{display:none;}
 .float-right{float:right;}
 .pixelart{image-rendering:pixelated;}
 
@@ -65,11 +63,8 @@ table td, table th {
 }
 table tr:nth-child(2n) td { background: #8d7d7633; }
 table tr td { background: #8d7d7622; }
-table tr {
-  border: 1px solid var(--base-foreground-weak);
-}
+table tr { border: 1px solid var(--base-foreground-weak); }
 table th { color: var(--base-foreground-weak); }
-
 table.definitions { width: 100%; }
 table.definitions td:nth-child(2) { text-align: start; }
 
@@ -84,17 +79,6 @@ dl dt {
   color: var(--base-foreground-weak);
 }
 
-.webring {
-  display: flex;
-  flex-direction: row;
-}
-.webring .center {
-  flex-grow: 1;
-  text-align: center;
-  color: var(--base-foreground);
-  text-decoration: underline solid var(--color-accent) 2px !important;
-}
-
 li { margin: .5em 0; }
 li > ul, li > ol { margin-left: 18px; }
 ul.links { list-style-type: none; }
@@ -102,17 +86,13 @@ ul.links li::before { content: "λ: "; color: var(--base-foreground-weak); }
 
 .back-to-main { color: var(--base-foreground-weak); }
 
-header.title {
-  text-align: center;
-  font-size: 1.2em;
-  position: relative;
-}
 @keyframes movebg-border {
   0% {background-position-x: 0, 0;}
   100% {background-position-x: 16px, 512px;}
 }
+hr { border:none; position:relative; overflow:visible; }
 hr::after,
-header.title::after {
+header::after {
   content: '';
   height: 1px;
   display: block;
@@ -120,12 +100,13 @@ header.title::after {
   background-size: 512px 512px;
   animation: movebg-border 3s linear 0ms infinite forwards running;
 }
+header::after { margin-top: .5em; }
 
 @keyframes movebg-h1 {
   0% {background-position-x: 0;}
   100% {background-position-x: 512px;}
 }
-header > h1 {
+h1 {
   font-weight: 900;
   font-size: 2.2em;
   color: transparent;
@@ -137,7 +118,7 @@ header > h1 {
   animation: movebg-h1 3s linear 0ms infinite forwards running;
   position: relative;
 }
-header > h1::after {
+h1::after {
   content: attr(content);
   background-image: var(--rainbow);
   background-clip: text;
@@ -147,6 +128,18 @@ header > h1::after {
   position: absolute;
   inset: 0;
   filter: blur(18px) opacity(60%);
+}
+
+header { position: relative; }
+header > aside {
+  float: right;
+  rotate: 16deg;
+  font-size: 1.5em;
+  position: absolute;
+  inset: 0 0 auto auto;
+  color: var(--base-foreground-weak);
+  font-style: italic;
+  translate: 0 -1em;
 }
 
 .grid {
@@ -159,8 +152,8 @@ header > h1::after {
 
 @media only screen and (max-width:500px) {
   .grid { grid-template-columns: 100%; }
-  header.me .avatar { margin-bottom: 1em; }
   main { margin-bottom: 32px; }
+  header > aside { display: none; }
 }
 
 .add {

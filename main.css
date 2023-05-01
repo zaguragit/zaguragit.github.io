@@ -1,0 +1,66 @@
+
+header.title {
+  text-align: center;
+  font-size: 1.2em;
+  position: relative;
+}
+
+.webring {
+  display: flex;
+  flex-direction: row;
+}
+.webring .center {
+  flex-grow: 1;
+  text-align: center;
+  color: var(--base-foreground);
+  text-decoration: underline solid var(--color-accent) 2px !important;
+}
+
+.tb { color: #2fbdff; }
+.tp { color: #ffa4ce; }
+.tw { color: #ffffff; }
+
+.th {
+  background-image: linear-gradient(to bottom, #2fbdff 35%, #ffa4ce 35%, #ffa4ce 45%, #ffffff 45%, #ffffff 55%, #ffa4ce 55%, #ffa4ce 65%, #2fbdff 65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 900;
+}
+
+header > aside.trans {
+  inset: 0 auto auto 0;
+  rotate: -30deg;
+  translate: 0 -2em;
+}
+
+header > aside.bunny {
+  rotate: 0deg;
+  translate: 0 -3em;
+}
+
+.tb {
+  --n: 0ms;
+}
+.tp {
+  --n: -300ms;
+}
+.tw {
+  --n: -600ms;
+}
+.th {
+  --n: -700ms;
+}
+
+@keyframes float {
+  0%   { translate: 0 0;}
+  25%  { translate: 0 -.1em;}
+  50%  { translate: 0 0;}
+  75%  { translate: 0 .1em;}
+  100% { translate: 0 0;}
+}
+.tb, .tp, .tw, .th {
+  display: inline-block;
+  
+  animation: float 1s linear var(--n) infinite forwards running;
+}
