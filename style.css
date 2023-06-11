@@ -71,12 +71,15 @@ table.definitions td:nth-child(2) { text-align: start; }
 dl {
   display: grid;
   grid-template-columns: 12ch auto;
-  line-height: 2;
+  margin-top: 0.5em;
 }
 dl dt {
   margin-right: 1em;
   padding-right: 1em;
   color: var(--base-foreground-weak);
+}
+dl dt + dd {
+  margin-bottom: 0.5em;
 }
 
 li { margin: .5em 0; }
