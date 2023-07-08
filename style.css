@@ -24,10 +24,13 @@ a.no-deco,.webring a:not(:hover){text-decoration:none;}
 
 :root {
   --color-accent: #f582ff;
-  --base-background: #181818;
-  --base-foreground: #eedbc0;
-  --base-foreground-weak: #8d7d76;
+  --base-background: #161718;
+  --base-foreground: #ecddc7;
+  --base-foreground-weak: #7c8486;
+  --base-foreground-border: #7b9ba352;
   --base-foreground-strong: #fffcd5;
+  --surface-background: #1e2227be;
+  --surface-background-dim: #15181bbe;
   --rainbow: repeating-linear-gradient(to right,
     #ff647e, #ffb374, #fdff6d, #4aff5f, #89caff, #ff7eff, #ff647e);
   font-family: sans-serif;
@@ -61,9 +64,9 @@ table td, table th {
   text-align: center;
   padding: .2em 1ch;
 }
-table tr:nth-child(2n) td { background: #8d7d7633; }
-table tr td { background: #8d7d7622; }
-table tr { border: 1px solid var(--base-foreground-weak); }
+table tr:nth-child(2n) td { background: var(--surface-background-dim); }
+table tr td { background: var(--surface-background); }
+table tr { border: 1px solid var(--base-foreground-border); }
 table th { color: var(--base-foreground-weak); }
 table.definitions { width: 100%; }
 table.definitions td:nth-child(2) { text-align: start; }
