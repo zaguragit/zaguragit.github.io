@@ -53,6 +53,20 @@ body {
   padding: 24px;
 }
 
+.card {
+  border: 1px solid var(--base-foreground-border);
+  background-color: var(--surface-background);
+  padding: .2em .6em .5em .6em;
+  margin: 1em 0;
+}
+.card h2 {
+  font-size: unset;
+  margin-bottom: .5em;
+}
+.card h1 {
+  font-size: 1.5em;
+}
+
 section { margin: 2em 0; }
 
 table {
@@ -70,6 +84,9 @@ table tr { border: 1px solid var(--base-foreground-border); }
 table th { color: var(--base-foreground-weak); }
 table.definitions { width: 100%; }
 table.definitions td:nth-child(2) { text-align: start; }
+table.table-card { width: 100%; }
+table.table-card td { text-align: start; }
+table.table-card td { width: min-content; }
 
 dl {
   display: grid;

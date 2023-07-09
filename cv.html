@@ -18,28 +18,21 @@
     <title>Zagura</title>
   </head>
   <body>
-    <header>
-      <h1 content="Zagura's CV">Zagura's CV</h1>
-      <span class=back-to-main>main page: <a class="u-url u-uid uid" rel=me href=https://zagura.one>zagura.one</a></span>
-    </header>
-    <section>
-      <p>
-        I’m a very curious and ambitious person that loves to learn new things.
-        My primary specialty is programming, but I can also do digital drawing and photography
-      </p>
-      <p>
-        I curently reside in Barcelona (Catalonia, Spain)
-      </p>
-      <p>
-        You can reach me at <a rel="me nofollow" class="u-email" href=mailto:me@zagura.one>me@zagura.one</a>
-      </p>
-    </section>
-    <section class=grid>
+    <div class=grid>
       <div>
-        <h2>Skills</h2>
-        <p>OpenGL, Rust, Kotlin, Gtk, Git, Android, Krita</p>
-        <h2>Languages</h2>
-        <table>
+        <div class=card>
+          <h1 content="Zagura's CV">Zagura's CV</h1>
+          <span class=back-to-main>main page: <a class="u-url u-uid uid" rel=me href=https://zagura.one>zagura.one</a></span><br>
+          I’m a very curious and ambitious person that loves to learn new things.
+          My primary specialty is programming, but I can also do digital drawing and photography.<br>
+          I curently reside in Barcelona (Catalonia, Spain).<br>
+          You can reach me at <a rel="me nofollow" class="u-email" href=mailto:me@zagura.one>me@zagura.one</a>
+        </div>
+        <div class=card>
+          <h2>🔧 skills</h2>
+          OpenGL, Rust, Kotlin, Gtk, Git, Android, Krita
+        </div>
+        <table class=table-card>
           <tr>
             <th>English</th>
             <td>Proficient</td>
@@ -60,30 +53,34 @@
             <td colspan=2>Can learn more if needed</td>
           </tr>
         </table>
-        <h2>Links</h2>
-        <ul class=links>
-          <li>See my <a href=/projects>projects</a></li>
-          <li><a href=https://github.com/zaguragit>Github</a></li>
-          <li><a href=https://gitlab.com/_zagura>Gitlab</a></li>
-        </ul>
       </div>
       <div>
-        <h2>Education</h2>
-        <h3>University</h3>
-        <dl>
-          <dt>where:</dt>
-          <dd>Tecnocampus Polytechnic School - Double Degree in Computer Engineering & Video Game Design and Production</dd>
-          <dt>during:</dt>
-          <dd><time>2022–Present</time></dd>
-        </dl>
-        <h3>Baccalaureate</h3>
-        <dl>
-          <dt>where:</dt>
-          <dd>Creanova - Scientific branch</dd>
-          <dt>during:</dt>
-          <dd><time>2020–2022</time></dd>
-        </dl>
+        <div class=card>
+          <h2>🔗 links</h2>
+          <ul class=links>
+            <li>See my <a href=/projects>projects</a></li>
+            <li><a href=https://github.com/zaguragit>Github</a></li>
+            <li><a href=https://gitlab.com/_zagura>Gitlab</a></li>
+          </ul>
+        </div>
+        <div class=card>
+          <h2>🏫 education</h2>
+          <h3>University</h3>
+          <dl>
+            <dt>where:</dt>
+            <dd>Tecnocampus Polytechnic School - Double Degree in Computer Engineering & Video Game Design and Production</dd>
+            <dt>during:</dt>
+            <dd><time>2022–Present</time></dd>
+          </dl>
+          <h3>Baccalaureate</h3>
+          <dl>
+            <dt>where:</dt>
+            <dd>Creanova - Scientific branch</dd>
+            <dt>during:</dt>
+            <dd><time>2020–2022</time></dd>
+          </dl>
+        </div>
       </div>
-    </section>
+    </div>
   </body>
 </html>

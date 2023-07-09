@@ -1,8 +1,3 @@
-
-header.title {
-  position: relative;
-}
-
 .tb { color: #2fbdff; }
 .tp { color: #ffa4ce; }
 .tw { color: #ffffff; }
@@ -40,6 +35,7 @@ header.title {
 .webring {
   display: flex;
   flex-direction: row;
+  margin-top: .5em;
 }
 .webring .center {
   flex-grow: 1;
@@ -47,10 +43,6 @@ header.title {
   color: var(--base-foreground);
   text-decoration: underline solid var(--color-accent) 2px !important;
 }
-
-table.table-card { width: 100%; }
-table.table-card td { text-align: start; }
-table.table-card td { width: min-content; }
 
 #statuscafe {
   line-height: 1.5;
@@ -86,11 +78,12 @@ table.table-card td { width: min-content; }
 }
 
 #character-sheet .avatar {
-  background-color: #221835;
-  background-image: repeating-linear-gradient(-35deg, transparent 0, transparent 4px, #2c1f3d 4px, #2c1f3d 8px);
+  background-color: #1c1927;
+  background-image: repeating-linear-gradient(-35deg, transparent 0, transparent 4px, #221f2c 4px, #221f2c 8px);
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  position: relative;
 }
 
 #character-sheet .avatar > img {
@@ -100,20 +93,32 @@ table.table-card td { width: min-content; }
   margin-top: -36px;
   display: inline-block;
   border-radius: 999px;
-  border: 1px solid var(--base-foreground-weak);
+  position: relative;
+}
+
+#character-sheet .avatar::before {
+  content: "";
+  height: 76px;
+  width: 76px;
+  position: absolute;
+  top: -38px;
+  align-self: center;
+  background-image: var(--rainbow);
+  background-size: 512px 512px;
+  animation: movebg-h1 3s linear 0ms infinite forwards running;
+  border-radius: 999px;
 }
 
 #character-sheet .avatar p {
   text-align: center;
 }
 
-.card {
-  border: 1px solid var(--base-foreground-border);
-  background-color: var(--surface-background);
+.subcard {
+  border-top: 1px solid var(--base-foreground-border);
+  background-color: var(--surface-background-dim);
   padding: .2em .6em .5em .6em;
-  margin: 1em 0;
 }
-.card h2 {
+.subcard h2 {
   font-size: unset;
   font-weight: unset;
   margin-bottom: .5em;
