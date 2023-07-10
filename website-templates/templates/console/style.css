@@ -1,20 +1,40 @@
+/* Reset some stuff to not have to deal with it */
 * { margin: 0; padding: 0; border: none; font-size: 1em; }
 
 /* The most outer element in the website's tree, it contains <html>, which contains <body> */
 :root {
     /* Define some colors to use across the entire website */
     /* Try playing with these to quickly change the look of the site */
-    --color-bg: #1d1818;
-    --color-fg: #dbccb4;
+    --color-bg: #18181d;
+    --color-fg: #c9dbb4;
     --color-fg-strong: #fff;
-    --color-fg-weak: #947571;
-    --color-border: #91817649;
-    --color-accent: #ffae00;
+    --color-fg-weak: #71948f;
+    --color-border: #768f9149;
+    --color-accent: #9dff00;
 
     /* var(x) gets you the value of the variable x, which must be declared in this or an outer element */
     color: var(--color-fg);
     background-color: var(--color-bg);
     background-image: url('bg.gif');
+
+    /* Glow effect */
+    text-shadow: 0 0 2px #a4ffe18f;
+}
+
+/* This is responsible for the scanlines effect */
+@keyframes crt {
+    0% { background-position-y: 0; }
+    100% { background-position-y: 3px; }
+}
+:root::after {
+    content: "";
+    background-image: repeating-linear-gradient(#0000 0, #f00 1px, #0f0 2px, #00f 3px);
+    animation: crt 1s linear 0ms infinite forwards running;
+    position: fixed;
+    inset: 0;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    opacity: 0.3;
 }
 
 a {
@@ -33,16 +53,20 @@ body {
     max-width: 96ch;
     margin: 5em auto;
     line-height: 1.5;
+    padding: 0 1ch;
+}
 
+/* A grid */
+.grid {
     display: grid;
     --columns: 2;
     --gap: 2ch;
     grid-gap: var(--gap);
     grid-template-columns: repeat(var(--columns), calc((100% - var(--gap)) / var(--columns)));
 }
-
+/* That becomes a list on smaller devices */
 @media only screen and (max-width: 500px) {
-  body { grid-template-columns: 100%; }
+  .grid { grid-template-columns: 100%; }
 }
 
 section { margin: 1em 0; }
@@ -54,30 +78,14 @@ ul {
 }
 li::before { content: "-> "; color: var(--color-fg-weak); }
 
-table {
+table.data, table.webrings {
     border-spacing: 0;
     border-collapse: collapse;
 }
-table td:first-child::after { content: ":"; margin-right: 3ch; color: var(--color-fg-weak); }
-table tr::before { content: "$"; margin-right: 1ch; color: var(--color-fg-weak); }
+table.data td:first-child::after { content: ":"; margin-right: 3ch; color: var(--color-fg-weak); }
+table.data tr::before { content: "$"; margin-right: 1ch; color: var(--color-fg-weak); }
 
-h1 .name {
-    /* Pretty gradient */
-    background-image: linear-gradient(35deg, #7bff00, #ffdc18, #ff588a);
-    background-size: cover;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-/* Special treatment for webrings */
-.webring {
-    display: flex;
-    flex-direction: row;
-    margin-left: 4ch;
-}
-.webring .center {
+table.webrings td:nth-child(2) a { 
     margin: 0 3ch;
-    color: var(--color-fg-strong);
-    text-decoration: underline solid var(--color-accent) 2px;
+    color: var(--color-fg);
 }

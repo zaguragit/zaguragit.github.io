@@ -35,82 +35,91 @@
     <title>TITLE</title>
   </head>
   <body>
-    <div>
-      <h1>Hi, I'm <span class=name>YOUR_NAME</span></h1>
-      <section>
-        <table>
-          <tr>
-            <td>timezone</td>
-            <td>UTC+x</td>
-          </tr>
-          <tr>
-            <td>pronouns</td>
-            <td>they/them</td>
-          </tr>
-          <tr>
-            <td>fav color</td>
-            <td>FAV_COLOR</td>
-          </tr>
-          <tr>
-            <td>fedi</td>
-            <!-- Tells any potential crawler that this url is you, -->
-            <!-- used for stuff like verification on mastodon -->
-            <td><a rel=me href=YOUR_LINK_URL>YOUR_LINK_NAME</a></td>
-          </tr>
-          <tr>
-            <td>email</td>
-            <td><a rel="me nofollow" href=mailto:john@example.com>john@example.com</a></td>
-          </tr>
-        </table>
-      </section>
-      <section>
-        <h2>about me</h2>
-        <p>
-          I'm a human on the internet, this is my website, i exist,
-          i am not an imaginary character to lorem ipsum this text area
-        </p>
-      </section>
-    </div>
-    <div>
-      <section>
-        <h2>links</h2>
-        <ul>
-          <li><a href=creations>Creations</a></li>
-        </ul>
-      </section>
+    <div class=grid>
+      <div>
+        <section>
+          <h1>Hi, I'm YOUR_NAME</h1>
+        </section>
+        <section>
+          <table class=data>
+            <tr>
+              <td>timezone</td>
+              <td>UTC+x</td>
+            </tr>
+            <tr>
+              <td>pronouns</td>
+              <td>they/them</td>
+            </tr>
+            <tr>
+              <td>fav color</td>
+              <td>FAV_COLOR</td>
+            </tr>
+            <tr>
+              <td>fedi</td>
+              <!-- Tells any potential crawler that this url is you, -->
+              <!-- used for stuff like verification on mastodon -->
+              <td><a rel=me href=YOUR_LINK_URL>YOUR_LINK_NAME</a></td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td><a rel="me nofollow" href=mailto:john@example.com>john@example.com</a></td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h2>about me</h2>
+          <p>
+            I'm a human on the internet, this is my website, i exist,
+            i am not an imaginary character to lorem ipsum this text area
+          </p>
+        </section>
+      </div>
+      <div>
+        <section>
+          <h2>my stuff</h2>
+          <ul>
+            <li><a href=creations>Creations</a></li>
+          </ul>
+        </section>
 <pre>
-    (___)    (___)
-\                    /
- '--____--''--____--'
-(u can insert actually good ascii art with a &lt;pre&gt; tag)
+        ________           ,----.
+  ,.-```        ```-..    / uwu |
+ /   -___-    -___-   \  ------'
+|                      | 
+| '--____--''--____--' |
+ '--------------------'
+(u can insert better ascii art with a &lt;pre&gt; tag)
 </pre>
-      <section>
-        <h2>some other cool websites</h2>
-        <ul>
-          <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
-          <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
-          <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
-          <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
-        </ul>
-      </section>
-      <section>
-        <h2>webrings</h2>
-        <div class=webring>
-          <a class=arrow href=WEBRING_URL/previous referrerpolicy=origin>&lt;-&nbsp;prev</a>
-          <a class=center href=WEBRING_URL>WEBRING_NAME</a>
-          <a class=arrow href=WEBRING_URL/next referrerpolicy=origin>next&nbsp;-&gt;</a>
-        </div>
-        <div class=webring>
-          <a class=arrow href=WEBRING_URL/previous referrerpolicy=origin>&lt;-&nbsp;prev</a>
-          <a class=center href=WEBRING_URL>WEBRING_NAME</a>
-          <a class=arrow href=WEBRING_URL/next referrerpolicy=origin>next&nbsp;-&gt;</a>
-        </div>
-        <div class=webring>
-          <a class=arrow href=WEBRING_URL/previous referrerpolicy=origin>&lt;-&nbsp;prev</a>
-          <a class=center href=WEBRING_URL>WEBRING_NAME</a>
-          <a class=arrow href=WEBRING_URL/next referrerpolicy=origin>next&nbsp;-&gt;</a>
-        </div>
-      </section>
+        <section>
+          <h2>some other cool websites</h2>
+          <ul>
+            <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
+            <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
+            <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
+            <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>webrings</h2>
+          <table class=webrings>
+            <tr>
+              <td><a class=arrow href=WEBRING_URL/previous referrerpolicy=origin>&lt;-&nbsp;prev</a></td>
+              <td><a class=center href=WEBRING_URL>WEBRING_NAMEdf</a></td>
+              <td><a class=arrow href=WEBRING_URL/next referrerpolicy=origin>next&nbsp;-&gt;</a></td>
+            </tr>
+            <tr>
+              <td><a class=arrow href=WEBRING_URL/previous referrerpolicy=origin>&lt;-&nbsp;prev</a></td>
+              <td><a class=center href=WEBRING_URL>WEBRING_NAMEt5hhghfg</a></td>
+              <td><a class=arrow href=WEBRING_URL/next referrerpolicy=origin>next&nbsp;-&gt;</a></td>
+            </tr>
+            <tr>
+              <td><a class=arrow href=WEBRING_URL/previous referrerpolicy=origin>&lt;-&nbsp;prev</a></td>
+              <td><a class=center href=WEBRING_URL>WEBRING_NAME</a></td>
+              <td><a class=arrow href=WEBRING_URL/next referrerpolicy=origin>next&nbsp;-&gt;</a></td>
+            </tr>
+          </table>
+        </section>
+      </div>
     </div>
   </body>
 </html>
