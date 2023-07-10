@@ -1,0 +1,107 @@
+
+/* The most outer element in the website's tree, it contains <html>, which contains <body> */
+:root {
+    /* Define some colors to use across the entire website */
+    /* Try playing with these to quickly change the look of the site */
+    --color-bg: #1a1b22;
+    --color-fg: #ddd;
+    --color-fg-strong: #fff;
+    --color-fg-weak: #888;
+    --color-surface: #2b2c38;
+    --color-surface-dim: #212229;
+    --color-surface-light: #333442;
+    --color-border: #76799149;
+    --color-accent: rgb(0, 255, 221);
+
+    --card-border-radius: 5px;
+    --card-separation: 1em;
+}
+
+a { color: var(--color-accent); }
+h1, h2, h3 { color: var(--color-fg-strong); }
+
+body {
+    /* var(x) gets you the value of the variable x, which must be declared in this or an outer element */
+    color: var(--color-fg);
+    background-color: var(--color-bg);
+    font-family: sans-serif;
+
+    width: 100%;
+    /* Makes it so the page doesn't stretch to extreme widths on wide monitors & also adds some nice side margins */
+    max-width: 720px;
+    margin: 64px auto;
+}
+
+section, header > nav {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    margin: var(--card-separation) 0;
+    box-shadow: 0 2px 2px 0 #0004, 0 1px 1px 0 #0008, 0 1px 0 0 #000;
+    border-radius: var(--card-border-radius);
+    /* To not have things visible outside the round corners (very noticable with a large radius) */
+    overflow: hidden;
+}
+section > h2 {
+    font-size: 1em;
+    margin: .5em .5em .5em .5em;
+}
+
+header > nav {
+    display: flex;
+    flex-direction: row;
+}
+header > nav > a {
+    text-decoration: none;
+    padding: .5em;
+    flex-grow: 1;
+    flex-basis: 128px;
+    text-align: center;
+}
+header > nav > a:not(:first-child) {
+    border-left: 1px solid var(--color-border);
+}
+header > nav > a:hover { background-color: var(--color-surface-light); }
+header > nav > a:active { background-color: var(--color-surface-dim); }
+header > nav > a[href="#"] { background-color: var(--color-surface-light); font-weight: 700; }
+
+ul {
+    margin: .5em;
+    padding-left: 2ch;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+table tr { border-top: 1px solid var(--color-border); }
+table td { padding: .3em .4em; }
+table td:first-child {
+    border-right: 1px solid var(--color-border);
+    width: min-content;
+}
+table tr:nth-child(2n) {
+    background-color: var(--color-surface-dim);
+}
+
+/* Special treatment for the profile card/section (the one at the top of the home page) */
+.profile table { width: 100%; }
+.profile .header {
+    text-align: center;
+    /* Pretty gradient */
+    background-image: linear-gradient(35deg, #be14be2f, #2b29b82f, #1689cc2f);
+    background-size: cover;
+    /* To cover everything */
+    display: inline-block;
+    width: 100%;
+}
+
+/* Special treatment for webrings */
+.webring {
+    display: flex;
+    flex-direction: row;
+    margin: .5em;
+}
+.webring .center {
+    flex-grow: 1;
+    text-align: center;
+}
