@@ -1,0 +1,50 @@
+
+# We don't like these ones
+User-agent: *
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Googlebot-News
+User-agent: Googlebot-Video
+User-agent: Storebot-Google
+User-agent: Google-InspectionTool
+User-agent: GoogleOther
+User-agent: APIs-Google
+User-agent: AdsBot-Google-Mobile
+User-agent: AdsBot-Google
+User-agent: Mediapartners-Google
+User-agent: FeedFetcher-Google
+User-agent: Bingbot
+User-agent: FacebookBot
+User-agent: Applebot
+User-agent: LinkedInBot
+User-agent: Twitterbot
+User-agent: nsa
+User-agent: Slurp                   # Yahoo
+User-agent: Yandex                  # Russian search engine
+User-agent: YandexBot
+User-agent: Baiduspider             
+User-agent: 360Spider
+User-agent: Sogouspider
+User-agent: Yisouspider
+User-agent: 
+Disallow: /
+Allow: /404
+
+# Random ass crawlers
+User-agent: UbiCrawler
+User-agent: k2spider
+User-agent: Naverbot
+User-agent: 
+User-agent: 
+User-agent: 
+Disallow: /
+
+# These ones are ok
+User-agent: DuckDuckBot
+User-agent: Discordbot
+User-agent: ia_archiver
+User-agent: 
+User-agent: 
+User-agent: 
+Disallow:
+Allow: /
