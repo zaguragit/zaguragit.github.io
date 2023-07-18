@@ -26,7 +26,6 @@ User-agent: Baiduspider
 User-agent: 360Spider
 User-agent: Sogouspider
 User-agent: Yisouspider
-User-agent: 
 Disallow: /
 Allow: /404
 
@@ -34,17 +33,11 @@ Allow: /404
 User-agent: UbiCrawler
 User-agent: k2spider
 User-agent: Naverbot
-User-agent: 
-User-agent: 
-User-agent: 
 Disallow: /
 
 # These ones are ok
 User-agent: DuckDuckBot
 User-agent: Discordbot
 User-agent: ia_archiver
-User-agent: 
-User-agent: 
-User-agent: 
 Disallow:
 Allow: /
