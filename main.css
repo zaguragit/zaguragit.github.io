@@ -55,38 +55,46 @@
   padding: .2em .6em;
   border: 1px solid var(--base-foreground-border);
   margin-top: -1px;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 #statuscafe-content {
   background-color: var(--surface-background);
   padding: .5em .6em;
-  border: 1px solid var(--base-foreground-border);
+  box-shadow: inset 0 0 0 1px var(--base-foreground-border), inset 0 1px 0 0 #fff2, 0 0 0 1px #0006;
+  border-radius: var(--border-radius) var(--border-radius) var(--border-radius) 0;
 }
 
-#character-sheet {
-  border: 1px solid var(--base-foreground-border);
-  margin-top: 1em;
-}
 
-#character-sheet table tr {
+#character-sheet > table td {
   border: none;
   border-top: 1px solid var(--base-foreground-border);
+  padding: .2em .6em;
 }
-#character-sheet table {
-  border: none;
-  margin: 0;
-  padding: 0;
+#character-sheet > table {
+  width: 100%;
+  padding: 0 5px;
+}
+#character-sheet > table tr:nth-child(2n) td {
+  background-color: var(--surface-background-dim);
 }
 
-#character-sheet .avatar {
-  background-color: #1c1927;
-  background-image: repeating-linear-gradient(-35deg, transparent 0, transparent 4px, #221f2c 4px, #221f2c 8px);
+#character-sheet dl {
+  display: grid;
+  grid-template-columns: 15ch auto;
+}
+#character-sheet dl dt {
+  font-weight: bold;
+}
+
+
+#character-sheet > header {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  position: relative;
 }
 
-#character-sheet .avatar > img {
+#character-sheet > header > img {
   height: 72px;
   width: 72px;
   align-self: center;
@@ -96,12 +104,17 @@
   position: relative;
 }
 
-#character-sheet .avatar::before {
+
+@keyframes movebg-h1 {
+  0% {background-position-x: 0;}
+  100% {background-position-x: 512px;}
+}
+#character-sheet > header::before {
   content: "";
   height: 76px;
   width: 76px;
   position: absolute;
-  top: -38px;
+  top: -35px;
   align-self: center;
   background-image: var(--rainbow);
   background-size: 512px 512px;
@@ -109,13 +122,8 @@
   border-radius: 999px;
 }
 
-#character-sheet .avatar p {
-  text-align: center;
-}
-
 .subcard {
   border-top: 1px solid var(--base-foreground-border);
-  background-color: var(--surface-background-dim);
   padding: .2em .6em .5em .6em;
 }
 .subcard h2 {
