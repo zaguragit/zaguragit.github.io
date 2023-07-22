@@ -40,5 +40,6 @@ User-agent: DuckDuckBot
 User-agent: Discordbot
 User-agent: ia_archiver
 User-agent: search.marginalia.nu
+User-agent: WibyBot
 Disallow:
 Allow: /
