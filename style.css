@@ -107,7 +107,7 @@ section article > img {
   display: block;
   float: right;
 }
-section > img,
+section > img.framed,
 section article > img {
   border-radius: var(--border-radius);
   padding: 1px;
