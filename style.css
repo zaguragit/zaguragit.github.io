@@ -21,23 +21,24 @@ a:hover { text-decoration: underline wavy #fff 1px; }
 :root {
   --color-accent: #f582ff;
   --base-background: #171819;
-  --base-foreground: #f9e3c3;
-  --base-foreground-weak: #8a6779;
-  --base-foreground-border: #ab6da552;
-  --base-foreground-strong: #fffcd5;
-  --surface-background: #231d2fdd;
-  --surface-background-dim: #171423d4;
+  --base-foreground: #fff2def0;
+  --base-foreground-weak: #bca6a4ac;
+  --base-foreground-border: #ab6f9f52;
+  --base-foreground-strong: #fffeee;
+  --surface-background: #282430ef;
+  --surface-background-dim: #1a1723d4;
   --rainbow: repeating-linear-gradient(to right,
     #ff647e, #ffb374, #fdff6d, #4aff5f, #89caff, #ff7eff, #ff647e);
   --rainbow-bg: repeating-linear-gradient(to right,
     #ff647e11, #ffb37411, #fdff6d11, #4aff5f11, #89caff11, #ff7eff11, #ff647e11);
   --border-radius: 3px;
+  --card-shadow: inset 0 0 0 1px var(--base-foreground-border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
   font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.6;
   background-color: var(--base-background);
-  background-image: url('assets/gif/bg.gif');
+  background-image: url('assets/evrgren2.jpg');
   color: var(--base-foreground);
 	color-scheme: dark;
 }
@@ -57,7 +58,7 @@ section {
   background-color: var(--surface-background);
   margin: 1em 0;
   padding: .5em .6em;
-  box-shadow: inset 0 0 0 1px var(--base-foreground-border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
+  box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
 }
 
@@ -66,8 +67,14 @@ section h2 {
   margin-bottom: .5em;
 }
 
+@keyframes movebg-header {
+  0% {background-position-x: 0;}
+  100% {background-position-x: 1024px;}
+}
 section > header {
   background-image: var(--rainbow-bg);
+  background-size: 1024px 1024px;
+  animation: movebg-header 4s linear 0ms infinite forwards running;
   margin: -.5em -.6em .5em;
   padding: .2em .6em .5em .6em;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
@@ -94,6 +101,18 @@ section article {
   padding: .5em;
 }
 section article > time { color: var(--base-foreground-weak); }
+section article > img {
+  max-width: 64px;
+  max-height: 64px;
+  display: block;
+  float: right;
+}
+section > img,
+section article > img {
+  border-radius: var(--border-radius);
+  padding: 1px;
+  box-shadow: var(--card-shadow);
+}
 
 
 table {

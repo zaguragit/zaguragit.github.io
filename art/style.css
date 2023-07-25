@@ -1,23 +1,42 @@
+:root {
+  --color-accent: #a0ecff;
+  --base-background: #171717;
+  --base-foreground: #f2f2f2f0;
+  --base-foreground-weak: #a7a7a7b9;
+  --base-foreground-border: #88888852;
+  --base-foreground-strong: #ffffff;
+  --surface-background: #292929ef;
+  --surface-background-dim: #191919d4;
+  background-blend-mode: luminosity;
+}
 
 .image-grid {
   display: grid;
-  gap: 3px;
+  gap: 1em;
   grid-template-columns: repeat(3, auto);
   image-rendering: auto;
+}
+@media only screen and (max-width:720px) {
+  .image-grid { grid-template-columns: repeat(2, auto); }
 }
 
 .image-grid article {
   aspect-ratio: 1;
   place-content: center;
   display: flex;
-  background-color: #000;
   position: relative;
+  box-shadow: inset 0 0 0 1px var(--base-foreground-border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
+  border-radius: var(--border-radius);
 }
 
 .image-grid article img {
-  max-width: 100%;
-  max-height: 100%;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
   margin: auto;
+  z-index: -99;
+  object-fit: contain;
+  border-radius: var(--border-radius);
 }
 
 .image-grid article[title]:hover::after {
@@ -25,7 +44,8 @@
   position: absolute;
   inset: auto 0 0 0;
   background-color: var(--surface-background);
-  padding: .5em;
+  padding: .5em .6em;
   border-top: 1px solid var(--base-foreground-border);
-  backdrop-filter: blur(30px);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  z-index: -99;
 }
