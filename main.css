@@ -71,6 +71,14 @@
 }
 
 
+#statuscafe-face {
+  position: absolute;
+  inset: 0 auto auto 0;
+  margin: .6em;
+  line-height: 1.5;
+}
+
+
 #character-sheet dl article {
   display: grid;
   grid-template-columns: 15ch auto;
