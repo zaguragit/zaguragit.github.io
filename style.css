@@ -96,7 +96,7 @@ section hr {
   border: none;
   border-top: 1px solid #0006;
   border-bottom: 1px solid var(--base-foreground-border);
-  margin: 0 -.6em;
+  margin: .3em -.6em;
 }
 
 section article {

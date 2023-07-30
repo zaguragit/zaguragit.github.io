@@ -99,6 +99,7 @@ const tops = [
     "jacket",
     "bralette",
     "hoodie",
+    "harness",
 ];
 
 const bottoms = [
@@ -106,9 +107,22 @@ const bottoms = [
     "maxi skirt",
     "pleated skirt",
     "pants",
+    "sweat pants",
+    "cargo pants",
     "leggings",
     "shorts",
     "crinoline dress",
+    "boxers",
+    "swim trunks",
+];
+
+const shoes = [
+    "nothing",
+    "thigh highs",
+    "boots",
+    "moccasins",
+    "sneakers",
+    "high heel shoes",
 ];
 
 const clothing_textures = [
@@ -120,6 +134,7 @@ const clothing_textures = [
     "leaf",
     "latex",
     "leather",
+    "floral",
 ];
 
 const place = [
@@ -154,15 +169,16 @@ const hr = "<td colspan=99><hr></td>";
 button.addEventListener("click", () => {
     document.getElementById("result").innerHTML = table([
         ["body", pick(proportions) + pick(constitution)],
-        ["skin colors", color() + color()],
+        ["skin", pick_color(1, 2, 2.0)],
         ["extra", pick(extra, 1, 4, 3.0)],
         hr,
-        ["hair", pick(hair_length) + pick(hair_texture) + color()],
-        ["eye color", color()],
+        ["hair", pick(hair_length) + pick(hair_texture) + pick_color(1, 3, 2.0)],
+        ["eye color", pick_color()],
         ["ears", pick(ears)],
         hr,
         ["top", pick(clothing_textures) + pick(tops)],
         ["bottom", pick(clothing_textures) + pick(bottoms)],
+        ["shoes", pick(shoes)],
         hr,
         ["personality", pick(personality, 1, 2, 2.0)],
         ["vibe", pick(vibe, 1, 2)],
@@ -175,13 +191,7 @@ function table(rows) {
 }
 
 function pick(list, min, max, min_weight) {
-    if (!min)
-        min = 1;
-    if (!max)
-        max = min;
-    if (!min_weight)
-        min_weight = 1;
-    const count = min - 0.5 + Math.round(Math.pow(Math.random(), min_weight) * (max - min));
+    const count = get_count(min, max, min_weight);
     let a = [];
     for (let i = 0; i < count; i++) {
         let b;
@@ -194,12 +204,31 @@ function pick(list, min, max, min_weight) {
 }
 
 var last_hue = null;
-function color() {
-    let h = Math.random();
-    if (last_hue != null)
-        h = 0.6 * h + 0.4 * (Math.abs(last_hue - h) > 0.5) ? (last_hue + 0.5) % 1 : last_hue;
-    last_hue = h;
-    return `<div class=color style="color:${hsl2hex(h * 360, Math.random(), Math.random())};"></div>`;
+function pick_color(min, max, min_weight) {
+    const count = get_count(min, max, min_weight);
+    let a = [];
+    for (let i = 0; i < count; i++) {
+        let b;
+        do {
+            let h = Math.random();
+            if (last_hue !== null)
+                h = 0.6 * h + 0.4 * (Math.abs(last_hue - h) > 0.5) ? (last_hue + 0.5) % 1 : last_hue;
+            last_hue = h;
+            b = `<div class=color style="color:${hsl2hex(h * 360, Math.random(), Math.random())};"></div>`
+        } while (a.includes(b));
+        a.push(b);
+    }
+    return a.join("");
+}
+
+function get_count(min, max, min_weight) {
+    if (!min)
+        min = 1;
+    if (!max)
+        max = min;
+    if (!min_weight)
+        min_weight = 1;
+    return min - 0.5 + Math.round(Math.pow(Math.random(), min_weight) * (max - min));
 }
 
 function hsl2hex(h, s, l) {
