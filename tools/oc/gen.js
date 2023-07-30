@@ -1,15 +1,32 @@
-const haircuts = [
-    "bald",
-    "buzz cut",
-    "pixy cut",
-
-    "mohawk",
-    
-    "bob",
-    "chinlength curly",
-    "wolf cut",
-
+const hair_texture = [
+    "straight",
+    "wavy",
+    "curly",
+    "coily",
     "dreadlocks",
+];
+
+const hair_length = [
+    "bald",
+    "buzzcut",
+    "short",
+    "chin length",
+    "shoulder length",
+    "butt length",
+    "beyond butt length",
+    "mohawk",
+    "afro",
+];
+
+const hair_bangs = [
+    "none",
+    "buzzcut",
+    "short",
+    "chin length",
+    "shoulder length",
+    "butt length",
+    "beyond butt length",
+    "mohawk",
     "afro",
 ];
 
@@ -43,8 +60,10 @@ const extra = [
     "beard",
     "mustache",
     "tatoos",
+    "glowing markings",
     "piercings",
     "antennas",
+    "wings",
 ]
 
 const vibe = [
@@ -54,8 +73,11 @@ const vibe = [
     "vibrant",
     "cyberpunk",
     "solarpunk",
+    "steampunk",
     "masculine",
     "feminine",
+    "psychedelic",
+    "pastelgoth",
 ];
 
 const personality = [
@@ -65,6 +87,65 @@ const personality = [
     "curious",
     "smug",
     "rude",
+    "calm",
+];
+
+const tops = [
+    "nothing",
+    "t-shirt",
+    "croptop",
+    "oversized t-shirt",
+    "shirt",
+    "jacket",
+    "bralette",
+    "hoodie",
+];
+
+const bottoms = [
+    "nothing",
+    "maxi skirt",
+    "pleated skirt",
+    "pants",
+    "leggings",
+    "shorts",
+    "crinoline dress",
+];
+
+const clothing_textures = [
+    "plad",
+    "denim",
+    "silk",
+    "plain",
+    "translucent",
+    "leaf",
+    "latex",
+    "leather",
+];
+
+const place = [
+    "village",
+    "city",
+    "town",
+    "forest",
+    "jungle",
+    "taiga",
+    "cave",
+    "building roof",
+    "balcony",
+    "elevator",
+    "inside window",
+    "beach",
+    "mountains",
+    "ship",
+];
+
+const time_period = [
+    "ancient",
+    "futuristic",
+    "victorian",
+    "roman",
+    "gothic",
+    "modern",
 ];
 
 const button = document.getElementById("generate-button");
@@ -77,12 +158,16 @@ button.addEventListener("click", () => {
         ["skin colors", color() + color()],
         ["extra", pick(extra, 1, 4, 3.0)],
         hr,
-        ["hair", pick(haircuts) + color()],
+        ["hair", pick(hair_length) + pick(hair_texture) + color()],
         ["eye color", color()],
         ["ears", pick(ears)],
         hr,
-        ["personality", pick(personality)],
+        ["top", pick(clothing_textures) + pick(tops)],
+        ["bottom", pick(clothing_textures) + pick(bottoms)],
+        hr,
+        ["personality", pick(personality, 1, 2, 2.0)],
         ["vibe", pick(vibe, 1, 2)],
+        ["setting", pick(time_period) + pick(place)],
     ]);
 });
 
