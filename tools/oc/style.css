@@ -1,3 +1,20 @@
+:root {
+    --color-accent: #a0ecff;
+    --base-background: #171717;
+    --base-foreground: #f2f2f2f0;
+    --base-foreground-weak: #a7a7a7b9;
+    --base-foreground-border: #88888852;
+    --base-foreground-strong: #ffffff;
+    --surface-background: #292929ef;
+    --surface-background-dim: #191919d4;
+    background-image: url(../../assets/paper0.png);
+}
+
+table,
+table tr,
+table tr td {
+    overflow: visible;
+}
 
 div.type {
     display: inline-block;
@@ -6,7 +23,10 @@ div.color {
     width: 2.5ex;
     height: 1.5ex;
     display: inline-block;
-    border-radius: 99px;
+    border-radius: 1px;
+    background: currentColor;
+    box-shadow: 0 0 0 3px currentColor;
+    overflow: visible;
 }
 div.type:not(:first-child),
 div.color:not(:first-child) {
