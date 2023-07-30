@@ -92,6 +92,12 @@ section > header > .back-to-main {
 section > header > .back-to-main::before {
   content: "main page: ";
 }
+section hr {
+  border: none;
+  border-top: 1px solid #0006;
+  border-bottom: 1px solid var(--base-foreground-border);
+  margin: 0 -.6em;
+}
 
 section article {
   background-color: var(--surface-background-dim);
@@ -158,8 +164,8 @@ ul li::before { content: "λ: "; color: var(--base-foreground-weak); }
   0% {background-position-x: 0, 0;}
   100% {background-position-x: 16px, 512px;}
 }
-hr { border:none; position:relative; overflow:visible; margin: .5em 0; }
-hr::after {
+hr.rainbow { border:none; position:relative; overflow:visible; margin: .5em 0; }
+hr.rainbow::after {
   content: '';
   height: 1px;
   display: block;
