@@ -153,8 +153,7 @@ const hr = "<td colspan=99><hr></td>";
 
 button.addEventListener("click", () => {
     document.getElementById("result").innerHTML = table([
-        ["proportions", pick(proportions)],
-        ["constitution", pick(constitution)],
+        ["body", pick(proportions) + pick(constitution)],
         ["skin colors", color() + color()],
         ["extra", pick(extra, 1, 4, 3.0)],
         hr,
