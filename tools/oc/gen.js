@@ -163,11 +163,10 @@ const time_period = [
     "modern",
 ];
 
-const button = document.getElementById("generate-button");
 const hr = "<td colspan=99><hr></td>";
 
-button.addEventListener("click", () => {
-    document.getElementById("result").innerHTML = table([
+document.getElementById("char-gen-button").addEventListener("click", () => {
+    document.getElementById("char-res").innerHTML = table([
         ["body", pick(proportions) + pick(constitution)],
         ["skin", pick_color(1, 2, 2.0)],
         ["extra", pick(extra, 1, 4, 3.0)],
@@ -191,6 +190,11 @@ function table(rows) {
 }
 
 function pick(list, min, max, min_weight) {
+    return "<div class=type>" + pick_elements(list, min, max, min_weight).join(", ") + "</div>";
+}
+
+
+function pick_elements(list, min, max, min_weight) {
     const count = get_count(min, max, min_weight);
     let a = [];
     for (let i = 0; i < count; i++) {
@@ -200,7 +204,7 @@ function pick(list, min, max, min_weight) {
         } while (a.includes(b));
         a.push(b);
     }
-    return "<div class=type>" + a.join(", ") + "</div>"
+    return a;
 }
 
 var last_hue = null;
@@ -239,4 +243,60 @@ function hsl2hex(h, s, l) {
         return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
     };
     return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+
+document.getElementById("name-gen-button").addEventListener("click", () => {
+    const name = gen_name(2, 4, 2.0);
+    document.getElementById("name-res").innerHTML = table([
+        ["ipa", "/" + name[0] + "/"],
+        ["latin", name[1]],
+        ["cyrillic", name[2]],
+    ]);
+});
+
+const consonants = [
+    ["b", "b", "б"],
+    ["d", "d", "д"],
+    ["f", "f", "ф"],
+    ["g", "g", "г"],
+    ["h", "h", "х"],
+    ["j", "j", "й"],
+    ["k", "k", "к"],
+    ["l", "l", "л"],
+    ["m", "m", "м"],
+    ["n", "n", "н"],
+    ["p", "p", "п"],
+    ["r", "r", "р"],
+    ["s", "s", "с"],
+    ["t", "t", "т"],
+    ["v", "v", "в"],
+    ["w", "w", "в"],
+    ["z", "z", "з"],
+    ["t̠ʃ", "ch", "ч"],
+    ["ʃ", "sh", "ш"],
+    ["ʒ", "zh", "ш"],
+];
+const vowels = [
+    ["a", "a", "а"],
+    ["e", "e", "е"],
+    ["i", "i", "и"],
+    ["o", "o", "о"],
+    ["u", "u", "у"],
+    ["ɨ", "y", "ы"],
+];
+
+function gen_name(min, max, min_weight) {
+    const syllables = get_count(min, max, min_weight);
+    let name = ["", "", ""];
+    for (let i = 0; i < syllables; i++) {
+        const c = pick_elements(consonants)[0];
+        const v = pick_elements(vowels)[0];
+        const c1 = (Math.random() > 0.9) ? pick_elements(consonants)[0] : ["", "", ""];
+        for (let j = 0; j < name.length; j++) {
+            let syllable = c[j] + v[j] + c1[j];
+            name[j] += syllable;
+        }
+    }
+    return name;
 }
