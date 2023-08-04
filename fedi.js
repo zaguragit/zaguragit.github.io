@@ -3,7 +3,7 @@ fetch("https://tech.lgbt/api/v1/accounts/109155032729615779/statuses?exclude_rep
   .then(r => {
     const post = r[0];
     document.getElementById("fedi-content").innerHTML = post.content;
-    document.getElementById("fedi-header").innerHTML = `on <a href="${post.url}" target=_blank>tech.lgbt</a>, ` + new Date(r[0].created_at).toLocaleDateString(undefined, {
+    document.getElementById("fedi-header").innerHTML = `on <a class=chill href="${post.url}" target=_blank>tech.lgbt</a>, ` + new Date(r[0].created_at).toLocaleDateString(undefined, {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
