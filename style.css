@@ -38,7 +38,7 @@ a:hover { text-decoration: underline wavy #fff 1px; }
   font-weight: 400;
   line-height: 1.6;
   background-color: var(--base-background);
-  background-image: url('assets/evrgren2.jpg');
+  background-image: url('assets/textures/evrgren2.jpg');
   color: var(--base-foreground);
 	color-scheme: dark;
 }
@@ -106,13 +106,13 @@ section article {
   border-radius: var(--border-radius);
   margin: .5em 0;
   padding: .5em;
+  display: flow-root;
 }
 section article > time { color: var(--base-foreground-weak); }
 section article > img {
   max-width: 64px;
   max-height: 64px;
-  display: block;
-  float: right;
+  float: inline-end;
 }
 section > img.framed,
 section article > img {
@@ -191,12 +191,22 @@ hr.rainbow::after {
   display: grid;
   --columns: 2;
   gap: 1em;
-  grid-template-columns: repeat(var(--columns), calc((100% - 1em) / var(--columns)));
+  grid-template-columns: repeat(var(--columns), calc((100% - 1em * (var(--columns) - 1)) / var(--columns)));
+}
+section .grid {
+  display: grid;
+  --columns: 2;
+  gap: .5em;
+  grid-template-columns: repeat(var(--columns), calc((100% - .5em * (var(--columns) - 1)) / var(--columns)));
+}
+section .grid article {
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 @media only screen and (max-width:720px) {
-  .grid { display: flex; flex-direction: column; gap: 0; }
-  .grid > :not(:first-child) { margin-top: -1em; }
+  .grid, section .grid { display: flex; flex-direction: column; gap: 0; }
+  :not(section) > .grid > :not(:first-child) { margin-top: -1em; }
   main { margin-bottom: 32px; }
 }
 

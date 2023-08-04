@@ -1,6 +1,24 @@
 a.chill { color: var(--base-foreground); }
 a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; }
 
+a.icon {
+  color: var(--base-foreground);
+  text-align: center;
+  font-weight: normal;
+  font-size: .9em;
+}
+a.icon > img {
+  display: block;
+  margin: 0 auto;
+}
+.icons-grid {
+  display: grid;
+  --columns: 3;
+  gap: .5em;
+  grid-template-columns: repeat(var(--columns), calc((100% - .5em * (var(--columns) - 1)) / var(--columns)));
+}
+.blahaj { height: 1em; vertical-align: middle; }
+
 .tb { color: #2fbdff; }
 .tp { color: #ffa4ce; }
 .tw { color: #ffffff; }
@@ -69,7 +87,7 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
   text-align: center;
   margin: .6em;
   font-weight: 900;
-  background-image: linear-gradient(to top, #27082ca3, #1a1336f4);
+  background-image: linear-gradient(to top, #27082ca3, #1a1336);
   box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
   padding: .3em .6em;
