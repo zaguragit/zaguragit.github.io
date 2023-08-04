@@ -60,6 +60,7 @@ section {
   padding: .5em .6em;
   box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
+  position: relative;
 }
 
 section h2 {

@@ -1,21 +1,12 @@
 .tb { color: #2fbdff; }
 .tp { color: #ffa4ce; }
 .tw { color: #ffffff; }
-
 .th {
   background-image: linear-gradient(to bottom, #2fbdff 35%, #ffa4ce 35%, #ffa4ce 45%, #ffffff 45%, #ffffff 55%, #ffa4ce 55%, #ffa4ce 65%, #2fbdff 65%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
-
-.trans {
-  font-size: 2.4em;
-  text-align: center;
-  margin: 1em 0;
-  font-weight: 900;
-}
-
 .tb { --n: 0ms; }
 .tp { --n: -300ms; }
 .tw { --n: -600ms; }
@@ -33,6 +24,11 @@
   animation: float 1s linear var(--n) infinite forwards running;
 }
 
+.bunny {
+  position: absolute;
+  inset: auto 0 1em auto;
+}
+
 .webring {
   display: flex;
   flex-direction: row;
@@ -47,28 +43,29 @@
   text-decoration: underline solid var(--color-accent) 2px !important;
 }
 
-#statuscafe {
+.status {
   line-height: 1.5;
-  margin: 1em 0;
+  margin: .5em 0;
   position: relative;
 }
-#statuscafe-header {
-  background-color: var(--surface-background-dim);
+.status-header {
   color: var(--base-foreground-weak);
   display: inline-block;
   padding: .2em .6em;
   margin-top: -1px;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
-  box-shadow: inset 0 0 0 1px var(--base-foreground-border), inset 0 -1px #fff1, 0 0 0 1px #0006;
+  border: 1px dashed var(--base-foreground-border);
 }
-#statuscafe-content {
-  background-color: var(--surface-background);
+.status-content {
+  background-color: var(--surface-background-dim);
   padding: .5em .6em;
-  box-shadow: inset 0 0 0 1px var(--base-foreground-border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
   border-radius: var(--border-radius) var(--border-radius) var(--border-radius) 0;
   z-index: 99;
   position: relative;
+  border: 1px dashed var(--base-foreground-border);
 }
+#fedi-content p { margin: 0; }
+#fedi-content p + p { margin-top: 1em; }
 
 
 #statuscafe-face {
@@ -76,6 +73,18 @@
   inset: 0 auto auto 0;
   margin: .6em;
   line-height: 1.5;
+}
+.trans {
+  position: absolute;
+  inset: -2em 0 auto auto;
+  text-align: center;
+  margin: .6em;
+  font-weight: 900;
+  background-image: linear-gradient(to top, #27082ca3, #1a1336f4);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--border-radius);
+  padding: .3em .6em;
+  rotate: 10deg;
 }
 
 

@@ -2,7 +2,7 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <meta http-equiv=Content-Security-Policy content="default-src 'self' https://status.cafe;frame-src https://john.citrons.xyz/embed?ref=zagura.one;img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
+    <meta http-equiv=Content-Security-Policy content="default-src 'self' https://status.cafe https://tech.lgbt;frame-src https://john.citrons.xyz/embed?ref=zagura.one;img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
     <meta name=copyright content=Zagura>
     <meta name=language content=en>
     <meta name=author content=Zagura>
@@ -20,82 +20,79 @@
   </head>
   <body>
     <script src=status.js defer></script>
+    <script src=fedi.js defer></script>
     <main class=grid>
-      <div>
-        <section id=character-sheet>
-          <header>
-            <a id=statuscafe-face class=no-deco href=https://status.cafe/users/zagura></a>
-            <img src=assets/me/avatar.jpg>
-            <p>
-              Hi, I'm Zagura, and this is my little website, where I
-              put <a href=/art>drawings</a>, links to programming projects,
-              and other stuff that I make
-            </p>
-            <div>
-              <img class=pixelart src=assets/badges/smol/theythem.png>
-              <img class=pixelart src=assets/badges/smol/trans1.png>
-              <img class=pixelart src=assets/badges/smol/linux2.gif>
-              <img class=pixelart src=assets/badges/smol/handcoded.png>
-            </div>
-          </header>
-          <dl>
-            <article>
-              <dt>💜 fav color</dt>
-              <dd>Purple</dd>
-            </article>
-            <article>
-              <dt>🕓 timezone</dt>
-              <dd>UTC+1</dd>
-            </article>
-            <article>
-              <dt>🏳️‍⚧️ pronouns</dt>
-              <dd>they/them | she/her</dd>
-            </article>
-            <article>
-              <dt>🌈 sum labelss</dt>
-              <dd>transfem, enby</dd>
-            </article>
-            <article>
-              <dt>🗣️ speaks</dt>
-              <dd>en, es, cat, ru, <a href=https://tokipona.org>tok</a></dd>
-            </article>
-            <article>
-              <dt>🏠 lives in</dt>
-              <dd>Barcelona (Catalonia, Spain)</dd>
-            </article>
-            <article>
-              <dt>🗣️ name IPA</dt>
-              <dd>/ˈðɑɡurɑ/</dd>
-            </article>
-          </dl>
+      <section id=character-sheet>
+        <header>
+          <a id=statuscafe-face class=no-deco href=https://status.cafe/users/zagura></a>
+          <div class=trans><span class=tb>T</span><span class=tp>R</span><span class=tw>A</span><span class=tp>N</span><span class=tb>S</span><br><span class=th>RIGHTS!</span></div>
+          <img src=assets/me/avatar.jpg>
+          <p>
+            Hi, I'm Zagura, and this is my little website, where I
+            put <a href=/art>drawings</a>, links to programming projects,
+            and other stuff that I make
+          </p>
           <div>
-            I like trying to make cool stuff, some of the things I'm
-            interested in are compilers, 3D engines, conlangs &amp; digital drawing.<br>
-            Also, I love dyeing &amp; cutting my hair!<br>
-            If I had to describe myself honestly with 2 words, it'd be: curious &amp; lazy
+            <img class=pixelart src=assets/badges/smol/theythem.png>
+            <img class=pixelart src=assets/badges/smol/trans1.png>
+            <img class=pixelart src=assets/badges/smol/linux2.gif>
+            <img class=pixelart src=assets/badges/smol/handcoded.png>
           </div>
-        </section>
-      </div>
-      <div>
-        <div id=statuscafe>
-          <div id=statuscafe-content></div>
-          <div id=statuscafe-header></div>
-          <noscript>Needs JS to show status</noscript>
+        </header>
+        <dl>
+          <article>
+            <dt>💜 fav color</dt>
+            <dd>Purple</dd>
+          </article>
+          <article>
+            <dt>🕓 timezone</dt>
+            <dd>UTC+1</dd>
+          </article>
+          <article>
+            <dt>🏳️‍⚧️ pronouns</dt>
+            <dd>they/them | she/her</dd>
+          </article>
+          <article>
+            <dt>🌈 sum labelss</dt>
+            <dd>transfem, enby</dd>
+          </article>
+          <article>
+            <dt>🗣️ speaks</dt>
+            <dd>en, es, cat, ru, <a href=https://tokipona.org>tok</a></dd>
+          </article>
+          <article>
+            <dt>🏠 lives in</dt>
+            <dd>Barcelona (Catalonia, Spain)</dd>
+          </article>
+          <article>
+            <dt>🗣️ name IPA</dt>
+            <dd>/ˈðɑɡurɑ/</dd>
+          </article>
+        </dl>
+        <div>
+          I like trying to make cool stuff, some of the things I'm
+          interested in are compilers, 3D engines, conlangs &amp; digital drawing.<br>
+          Also, I love dyeing &amp; cutting my hair!<br>
+          If I had to describe myself honestly with 2 words, it'd be: curious &amp; lazy
         </div>
-        <div class=trans><span class=tb>T</span><span class=tp>R</span><span class=tw>A</span><span class=tp>N</span><span class=tb>S</span><br><span class=th>RIGHTS!</span></div>
+      </section>
+      <div>
         <section>
-          <img src=assets/gif/bunny.gif width=100px decoding=async class="pixelart float-right" alt="A GIF of a holographic bunny, jumping &amp; rotating"> 
+          <img src=assets/gif/bunny.gif width=100px decoding=async class="pixelart bunny" alt="A GIF of a holographic bunny, jumping &amp; rotating"> 
           <ul>
             <li><a href=now>What I'm up to now</a></li>
+            <li><a href=faves>Stuff I like</a></li>
+            <hr>
             <li><a href=projects>My Projects</a></li>
             <li><a href=art>My Art Stuff</a></li>
-            <li><a href=faves>Stuff I like</a></li>
+            <hr>
             <li><a href=website-templates>Website Templates</a></li>
             <li><a href=tools/oc>OC Idea Generator</a></li>
           </ul>   
         </section>
-        <section id=contact>
-          <table>
+        <section>
+          <h2>Me Elsewhere</h2>
+          <table id=contact>
             <tr>
               <td>✉️ email</td>
               <td><a rel="me nofollow" href=mailto:me@zagura.one>me@zagura.one</a></td>
@@ -121,6 +118,16 @@
               <td><a rel=me href=https://www.youtube.com/channel/UClXGZGHP1adu7vBDYwJvznQ>@_zagura</a></td>
             </tr>
           </table>
+          <div id=statuscafe class=status>
+            <div id=statuscafe-content class=status-content></div>
+            <div id=statuscafe-header class=status-header></div>
+            <noscript>Needs JS to show status</noscript>
+          </div>
+          <div id=fedi class=status>
+            <div id=fedi-content class=status-content></div>
+            <div id=fedi-header class=status-header></div>
+            <noscript>Needs JS to show status</noscript>
+          </div>
         </section>
         <section>
           <div class=webring>
