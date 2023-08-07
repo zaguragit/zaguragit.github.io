@@ -4,12 +4,19 @@ document.getElementById("form").addEventListener("submit", e => {
     e.preventDefault();
     const input = e.currentTarget.input.value;
     e.currentTarget.input.value = "";
-    output(JSON.stringify(parse(tokenize(input)), null, 2));
+    const ast = parse(tokenize(input));
+    debug(ast);
+    output(`query: ${input}`);
+    output(evaluate(ast));
 });
+
+function debug(o) {
+    output("<pre>" + JSON.stringify(o, null, 2) + "</pre>");
+}
 
 function output(o) {
     const element = document.getElementById("output");
-    element.innerHTML = `<article><pre>${o}</pre></article>` + element.innerHTML;
+    element.innerHTML = `<article>${o}</article>` + element.innerHTML;
 }
 
 function error(o) {
@@ -210,5 +217,28 @@ function parse_primary(context) {
                 "    <identifier>, <number>\n" +
                 `but got ${t.type}`);
             return { type: "ERROR", loc: t.loc };
+    }
+}
+
+function evaluate(exp) {
+    switch (exp.type) {
+        case TokenNumber: return exp.val;
+        case "unop": switch (exp.op) {
+            case UnOpNeg: return -evaluate(exp.operand);
+            case UnOpNot: return !evaluate(exp.operand);
+        }
+        case "biop": switch (exp.op) {
+            case BiOpPlus: return evaluate(exp.left) + evaluate(exp.right)
+            case BiOpMinus: return evaluate(exp.left) - evaluate(exp.right)
+            case BiOpMul: return evaluate(exp.left) * evaluate(exp.right)
+            case BiOpDiv: return evaluate(exp.left) / evaluate(exp.right)
+            case BiOpPow: return Math.pow(evaluate(exp.left), evaluate(exp.right));
+            case BiOpEq: return evaluate(exp.left) == evaluate(exp.right)
+            case BiOpMore: return evaluate(exp.left) > evaluate(exp.right)
+            case BiOpLess: return evaluate(exp.left) < evaluate(exp.right)
+            case BiOpAnd: return evaluate(exp.left) && evaluate(exp.right)
+            case BiOpOr: return evaluate(exp.left) || evaluate(exp.right)
+        }
+        default: "ERROR: Undefined Operation"
     }
 }
