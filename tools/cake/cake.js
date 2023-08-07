@@ -18,61 +18,6 @@ function output(ast, o) {
     element.innerHTML = `<article><header>${render_exp(ast)}</header><div>${o}</div></article>` + element.innerHTML;
 }
 
-function render_exp(exp, extra) {
-    switch (exp.type) {
-        case TokenNumber: return `<span class=token-num>${exp.val}</span>`;
-        case TokenPi: return `<span class=token-num>π</span>`;
-        case TokenIdentifier: return `<span class=token-id>${exp.val}</span>`;
-        case TokenRange: return "<span class=token-kw>range</span> " +
-            (exp.start_excl ? "(" : "[") +
-            render_exp(exp.start) + ", " + render_exp(exp.end) +
-            (exp.end_excl ? ")" : "]");
-        case TokenRandom: return "<span class=token-kw>random in</span> " + render_exp(exp.range);
-        case "unop": {
-            const p = { parent_precedence: 99 };
-            switch (exp.op) {
-                case UnOpNeg: return "<span class=token-op>-</span>" + render_exp(exp.operand, p);
-                case UnOpNot: return "<span class=token-op>not</span> " + render_exp(exp.operand, p);
-                case UnOpAbs: return "<span class=token-op>abs</span> " + render_exp(exp.operand, p);
-                case UnOpSin: return "<span class=token-op>sin</span> " + render_exp(exp.operand, p);
-                case UnOpCos: return "<span class=token-op>cos</span> " + render_exp(exp.operand, p);
-                case UnOpTan: return "<span class=token-op>tan</span> " + render_exp(exp.operand, p);
-                case UnOpFloor: return "<span class=token-op>floor</span> " + render_exp(exp.operand, p);
-                case UnOpCeil: return "<span class=token-op>ceil</span> " + render_exp(exp.operand, p);
-                case UnOpRound: return "<span class=token-op>round</span> " + render_exp(exp.operand, p);
-                case UnOpTrunc: return "<span class=token-op>trunc</span> " + render_exp(exp.operand, p);
-                case UnOpFract: return "<span class=token-op>fract</span> " + render_exp(exp.operand, p);
-            }
-        }
-        case "biop": {
-            const p = { parent_precedence: exp.op.precedence };
-            const pr = { parent_precedence: exp.op.precedence, right_operand: true };
-            let r;
-            switch (exp.op) {
-                case BiOpPlus: r = render_exp(exp.left, p) + " <span class=token-op>+</span> " + render_exp(exp.right, pr); break;
-                case BiOpMinus: r = render_exp(exp.left, p) + " <span class=token-op>-</span> " + render_exp(exp.right, pr); break;
-                case BiOpMul: r = render_exp(exp.left, p) + " <span class=token-op>*</span> " + render_exp(exp.right, pr); break;
-                case BiOpDiv: r = render_exp(exp.left, p) + " <span class=token-op>/</span> " + render_exp(exp.right, pr); break;
-                case BiOpPow:
-                    if (exp.right.val == 0.5)
-                        return "<span class=token-op>sqrt</span> " + render_exp(exp.left, p);
-                    r = render_exp(exp.left, p) + " <span class=token-op>^</span> " + render_exp(exp.right, pr);
-                    break;
-                case BiOpEq: r = render_exp(exp.left, p) + " <span class=token-op>equals</span> " + render_exp(exp.right, pr); break;
-                case BiOpMore: r = render_exp(exp.left, p) + " <span class=token-op>></span> " + render_exp(exp.right, pr); break;
-                case BiOpLess: r = render_exp(exp.left, p) + " <span class=token-op><</span> " + render_exp(exp.right, pr); break;
-                case BiOpAnd: r = render_exp(exp.left, p) + " <span class=token-op>and</span> " + render_exp(exp.right, pr); break;
-                case BiOpOr: r = render_exp(exp.left, p) + " <span class=token-op>or</span> " + render_exp(exp.right, pr); break;
-            }
-            if (extra)
-                if (extra.parent_precedence > p.parent_precedence || extra.right_operand && extra.parent_precedence == p.parent_precedence)
-                    r = `(${r})`;
-            return r;
-        }
-        default: return "ERROR: Undefined Operation";
-    }
-}
-
 function escape_html(str){
     var p = document.createElement("p");
     p.appendChild(document.createTextNode(str));
@@ -113,8 +58,12 @@ const TokenCeil = "ceil";
 const TokenRound = "round";
 const TokenTrunc = "trunc";
 const TokenFract = "fract";
+const TokenExp = "exp";
+const TokenLn = "ln";
+const TokenLog = "log";
 const TokenRandom = "random";
 const TokenPi = "pi";
+const TokenE = "E";
 const TokenOf = "of";
 const TokenIn = "in";
 const TokenRange = "range";
@@ -155,9 +104,13 @@ function tokenize(string) {
                 case "truncate":
                 case "trunc": tokens.push({ type: TokenTrunc, loc }); break;
                 case "fract": tokens.push({ type: TokenFract, loc }); break;
+                case "exp": tokens.push({ type: TokenExp, loc }); break;
+                case "ln": tokens.push({ type: TokenLn, loc }); break;
+                case "log": tokens.push({ type: TokenLog, loc }); break;
                 case "random":
                 case "rand": tokens.push({ type: TokenRandom, loc }); break;
                 case "pi": tokens.push({ type: TokenPi, loc }); break;
+                case "e": tokens.push({ type: TokenE, loc }); break;
                 case "of": tokens.push({ type: TokenOf, loc }); break;
                 case "in": tokens.push({ type: TokenIn, loc }); break;
                 case "range": tokens.push({ type: TokenRange, loc }); break;
@@ -233,7 +186,8 @@ function parse(tokens) {
 
 function parse_expression(context) { return parse_binary(context, 0) }
 
-const BiOpPow = { type: "^", precedence: 7 };
+const BiOpPow = { type: "^", precedence: 8 };
+const BiOpLog = { type: "log", precedence: 7 };
 const BiOpMul = { type: "*", precedence: 6 };
 const BiOpDiv = { type: "/", precedence: 6 };
 const BiOpPlus = { type: "+", precedence: 5 };
@@ -273,6 +227,8 @@ const UnOpCeil = { type: "ceil" };
 const UnOpRound = { type: "round" };
 const UnOpTrunc = { type: "trunc" };
 const UnOpFract = { type: "fract" };
+const UnOpExp = { type: "exp" };
+const UnOpLn = { type: "ln" };
 
 function get_un_op(token_type) {
     switch (token_type) {
@@ -287,6 +243,8 @@ function get_un_op(token_type) {
         case TokenRound: return UnOpRound;
         case TokenTrunc: return UnOpTrunc;
         case TokenFract: return UnOpFract;
+        case TokenExp: return UnOpExp;
+        case TokenLn: return UnOpLn;
         default: return null;
     }
 }
@@ -327,6 +285,7 @@ function parse_primary(context) {
     switch (t.type) {
         case TokenNumber: return t;
         case TokenPi: return t;
+        case TokenE: return t;
         case TokenIdentifier: return t;
         case TokenOpenParen: {
             const exp = parse_expression(context);
@@ -342,6 +301,12 @@ function parse_primary(context) {
             const left = parse_binary(context, 99);
             const loc = [t.loc[0], left.loc[1]];
             return { type: "biop", loc, op: BiOpPow, left, right: { type: TokenNumber, val: 0.5 } };
+        }
+        case TokenLog: {
+            const left = parse_binary(context, 99);
+            const right = parse_binary(context, 99);
+            const loc = [t.loc[0], right.loc[1]];
+            return { type: "biop", loc, op: BiOpLog, left, right };
         }
         case TokenRange: {
             let start_excl;
@@ -372,7 +337,7 @@ function parse_primary(context) {
         default:
             error("Expected one of: " +
                 "<identifier>, <number>, <operator>, (, [, range, random" +
-                `but got ${t.type}`);
+                ` but got ${t.type}`);
             return { type: "ERROR", loc: t.loc };
     }
 }
@@ -381,6 +346,7 @@ function evaluate(exp) {
     switch (exp.type) {
         case TokenNumber: return exp.val;
         case TokenPi: return Math.PI;
+        case TokenE: return Math.E;
         case TokenRange: return { type: TokenRange, start_excl: exp.start_excl, end_excl: exp.end_excl, start: evaluate(exp.start), end: evaluate(exp.end) };
         case TokenRandom:
             let range = evaluate(exp.range);
@@ -402,19 +368,81 @@ function evaluate(exp) {
             case UnOpFract:
                 let x = evaluate(exp.operand);
                 return x - Math.trunc(x);
+            case UnOpExp: return Math.exp(evaluate(exp.operand));
+            case UnOpLn: return Math.log(evaluate(exp.operand));
         }
         case "biop": switch (exp.op) {
-            case BiOpPlus: return evaluate(exp.left) + evaluate(exp.right)
-            case BiOpMinus: return evaluate(exp.left) - evaluate(exp.right)
-            case BiOpMul: return evaluate(exp.left) * evaluate(exp.right)
-            case BiOpDiv: return evaluate(exp.left) / evaluate(exp.right)
+            case BiOpPlus: return evaluate(exp.left) + evaluate(exp.right);
+            case BiOpMinus: return evaluate(exp.left) - evaluate(exp.right);
+            case BiOpMul: return evaluate(exp.left) * evaluate(exp.right);
+            case BiOpDiv: return evaluate(exp.left) / evaluate(exp.right);
             case BiOpPow: return Math.pow(evaluate(exp.left), evaluate(exp.right));
-            case BiOpEq: return evaluate(exp.left) == evaluate(exp.right)
-            case BiOpMore: return evaluate(exp.left) > evaluate(exp.right)
-            case BiOpLess: return evaluate(exp.left) < evaluate(exp.right)
-            case BiOpAnd: return evaluate(exp.left) && evaluate(exp.right)
-            case BiOpOr: return evaluate(exp.left) || evaluate(exp.right)
+            case BiOpEq: return evaluate(exp.left) == evaluate(exp.right);
+            case BiOpMore: return evaluate(exp.left) > evaluate(exp.right);
+            case BiOpLess: return evaluate(exp.left) < evaluate(exp.right);
+            case BiOpAnd: return evaluate(exp.left) && evaluate(exp.right);
+            case BiOpOr: return evaluate(exp.left) || evaluate(exp.right);
+            case BiOpLog: return Math.log(evaluate(exp.right)) / Math.log(evaluate(exp.left));
         }
         default: "ERROR: Undefined Operation"
+    }
+}
+
+function render_exp(exp, extra) {
+    switch (exp.type) {
+        case TokenNumber: return `<span class=token-num>${exp.val}</span>`;
+        case TokenPi: return `<span class=token-num>π</span>`;
+        case TokenE: return `<span class=token-num>e</span>`;
+        case TokenIdentifier: return `<span class=token-id>${exp.val}</span>`;
+        case TokenRange: return "<span class=token-kw>range</span> " +
+            (exp.start_excl ? "(" : "[") +
+            render_exp(exp.start) + ", " + render_exp(exp.end) +
+            (exp.end_excl ? ")" : "]");
+        case TokenRandom: return "<span class=token-kw>random in</span> " + render_exp(exp.range);
+        case "unop": {
+            const p = { parent_precedence: 99 };
+            switch (exp.op) {
+                case UnOpNeg: return "<span class=token-op>-</span>" + render_exp(exp.operand, p);
+                case UnOpNot: return "<span class=token-op>not</span> " + render_exp(exp.operand, p);
+                case UnOpAbs: return "<span class=token-op>abs</span> " + render_exp(exp.operand, p);
+                case UnOpSin: return "<span class=token-op>sin</span> " + render_exp(exp.operand, p);
+                case UnOpCos: return "<span class=token-op>cos</span> " + render_exp(exp.operand, p);
+                case UnOpTan: return "<span class=token-op>tan</span> " + render_exp(exp.operand, p);
+                case UnOpFloor: return "<span class=token-op>floor</span> " + render_exp(exp.operand, p);
+                case UnOpCeil: return "<span class=token-op>ceil</span> " + render_exp(exp.operand, p);
+                case UnOpRound: return "<span class=token-op>round</span> " + render_exp(exp.operand, p);
+                case UnOpTrunc: return "<span class=token-op>trunc</span> " + render_exp(exp.operand, p);
+                case UnOpFract: return "<span class=token-op>fract</span> " + render_exp(exp.operand, p);
+                case UnOpExp: return "<span class=token-op>exp</span> " + render_exp(exp.operand, p);
+                case UnOpLn: return "<span class=token-op>ln</span> " + render_exp(exp.operand, p);
+            }
+        }
+        case "biop": {
+            const p = { parent_precedence: exp.op.precedence };
+            const pr = { parent_precedence: exp.op.precedence, right_operand: true };
+            let r;
+            switch (exp.op) {
+                case BiOpPlus: r = render_exp(exp.left, p) + " <span class=token-op>+</span> " + render_exp(exp.right, pr); break;
+                case BiOpMinus: r = render_exp(exp.left, p) + " <span class=token-op>-</span> " + render_exp(exp.right, pr); break;
+                case BiOpMul: r = render_exp(exp.left, p) + " <span class=token-op>*</span> " + render_exp(exp.right, pr); break;
+                case BiOpDiv: r = render_exp(exp.left, p) + " <span class=token-op>/</span> " + render_exp(exp.right, pr); break;
+                case BiOpPow:
+                    if (exp.right.val == 0.5)
+                        return "<span class=token-op>sqrt</span> " + render_exp(exp.left, p);
+                    r = render_exp(exp.left, p) + " <span class=token-op>^</span> " + render_exp(exp.right, pr);
+                    break;
+                case BiOpEq: r = render_exp(exp.left, p) + " <span class=token-op>equals</span> " + render_exp(exp.right, pr); break;
+                case BiOpMore: r = render_exp(exp.left, p) + " <span class=token-op>></span> " + render_exp(exp.right, pr); break;
+                case BiOpLess: r = render_exp(exp.left, p) + " <span class=token-op><</span> " + render_exp(exp.right, pr); break;
+                case BiOpAnd: r = render_exp(exp.left, p) + " <span class=token-op>and</span> " + render_exp(exp.right, pr); break;
+                case BiOpOr: r = render_exp(exp.left, p) + " <span class=token-op>or</span> " + render_exp(exp.right, pr); break;
+                case BiOpLog: r = "<span class=token-op>log</span> " + render_exp(exp.left, p) + " " + render_exp(exp.right, pr); break;
+            }
+            if (extra)
+                if (extra.parent_precedence > p.parent_precedence || extra.right_operand && extra.parent_precedence == p.parent_precedence)
+                    r = `(${r})`;
+            return r;
+        }
+        default: return "ERROR: Undefined Operation";
     }
 }
