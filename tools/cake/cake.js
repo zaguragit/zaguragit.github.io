@@ -66,7 +66,9 @@ const TokenPi = "pi";
 const TokenE = "E";
 const TokenOf = "of";
 const TokenIn = "in";
+const TokenTo = "to";
 const TokenRange = "range";
+const TokenConvert = "convert";
 
 function tokenize(string) {
     let tokens = [];
@@ -77,7 +79,7 @@ function tokenize(string) {
         while (char.match(/[ ]/i))
             char = string[++i];
         if (char.match(/[a-zA-Z_]/i)) {
-            let id = char.toLowerCase();;
+            let id = char.toLowerCase();
             while (i + 1 < length && (char = string[i + 1]).match(/[a-zA-Z\-_]/i)) {
                 id += char.toLowerCase();
                 i++;
@@ -113,7 +115,9 @@ function tokenize(string) {
                 case "e": tokens.push({ type: TokenE, loc }); break;
                 case "of": tokens.push({ type: TokenOf, loc }); break;
                 case "in": tokens.push({ type: TokenIn, loc }); break;
+                case "to": tokens.push({ type: TokenTo, loc }); break;
                 case "range": tokens.push({ type: TokenRange, loc }); break;
+                case "convert": tokens.push({ type: TokenConvert, loc }); break;
                 default: tokens.push({ type: TokenIdentifier, loc, val: id });
             }
         }
@@ -287,6 +291,14 @@ function parse_primary(context) {
         case TokenPi: return t;
         case TokenE: return t;
         case TokenIdentifier: return t;
+        case TokenConvert: {
+            const operand = parse_expression(context);
+            const from = parse_unit(context);
+            context.expect(TokenTo);
+            const to = parse_unit(context);
+            const loc = [t.loc[0], to.loc[1]];
+            return { type: TokenConvert, loc, operand, from, to }
+        }
         case TokenOpenParen: {
             const exp = parse_expression(context);
             context.expect(TokenCloseParen);
@@ -343,18 +355,64 @@ function parse_primary(context) {
     }
 }
 
+const UnitAliases = {
+    ton: "t", tons: "t", tonne: "t", tonnes: "t",
+    days: "day", weeks: "week", months: "month", years: "year",
+    second: "s", seconds: "s", minute: "min", minutes: "min", hour: "h", hours: "h",
+}
+
+const SubUnits = {
+    ml: "l", cl: "l", dl: "l", dal: "l", hl: "l", kl: "l",
+    mm: "m", cm: "m", dm: "m", dam: "m", hm: "m", km: "m",
+    mg: "g", cg: "g", dg: "g", dag: "g", hg: "g", kg: "g", t: "g",
+    min: "s", h: "s", day: "s", week: "s", month: "s", year: "s",
+}
+
+const ConversionFactors = {
+    l: { ml: 1000, cl: 100, dl: 10, dal: 0.1, hl: 0.01, kl: 0.001 },
+    m: { mm: 1000, cm: 100, dm: 10, dam: 0.1, hm: 0.01, km: 0.001 },
+    g: { mg: 1000, cg: 100, dg: 10, dag: 0.1, hg: 0.01, kg: 0.001, t: 0.00001 },
+    s: { min: 1/60, h: 1/60/60, day: 1/60/60/24, week: 1/60/60/24/7, month: 1/60/60/24/30, year: 1/60/60/24/365 },
+}
+
+function parse_unit(context) {
+    let unit = context.expect(TokenIdentifier);
+    unit.val = UnitAliases[unit.val] ?? unit.val;
+    if (!ConversionFactors[unit.val] && !SubUnits[unit.val])
+        error(`Unknown unit ${unit.val}`);
+    return unit;
+}
+
 function evaluate(exp) {
     switch (exp.type) {
         case TokenNumber: return exp.val;
         case TokenPi: return Math.PI;
         case TokenE: return Math.E;
         case TokenRange: return { type: TokenRange, start_excl: exp.start_excl, end_excl: exp.end_excl, start: evaluate(exp.start), end: evaluate(exp.end) };
-        case TokenRandom:
+        case TokenRandom: {
             let range = evaluate(exp.range);
             const min = range.start ?? 0;
             if (range.type == TokenRange)
                 range = range.end - range.start;
             return min + Math.random() * range;
+        }
+        case TokenConvert: {
+            let val = evaluate(exp.operand);
+            let from = exp.from.val;
+            const sub = SubUnits[from];
+            if (sub) {
+                val /= ConversionFactors[sub][from];
+                from = sub;
+            }
+            const to = exp.to.val;
+            if (from != to) {
+                const factor = ConversionFactors[from][to];
+                if (!factor)
+                    error(`Can't convert from ${from} to ${to}`);
+                val *= factor;
+            }
+            return val;
+        }
         case "unop": switch (exp.op) {
             case UnOpNeg: return -evaluate(exp.operand);
             case UnOpNot: return !evaluate(exp.operand);
@@ -385,7 +443,6 @@ function evaluate(exp) {
             case BiOpOr: return evaluate(exp.left) || evaluate(exp.right);
             case BiOpLog: return Math.log(evaluate(exp.right)) / Math.log(evaluate(exp.left));
         }
-        default: "ERROR: Undefined Operation"
     }
 }
 
@@ -400,6 +457,8 @@ function render_exp(exp, extra) {
             render_exp(exp.start) + ", " + render_exp(exp.end) +
             (exp.end_excl ? ")" : "]");
         case TokenRandom: return "<span class=token-kw>random in</span> " + render_exp(exp.range);
+        case TokenConvert: return "<span class=token-kw>convert</span> " + render_exp(exp.operand) + " " +
+            `<span class=token-num>${exp.from.val}</span> <span class=token-kw>to</span> <span class=token-num>${exp.to.val}</span>`;
         case "unop": {
             const p = { parent_precedence: 99 };
             switch (exp.op) {
