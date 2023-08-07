@@ -13,6 +13,7 @@
     color-scheme: dark;
     background-color: #000;
     color: #eee;
+    font-family: sans-serif;
 }
 
 body {
@@ -68,4 +69,33 @@ main {
 #output article.error::before {
     content: "error: ";
     opacity: .5;
+}
+
+
+#output article > header {
+    font-family: monospace;
+    margin-bottom: .25em;
+}
+#output article > header::before {
+    content: "query: ";
+    color: var(--base-foreground-weak);
+}
+
+#output article > div {
+    margin-top: .25em;
+    background-color: var(--surface-background-dim);
+    border: 1px dashed var(--base-foreground-border);
+    border-radius: var(--border-radius);
+    padding: .5em;
+    display: inline-block;
+}
+
+.token-num {
+    color: #ff88ff;
+}
+.token-id {
+    color: #88ffae;
+}
+.token-kw {
+    color: #77a5ff;
 }

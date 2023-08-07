@@ -4,19 +4,32 @@ document.getElementById("form").addEventListener("submit", e => {
     e.preventDefault();
     const input = e.currentTarget.input.value;
     e.currentTarget.input.value = "";
-    const ast = parse(tokenize(input));
-    debug(ast);
-    output(`query: ${input}`);
-    output(evaluate(ast));
+    const tokens = tokenize(input);
+    const ast = parse(tokens);
+    output(tokens, evaluate(ast));
 });
 
 function debug(o) {
-    output("<pre>" + JSON.stringify(o, null, 2) + "</pre>");
+    const element = document.getElementById("output");
+    element.innerHTML = `<pre>${JSON.stringify(o, null, 2)}</pre>` + element.innerHTML;
 }
 
-function output(o) {
+function output(tokens, o) {
     const element = document.getElementById("output");
-    element.innerHTML = `<article>${o}</article>` + element.innerHTML;
+    element.innerHTML = `<article><header>${tokens.map(render_token).join(" ")}</header><div>${o}</div></article>` + element.innerHTML;
+}
+
+function render_token(token) {
+    switch (token.type) {
+        case TokenNumber: return "<span class=token-num>" + token.val + "</span>"
+        case TokenIdentifier: return "<span class=token-id>" + token.val + "</span>"
+        case TokenAnd:
+        case TokenOr:
+        case TokenNot:
+        case TokenOf:
+            return "<span class=token-kw>" + token.type + "</span>"
+        default: return token.type;
+    }
 }
 
 function error(o) {
@@ -58,7 +71,7 @@ function tokenize(string) {
                 id += char;
                 i++;
             }
-            if (id in [TokenAnd, TokenOr, TokenNot, TokenOf])
+            if ([TokenAnd, TokenOr, TokenNot, TokenOf].includes(id))
                 tokens.push({ type: id, loc: [fi, i + 1] });
             else
                 tokens.push({ type: TokenIdentifier, loc: [fi, i + 1], val: id });
