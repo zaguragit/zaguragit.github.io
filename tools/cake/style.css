@@ -91,11 +91,14 @@ main {
 }
 
 .token-num {
-    color: #ff88ff;
+    color: #ffb688;
 }
 .token-id {
     color: #88ffae;
 }
-.token-kw {
+.token-op {
     color: #77a5ff;
+}
+.token-kw {
+    color: #ff88ff;
 }

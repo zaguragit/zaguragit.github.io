@@ -4,9 +4,8 @@ document.getElementById("form").addEventListener("submit", e => {
     e.preventDefault();
     const input = e.currentTarget.input.value;
     e.currentTarget.input.value = "";
-    const tokens = tokenize(input);
-    const ast = parse(tokens);
-    output(tokens, evaluate(ast));
+    const ast = parse(tokenize(input));
+    output(ast, evaluate(ast));
 });
 
 function debug(o) {
@@ -14,21 +13,40 @@ function debug(o) {
     element.innerHTML = `<pre>${JSON.stringify(o, null, 2)}</pre>` + element.innerHTML;
 }
 
-function output(tokens, o) {
+function output(ast, o) {
     const element = document.getElementById("output");
-    element.innerHTML = `<article><header>${tokens.map(render_token).join(" ")}</header><div>${o}</div></article>` + element.innerHTML;
+    element.innerHTML = `<article><header>${render_exp(ast)}</header><div>${o}</div></article>` + element.innerHTML;
 }
 
-function render_token(token) {
-    switch (token.type) {
-        case TokenNumber: return "<span class=token-num>" + token.val + "</span>"
-        case TokenIdentifier: return "<span class=token-id>" + token.val + "</span>"
-        case TokenAnd:
-        case TokenOr:
-        case TokenNot:
-        case TokenOf:
-            return "<span class=token-kw>" + token.type + "</span>"
-        default: return token.type;
+function render_exp(exp, extra) {
+    switch (exp.type) {
+        case TokenNumber: return `<span class=token-num>${exp.val}</span>`;
+        case TokenIdentifier: return `<span class=token-id>${exp.val}</span>`;
+        case "unop": switch (exp.op) {
+            case UnOpNeg: return "<span class=token-op>-</span>" + render_exp(exp.operand);
+            case UnOpNot: return "<span class=token-op>not</span> " + render_exp(exp.operand);
+        }
+        case "biop":
+            const p = { parent_precedence: exp.op.precedence };
+            const pr = { parent_precedence: exp.op.precedence, right_operand: true };
+            let r;
+            switch (exp.op) {
+                case BiOpPlus: r = render_exp(exp.left, p) + " <span class=token-op>+</span> " + render_exp(exp.right, pr); break;
+                case BiOpMinus: r = render_exp(exp.left, p) + " <span class=token-op>-</span> " + render_exp(exp.right, pr); break;
+                case BiOpMul: r = render_exp(exp.left, p) + " <span class=token-op>*</span> " + render_exp(exp.right, pr); break;
+                case BiOpDiv: r = render_exp(exp.left, p) + " <span class=token-op>/</span> " + render_exp(exp.right, pr); break;
+                case BiOpPow: r = render_exp(exp.left, p) + " <span class=token-op>^</span> " + render_exp(exp.right, pr); break;
+                case BiOpEq: r = render_exp(exp.left, p) + " <span class=token-op>equals</span> " + render_exp(exp.right, pr); break;
+                case BiOpMore: r = render_exp(exp.left, p) + " <span class=token-op>></span> " + render_exp(exp.right, pr); break;
+                case BiOpLess: r = render_exp(exp.left, p) + " <span class=token-op><</span> " + render_exp(exp.right, pr); break;
+                case BiOpAnd: r = render_exp(exp.left, p) + " <span class=token-op>and</span> " + render_exp(exp.right, pr); break;
+                case BiOpOr: r = render_exp(exp.left, p) + " <span class=token-op>or</span> " + render_exp(exp.right, pr); break;
+            }
+            if (extra)
+                if (extra.parent_precedence > p.parent_precedence || extra.right_operand && extra.parent_precedence == p.parent_precedence)
+                    r = `(${r})`;
+            return r;
+        default: "ERROR: Undefined Operation"
     }
 }
 
@@ -71,10 +89,20 @@ function tokenize(string) {
                 id += char;
                 i++;
             }
-            if ([TokenAnd, TokenOr, TokenNot, TokenOf].includes(id))
-                tokens.push({ type: id, loc: [fi, i + 1] });
-            else
-                tokens.push({ type: TokenIdentifier, loc: [fi, i + 1], val: id });
+            let loc = [fi, i + 1];
+            switch (id) {
+                case "and": tokens.push({ type: TokenAnd, loc: loc }); break;
+                case "or": tokens.push({ type: TokenOr, loc: loc }); break;
+                case "not": tokens.push({ type: TokenNot, loc: loc }); break;
+                case "of": tokens.push({ type: TokenOf, loc: loc }); break;
+                case "plus": tokens.push({ type: TokenPlus, loc: loc }); break;
+                case "minus": tokens.push({ type: TokenMinus, loc: loc }); break;
+                case "times":
+                case "by": tokens.push({ type: TokenMul, loc: loc }); break;
+                case "equals":
+                case "eq": tokens.push({ type: TokenEq, loc: loc }); break;
+                default: tokens.push({ type: TokenIdentifier, loc: loc, val: id });
+            }
         }
         else if (char.match(/[0-9]/i)) {
             const radix = 10;
