@@ -436,7 +436,12 @@ function render_exp(exp, extra) {
                 case BiOpLess: r = render_exp(exp.left, p) + " <span class=token-op><</span> " + render_exp(exp.right, pr); break;
                 case BiOpAnd: r = render_exp(exp.left, p) + " <span class=token-op>and</span> " + render_exp(exp.right, pr); break;
                 case BiOpOr: r = render_exp(exp.left, p) + " <span class=token-op>or</span> " + render_exp(exp.right, pr); break;
-                case BiOpLog: r = "<span class=token-op>log</span> " + render_exp(exp.left, p) + " " + render_exp(exp.right, pr); break;
+                case BiOpLog:
+                    let base = render_exp(exp.left, p);
+                    if (exp.left.type != TokenNumber)
+                        base = " " + base;
+                    r = "<span class=token-op>log</span>" + base + " " + render_exp(exp.right, pr);
+                    break;
             }
             if (extra)
                 if (extra.parent_precedence > p.parent_precedence || extra.right_operand && extra.parent_precedence == p.parent_precedence)
