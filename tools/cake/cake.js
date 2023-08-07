@@ -333,7 +333,8 @@ function parse_primary(context) {
         case TokenRandom:
             context.expect(TokenIn);
             const range = parse_binary(context, 99);
-            return { type: TokenRandom, range };
+            const loc = [t.loc[0], range.loc[1]];
+            return { type: TokenRandom, loc, range };
         default:
             error("Expected one of: " +
                 "<identifier>, <number>, <operator>, (, [, range, random" +
