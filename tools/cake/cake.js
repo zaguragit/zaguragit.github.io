@@ -441,7 +441,12 @@ function update_info() {
 function evaluate(exp) {
     switch (exp.type) {
         case TokenAns: return last_answer;
-        case TokenIdentifier: return Variables[exp.val];
+        case TokenIdentifier: {
+            let x = Variables[exp.val];
+            if (x == undefined)
+                error(`Undefined variable ${exp.val}`);
+            return x;
+        }
         case "vector": return exp.list.map(evaluate);
         case TokenNumber: return exp.val;
         case TokenPi: return Math.PI;
