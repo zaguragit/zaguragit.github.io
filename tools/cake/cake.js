@@ -1,11 +1,14 @@
 "use strict";
 
+var last_answer = 0;
+
 document.getElementById("form").addEventListener("submit", e => {
     e.preventDefault();
     const input = e.currentTarget.input.value;
     e.currentTarget.input.value = "";
     const ast = parse(tokenize(input));
-    output(ast, evaluate(ast));
+    last_answer = evaluate(ast);
+    output(ast, last_answer);
 });
 
 function debug(o) {
@@ -15,7 +18,7 @@ function debug(o) {
 
 function output(ast, o) {
     const element = document.getElementById("output");
-    element.innerHTML = `<article><header>${render_exp(ast)}</header><div>${o}</div></article>` + element.innerHTML;
+    element.innerHTML = `<article><header>${render_exp(ast)}</header><div>${render_evaluated(o)}</div></article>` + element.innerHTML;
 }
 
 function escape_html(str){
@@ -70,6 +73,7 @@ const TokenTo = "to";
 const TokenRange = "range";
 const TokenConvert = "convert";
 const TokenLet = "let";
+const TokenAns = "ans";
 
 function tokenize(string) {
     let tokens = [];
@@ -120,6 +124,8 @@ function tokenize(string) {
                 case "range": tokens.push({ type: TokenRange, loc }); break;
                 case "convert": tokens.push({ type: TokenConvert, loc }); break;
                 case "let": tokens.push({ type: TokenLet, loc }); break;
+                case "answer":
+                case "ans": tokens.push({ type: TokenAns, loc }); break;
                 default: tokens.push({ type: TokenIdentifier, loc, val: id });
             }
         }
@@ -289,6 +295,7 @@ function parse_post_unary(pre, context) {
 function parse_primary(context) {
     const t = context.next();
     switch (t.type) {
+        case TokenAns: return t;
         case TokenNumber: return t;
         case TokenPi: return t;
         case TokenE: return t;
@@ -418,8 +425,16 @@ function parse_unit(context) {
 
 const Variables = {};
 
+function update_info() {
+    document.getElementById("info").innerHTML =
+        "<table>" + Object.keys(Variables).map(
+            name => `<tr><td><var>${name}</var></td><td>${render_evaluated(Variables[name])}</td></tr>`
+        ).join("") + "</table>";
+}
+
 function evaluate(exp) {
     switch (exp.type) {
+        case TokenAns: return last_answer;
         case TokenIdentifier: return Variables[exp.val];
         case "vector": return exp.list.map(evaluate);
         case TokenNumber: return exp.val;
@@ -453,6 +468,7 @@ function evaluate(exp) {
         case TokenLet: {
             const val = evaluate(exp.val);
             Variables[exp.id.val] = val;
+            update_info();
             return val;
         }
         case "unop": switch (exp.op) {
@@ -488,12 +504,26 @@ function evaluate(exp) {
     }
 }
 
+function render_evaluated(val) {
+    if (val[0] != undefined)
+        return "(" + val.map(render_evaluated).join(", ") + ")";
+    if (typeof val == "number")
+        return `<span class=token-num>${val}</span>`;
+    if (val.type === TokenRange)
+        return "<span class=token-kw>range</span> " +
+            (val.start_excl ? "(" : "[") +
+            render_evaluated(val.start) + ", " + render_evaluated(val.end) +
+            (val.end_excl ? ")" : "]");
+    return val;
+}
+
 function render_exp(exp, extra) {
     switch (exp.type) {
+        case TokenAns: return "<span class=token-kw>ans</span>"
         case "vector": return "(" + exp.list.map(render_exp).join(", ") + ")";
         case TokenNumber: return `<span class=token-num>${exp.val}</span>`;
-        case TokenPi: return `<span class=token-num>π</span>`;
-        case TokenE: return `<span class=token-num>e</span>`;
+        case TokenPi: return "<span class=token-num>π</span>";
+        case TokenE: return "<span class=token-num>e</span>";
         case TokenIdentifier: return `<span class=token-id>${exp.val}</span>`;
         case TokenRange: return "<span class=token-kw>range</span> " +
             (exp.start_excl ? "(" : "[") +
