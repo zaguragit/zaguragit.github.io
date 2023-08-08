@@ -10,6 +10,8 @@ a.icon {
 a.icon > img {
   display: block;
   margin: 0 auto;
+  width: 64px;
+  height: 64px;
 }
 .icons-grid {
   display: grid;
