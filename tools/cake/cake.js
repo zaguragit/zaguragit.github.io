@@ -69,6 +69,7 @@ const TokenIn = "in";
 const TokenTo = "to";
 const TokenRange = "range";
 const TokenConvert = "convert";
+const TokenLet = "let";
 
 function tokenize(string) {
     let tokens = [];
@@ -118,6 +119,7 @@ function tokenize(string) {
                 case "to": tokens.push({ type: TokenTo, loc }); break;
                 case "range": tokens.push({ type: TokenRange, loc }); break;
                 case "convert": tokens.push({ type: TokenConvert, loc }); break;
+                case "let": tokens.push({ type: TokenLet, loc }); break;
                 default: tokens.push({ type: TokenIdentifier, loc, val: id });
             }
         }
@@ -291,6 +293,13 @@ function parse_primary(context) {
         case TokenPi: return t;
         case TokenE: return t;
         case TokenIdentifier: return t;
+        case TokenLet: {
+            const id = context.expect(TokenIdentifier);
+            context.expect(TokenEq);
+            const val = parse_expression(context);
+            const loc = [t.loc[0], val.loc[1]];
+            return { type: TokenLet, loc, id, val };
+        }
         case TokenConvert: {
             const operand = parse_expression(context);
             const from = parse_unit(context);
@@ -301,11 +310,35 @@ function parse_primary(context) {
         }
         case TokenOpenParen: {
             const exp = parse_expression(context);
+            if (context.current.type == TokenComma) {
+                const list = [exp];
+                while (context.current.type == TokenComma) {
+                    context.next();
+                    if (context.current.type == TokenCloseParen)
+                        break;
+                    list.push(parse_expression(context))
+                }
+                let e = context.expect(TokenCloseParen);
+                const loc = [t.loc[0], e.loc[1]];
+                return { type: "vector", loc, list }
+            }
             context.expect(TokenCloseParen);
             return exp;
         }
         case TokenOpenBracket: {
             const exp = parse_expression(context);
+            if (context.current.type == TokenComma) {
+                const list = [exp];
+                while (context.current.type == TokenComma) {
+                    context.next();
+                    if (context.current.type == TokenCloseBracket)
+                        break;
+                    list.push(parse_expression(context))
+                }
+                let e = context.expect(TokenCloseBracket);
+                const loc = [t.loc[0], e.loc[1]];
+                return { type: "vector", loc, list }
+            }
             context.expect(TokenCloseBracket);
             return exp;
         }
@@ -383,8 +416,12 @@ function parse_unit(context) {
     return unit;
 }
 
+const Variables = {};
+
 function evaluate(exp) {
     switch (exp.type) {
+        case TokenIdentifier: return Variables[exp.val];
+        case "vector": return exp.list.map(evaluate);
         case TokenNumber: return exp.val;
         case TokenPi: return Math.PI;
         case TokenE: return Math.E;
@@ -411,6 +448,11 @@ function evaluate(exp) {
                     error(`Can't convert from ${from} to ${to}`);
                 val *= factor;
             }
+            return val;
+        }
+        case TokenLet: {
+            const val = evaluate(exp.val);
+            Variables[exp.id.val] = val;
             return val;
         }
         case "unop": switch (exp.op) {
@@ -448,6 +490,7 @@ function evaluate(exp) {
 
 function render_exp(exp, extra) {
     switch (exp.type) {
+        case "vector": return "(" + exp.list.map(render_exp).join(", ") + ")";
         case TokenNumber: return `<span class=token-num>${exp.val}</span>`;
         case TokenPi: return `<span class=token-num>π</span>`;
         case TokenE: return `<span class=token-num>e</span>`;
@@ -459,6 +502,7 @@ function render_exp(exp, extra) {
         case TokenRandom: return "<span class=token-kw>random in</span> " + render_exp(exp.range);
         case TokenConvert: return "<span class=token-kw>convert</span> " + render_exp(exp.operand) + " " +
             `<span class=token-num>${exp.from.val}</span> <span class=token-kw>to</span> <span class=token-num>${exp.to.val}</span>`;
+        case TokenLet: return `<span class=token-kw>let</span> <span class=token-id>${exp.id.val}</span> = ${render_exp(exp.val)}`;
         case "unop": {
             const p = { parent_precedence: 99 };
             switch (exp.op) {
