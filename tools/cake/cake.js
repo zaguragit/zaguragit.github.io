@@ -304,6 +304,12 @@ function parse_primary(context) {
             const id = context.expect(TokenIdentifier);
             context.expect(TokenEq);
             const val = parse_expression(context);
+            if (context.current.type === TokenIn) {
+                context.next();
+                let in_exp = parse_expression(context);
+                const loc = [t.loc[0], in_exp.loc[1]];
+                return { type: TokenLet, loc, id, val, in_exp };
+            }
             const loc = [t.loc[0], val.loc[1]];
             return { type: TokenLet, loc, id, val };
         }
@@ -467,6 +473,15 @@ function evaluate(exp) {
         }
         case TokenLet: {
             const val = evaluate(exp.val);
+            if (exp.in_exp) {
+                const tmp = Variables[exp.id.val];
+                Variables[exp.id.val] = val;
+                const in_exp = evaluate(exp.in_exp);
+                if (tmp == undefined)
+                    delete Variables[exp.id.val];
+                else Variables[exp.id.val] = tmp;
+                return in_exp;
+            }
             Variables[exp.id.val] = val;
             update_info();
             return val;
@@ -532,7 +547,12 @@ function render_exp(exp, extra) {
         case TokenRandom: return "<span class=token-kw>random in</span> " + render_exp(exp.range);
         case TokenConvert: return "<span class=token-kw>convert</span> " + render_exp(exp.operand) + " " +
             `<span class=token-num>${exp.from.val}</span> <span class=token-kw>to</span> <span class=token-num>${exp.to.val}</span>`;
-        case TokenLet: return `<span class=token-kw>let</span> <span class=token-id>${exp.id.val}</span> = ${render_exp(exp.val)}`;
+        case TokenLet:
+            let x = `<span class=token-kw>let</span> <span class=token-id>${exp.id.val}</span> = ${render_exp(exp.val)}`;
+            x = exp.in_exp ? x + " <span class=token-kw>in</span> " + render_exp(exp.in_exp) : x;
+            if (extra?.left_operand)
+                x = `(${x})`;
+            return x;
         case "unop": {
             const p = { parent_precedence: 99 };
             switch (exp.op) {
@@ -552,7 +572,7 @@ function render_exp(exp, extra) {
             }
         }
         case "biop": {
-            const p = { parent_precedence: exp.op.precedence };
+            const p = { parent_precedence: exp.op.precedence, left_operand: true };
             const pr = { parent_precedence: exp.op.precedence, right_operand: true };
             let r;
             switch (exp.op) {
