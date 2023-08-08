@@ -1,6 +1,6 @@
 :root {
     --foreground: #f9f4ecf0;
-    --foreground-weak: #a4b9bcac;
+    --foreground-weak: #97b5baac;
     --foreground-border: #776fab52;
     --foreground-strong: #fffeee;
     --surface-background: #18182a;
@@ -8,7 +8,7 @@
 
     --border-radius: 4px;
     
-    --color-num: #78fb9f;
+    --color-num: #e3fb78;
     --color-id: #ffa49f;
     --color-op: #77a5ff;
     --color-kw: #c082f4;
