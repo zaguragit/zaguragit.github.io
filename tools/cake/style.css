@@ -1,12 +1,10 @@
 :root {
-    --color-accent: #f582ff;
-    --base-background: #171819;
-    --base-foreground: #fff2def0;
-    --base-foreground-weak: #bca6a4ac;
-    --base-foreground-border: #ab6f9f52;
-    --base-foreground-strong: #fffeee;
-    --surface-background: #282430ef;
-    --surface-background-dim: #1a1723d4;
+    --foreground: #f9f4ecf0;
+    --foreground-weak: #a4b9bcac;
+    --foreground-border: #776fab52;
+    --foreground-strong: #fffeee;
+    --surface-background: #18182a;
+    --surface-background-dim: #121220ef;
 
     --border-radius: 4px;
     
@@ -17,8 +15,10 @@
 
     color-scheme: dark;
     background-color: #000;
-    color: #eee;
+    color: var(--foreground);
     font-family: sans-serif;
+
+    background-image: url('../../assets/textures/ciq60606.jpg');
 }
 
 body {
@@ -26,6 +26,7 @@ body {
     height: 100vh;
     margin: 0;
     display: flex;
+    flex-direction: column;
 }
 
 main {
@@ -38,7 +39,7 @@ main {
     flex-direction: column-reverse;
     background-color: var(--surface-background);
     border-radius: var(--border-radius);
-    box-shadow: inset 0 0 0 1px var(--base-foreground-border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
+    box-shadow: inset 0 0 0 1px var(--foreground-border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
 }
 
 #work-area {
@@ -50,7 +51,7 @@ main {
 }
 
 #work-area > div:not(:first-child) {
-    border-left: 1px solid var(--base-foreground-border);
+    border-left: 1px solid var(--foreground-border);
 }
 
 #form {
@@ -64,17 +65,17 @@ main {
     border: none;
     margin: 1px;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
-    border-top: 1px solid var(--base-foreground-border);
+    border-top: 1px solid var(--foreground-border);
     padding: 1em;
 }
 
 @media only screen and (max-width: 840px) {
     #form input { border-radius: 0; }
-    main { border-radius: 0; max-width: unset; }
+    main { border-radius: 0; max-width: unset; box-shadow: none; }
 }
 @media only screen and (max-height: 840px) {
     #form input { border-radius: 0; }
-    main { border-radius: 0; max-height: unset; }
+    main { border-radius: 0; max-height: unset; box-shadow: none; }
 }
 
 #output {
@@ -103,13 +104,13 @@ main {
 }
 #output article > header::before {
     content: "query: ";
-    color: var(--base-foreground-weak);
+    color: var(--foreground-weak);
 }
 
 #output article > div {
     margin-top: .25em;
     background-color: var(--surface-background-dim);
-    border: 1px dashed var(--base-foreground-border);
+    border: 1px dashed var(--foreground-border);
     border-radius: var(--border-radius);
     padding: .5em;
     display: inline-block;
@@ -122,7 +123,7 @@ main {
 .token-ph { opacity: .5; }
 
 details {
-    border-bottom: 1px solid var(--base-foreground-border);
+    border-bottom: 1px solid var(--foreground-border);
 }
 details > summary { padding: 1em; }
 
@@ -157,3 +158,15 @@ details dl > dt {
     font-style: normal;
     color: var(--color-id);
 }
+
+
+.add {
+    display: block;
+    margin: 0 auto;
+    max-width: 728px;
+    max-height: 90px;
+    width: 100%;
+    border: none;
+    aspect-ratio: 728/90;
+    align-self: center;
+}  
