@@ -67,6 +67,7 @@ main {
     border-radius: 0 0 var(--border-radius) var(--border-radius);
     border-top: 1px solid var(--foreground-border);
     padding: 1em;
+    font-family: monospace;
 }
 
 @media only screen and (max-width: 840px) {
@@ -136,6 +137,18 @@ details dl > dd {
     margin-left: 1em;
     margin-bottom: 1em;
 }
+details dl > dd > code {
+    background-color: var(--surface-background-dim);
+    border-radius: var(--border-radius);
+    padding: .5em;
+    font-family: monospace;
+    display: block;
+}
+details dl > dd > .extra {
+    margin-top: .5em;
+    display: block;
+    color: var(--foreground-weak);
+}
 details dl > dt {
     margin-bottom: 1em;
 }
@@ -143,6 +156,7 @@ details dl > dt {
 #info table {
     margin: .5em 1em;
     border-spacing: 0;
+    font-family: monospace;
 }
 #info table td {
     padding: .5em 0;
