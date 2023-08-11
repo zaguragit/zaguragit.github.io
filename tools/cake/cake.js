@@ -316,10 +316,25 @@ function parse_primary(context) {
         case TokenConvert: {
             const operand = parse_expression(context);
             const from = parse_unit(context);
+            let from_inv = null;
+            if (context.current.type == TokenDiv) {
+                context.next();
+                from_inv = parse_unit(context);
+            }
+            let of = null;
+            if (context.current.type == TokenOf) {
+                context.next();
+                of = parse_measurable(context);
+            }
             context.expect(TokenTo);
             const to = parse_unit(context);
+            let to_inv = null;
+            if (context.current.type == TokenDiv) {
+                context.next();
+                to_inv = parse_unit(context);
+            }
             const loc = [t.loc[0], to.loc[1]];
-            return { type: TokenConvert, loc, operand, from, to }
+            return { type: TokenConvert, loc, operand, from, from_inv, to, to_inv, of }
         }
         case TokenOpenParen: {
             const exp = parse_expression(context);
@@ -401,32 +416,49 @@ function parse_primary(context) {
     }
 }
 
-const UnitAliases = {
+const Aliases = {
+    h2o: "water",
+
     ton: "t", tons: "t", tonne: "t", tonnes: "t",
     days: "day", weeks: "week", months: "month", years: "year",
     second: "s", seconds: "s", minute: "min", minutes: "min", hour: "h", hours: "h",
+
+    "μl": "ul", "μm": "um", "μg": "ug", "μs": "us",
 }
 
 const SubUnits = {
-    ml: "l", cl: "l", dl: "l", dal: "l", hl: "l", kl: "l",
-    mm: "m", cm: "m", dm: "m", dam: "m", hm: "m", km: "m",
-    mg: "g", cg: "g", dg: "g", dag: "g", hg: "g", kg: "g", t: "g",
-    min: "s", h: "s", day: "s", week: "s", month: "s", year: "s",
+    nl: "l", ul: "l", ml: "l", cl: "l", dl: "l", dal: "l", hl: "l", kl: "l",
+    nm: "m", um: "m", mm: "m", cm: "m", dm: "m", dam: "m", hm: "m", km: "m",
+    ng: "g", ug: "g", mg: "g", cg: "g", dg: "g", dag: "g", hg: "g", kg: "g", t: "g",
+    ns: "s", us: "s", ms: "s", min: "s", h: "s", day: "s", week: "s", month: "s", year: "s",
 }
 
 const ConversionFactors = {
-    l: { ml: 1000, cl: 100, dl: 10, dal: 0.1, hl: 0.01, kl: 0.001 },
-    m: { mm: 1000, cm: 100, dm: 10, dam: 0.1, hm: 0.01, km: 0.001 },
-    g: { mg: 1000, cg: 100, dg: 10, dag: 0.1, hg: 0.01, kg: 0.001, t: 0.00001 },
-    s: { min: 1/60, h: 1/60/60, day: 1/60/60/24, week: 1/60/60/24/7, month: 1/60/60/24/30, year: 1/60/60/24/365 },
+    l: { nl: 1000000000, ul: 1000000, ml: 1000, cl: 100, dl: 10, dal: 0.1, hl: 0.01, kl: 0.001 },
+    m: { nm: 1000000000, um: 1000000, mm: 1000, cm: 100, dm: 10, dam: 0.1, hm: 0.01, km: 0.001 },
+    g: { ng: 1000000000, ug: 1000000, mg: 1000, cg: 100, dg: 10, dag: 0.1, hg: 0.01, kg: 0.001, t: 0.00001 },
+    s: { ns: 1000000000, us: 1000000, ms: 1000, min: 1/60, h: 1/60/60, day: 1/60/60/24, week: 1/60/60/24/7, month: 1/60/60/24/30, year: 1/60/60/24/365 },
+}
+
+const MeasurableThings = {
+    water: {
+    }
 }
 
 function parse_unit(context) {
     let unit = context.expect(TokenIdentifier);
-    unit.val = UnitAliases[unit.val] ?? unit.val;
+    unit.val = Aliases[unit.val] ?? unit.val;
     if (!ConversionFactors[unit.val] && !SubUnits[unit.val])
         error(`Unknown unit ${unit.val}`);
     return unit;
+}
+
+function parse_measurable(context) {
+    let thing = context.expect(TokenIdentifier);
+    thing.val = Aliases[thing.val] ?? thing.val;
+    if (!MeasurableThings[thing.val])
+        error(`Unknown thing ${thing.val}`);
+    return thing;
 }
 
 const Variables = {};
@@ -460,20 +492,25 @@ function evaluate(exp) {
             return min + Math.random() * range;
         }
         case TokenConvert: {
+
+            function simple_unit_convert(val, from, to) {
+                const sub = SubUnits[from];
+                if (sub) {
+                    val /= ConversionFactors[sub][from];
+                    from = sub;
+                }
+                if (from != to) {
+                    const factor = ConversionFactors[from][to];
+                    if (!factor)
+                        error(`Can't convert from ${from} to ${to}`);
+                    val *= factor;
+                }
+                return val;
+            }
+
             let val = evaluate(exp.operand);
-            let from = exp.from.val;
-            const sub = SubUnits[from];
-            if (sub) {
-                val /= ConversionFactors[sub][from];
-                from = sub;
-            }
-            const to = exp.to.val;
-            if (from != to) {
-                const factor = ConversionFactors[from][to];
-                if (!factor)
-                    error(`Can't convert from ${from} to ${to}`);
-                val *= factor;
-            }
+            val = simple_unit_convert(val, exp.from.val, exp.to.val);
+            val = simple_unit_convert(val, exp.to_inv.val, exp.from_inv.val);
             return val;
         }
         case TokenLet: {
@@ -551,7 +588,12 @@ function render_exp(exp, extra) {
             (exp.end_excl ? ")" : "]");
         case TokenRandom: return "<span class=token-kw>random in</span> " + render_exp(exp.range);
         case TokenConvert: return "<span class=token-kw>convert</span> " + render_exp(exp.operand) + " " +
-            `<span class=token-num>${exp.from.val}</span> <span class=token-kw>to</span> <span class=token-num>${exp.to.val}</span>`;
+            `<span class=token-id>${exp.from.val}</span>` +
+            (exp.from_inv ? `/<span class=token-id>${exp.from_inv.val}</span>` : "") +
+            (exp.of ? ` <span class=token-kw>of</span> <span class=token-id>${exp.of.val}</span>` : "") +
+            " <span class=token-kw>to</span> " +
+            `<span class=token-id>${exp.to.val}</span>` +
+            (exp.to_inv ? `/<span class=token-id>${exp.to_inv.val}</span>` : "");
         case TokenLet:
             let x = `<span class=token-kw>let</span> <span class=token-id>${exp.id.val}</span> = ${render_exp(exp.val)}`;
             x = exp.in_exp ? x + " <span class=token-kw>in</span> " + render_exp(exp.in_exp) : x;
