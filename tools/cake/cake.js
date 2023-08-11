@@ -422,6 +422,7 @@ const Aliases = {
     ton: "t", tons: "t", tonne: "t", tonnes: "t",
     days: "day", weeks: "week", months: "month", years: "year",
     second: "s", seconds: "s", minute: "min", minutes: "min", hour: "h", hours: "h",
+    calorie: "cal", calories: "cal",
 
     "μl": "ul", "μm": "um", "μg": "ug", "μs": "us",
 }
@@ -431,6 +432,7 @@ const SubUnits = {
     nm: "m", um: "m", mm: "m", cm: "m", dm: "m", dam: "m", hm: "m", km: "m",
     ng: "g", ug: "g", mg: "g", cg: "g", dg: "g", dag: "g", hg: "g", kg: "g", t: "g",
     ns: "s", us: "s", ms: "s", min: "s", h: "s", day: "s", week: "s", month: "s", year: "s",
+    ncal: "cal", ucal: "cal", mcal: "cal", ccal: "cal", dcal: "cal", dacal: "cal", hcal: "cal", kcal: "cal",
 }
 
 const ConversionFactors = {
@@ -438,6 +440,7 @@ const ConversionFactors = {
     m: { nm: 1000000000, um: 1000000, mm: 1000, cm: 100, dm: 10, dam: 0.1, hm: 0.01, km: 0.001 },
     g: { ng: 1000000000, ug: 1000000, mg: 1000, cg: 100, dg: 10, dag: 0.1, hg: 0.01, kg: 0.001, t: 0.00001 },
     s: { ns: 1000000000, us: 1000000, ms: 1000, min: 1/60, h: 1/60/60, day: 1/60/60/24, week: 1/60/60/24/7, month: 1/60/60/24/30, year: 1/60/60/24/365 },
+    cal: { ncal: 1000000000, ucal: 1000000, mcal: 1000, ccal: 100, dcal: 10, dacal: 0.1, hcal: 0.01, kcal: 0.001 },
 }
 
 const MeasurableThings = {
@@ -500,7 +503,7 @@ function evaluate(exp) {
                     from = sub;
                 }
                 if (from != to) {
-                    const factor = ConversionFactors[from][to];
+                    const factor = ConversionFactors[from]?.[to];
                     if (!factor)
                         error(`Can't convert from ${from} to ${to}`);
                     val *= factor;
@@ -509,8 +512,16 @@ function evaluate(exp) {
             }
 
             let val = evaluate(exp.operand);
-            val = simple_unit_convert(val, exp.from.val, exp.to.val);
-            val = simple_unit_convert(val, exp.to_inv.val, exp.from_inv.val);
+            if (exp.to_inv && exp.from_inv) {
+                val = simple_unit_convert(val, exp.from.val, exp.to.val);
+                val = simple_unit_convert(val, exp.to_inv.val, exp.from_inv.val);
+            } else if (exp.from_inv) {
+                val = simple_unit_convert(val, exp.from.val + "/" + exp.from_inv.val, exp.to.val);
+            } else if (exp.to_inv) {
+                val = simple_unit_convert(val, exp.from.val, exp.to.val + "/" + exp.to_inv.val);
+            } else {
+                val = simple_unit_convert(val, exp.from.val, exp.to.val);
+            }
             return val;
         }
         case TokenLet: {
