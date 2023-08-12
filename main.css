@@ -1,8 +1,8 @@
-a.chill { color: var(--base-foreground); }
+a.chill { color: var(--foreground); }
 a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; }
 
 a.icon {
-  color: var(--base-foreground);
+  color: var(--foreground);
   text-align: center;
   font-weight: normal;
   font-size: .9em;
@@ -70,7 +70,7 @@ a.icon > img {
   background-color: var(--surface-background-dim);
 }
 .status-header {
-  color: var(--base-foreground-weak);
+  color: var(--foreground-weak);
   margin-bottom: .5em;
 }
 #fedi-content p { margin: 0; }
@@ -80,7 +80,7 @@ a.icon > img {
 #statuscafe-face {
   position: absolute;
   inset: 0 auto auto 0;
-  margin: .6em;
+  margin: .5em .8em;
   line-height: 1.5;
 }
 .trans {

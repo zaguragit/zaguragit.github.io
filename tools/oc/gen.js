@@ -247,7 +247,8 @@ function hsl2hex(h, s, l) {
 
 
 document.getElementById("name-gen-button").addEventListener("click", () => {
-    const name = gen_name(2, 4, 2.0);
+    const encouraged_letters = document.getElementById("name-gen-config").letters.value;
+    const name = gen_name(1, 4, 2.0, encouraged_letters);
     document.getElementById("name-res").innerHTML = table([
         ["ipa", "/" + name[0] + "/"],
         ["latin", name[1]],
@@ -275,7 +276,7 @@ const consonants = [
     ["z", "z", "з"],
     ["t̠ʃ", "ch", "ч"],
     ["ʃ", "sh", "ш"],
-    ["ʒ", "zh", "ш"],
+    ["ʒ", "zh", "ж"],
 ];
 const vowels = [
     ["a", "a", "а"],
@@ -286,17 +287,65 @@ const vowels = [
     ["ɨ", "y", "ы"],
 ];
 
-function gen_name(min, max, min_weight) {
+function gen_name(min, max, min_weight, encouraged_letters) {
     const syllables = get_count(min, max, min_weight);
-    let name = ["", "", ""];
+    let name = [[], [], []];
+    if (Math.random() > 0.6) {
+        const v = pick_elements(vowels)[0];
+        for (let j = 0; j < name.length; j++) {
+            name[j].push(v[j]);
+        }
+    }
     for (let i = 0; i < syllables; i++) {
         const c = pick_elements(consonants)[0];
         const v = pick_elements(vowels)[0];
-        const c1 = (Math.random() > 0.9) ? pick_elements(consonants)[0] : ["", "", ""];
+        const c1 = (Math.random() > 0.9) ? pick_elements(consonants)[0] : null;
         for (let j = 0; j < name.length; j++) {
-            let syllable = c[j] + v[j] + c1[j];
-            name[j] += syllable;
+            name[j].push(c[j]);
+            name[j].push(v[j]);
+            if (c1) name[j].push(c1[j]);
         }
     }
-    return name;
+    let replaced_locations = [];
+    for (const letter of encouraged_letters) {
+        let l = get_letters_for_letter(letter);
+        let l_is_vowel = false;
+        for (const v of vowels)
+            if (l[0] == v[0]) {
+                l_is_vowel = true;
+                break;
+            }
+        if (!name[0].includes(l[0])) {
+            for (let i = 0; i < 100; i++) {
+                const i = Math.round(Math.random() * (name[0].length - 1));
+                if (replaced_locations.includes(i))
+                    continue;
+                let is_vowel = false;
+                for (const v of vowels)
+                    if (name[0][i] == v[0]) {
+                        is_vowel = true;
+                        break;
+                    }
+                if (is_vowel != l_is_vowel)
+                    continue;
+                replaced_locations.push(i);
+                for (let j = 0; j < name.length; j++) {
+                    name[j][i] = l[j];
+                }
+                break;
+            }
+        }
+    }
+    return name.map(x => x.join(""));
+}
+
+function get_letters_for_letter(letter) {
+    for (const l of consonants)
+        for (const c of l)
+            if (letter == c)
+                return l;
+    for (const l of vowels)
+        for (const c of l)
+            if (letter == c)
+                return l;
 }

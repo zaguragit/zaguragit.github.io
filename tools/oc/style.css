@@ -1,12 +1,13 @@
 :root {
     --color-accent: #6affc1;
-    --base-background: #1c2020;
-    --base-foreground: #f2f2f2f0;
-    --base-foreground-weak: #a7a7a7b9;
-    --base-foreground-border: #88888852;
-    --base-foreground-strong: #ffffff;
-    --surface-background: #212a2eef;
-    background-image: url(../../assets/textures/neovines.png);
+    --foreground: #f2f2f2f0;
+    --foreground-weak: #a7a7a7b9;
+    --foreground-border: #88888852;
+    --foreground-strong: #ffffff;
+    --surface-background: #1d2c2eef;
+    --surface-background-dim: #132224ef;
+    background-color: #1f8243;
+    background-blend-mode: overlay;
 }
 
 .oc {
@@ -58,4 +59,11 @@ table tr > td:first-child:not(:last-child) {
 
 table tr > td + td {
     width: 100%;
+}
+
+input[type=text] {
+    background-color: var(--surface-background-dim);
+    border: 1px solid var(--foreground-border);
+    border-radius: var(--border-radius);
+    padding: .5em;
 }

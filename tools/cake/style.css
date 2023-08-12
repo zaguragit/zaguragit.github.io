@@ -18,7 +18,9 @@
     color: var(--foreground);
     font-family: sans-serif;
 
-    background-image: url('../../assets/textures/ciq60606.jpg');
+    background-image: url('../../assets/textures/abstrpurpl.png');
+    background-color: #28213b;
+    background-blend-mode: overlay;
 }
 
 body {

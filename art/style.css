@@ -1,12 +1,12 @@
 :root {
   --color-accent: #a0ecff;
-  --base-background: #171717;
-  --base-foreground: #f2f2f2f0;
-  --base-foreground-weak: #a7a7a7b9;
-  --base-foreground-border: #88888852;
-  --base-foreground-strong: #ffffff;
+  --foreground: #f2f2f2f0;
+  --foreground-weak: #a7a7a7b9;
+  --foreground-border: #88888852;
+  --foreground-strong: #ffffff;
   --surface-background: #292929ef;
   --surface-background-dim: #191919d4;
+  background-color: #171717;
   background-blend-mode: luminosity;
 }
 
@@ -25,7 +25,7 @@
   place-content: center;
   display: flex;
   position: relative;
-  box-shadow: inset 0 0 0 1px var(--base-foreground-border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
+  box-shadow: inset 0 0 0 1px var(--foreground-border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
   border-radius: var(--border-radius);
 }
 
@@ -45,7 +45,7 @@
   inset: auto 0 0 0;
   background-color: var(--surface-background);
   padding: .5em .6em;
-  border-top: 1px solid var(--base-foreground-border);
+  border-top: 1px solid var(--foreground-border);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   z-index: -99;
 }
