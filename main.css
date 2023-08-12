@@ -1,25 +1,29 @@
 a.chill { color: var(--foreground); }
 a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; }
 
-a.icon {
-  color: var(--foreground);
-  text-align: center;
-  font-weight: normal;
-  font-size: .9em;
-}
-a.icon > img {
-  display: block;
-  margin: 0 auto;
-  width: 64px;
-  height: 64px;
-}
 .icons-grid {
   display: grid;
   --columns: 3;
   gap: .5em;
   grid-template-columns: repeat(var(--columns), calc((100% - .5em * (var(--columns) - 1)) / var(--columns)));
 }
+.icons-grid > a {
+  color: var(--foreground);
+  text-align: center;
+  font-weight: normal;
+  font-size: .9em;
+}
+.icons-grid > a > img {
+  display: block;
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+}
 .blahaj { height: 1em; vertical-align: middle; }
+
+.icon {
+  height: 1.2em; vertical-align: middle;
+}
 
 .tb { color: #2fbdff; }
 .tp { color: #ffa4ce; }
