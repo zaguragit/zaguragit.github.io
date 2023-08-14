@@ -16,7 +16,7 @@ a {
   text-shadow: .1em .05em #000000;
   text-decoration: none;
 }
-a:hover { text-decoration: underline wavy #fff 1px; }
+a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
 
 :root {
   --color-accent: #1cd7e4;
@@ -211,10 +211,11 @@ section .grid article {
 
 .add {
   display: block;
-  margin: 32px auto;
+  margin: 16px auto;
   max-width: 728px;
   max-height: 90px;
   width: 100%;
   border: none;
   aspect-ratio: 728/90;
+  border-radius: var(--border-radius);
 }
