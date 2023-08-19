@@ -20,10 +20,10 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
 
 :root {
   --color-accent: #1cd7e4;
-  --foreground: #e4ffdef0;
+  --foreground: #deffe6f0;
   --foreground-weak: #bca4bcac;
   --foreground-border: #a062ac52;
-  --foreground-strong: #eeffff;
+  --foreground-strong: #eeffee;
   --surface-background: #231a49ef;
   --surface-background-dim: #150d3fd4;
   --rainbow: repeating-linear-gradient(to right,
