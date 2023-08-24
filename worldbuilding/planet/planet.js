@@ -33,7 +33,7 @@ function main() {
         #define MIN_DIST 0.0002
 
         float sdfSphere(vec3 c, float r, vec3 p) {
-            return distance(p, c) - r - texture2D(u_image, p.xy * 0.5 + 0.5).r * 0.05;
+            return distance(p, c) - r - texture2D(u_image, p.xy * 0.25 + 0.5).r * 0.03;
         }
 
         float getDist(vec3 p) {
