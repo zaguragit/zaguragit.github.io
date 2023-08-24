@@ -17,7 +17,7 @@ function main() {
         void main() {
             // gl_Position is a special variable a vertex shader
             // is responsible for setting
-            gl_Position = vec4(a_position * normalize(u_resolution).yx, 0.0, 1.0);
+            gl_Position = vec4(a_position * (u_resolution / max(u_resolution.x, u_resolution.y)).yx, 0.0, 1.0);
             uv = a_position;
         }
     `;
@@ -67,7 +67,7 @@ function main() {
             float focalDist = 0.6;
             vec3 ro = vec3(0.0, 0.0, -1.6);
             vec3 rd = vec3(uv, focalDist);   
-            vec3 col = vec3(0.01);
+            vec3 col = vec3(0.05);
             
             float dist = rayMarch(ro, rd);
             if (dist < MAX_DIST) {
@@ -92,6 +92,7 @@ function main() {
         -1,  1,  1, 1, 1, -1,
     ]), gl.STATIC_DRAW);
     // webglUtils.resizeCanvasToDisplaySize(gl.canvas);
+
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
