@@ -63,10 +63,11 @@ header {
 
 #page-container {
   width: 100%;
-  display: grid;
-  grid-template-columns: 18em 960px;
-  margin: 32px 18em 32px 0;
-  justify-content: center;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: row;
+  margin: 1em auto 1em auto;
+  padding: 0 1em;
 }
 
 main, nav {
@@ -76,13 +77,18 @@ main, nav {
 }
 
 nav {
-  margin-right: 2em;
+  flex-basis: 18em;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 1em;
   padding: 2em 2em;
 }
 
 nav > ul > li::before { content: unset; }
 
 main {
+  flex-grow: 2;
+  flex-shrink: 2;
   padding: 2em 3em;
 }
 section { padding: .8em 0; }
@@ -191,8 +197,16 @@ dt {
 dt, dd { min-height: 2em; }
 
 
-@media only screen and (max-width:720px) {
-  main { margin-bottom: 32px; }
+@media only screen and (max-width:760px) {
+  #page-container { display: unset; padding: 0; }
+  nav {
+    margin: 0;
+    border-bottom: 1px solid var(--foreground-border);
+  }
+  nav, main {
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 
 .add {
