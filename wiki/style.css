@@ -64,12 +64,12 @@ main {
   width: 100%;
   max-width: 960px;
   margin: 32px auto;
-  padding: 0 .8em;
+  padding: 0 1.2em;
   background-color: var(--surface-background);
   box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
 }
-section { padding: .6em 0; }
+section { padding: .8em 0; }
 
 .article-info, h2 {
   border-bottom: 1px solid var(--foreground-border);
