@@ -60,18 +60,34 @@ header {
   border-bottom: 1px solid #0006;
   box-shadow: 0 1px var(--foreground-border);
 }
-main {
+
+#page-container {
   width: 100%;
-  max-width: 960px;
-  margin: 32px auto;
-  padding: 0 1.2em;
+  display: grid;
+  grid-template-columns: 18em 960px;
+  margin: 32px 18em 32px 0;
+  justify-content: center;
+}
+
+main, nav {
   background-color: var(--surface-background);
   box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
 }
+
+nav {
+  margin-right: 2em;
+  padding: 2em 2em;
+}
+
+nav > ul > li::before { content: unset; }
+
+main {
+  padding: 2em 3em;
+}
 section { padding: .8em 0; }
 
-.article-info, h2 {
+.article-info, h2, h3 {
   border-bottom: 1px solid var(--foreground-border);
   margin-bottom: .2em;
 }
