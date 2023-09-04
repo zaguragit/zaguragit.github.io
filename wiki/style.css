@@ -1,7 +1,7 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--foreground-weak) transparent;}
-h1,h2,h3,h4,em{color:var(--foreground-strong);font-weight:700;}
+h1,h2,h3,h4{color:var(--foreground-strong);font-weight:700;font-family:serif;}
 h1{font-size:2em;}
-h2{font-size:1.2em;}
+h2{font-size:1.4em;}
 h3{font-size:1em;}
 p{margin:1em 0;}
 a:focus,[tabindex]:focus{outline:#fff 3px solid;}
@@ -45,6 +45,10 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   background-color: #ae7cff56;
 }
 
+@keyframes movebg-header {
+  0% {background-position-x: 0;}
+  100% {background-position-x: 1024px;}
+}
 header {
   background-image: var(--rainbow-bg);
   background-color: var(--surface-background);
@@ -65,33 +69,15 @@ main {
   box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
 }
+section { padding: .6em 0; }
 
-section + section {
-  border-top: 1px solid var(--foreground-border);
-  box-shadow: 0 -1px #0006;
+.article-info, h2 {
+  border-bottom: 1px solid var(--foreground-border);
+  margin-bottom: .2em;
 }
 
-section { padding: .5em 0; }
-
-h2 {
-  font-size: unset;
-  margin-bottom: .5em;
-}
-
-@keyframes movebg-header {
-  0% {background-position-x: 0;}
-  100% {background-position-x: 1024px;}
-}
-section > header {
-  background-image: var(--rainbow-bg);
-  background-size: 1024px 1024px;
-  animation: movebg-header 4s linear 0ms infinite forwards running;
-  margin: -.5em -.8em .5em;
-  padding: .2em .8em .5em;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  border: 1px solid transparent;
-  border-bottom: 1px solid #0006;
-  box-shadow: 0 1px var(--foreground-border);
+.article-info {
+  padding-bottom: .7em;
 }
 
 
@@ -145,10 +131,10 @@ section article > img {
   box-shadow: inset 0 0 0 1px #fff1, 0 1px #0004;
   text-shadow: 0 1px #0006;
   color: #fffb;
-  padding: .3em .6em;
+  padding: .3rem .6rem;
   font-weight: bold;
   border-radius: 99px;
-  font-size: .8em;
+  font-size: .8rem;
   line-height: 1;
 }
 
@@ -176,7 +162,7 @@ ul {
   list-style-type: none;
   line-height: 1.8;
 }
-ul li::before { content: "λ: "; color: var(--foreground-weak); }
+ul li::before { content: "- "; margin-left: 1ch; color: var(--foreground-weak); }
 
 
 dl {
