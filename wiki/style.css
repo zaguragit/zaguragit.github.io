@@ -211,7 +211,6 @@ dt, dd { min-height: 2em; }
 
 
 @media only screen and (max-width:760px) {
-  #page-container { display: unset; padding: 0; }
   #sidebar {
     margin: 0;
     border-bottom: 1px solid var(--foreground-border);
@@ -220,6 +219,13 @@ dt, dd { min-height: 2em; }
     border-radius: 0;
     box-shadow: none;
   }
+  #page-container {
+    display: unset;
+    overflow-y: auto;
+    padding: 0;
+  }
+  #content { padding: 0; }
+  main { margin: 0; }
 }
 
 .add {
