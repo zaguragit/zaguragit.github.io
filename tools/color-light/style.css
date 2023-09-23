@@ -1,0 +1,19 @@
+body { margin: 0; }
+form {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    inset: auto auto 0 auto;
+    background-color: #292929;
+    padding: .5em;
+}
+
+input[type=color] {
+    padding: 0;
+    margin-left: .5em;
+    border: none;
+}
+
+input:hover {
+    box-shadow: 0 0 0 1px #fff;
+}
