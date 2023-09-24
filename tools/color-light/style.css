@@ -5,15 +5,22 @@ form {
     position: fixed;
     inset: auto auto 0 auto;
     background-color: #292929;
-    padding: .5em;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    font-family: monospace;
+    padding: .6em 1em;
 }
 
 input[type=color] {
-    padding: 0;
-    margin-left: .5em;
+    padding: 4px;
     border: none;
+    height: 2.2em;
+    width: 3em;
+    background-color: #484848;
 }
 
-input:hover {
-    box-shadow: 0 0 0 1px #fff;
+form:hover {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px #000;
 }
