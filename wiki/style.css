@@ -1,8 +1,8 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: #c8bac88f transparent;}
-h1,h2,h3,h4{color:#eeffee;font-weight:700;font-family:serif;}
-h1{font-size:2em;}
+h1,h2,h3,h4,th{color:#f9f9f9;font-weight:unset;font-family:serif;overflow: hidden;}
+h1{font-size:2em;font-weight:700;}
 h2{font-size:1.4em;}
-h3{font-size:1em;}
+h3{font-size:1.1em;}
 p{margin:1em 0;}
 a:focus,[tabindex]:focus{outline:#fff 3px solid;}
 @supports selector(:focus-visible){a:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none;}}
@@ -19,13 +19,14 @@ a {
 a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
 
 :root {
-  color: #deffe6f0;
-  --border: #a062ac52;
+  color: #ececece1;
+  --border: #a170a982;
   --border-radius: 3px;
   font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.6;
+  letter-spacing: 0.01em;
   background-color: #171819;
   background-image: url('../assets/textures/abstrpurpl.png');
 	color-scheme: dark;
@@ -34,64 +35,55 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   background-color: #ae7cff56;
 }
 
-#page-container {
-  width: 100%;
-  max-width: 1280px;
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  padding: 0 1em;
-  position: absolute;
-  inset: 0;
-  overflow-y: hidden;
-}
-
-main, #sidebar {
-  background-color: #231a49ef;
-  box-shadow: inset 0 0 0 1px var(--border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
-  border-radius: var(--border-radius);
-  margin: 1em 0;
-}
-
-#sidebar {
-  flex-basis: 18em;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-right: 1em;
-  align-self: flex-start;
-}
-
-#sidebar > nav {
-  padding: 2em 2em;
-}
-
-#sidebar nav ul > li::before { content: unset; }
-#sidebar nav ul ul > li { margin-left: 1em; }
-
 @keyframes movebg-header {
   0% {background-position-x: 0;}
   100% {background-position-x: 1024px;}
 }
-#sidebar > header {
+header {
   background-image: repeating-linear-gradient(to right,
     #ff647e22, #ffb37422, #fdff6d22, #4aff5f22, #89caff22, #ff7eff22, #ff647e22);
   background-size: 1024px 1024px;
   animation: movebg-header 4s linear 0ms infinite forwards running;
   padding: 1em;
   text-align: center;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-radius: var(--border-radius);
   border-bottom: 1px solid #0006;
   box-shadow: 0 1px #fff3;
 }
 
-#content {
-  overflow-y: scroll;
-  padding-right: 1em;
-  flex-grow: 2;
-  flex-shrink: 2;
+#page-container {
+  width: 100%;
+  max-width: 1420px;
+  display: flex;
+  flex-direction: row;
+  margin: 1em auto;
+
+  background-color: #231a49ef;
+  box-shadow: inset 0 0 0 1px #a062ac52, inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
+  border-radius: var(--border-radius);
+  padding: 1.2em 3em;
 }
 
-main { padding: 2em 3em; }
+#content {
+  overflow-y: scroll;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+#sidebar {
+  flex-basis: 18em;
+  flex-grow: 0;
+  flex-shrink: 0;
+  align-self: flex-start;
+  position: sticky;
+  padding-top: .8em;
+  padding-right: 3em;
+}
+
+#sidebar ul > li::before { content: unset; }
+#sidebar ul ul > li { margin-left: 1em; }
+#sidebar a { font-weight: unset; }
+
 section { padding: .8em 0; }
 h3 { margin-top: .6em; }
 
@@ -99,9 +91,8 @@ h3 { margin-top: .6em; }
   border-bottom: 1px solid var(--border);
   margin-bottom: .2em;
 }
-
-
 .article-info {
+  margin-bottom: 1em;
   padding-bottom: .7em;
 }
 
@@ -115,6 +106,26 @@ h3 { margin-top: .6em; }
   border-radius: 99px;
   font-size: .8rem;
   line-height: 1;
+}
+
+#info-box {
+  display: block;
+  float: right;
+  clear: right;
+  width: fit-content;
+  border: 1px solid var(--border);
+  margin-left: 1em;
+  margin-bottom: 1em;
+  padding: .5em;
+}
+
+#info-box th, td {
+  padding: .3em;
+}
+
+#info-box th {
+  text-align: center;
+  background-color: rgba(112, 255, 207, 0.265);
 }
 
 
@@ -144,9 +155,8 @@ var {
 table {
   border-spacing: 0;
   border-collapse: collapse;
-  width: 100%;
 }
-table td, table th {
+/* table td, table th {
   text-align: start;
 }
 table th {
@@ -157,7 +167,7 @@ table th {
 }
 table td {
   width: max-content;
-}
+} */
 
 
 ul {
@@ -179,18 +189,12 @@ dt, dd { min-height: 2em; }
 
 @media only screen and (max-width:760px) {
   #sidebar {
-    margin: 0;
     border-bottom: 1px solid var(--border);
+    position: unset;
   }
-  #sidebar, main {
+  #page-container {
+    display: block; 
     border-radius: 0;
     box-shadow: none;
   }
-  #page-container {
-    display: unset;
-    overflow-y: auto;
-    padding: 0;
-  }
-  #content { padding: 0; }
-  main { margin: 0; }
 }
