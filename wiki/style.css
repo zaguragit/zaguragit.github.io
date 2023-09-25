@@ -65,7 +65,8 @@ main, #sidebar {
   padding: 2em 2em;
 }
 
-#sidebar nav > ul > li::before { content: unset; }
+#sidebar nav ul > li::before { content: unset; }
+#sidebar nav ul ul > li { margin-left: 1em; }
 
 @keyframes movebg-header {
   0% {background-position-x: 0;}
@@ -92,11 +93,13 @@ main, #sidebar {
 
 main { padding: 2em 3em; }
 section { padding: .8em 0; }
+h3 { margin-top: .6em; }
 
 .article-info, h2, h3 {
   border-bottom: 1px solid var(--border);
   margin-bottom: .2em;
 }
+
 
 .article-info {
   padding-bottom: .7em;
