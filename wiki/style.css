@@ -35,22 +35,6 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   background-color: #ae7cff56;
 }
 
-@keyframes movebg-header {
-  0% {background-position-x: 0;}
-  100% {background-position-x: 1024px;}
-}
-header {
-  background-image: repeating-linear-gradient(to right,
-    #ff647e22, #ffb37422, #fdff6d22, #4aff5f22, #89caff22, #ff7eff22, #ff647e22);
-  background-size: 1024px 1024px;
-  animation: movebg-header 4s linear 0ms infinite forwards running;
-  padding: 1em;
-  text-align: center;
-  border-radius: var(--border-radius);
-  border-bottom: 1px solid #0006;
-  box-shadow: 0 1px #fff3;
-}
-
 #page-container {
   width: 100%;
   max-width: 1420px;
@@ -74,10 +58,28 @@ header {
   flex-basis: 18em;
   flex-grow: 0;
   flex-shrink: 0;
-  align-self: flex-start;
-  position: sticky;
-  padding-top: .8em;
   padding-right: 3em;
+  display: inline;
+  position: relative;
+}
+
+#sidebar > header {
+  padding: 3em 0 1em;
+  text-align: center;
+}
+#sidebar > header > a {
+  color: unset;
+  background-clip: text;
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  font-family: var(--serif);
+  font-weight: 700;
+  text-decoration: underline wavy #34c7e0 1px;
+}
+
+#sidebar > nav {
+  padding-top: .8em;
+  position: sticky;
 }
 
 #sidebar ul > li::before { content: unset; }
