@@ -32,7 +32,7 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
     #ff647e22, #ffb37422, #fdff6d22, #4aff5f22, #89caff22, #ff7eff22, #ff647e22);
   --border-radius: 3px;
   --card-shadow: inset 0 0 0 1px var(--foreground-border), inset 0 1px #fff3, inset 0 -1px #fff1, 0 0 0 1px #0006;
-  font-family: sans-serif;
+  font-family: Inter, 'Noto Sans', system-ui, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.6;
