@@ -4,8 +4,9 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
 .icons-grid {
   display: grid;
   --columns: 3;
-  gap: .5em;
-  grid-template-columns: repeat(var(--columns), calc((100% - .5em * (var(--columns) - 1)) / var(--columns)));
+  padding: 1em;
+  gap: 2em;
+  grid-template-columns: repeat(var(--columns), calc((100% - 2em * (var(--columns) - 1)) / var(--columns)));
 }
 .icons-grid > a {
   color: var(--foreground);
@@ -16,28 +17,18 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
 .icons-grid > a > img {
   display: block;
   margin: 0 auto;
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
+  transition: scale .3s;
+}
+.icons-grid > a:hover > img {
+  scale: 1.2;
 }
 .blahaj { height: 1em; vertical-align: middle; }
 
 .icon {
   height: 1.2em; vertical-align: middle;
 }
-
-.tb { color: #2fbdff; }
-.tp { color: #ffa4ce; }
-.tw { color: #ffffff; }
-.th {
-  background-image: linear-gradient(to bottom, #2fbdff 35%, #ffa4ce 35%, #ffa4ce 45%, #ffffff 45%, #ffffff 55%, #ffa4ce 55%, #ffa4ce 65%, #2fbdff 65%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-.tb { --n: 0ms; }
-.tp { --n: -300ms; }
-.tw { --n: -600ms; }
-.th { --n: -700ms; }
 
 @keyframes float {
   0%   { translate: 0 0;}
@@ -46,9 +37,14 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
   75%  { translate: 0 .1em;}
   100% { translate: 0 0;}
 }
-.tb, .tp, .tw, .th {
+
+.th {
+  background-image: linear-gradient(to bottom, #2fbdff 35%, #ffa4ce 35%, #ffa4ce 45%, #ffffff 45%, #ffffff 55%, #ffa4ce 55%, #ffa4ce 65%, #2fbdff 65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   display: inline-block;
-  animation: float 1s linear var(--n) infinite forwards running;
+  animation: float 1s ease-in-out 0s infinite forwards running;
 }
 
 .bunny {
@@ -89,7 +85,7 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
 }
 .trans {
   position: absolute;
-  inset: -2em 0 auto auto;
+  inset: -1.8em 0 auto auto;
   text-align: center;
   margin: .6em;
   font-weight: 900;
@@ -97,7 +93,6 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
   box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
   padding: .3em .6em;
-  rotate: 10deg;
 }
 
 
