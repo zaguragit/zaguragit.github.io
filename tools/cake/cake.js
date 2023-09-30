@@ -6,7 +6,10 @@ document.getElementById("form").addEventListener("submit", e => {
     e.preventDefault();
     const input = e.currentTarget.input.value;
     e.currentTarget.input.value = "";
-    const ast = parse(tokenize(input));
+    const tokens = tokenize(input);
+    if (tokens.length == 0)
+        return;
+    const ast = parse(tokens);
     last_answer = evaluate(ast);
     output(ast, last_answer);
 });
