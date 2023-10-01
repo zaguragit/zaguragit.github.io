@@ -1,10 +1,10 @@
 {
     "name": "Key Light",
     "display": "fullscreen",
-    "start_url": "..",
+    "start_url": "../",
     "icons": [
       {
-        "src": "icon.png",
+        "src": "./icon.png",
         "type": "image/png",
         "sizes": "512x512"
       }
