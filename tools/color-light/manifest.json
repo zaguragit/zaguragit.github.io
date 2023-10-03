@@ -1,10 +1,10 @@
 {
     "name": "Key Light",
     "display": "fullscreen",
-    "start_url": "index",
+    "start_url": "https://zagura.one/tools/color-light",
     "icons": [
       {
-        "src": "./icon.png",
+        "src": "icon.png",
         "type": "image/png",
         "sizes": "512x512"
       }
