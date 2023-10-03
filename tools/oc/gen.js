@@ -155,48 +155,38 @@ const hr = "<td colspan=99><hr></td>";
 
 var last_hue = null;
 var hue_palette = null;
-var lightness_type = null;
+var lightness_base = null;
 document.getElementById("char-gen-button").addEventListener("click", () => {
     last_hue = null;
-    const v = pick(vibe, 1, 2);
     hue_palette = create_hue_palette();
+    lightness_base = 0.1 + Math.random() * 0.8;
     document.getElementById("char-res").innerHTML = table([
         ["body", pick(proportions) + pick(constitution)],
-        ["skin", pick_color(v, 1, 4, 3.0)],
+        ["skin", pick_color(1, 4, 3.0)],
         ["extra", pick(extra, 1, 4, 3.0)],
         hr,
-        ["hair", pick(hair_length) + pick(hair_texture) + pick_color(v, 1, 3, 2.0)],
-        ["eye color", pick_color(v, 1, 2, 5.0)],
+        ["hair", pick(hair_length) + pick(hair_texture) + pick_color(1, 3, 2.0)],
+        ["eye color", pick_color(1, 2, 5.0)],
         ["ears", pick(ears)],
         hr,
-        ["top", pick(clothing_textures) + pick(tops) + pick_color(v, 1, 3, 5.0)],
-        ["bottom", pick(clothing_textures) + pick(bottoms) + pick_color(v, 1, 3, 5.0)],
-        ["shoes", pick(shoes) + pick_color(v, 1, 3, 6.0)],
+        ["top", pick(clothing_textures) + pick(tops) + pick_color(1, 3, 5.0)],
+        ["bottom", pick(clothing_textures) + pick(bottoms) + pick_color(1, 3, 5.0)],
+        ["shoes", pick(shoes) + pick_color(1, 3, 6.0)],
         hr,
         ["personality", pick(personality, 1, 2, 2.0)],
-        ["vibe", v],
+        ["vibe", pick(vibe, 1, 2)],
         ["setting", pick(time_period) + pick(place)],
     ]);
 });
 
 function create_hue_palette() {
-    // switch (Math.floor(Math.random() * 3)) {
-    //     case 0: {
-    //         const h = Math.random();
-    //         return [h, (h + 0.5) % 1.0];
-    //     }
-    //     case 1: {
-    //         // const h = Math.random();
-    //         // return [h, (h + 1.0/3.0) % 1.0, (h + 2.0/3.0) % 1.0];
-    //     }
-    //     case 2: {
-    //         const h = Math.random();
-    //         const o = 0.05 + Math.random() * 0.45;
-    //         return [h, (h + 1.0 - o) % 1.0, (h + o) % 1.0];
-    //     }
-    // }
     const h = Math.random();
-    const o = 0.05 + Math.random() * 0.45;
+    let o;
+    switch (Math.floor(Math.random() * 3)) {
+        case 0: return [h, (h + 0.5) % 1.0];
+        case 1: o = Math.random() * 0.1; break;
+        case 2: o = 1.0 / 3.0 + Math.random() * 0.1; break;
+    }
     return [h, (h + 1.0 - o) % 1.0, (h + o) % 1.0];
 }
 
@@ -222,21 +212,25 @@ function pick_elements(list, min, max, min_weight) {
     return a;
 }
 
-function pick_color(vibe, min, max, min_weight) {
+function pick_color(min, max, min_weight) {
     const count = get_count(min, max, min_weight);
     let a = [];
     for (let i = 0; i < count; i++) {
         let b;
+        let j = 0;
         do {
-            let i = Math.floor(Math.pow(Math.random(), 1.5) * hue_palette.length);
+            let i = Math.round(Math.pow(Math.random(), 1.5) * (hue_palette.length - 1));
             if (last_hue == i && Math.random() > 0.5)
                 continue;
             last_hue = i;
-            const h = hue_palette[i];
-            const s = 0.05 + Math.random() * 0.9;
-            const l = 0.05 + Math.random() * 0.9;
-            b = `<div class=color style="color:${hsl2hex(h * 360, s, l)};"></div>`
-        } while (a.includes(b));
+            const lab = rgbToOklab(hsl2rgb({
+                h: hue_palette[i] * 360,
+                s: 0.05 + Math.random() * 0.9,
+                l: 0.5,
+            }));
+            lab.L = lightness_base + Math.pow(Math.random() * 2.0 - 1.0, 3.0),
+            b = `<div class=color style="color:${rgb2Hex(oklabToSRGB(lab))};"></div>`
+        } while (a.includes(b) && j++ < 100);
         a.push(b);
     }
     return a.join("");
@@ -252,14 +246,56 @@ function get_count(min, max, min_weight) {
     return min - 0.5 + Math.round(Math.pow(Math.random(), min_weight) * (max - min));
 }
 
-function hsl2hex(h, s, l) {
+function hsl2rgb({h, s, l}) {
     const a = s * Math.min(l, 1 - l);
     const f = n => {
         const k = (n + h / 30) % 12;
         const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-        return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+        return Math.round(255 * color);
     };
-    return `#${f(0)}${f(8)}${f(4)}`;
+    return {r: f(0), g: f(8), b: f(4)};
+}
+
+
+function clamp(value, min, max) {
+    return Math.max(Math.min(value, max), min);
+}
+
+function rgb2Hex({r, g, b}) {
+    return "#" + (b | (g << 8) | (r << 16) | (1 << 24)).toString(16).slice(1);
+}
+
+const gammaToLinear = (c) =>
+    c >= 0.04045 ? Math.pow((c + 0.055) / 1.055, 2.4) : c / 12.92;
+const linearToGamma = (c) =>
+    c >= 0.0031308 ? 1.055 * Math.pow(c, 1 / 2.4) - 0.055 : 12.92 * c;
+
+function rgbToOklab({r, g, b}) {
+    r = gammaToLinear(r / 255); g = gammaToLinear(g / 255); b = gammaToLinear(b / 255);
+    var l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b;
+    var m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b;
+    var s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b;
+    l = Math.cbrt(l); m = Math.cbrt(m); s = Math.cbrt(s);
+    return {
+        L: l * +0.2104542553 + m * +0.7936177850 + s * -0.0040720468,
+        a: l * +1.9779984951 + m * -2.4285922050 + s * +0.4505937099,
+        b: l * +0.0259040371 + m * +0.7827717662 + s * -0.8086757660
+    }
+}
+
+function oklabToSRGB({L, a, b}) {
+    var l = L + a * +0.3963377774 + b * +0.2158037573;
+    var m = L + a * -0.1055613458 + b * -0.0638541728;
+    var s = L + a * -0.0894841775 + b * -1.2914855480;
+    l = l ** 3; m = m ** 3; s = s ** 3;
+    var r = l * +4.0767416621 + m * -3.3077115913 + s * +0.2309699292;
+    var g = l * -1.2684380046 + m * +2.6097574011 + s * -0.3413193965;
+    var b = l * -0.0041960863 + m * -0.7034186147 + s * +1.7076147010;
+    r = 255 * linearToGamma(r); g = 255 * linearToGamma(g); b = 255 * linearToGamma(b);
+    
+    r = clamp(r, 0, 255); g = clamp(g, 0, 255); b = clamp(b, 0, 255);
+    r = Math.round(r); g = Math.round(g); b = Math.round(b);
+    return {r, g, b};
 }
 
 
