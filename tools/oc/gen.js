@@ -10,24 +10,15 @@ const hair_length = [
     "bald",
     "buzzcut",
     "short",
+    "nose length",
     "chin length",
     "shoulder length",
     "butt length",
     "beyond butt length",
     "mohawk",
     "afro",
-];
-
-const hair_bangs = [
-    "none",
-    "buzzcut",
-    "short",
-    "chin length",
-    "shoulder length",
-    "butt length",
-    "beyond butt length",
-    "mohawk",
-    "afro",
+    "short with long bangs",
+    "undercut",
 ];
 
 const ears = [
@@ -39,8 +30,9 @@ const ears = [
 ];
 
 const proportions = [
-    "tall",
     "short",
+    "average",
+    "tall",
     "elongated (smaller torso)",
     "big torso",
 ];
@@ -67,20 +59,15 @@ const extra = [
 ]
 
 const vibe = [
-    "slutty",
-    "gothic",
-    "cottage core",
-    "vibrant",
-    "cyberpunk",
-    "solarpunk",
-    "steampunk",
-    "masculine",
-    "feminine",
+    "goth",
     "psychedelic",
-    "pastelgoth",
+    "maximalist",
+    "minimalist",
+    "vintage",
 ];
 
 const personality = [
+    "slutty",
     "flirty",
     "bubbly",
     "shy",
@@ -88,6 +75,7 @@ const personality = [
     "smug",
     "rude",
     "calm",
+    "punk",
 ];
 
 const tops = [
@@ -165,25 +153,52 @@ const time_period = [
 
 const hr = "<td colspan=99><hr></td>";
 
+var last_hue = null;
+var hue_palette = null;
+var lightness_type = null;
 document.getElementById("char-gen-button").addEventListener("click", () => {
+    last_hue = null;
+    const v = pick(vibe, 1, 2);
+    hue_palette = create_hue_palette();
     document.getElementById("char-res").innerHTML = table([
         ["body", pick(proportions) + pick(constitution)],
-        ["skin", pick_color(1, 2, 2.0)],
+        ["skin", pick_color(v, 1, 4, 3.0)],
         ["extra", pick(extra, 1, 4, 3.0)],
         hr,
-        ["hair", pick(hair_length) + pick(hair_texture) + pick_color(1, 3, 2.0)],
-        ["eye color", pick_color()],
+        ["hair", pick(hair_length) + pick(hair_texture) + pick_color(v, 1, 3, 2.0)],
+        ["eye color", pick_color(v, 1, 2, 5.0)],
         ["ears", pick(ears)],
         hr,
-        ["top", pick(clothing_textures) + pick(tops)],
-        ["bottom", pick(clothing_textures) + pick(bottoms)],
-        ["shoes", pick(shoes)],
+        ["top", pick(clothing_textures) + pick(tops) + pick_color(v, 1, 3, 5.0)],
+        ["bottom", pick(clothing_textures) + pick(bottoms) + pick_color(v, 1, 3, 5.0)],
+        ["shoes", pick(shoes) + pick_color(v, 1, 3, 6.0)],
         hr,
         ["personality", pick(personality, 1, 2, 2.0)],
-        ["vibe", pick(vibe, 1, 2)],
+        ["vibe", v],
         ["setting", pick(time_period) + pick(place)],
     ]);
 });
+
+function create_hue_palette() {
+    // switch (Math.floor(Math.random() * 3)) {
+    //     case 0: {
+    //         const h = Math.random();
+    //         return [h, (h + 0.5) % 1.0];
+    //     }
+    //     case 1: {
+    //         // const h = Math.random();
+    //         // return [h, (h + 1.0/3.0) % 1.0, (h + 2.0/3.0) % 1.0];
+    //     }
+    //     case 2: {
+    //         const h = Math.random();
+    //         const o = 0.05 + Math.random() * 0.45;
+    //         return [h, (h + 1.0 - o) % 1.0, (h + o) % 1.0];
+    //     }
+    // }
+    const h = Math.random();
+    const o = 0.05 + Math.random() * 0.45;
+    return [h, (h + 1.0 - o) % 1.0, (h + o) % 1.0];
+}
 
 function table(rows) {
     return "<table>" + rows.map(row => (row === hr) ? hr : `<tr><td>${row[0]}</td><td>${row[1]}</td></tr>`).join("") + "</table>";
@@ -207,18 +222,20 @@ function pick_elements(list, min, max, min_weight) {
     return a;
 }
 
-var last_hue = null;
-function pick_color(min, max, min_weight) {
+function pick_color(vibe, min, max, min_weight) {
     const count = get_count(min, max, min_weight);
     let a = [];
     for (let i = 0; i < count; i++) {
         let b;
         do {
-            let h = Math.random();
-            if (last_hue !== null)
-                h = 0.6 * h + 0.4 * (Math.abs(last_hue - h) > 0.5) ? (last_hue + 0.5) % 1 : last_hue;
-            last_hue = h;
-            b = `<div class=color style="color:${hsl2hex(h * 360, Math.random(), Math.random())};"></div>`
+            let i = Math.floor(Math.pow(Math.random(), 1.5) * hue_palette.length);
+            if (last_hue == i && Math.random() > 0.5)
+                continue;
+            last_hue = i;
+            const h = hue_palette[i];
+            const s = 0.05 + Math.random() * 0.9;
+            const l = 0.05 + Math.random() * 0.9;
+            b = `<div class=color style="color:${hsl2hex(h * 360, s, l)};"></div>`
         } while (a.includes(b));
         a.push(b);
     }
