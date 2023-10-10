@@ -96,11 +96,11 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
 }
 
 
-#character-sheet dl article {
+#character-sheet dl > article {
   display: grid;
   grid-template-columns: 15ch auto;
 }
-#character-sheet dl dt {
+#character-sheet dl > article > dt {
   font-weight: bold;
 }
 
