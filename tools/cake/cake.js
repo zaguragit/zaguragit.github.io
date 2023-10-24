@@ -284,7 +284,7 @@ function parse_unary(context) {
     const op = get_un_op(c.type);
     const op_loc = c.loc;
     if (!op)
-        return parse_post_unary(parse_primary(context));
+        return parse_post_unary(parse_primary(context), context);
     context.next();
     const a = parse_unary(context);
     const loc = [op_loc[0], a.loc[1]];

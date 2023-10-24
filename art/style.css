@@ -10,6 +10,10 @@
   background-blend-mode: luminosity;
 }
 
+.hidden {
+  display: none;
+}
+
 .image-grid {
   display: grid;
   gap: 1em;
