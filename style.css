@@ -19,7 +19,7 @@ a {
 a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
 
 :root {
-  --color-accent: #ecb8ff;
+  --color-accent: #a5e471;
   --foreground: #deffe6f0;
   --foreground-weak: #bca4bcac;
   --foreground-border: #a062ac52;
@@ -46,7 +46,7 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
 }
 body {
   width: 100%;
-  max-width: 960px;
+  max-width: 1080px;
   margin: 64px auto 0 auto;
   padding: 24px;
 }
