@@ -46,8 +46,9 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
 }
 
 .bunny {
+  height: 96px;
   position: absolute;
-  inset: auto 0 1em auto;
+  inset: 0 0 auto auto;
 }
 
 
