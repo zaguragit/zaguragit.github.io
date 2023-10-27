@@ -14,6 +14,8 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
   font-size: .9em;
   background-color: #0a4e45;
   background-image: repeating-linear-gradient(30deg, #0c3d20aa 0, #2c1733aa 20em, #0c3d20aa 40em);
+  background-position: -12em 0;
+  background-size: 200%;
   background-attachment: fixed;
   padding: .5em;
   border-radius: var(--border-radius);
@@ -29,7 +31,7 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
 }
 .icons-grid > a:hover > img { scale: 1.2; }
 .icons-grid > a:hover {
-  background-position: 12em 0;
+  background-position: 0 0;
   background-color: #049483;
 }
 @media only screen and (max-width:840px) {
