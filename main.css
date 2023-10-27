@@ -1,6 +1,13 @@
 a.chill { color: var(--foreground); }
 a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; }
 
+:root {
+  --rainbow: repeating-linear-gradient(to right,
+    #ff647e, #ffb374, #fdff6d, #4aff5f, #89caff, #ff7eff, #ff647e);
+  --rainbow-bg: repeating-linear-gradient(to right,
+    #ff647e22, #ffb37422, #fdff6d22, #4aff5f22, #89caff22, #ff7eff22, #ff647e22);
+}
+
 .icons-grid {
   display: grid;
   --columns: 8;

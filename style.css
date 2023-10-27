@@ -26,10 +26,6 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   --foreground-strong: #eeffee;
   --surface-background: #262336ef;
   --surface-background-dim: #1b182bd4;
-  --rainbow: repeating-linear-gradient(to right,
-    #ff647e, #ffb374, #fdff6d, #4aff5f, #89caff, #ff7eff, #ff647e);
-  --rainbow-bg: repeating-linear-gradient(to right,
-    #ff647e22, #ffb37422, #fdff6d22, #4aff5f22, #89caff22, #ff7eff22, #ff647e22);
   --border-radius: 5px;
   --card-shadow: inset 0 1px #fff1, 0 2px 2px #0008, 0 3px 5px #0008, 0 0 0 1px #0008;
   font-family: Inter, 'Noto Sans', system-ui, sans-serif;
@@ -60,37 +56,14 @@ section {
   border-radius: var(--border-radius);
   position: relative;
 }
-
 section h2 {
   font-size: unset;
   margin-bottom: .5em;
 }
 
-@keyframes movebg-header {
-  0% {background-position-x: 0;}
-  100% {background-position-x: 1024px;}
-}
-section > header {
-  background-image: var(--rainbow-bg);
-  background-size: 1024px 1024px;
-  animation: movebg-header 4s linear 0ms infinite forwards running;
-  margin: -.5em -.8em .5em;
-  padding: .2em .8em .5em;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  border: 1px solid transparent;
-  border-bottom: 1px solid #0006;
-  box-shadow: 0 1px var(--foreground-border);
-}
-section > header > h1 {
-  font-size: 1.2em;
-  margin: .2em 0;
-}
-section > header > .back-to-main {
-  color: var(--foreground-weak);
-}
-section > header > .back-to-main::before {
-  content: "main page: ";
-}
+header > h1 { line-height: 1.2; }
+header > .back-to-main { color: var(--foreground-weak); }
+header > .back-to-main::before { content: "main page: "; }
 section hr {
   border: none;
   border-top: 1px solid #0006;
@@ -168,21 +141,6 @@ ul {
   line-height: 1.8;
 }
 ul li::before { content: "λ: "; color: var(--foreground-weak); }
-
-
-@keyframes movebg-border {
-  0% {background-position-x: 0, 0;}
-  100% {background-position-x: 16px, 512px;}
-}
-hr.rainbow { border:none; position:relative; overflow:visible; margin: .5em 0; }
-hr.rainbow::after {
-  content: '';
-  height: 1px;
-  display: block;
-  background-image: repeating-linear-gradient(to right, transparent 0, transparent 8px, #000 8px, #000 16px), var(--rainbow);
-  background-size: 512px 512px;
-  animation: movebg-border 3s linear 0ms infinite forwards running;
-}
 
 
 .grid {

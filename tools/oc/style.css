@@ -1,15 +1,19 @@
 .oc header {
     display: flex;
     flex-direction: row;
-    padding-bottom: .2em;
     align-items: center;
     background-image: none;
     padding: .5em;
+    margin: -.5em -.8em .5em;
     line-height: 1;
+    border-bottom: 1px solid #0006;
+    box-shadow: 0 1px var(--foreground-border);
 }
-.oc header > h1 {
+.oc header > h2 {
     flex-grow: 1;
     padding: 0 .2em;
+    font-size: 1.2em;
+    margin: 0;
 }
 
 table,
