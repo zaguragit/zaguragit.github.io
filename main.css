@@ -4,15 +4,21 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
 .icons-grid {
   display: grid;
   --columns: 8;
-  padding: 1em;
-  gap: 2em;
-  grid-template-columns: repeat(var(--columns), calc((100% - 2em * (var(--columns) - 1)) / var(--columns)));
+  gap: 1em;
+  grid-template-columns: repeat(var(--columns), calc((100% - 1em * (var(--columns) - 1)) / var(--columns)));
 }
 .icons-grid > a {
   color: var(--foreground);
   text-align: center;
   font-weight: normal;
   font-size: .9em;
+  background-color: #0a4e45;
+  background-image: repeating-linear-gradient(30deg, #0c3d20aa 0, #2c1733aa 20em, #0c3d20aa 40em);
+  background-attachment: fixed;
+  padding: .5em;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  transition: background-position .3s, background-color .3s;
 }
 .icons-grid > a > img {
   display: block;
@@ -21,8 +27,10 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
   height: 48px;
   transition: scale .3s;
 }
-.icons-grid > a:hover > img {
-  scale: 1.2;
+.icons-grid > a:hover > img { scale: 1.2; }
+.icons-grid > a:hover {
+  background-position: 12em 0;
+  background-color: #049483;
 }
 @media only screen and (max-width:840px) {
   .icons-grid { --columns: 5; }
