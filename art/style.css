@@ -75,7 +75,8 @@ h1 { font-size: 2em; line-height: 1.2; }
   image-rendering: auto;
 }
 @media only screen and (max-width:720px) {
-  .image-grid { grid-template-columns: repeat(2, auto); }
+  body { padding: 2em; }
+  .image-grid { grid-template-columns: repeat(2, auto); gap: 2em; }
 }
 
 .image-grid article {
