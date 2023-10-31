@@ -1,0 +1,149 @@
+/* The most outer element in the website's tree, it contains <html>, which contains <body> */
+:root {
+    /* Define some colors to use across the entire website */
+    /* Try playing with these to quickly change the look of the site */
+    --background: #0d141f;
+    --surface: #111e2b;
+    --foreground: #c4dad1;
+    --foreground-strong: #fff;
+    --foreground-weak: #71948f;
+    --color-border: #768f9149;
+    --color-accent: #9dff00;
+
+    /* var(x) gets you the value of the variable x, which must be declared in this or an outer element */
+    color: var(--foreground);
+    background-color: var(--background);
+
+    /* You can set multiple font-families in order of priority, also called a font-stack */
+    /* It's very good for when a certain platform might not have a certain font, so you can add a fallback */
+    font-family: Inter, 'Noto Sans', system-ui, sans-serif;
+}
+
+body {
+    width: 100%;
+    /* Makes it so the page doesn't stretch to extreme widths on wide monitors & also adds some nice side margins */
+    max-width: 720px;
+    margin: 64px auto;
+    line-height: 1.5;
+}
+
+section {
+    background-color: var(--surface);
+    border-radius: 8px;
+    padding: .8em 1em;
+    margin: 1em;
+    box-sizing: border-box;
+    box-shadow:
+        inset 0 0 0 1px #fff1,
+        0 1px 0 0 #0002,
+        0 3px 3px 0 #0002,
+        0 4px 5px 3px #0002;
+}
+
+h1 {
+    /* Since h1's font size it larger, you can use the rem unit to get the root */
+    /* text size (text size of the :root element basically) */
+    margin: 1rem;
+    line-height: 1;
+    color: var(--foreground-strong);
+    font-size: 1.5em;
+}
+
+h2 {
+    /* em units are relative to the current text size, so you could change the text size of the entire site by changing it in :root */
+    font-size: 1em;
+    margin: 0;
+    line-height: 1;
+    color: var(--foreground-strong);
+}
+
+p, ul, ol {
+    margin: .5em 0;
+}
+
+ul, ol {
+    padding-left: 1em;
+}
+
+/* Let's change how hyperlinks look */
+a {
+    color: #43bde2;
+    text-decoration: none;
+}
+/* You can use modifiers like :hover to change how your website's elements look when in different situations */
+a:hover { text-decoration: underline wavy #fff 1px; }
+
+
+/* Some adjustments to make the table look cleaner */
+table {
+    /* Since we have no borders, we don't wanna think about the space they would occupy, so we remove it */
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+/* Some more specific adjustments */
+#me {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 512px;
+    background-image: linear-gradient(30deg, #0f5685, #4738ce);
+    /* You must make #me a positioned element, so that you can position your avatar image properly */
+    position: relative;
+    /* Apparantly positioning isn't enough to center the image */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /* Add the necessary space for the avatar */
+    padding-top: 48px;
+}
+#me > img {
+    position: absolute;
+    height: 72px;
+    inset: -36px auto auto auto;
+    border-radius: 999px;
+    display: inline-block;
+    /* Apparantly inset isn't enough to center it */
+    align-self: center;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 8px var(--background);
+}
+#me > #left { inset: 0 auto auto 0; }
+#me > #right { inset: 0 0 auto auto; }
+#me > #right, #me > #left {
+    position: absolute;
+    margin: .8em 1em;
+    line-height: 1;
+    font-weight: bold;
+}
+
+/* Adjust the data table specifically (the one with the pronouns and stuff) */
+table.data td {
+    text-align: start;
+}
+/* Add a colon after text in the first column of the table */
+table.data td:first-child::after { content: ":"; margin-right: 1ch; }
+
+
+#webrings {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 420px;
+    padding: .5em;
+}
+
+#webrings > table td:last-child {
+    text-align: right;
+}
+#webrings > table td:nth-child(2) {
+    text-align: center;
+}
+#webrings > table td:nth-child(2) a {
+    margin: 0 3ch;
+    color: var(--color-fg);
+    width: max-content;
+}
