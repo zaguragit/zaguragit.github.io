@@ -1,0 +1,19 @@
+
+ul > li > a {
+    color: unset;
+    font-weight: normal;
+}
+
+section .grid {
+    margin-bottom: .5em;
+}
+
+section article > img {
+    max-width: 48px;
+    max-height: 48px;
+    float: inline-end;
+    border-radius: 4px;
+    margin: .3em 0;
+    padding: 1px;
+    box-shadow: var(--card-shadow);
+}

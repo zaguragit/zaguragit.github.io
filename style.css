@@ -1,6 +1,6 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--foreground-weak) transparent;}
 h1,h2,h3,h4,em{color:var(--foreground-strong);font-weight:700;}
-h1{font-size:2em;}
+h1{font-size:1.5em;}
 h2{font-size:1.2em;}
 h3{font-size:1em;}
 p{margin:1em 0;}
@@ -13,7 +13,6 @@ a:focus-visible{outline:#fff 3px solid;}
 a {
   color: var(--color-accent);
   font-weight: 700;
-  text-shadow: .1em .05em #000000;
   text-decoration: none;
 }
 a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
@@ -22,12 +21,16 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   --color-accent: #a5e471;
   --foreground: #deffe6f0;
   --foreground-weak: #bca4bcac;
-  --foreground-border: #a062ac52;
   --foreground-strong: #eeffee;
+  --foreground-border: #fff1;
   --surface-background: #262336ef;
   --surface-background-dim: #1b182bd4;
-  --border-radius: 5px;
-  --card-shadow: inset 0 1px #fff1, 0 2px 2px #0008, 0 3px 5px #0008, 0 0 0 1px #0008;
+  --border-radius: 8px;
+  --card-shadow:
+      inset 0 0 0 1px var(--foreground-border),
+      0 1px 0 0 #0002,
+      0 3px 3px 0 #0002,
+      0 4px 5px 3px #0002;
   font-family: Inter, 'Noto Sans', system-ui, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -36,6 +39,10 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   background-image: url('assets/textures/abstrpurpl.png');
   color: var(--foreground);
 	color-scheme: dark;
+
+  background-color: #0d141f;
+  --surface-background: #111e2b;
+  --surface-background-dim: #0c1622;
 }
 ::selection {
   background-color: #ae7cff56;
@@ -76,20 +83,8 @@ section article {
   border: 1px dashed var(--foreground-border);
   border-radius: var(--border-radius);
   margin: .5em 0;
-  padding: .5em;
+  padding: .5em .8em;
   display: flow-root;
-}
-section article > time { color: var(--foreground-weak); }
-section article > img {
-  max-width: 64px;
-  max-height: 64px;
-  float: inline-end;
-}
-section > img.framed,
-section article > img {
-  border-radius: var(--border-radius);
-  padding: 1px;
-  box-shadow: var(--card-shadow);
 }
 
 
@@ -140,7 +135,7 @@ ul {
   list-style-type: none;
   line-height: 1.8;
 }
-ul li::before { content: "λ: "; color: var(--foreground-weak); }
+ul li::before { content: "•"; margin-right: .5em; font-weight: bold; color: var(--foreground-weak); }
 
 
 .grid {

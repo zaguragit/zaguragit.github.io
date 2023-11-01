@@ -5,7 +5,7 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
   --rainbow: repeating-linear-gradient(to right,
     #ff647e, #ffb374, #fdff6d, #4aff5f, #89caff, #ff7eff, #ff647e);
   --rainbow-bg: repeating-linear-gradient(to right,
-    #ff647e22, #ffb37422, #fdff6d22, #4aff5f22, #89caff22, #ff7eff22, #ff647e22);
+    #ff647e33, #ffb37433, #fdff6d33, #4aff5f33, #89caff33, #ff7eff33, #ff647e33);
 }
 
 .icons-grid {
@@ -19,27 +19,29 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
   text-align: center;
   font-weight: normal;
   font-size: .9em;
-  background-color: #0a4e45;
-  background-image: repeating-linear-gradient(30deg, #0c3d20aa 0, #2c1733aa 20em, #0c3d20aa 40em);
+  background-color: #034a4d;
+  background-image: repeating-linear-gradient(30deg, #08423aaa 0, #2c1733aa 20em, #08423aaa 40em);
   background-position: -12em 0;
   background-size: 200%;
   background-attachment: fixed;
-  padding: .5em;
+  padding: .5em 0;
   border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
-  transition: background-position .3s, background-color .3s;
+  transition: background-position .3s, background-color .3s, letter-spacing .2s;
 }
 .icons-grid > a > img {
   display: block;
   margin: 0 auto;
   width: 48px;
   height: 48px;
+  padding: 4px;
   transition: scale .3s;
 }
 .icons-grid > a:hover > img { scale: 1.2; }
 .icons-grid > a:hover {
   background-position: 0 0;
-  background-color: #049483;
+  background-color: #0088a0;
+  letter-spacing: .05em;
 }
 @media only screen and (max-width:840px) {
   .icons-grid { --columns: 5; }
@@ -76,10 +78,17 @@ header {
   border-radius: var(--border-radius);
 
   background-color: var(--surface-background);
-  background-image: var(--rainbow-bg);
+  /* background-image: var(--rainbow-bg);
   background-size: 1024px 1024px;
-  animation: movebg-header 4s linear 0ms infinite forwards running;
+  animation: movebg-header 4s linear 0ms infinite forwards running; */
+  /* background-image: linear-gradient(30deg, #3e125c, #24146b); */
+  background-image: repeating-linear-gradient(20deg, #04524e, #17384e 70%, #17384e);
+  color: var(--foreground-strong);
   border: 1px solid transparent;
+}
+header a {
+  color: unset;
+  text-shadow: 0 1px #000, 0 1px 5px #0003;
 }
 header > img {
   height: 96px;
@@ -97,7 +106,8 @@ header::before {
   position: absolute;
   inset: -49px auto auto auto;
   align-self: center;
-  background-image: var(--rainbow);
+  /* background-image: var(--rainbow); */
+  background-image: repeating-linear-gradient(to left, #00fff2, #0099ff, #00fff2);
   background-size: 512px 512px;
   animation: movebg-header 3s linear 0ms infinite forwards running;
   border-radius: 999px;
@@ -132,14 +142,6 @@ header > p {
   color: transparent;
   display: inline-block;
   animation: float 1s ease-in-out 0s infinite forwards running;
-}
-
-
-#me {
-  display: grid;
-  --columns: 3;
-  gap: 1em;
-  grid-template-columns: repeat(var(--columns), calc((100% - 1em * (var(--columns) - 1)) / var(--columns)));
 }
 
 
