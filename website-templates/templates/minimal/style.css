@@ -41,7 +41,7 @@ section {
 }
 
 h1 {
-    /* Since h1's font size it larger, you can use the rem unit to get the root */
+    /* Since h1's font size is larger, you can use the rem unit to get the root */
     /* text size (text size of the :root element basically) */
     margin: 1rem;
     line-height: 1;

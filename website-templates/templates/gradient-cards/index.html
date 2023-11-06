@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta name=language content=en>
+
+    <!-- These are some metadata tags to put information about your website -->
+    <!-- It can be used to show a little preview/description of the site, -->
+    <!-- when you link to it in a social platform or messaging app -->
+    <!-- (and will also be used if your site's indexed by a search engine) -->
+    <!-- Replace the attribute values here with your own information -->
+    <!-- If an attribute value contains spaces, you must use "" around it, otherwise it's optional -->
+    <meta name=copyright content=YOUR_NAME>
+    <meta name=author content=YOUR_NAME>
+    <meta name=description content=DESCRIPTION>
+
+    <!-- This is so that bots/crawlers know that you don't want ur emails collected -->
+    <meta name=no-email-collection>
+
+    <!-- This is so that when a user clicks on a link on this page, -->
+    <!-- the destination site doesn't know where they came from -->
+    <meta name=referrer content=no-referrer>
+
+    <!-- Will be used on some browsers, like vivaldi, mac os' safari & android's chrome to tint it's ui -->
+    <meta name=theme-color content=#8800000>
+
+    <!-- Makes the website scale to adapt to a mobile form factor -->
+    <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+    <!-- Links the stylesheet to this page -->
+    <link rel=stylesheet href=style.css>
+
+    <!-- The text & icon on the browser tab -->
+    <link rel=icon href=avatar.png>
+    <title>TITLE</title>
+  </head>
+  <body>
+    <section id=me>
+      <div id=greeting>
+        <!-- Let's have an avatar, you can change the image if u want, obviously -->
+        <img src=avatar.jpg>
+        <span>Hi, I'm YOUR_NAME, and this is my website that I haven't customized yet</span>
+      </div>
+      <h2>About me</h2>
+      <p>
+        I'm a human on the internet, this is my website, i exist,
+        i am not an imaginary character to lorem ipsum this text area
+      </p>
+      <dl>
+        <span>
+          <dt>timezone</dt>
+          <dd>UTC+x</dd>
+        </span>
+        <span>
+          <dt>pronouns</dt>
+          <dd>they/them</dd>
+        </span>
+        <span>
+          <dt>fav color</dt>
+          <dd>FAV_COLOR</dd>
+        </span>
+        <span>
+          <dt>fedi</dt>
+          <!-- The rel=me tells any potential crawler that this url is you, -->
+          <!-- used for stuff like verification on mastodon -->
+          <dd><a rel=me href=YOUR_LINK_URL>YOUR_LINK_NAME</a></dd>
+        </span>
+        <span>
+          <dt>email</dt>
+          <dd><a rel="me nofollow" href=mailto:john@example.com>john@example.com</a></dd>
+        </span>
+      </dl>
+    </section>
+    <section id=stuff>
+      <h2>My stuff</h2>
+      <ul>
+        <li><a href=creations>Creations</a></li>
+      </ul>
+    </section>
+    <section id=faves>
+      <h2>Some other cool websites</h2>
+      <ul>
+        <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
+        <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
+        <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
+        <li><a href=YOUR_LINK_URL>YOUR_LINK_NAME</a></li>
+      </ul>
+    </section>
+    <section id=webrings>
+      <table>
+        <tr>
+          <td><a class=arrow href=WEBRING_URL/previous referrerpolicy=origin>&lt;-&nbsp;prev</a></td>
+          <td><a class=center href=WEBRING_URL>WEBRING_NAMEdf</a></td>
+          <td><a class=arrow href=WEBRING_URL/next referrerpolicy=origin>next&nbsp;-&gt;</a></td>
+        </tr>
+        <tr>
+          <td><a class=arrow href=WEBRING_URL/previous referrerpolicy=origin>&lt;-&nbsp;prev</a></td>
+          <td><a class=center href=WEBRING_URL>WEBRING_NAMEt5hhghfg</a></td>
+          <td><a class=arrow href=WEBRING_URL/next referrerpolicy=origin>next&nbsp;-&gt;</a></td>
+        </tr>
+        <tr>
+          <td><a class=arrow href=WEBRING_URL/previous referrerpolicy=origin>&lt;-&nbsp;prev</a></td>
+          <td><a class=center href=WEBRING_URL>WEBRING_NAME</a></td>
+          <td><a class=arrow href=WEBRING_URL/next referrerpolicy=origin>next&nbsp;-&gt;</a></td>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>

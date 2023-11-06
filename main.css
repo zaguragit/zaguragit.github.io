@@ -76,7 +76,7 @@ header {
   padding: .5em .8em;
   box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
-  background-image: repeating-linear-gradient(20deg, #04524e, #17384e 70%, #17384e);
+  background-image: linear-gradient(20deg, #04524e, #17384e 70%);
   color: var(--foreground-strong);
   border: 1px solid transparent;
 }

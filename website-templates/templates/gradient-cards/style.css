@@ -1,0 +1,155 @@
+/* The most outer element in the website's tree, it contains <html>, which contains <body> */
+:root {
+    background-color: #2b0c18;
+    color: #fff;
+
+    --card-background:
+        radial-gradient(3em 60% at center left, #bd053c, transparent),
+        radial-gradient(3em 60% at center right, #8d018185, transparent),
+        radial-gradient(90% 6em at top right, #68045b, transparent),
+        radial-gradient(80% 5em at bottom right, #94064d, transparent),
+        linear-gradient(130deg, #940631, #6d0556 70%);
+
+    /* You could try out a different colorscheme */
+    /* background-color: #031f2b;
+    --card-background:
+        radial-gradient(60% 3em at bottom center, #00ffff46, transparent),
+        radial-gradient(90% 6em at top right, #004e72, transparent),
+        radial-gradient(80% 5em at bottom left, #007c72, transparent),
+        linear-gradient(130deg, #04756c, #0a3f70 70%); */
+
+    /* Define a max width to use for calculating the font size, */
+    /* since we want the cards to adjust to the display size, */
+    /* without changing their layout much, but we don't want the */
+    /* page to stretch to extreme widths on wide monitors */
+    --max-width: 720px;
+
+    /* You can set multiple font-families in order of priority, also called a font-stack */
+    /* It's very good for when a certain platform might not have a certain font, so you can add a fallback */
+    font-family: Inter, 'Noto Sans', system-ui, sans-serif;
+    line-height: 1.5;
+    /* The calculation of the font size to scale up until the window width hits --max-width */
+    /* var(x) gets you the value of the variable x, which must be declared in this or an outer element */
+    font-size: max(12px, calc(min(100vw, var(--max-width)) * 0.04));
+                                                        /*  ^ This is the proportion between the window width and font size  */
+}
+
+body {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 3em auto;
+}
+
+section {
+    background-image: var(--card-background);
+    border-radius: .5rem;
+    padding: 1rem;
+    margin: 1rem;
+    box-sizing: border-box;
+    box-shadow:
+        inset 0 .05em #fff3,
+        inset 0 0 0 1px #fff1,
+        0 1px #0004,
+        0 3px 3px #0004,
+        0 4px 5px 3px #0004;
+}
+
+h2 {
+    /* em units are relative to the current text size, so you could change the text size of the entire site by changing it in :root */
+    font-size: 1em;
+    margin: 0;
+    line-height: 1;
+}
+
+p, ul, ol, dl { margin: .5em 0; }
+ul, ol { padding-left: 1em; }
+dl dd { margin: 0; }
+
+dl {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    line-height: 1;
+    row-gap: 1em;
+}
+dl dt {
+    font-weight: bold;
+    font-size: .7rem;
+    color: #ffaf89;
+}
+
+/* Let's change how hyperlinks look */
+a {
+    color: unset;
+    text-decoration: underline wavy #fff max(1px, .04em);
+}
+
+
+/* Some adjustments to make the table look cleaner */
+table {
+    /* Since we have no borders, we don't wanna think about the space they would occupy, so we remove it */
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Some more specific adjustments */
+#me {
+    /* You must make #me a positioned element, so that you can position your avatar image properly */
+    position: relative;
+    /* Apparantly positioning isn't enough to center the image */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /* Add the necessary space for the avatar */
+    padding-top: 2.5em;
+}
+#greeting {
+    position: absolute;
+    height: 4em;
+    inset: -2em auto auto auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: 1.2;
+}
+#greeting > img {
+    height: 4em;
+    border-radius: 999px;
+    z-index: 99;
+}
+#greeting > span {
+    font-size: .8em;
+    background-color: #000;
+    border-radius: .5em;
+    padding: .5em;
+    margin: 0 1em;
+}
+
+#webrings {
+    background-image:
+        linear-gradient(130deg, #532a2a, #463f25 70%);
+    background-image: var(--card-background);
+    padding: .5rem;
+    line-height: 1;
+}
+
+#webrings tr:not(:last-child) td {
+    padding-bottom: .5em;
+}
+
+/* You can use modifiers like :hover to change how your website's elements look when in different situations */
+/* You can also negate the modifiers with the :not() modifier */
+#webrings a:not(:hover) {
+    text-decoration: none;
+}
+
+#webrings > table td:last-child {
+    text-align: right;
+}
+#webrings > table td:nth-child(2) {
+    text-align: center;
+}
+#webrings > table td:nth-child(2) a {
+    font-weight: bold;
+    width: max-content;
+}
