@@ -11,9 +11,9 @@ a {
 a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
 
 :root {
-  color: #ffffffb9;
-  --border: #8f70a982;
-  --accent: #8f70a982;
+  color: #ffffffdd;
+  --border: #ffffff48;
+  --accent: #77a97082;
   --border-radius: 3px;
   --serif: Tinos, Times, serif;
   font-family: Inter, 'Noto Sans', system-ui, sans-serif;
@@ -53,7 +53,6 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   color: unset;
   background-clip: text;
   font-size: 1.5em;
-  letter-spacing: 0.1em;
   font-family: var(--serif);
   font-weight: 700;
   text-decoration: underline wavy var(--accent) 1px;
@@ -212,6 +211,7 @@ dt, dd { min-height: 2em; }
     border-bottom: 1px solid var(--border);
     position: unset;
   }
+  #sidebar > nav { position: unset; }
   #page-container {
     display: block; 
     border-radius: 0;
