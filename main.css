@@ -43,12 +43,6 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
   background-color: #0088a0;
   letter-spacing: .05em;
 }
-@media only screen and (max-width:840px) {
-  .icons-grid { --columns: 5; }
-}
-@media only screen and (max-width:512px) {
-  .icons-grid { --columns: 3; }
-}
 
 .icon {
   height: 1.2em; vertical-align: middle;
@@ -109,11 +103,43 @@ header > p {
   margin-top: 50px;
   margin-bottom: .5em;
 }
-#statuscafe-face {
+#statuscafe {
   position: absolute;
-  inset: 0 auto auto 0;
-  margin: .5em .8em;
+  inset: 0 0 auto auto;
   line-height: 1.5;
+  translate: 0 -50%;
+  margin-right: calc(50% + 64px);
+  width: 50%;
+  border-radius: var(--border-radius);
+  background-color: var(--surface-background);
+  border: 1px solid var(--foreground-border);
+  box-shadow: -1px 2px 5px #0002;
+  padding: .5em .6em;
+  font-weight: unset;
+  text-decoration: none;
+}
+#statuscafe:hover > .status-header {
+  text-decoration: underline wavy currentColor 1px;
+}
+#statuscafe::after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  rotate: 45deg;
+  background-color: var(--surface-background);
+  box-shadow: 1px -1px var(--foreground-border);
+  inset: 50% -5px 50% auto;
+  translate: 0 -50%;
+}
+.status-face {
+  position: absolute;
+  inset: -.2rem -.2rem auto auto;
+  line-height: 1;
+  font-size: 1.5rem;
+}
+.status-header {
+  color: var(--foreground-weak);
 }
 @keyframes float {
   0%   { translate: 0 0;}
@@ -147,20 +173,6 @@ header > p {
 }
 
 
-.status {
-  line-height: 1.5;
-  padding: .5em 0;
-}
-.status-header {
-  color: var(--foreground-weak);
-}
-.status-header > a {
-  font-weight: normal;
-}
-#fedi-content p { margin: 0; }
-#fedi-content p + p { margin-top: 1em; }
-
-
 .blahaj { height: 1em; vertical-align: middle; }
 
 .webrings {
@@ -177,4 +189,53 @@ header > p {
 .webring .center {
   flex-grow: 1;
   text-align: center;
+}
+
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+table td, table th {
+  text-align: start;
+  padding: 3px 0;
+}
+table th {
+  padding-right: 1ch;
+  font-weight: normal;
+  color: #ecb8ffdd;
+}
+table th img {
+  margin-right: 1ch;
+}
+
+
+@media only screen and (max-width:840px) {
+  #statuscafe {
+    position: relative;
+    line-height: 1.5;
+    translate: unset;
+    margin: 0;
+    margin-top: 56px;
+    width: unset;
+  }
+  header > p {
+    margin-top: .5em;
+  }
+  #statuscafe::after {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    rotate: 45deg;
+    box-shadow: -1px -1px #0002;
+    inset: 0 50% auto 50%;
+    margin-left: -5px;
+    translate: 0 -50%;
+  }
+  .icons-grid { --columns: 5; }
+}
+@media only screen and (max-width:512px) {
+  .icons-grid { --columns: 3; }
 }

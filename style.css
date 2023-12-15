@@ -112,25 +112,6 @@ button:active { background-color: transparent; box-shadow: inset 0 0 0 1px #0002
 }
 
 
-table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  width: 100%;
-}
-table td, table th {
-  text-align: start;
-}
-table th {
-  width: min-content;
-  padding-right: 2ch;
-  font-weight: normal;
-  color: var(--foreground-weak);
-}
-table td {
-  width: max-content;
-}
-
-
 ul {
   list-style-type: none;
   line-height: 1.8;

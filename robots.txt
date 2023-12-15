@@ -1,6 +1,10 @@
 
 # We don't like these ones
 User-agent: *
+Disallow: /
+Allow: /404
+
+# Google
 User-agent: Googlebot
 User-agent: Googlebot-Image
 User-agent: Googlebot-News
@@ -13,6 +17,15 @@ User-agent: AdsBot-Google-Mobile
 User-agent: AdsBot-Google
 User-agent: Mediapartners-Google
 User-agent: FeedFetcher-Google
+User-agent: Google-Extended
+Disallow: /
+
+# OpenAI
+User-agent: GPTBot
+User-agent: ChatGPT-User
+Disallow: /
+
+# Various
 User-agent: Bingbot
 User-agent: FacebookBot
 User-agent: Applebot
@@ -27,10 +40,9 @@ User-agent: 360Spider
 User-agent: Sogouspider
 User-agent: Yisouspider
 User-agent: Pinterestbot
-User-agent: GPTBot
-User-agent: ChatGPT-User
+User-agent: CCBot                   # AI
+User-agent: Omgilibot               # AI
 Disallow: /
-Allow: /404
 
 # Random ass crawlers
 User-agent: UbiCrawler

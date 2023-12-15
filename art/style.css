@@ -33,7 +33,7 @@ body {
 }
 
 
-section::after, header::after {
+.image-grid + section::before, section::after, header::after {
   content: "";
   border-top: 1px solid var(--foreground-border);
   width: 48px;
