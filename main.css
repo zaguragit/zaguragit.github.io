@@ -118,9 +118,6 @@ header > p {
   font-weight: unset;
   text-decoration: none;
 }
-#statuscafe:hover > .status-header {
-  text-decoration: underline wavy currentColor 1px;
-}
 #statuscafe::after {
   position: absolute;
   content: "";
@@ -140,6 +137,9 @@ header > p {
 }
 .status-header {
   color: var(--foreground-weak);
+}
+#statuscafe:hover > .status-header {
+  text-decoration: underline wavy currentColor 1px;
 }
 @keyframes float {
   0%   { translate: 0 0;}
