@@ -16,13 +16,13 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
       0 1px 0 0 #0002,
       0 3px 3px 0 #0002,
       0 4px 5px 3px #0002;
-  color: #deffe6f0;
-  --foreground-weak: #bca4bcac;
-  --foreground-strong: #eeffee;
+  color: #ffffffec;
+  --foreground-weak: #ffffff93;
+  --foreground-strong: #ffffff;
   --foreground-border: #fff1;
-  --accent: #77a9702c;
-  --surface-background: #111e2b;
-  --surface-background-dim: #0c1622;
+  --accent: #71e4a528;
+  --surface-background: #11212b;
+  --surface-background-dim: #0c1722;
   --border-radius: 8px;
   --serif: Tinos, Times, serif;
   font-family: Cantarell, Inter, 'Noto Sans', system-ui, sans-serif;

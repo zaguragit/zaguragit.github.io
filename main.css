@@ -1,13 +1,6 @@
 a.chill { color: var(--foreground); }
 a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; }
 
-:root {
-  --rainbow: repeating-linear-gradient(to right,
-    #ff647e, #ffb374, #fdff6d, #4aff5f, #89caff, #ff7eff, #ff647e);
-  --rainbow-bg: repeating-linear-gradient(to right,
-    #ff647e33, #ffb37433, #fdff6d33, #4aff5f33, #89caff33, #ff7eff33, #ff647e33);
-}
-
 .icons-grid {
   display: grid;
   --columns: 8;
@@ -55,10 +48,6 @@ a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; 
 }
 
 
-@keyframes movebg-header {
-  0% {background-position-x: 0;}
-  100% {background-position-x: 1024px;}
-}
 header {
   position: relative;
   display: flex;
@@ -86,18 +75,7 @@ header > img {
   align-self: center;
   border-radius: 999px;
   border: 4px solid #000;
-}
-header::before {
-  content: "";
-  height: 98px;
-  width: 98px;
-  position: absolute;
-  inset: -49px auto auto auto;
-  align-self: center;
-  background-image: repeating-linear-gradient(to left, #00fff2, #0099ff, #00fff2);
-  background-size: 512px 512px;
-  animation: movebg-header 3s linear 0ms infinite forwards running;
-  border-radius: 999px;
+  box-shadow: 0 0 0 2px #fff;
 }
 header > p {
   margin-top: 50px;
@@ -204,10 +182,10 @@ table td, table th {
 table th {
   padding-right: 1ch;
   font-weight: normal;
-  color: #ecb8ffdd;
 }
 table th img {
   margin-right: 1ch;
+  opacity: .6;
 }
 
 

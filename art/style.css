@@ -16,7 +16,7 @@ a {
   --foreground-weak: #ffffff6e;
   --foreground-border: #ffffff23;
   --foreground-strong: #ffffff;
-  --background: #171717;
+  --background: #000;
   font-family: Inter, 'Noto Sans', system-ui, sans-serif;
   font-size: 16px;
   font-weight: 400;

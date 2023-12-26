@@ -18,13 +18,13 @@ a {
 a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
 
 :root {
-  --color-accent: #a5e471;
-  --foreground: #deffe6f0;
-  --foreground-weak: #bca4bcac;
-  --foreground-strong: #eeffee;
+  --color-accent: #71e4a5;
+  --foreground: #ffffffec;
+  --foreground-weak: #ffffff93;
+  --foreground-strong: #ffffff;
   --foreground-border: #fff1;
-  --surface-background: #111e2b;
-  --surface-background-dim: #0c1622;
+  --surface-background: #11212b;
+  --surface-background-dim: #0c1722;
   --border-radius: 8px;
   --card-shadow:
       inset 0 0 0 1px var(--foreground-border),
