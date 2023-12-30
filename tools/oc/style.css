@@ -1,19 +1,67 @@
-.oc header {
+
+
+:root {
+    font-family: Inter, 'Noto Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+      color-scheme: dark;
+    --foreground-hint: #fff8;
+    --foreground-strong: #ffffff;
+    --foreground-border: #fff5;
+    --surface-background: #000;
+    --surface-background-dim: #000;
+    --border-radius: 24px;
+    background-color: #000;
+    background-image: url('../../assets/textures/starry.png');
+    color: #fff;
+}
+::selection {
+  background-color: #fff;
+  color: #000;
+}
+
+body {
+    width: 100%;
+    margin: 64px auto 0 auto;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+section {
+    background-color: var(--surface-background);
+    border-radius: var(--border-radius);
+    border: 1px solid #fff;
+    padding: 2em;
+    max-width: 512px;
+    margin: 1em auto;
+}
+
+header {
+    padding: 1em 2em;
+    margin: -2em -2em 2em;
+    border-bottom: 1px solid #fff;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    background-image: none;
-    padding: .5em;
-    margin: -.5em -.8em .5em;
-    line-height: 1;
-    border-bottom: 1px solid #0006;
-    box-shadow: 0 1px var(--foreground-border);
 }
-.oc header > h2 {
+
+hr {
+  border: none;
+  border-top: 1px dashed #fff;
+}
+
+header > h2 {
     flex-grow: 1;
     padding: 0 .2em;
     font-size: 1.2em;
     margin: 0;
+}
+
+p {
+  margin: 1em 0 .5em;
 }
 
 table,
@@ -31,7 +79,7 @@ div.color {
     display: inline-block;
     border-radius: 1px;
     background: currentColor;
-    box-shadow: 0 0 0 2px currentColor, 0 0 0 3px #fff2, 0 0 0 3px currentColor, 0 0 0 4px #0004;
+    box-shadow: 0 0 0 2px currentColor;
     overflow: visible;
 }
 div.color + div.type,
@@ -52,9 +100,32 @@ table tr > td + td {
     width: 100%;
 }
 
+button {
+    background-color: #ddd;
+    color: #000;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    padding: .5em 1em;
+}
+button:hover, button:active { background-color: #fff; }
+
 input[type=text] {
     background-color: var(--surface-background-dim);
-    border: 1px solid var(--foreground-border);
-    border-radius: var(--border-radius);
+    border: 1px solid #fff;
+    border-radius: 0;
     padding: .5em;
+    margin: .5em;
 }
+
+.add {
+    display: block;
+    margin: 16px auto;
+    max-width: 728px;
+    max-height: 90px;
+    width: 100%;
+    border: none;
+    aspect-ratio: 728/90;
+}
+  

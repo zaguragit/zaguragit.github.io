@@ -1,0 +1,29 @@
+
+
+table {
+  font-family: monospace;
+  width: 100%;
+  margin: -.25em 0;
+}
+
+th {
+  text-align: start;
+  font-weight: normal;
+}
+
+td { text-align: end; }
+
+td::before { content: ":: " }
+
+th, td { padding: .25em 0; }
+
+td > a {
+  box-shadow: 0 0 0 1px var(--foreground);
+  color: var(--foreground);
+  padding: 0 .5em;
+}
+
+td > a:hover {
+  background-color: var(--foreground);
+  color: #000;
+}

@@ -4,8 +4,12 @@ form {
     align-items: center;
     position: fixed;
     inset: auto auto 0 auto;
-    background-color: #292929;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 0 2px rgba(0, 0, 0, 0.5);
+    background-color: #0009;
+    background-clip: content-box;
+    border-top: 1px solid rgba(150, 150, 150, 0.2);
+    border-right: 1px solid rgba(150, 150, 150, 0.2);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+    border-top-right-radius: 4px;
 }
 
 label {
@@ -18,9 +22,9 @@ input[type=color] {
     border: none;
     height: 2.2em;
     width: 3em;
-    background-color: #484848;
+    background-color: transparent;
 }
 
 form:hover {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 2px #000;
+    border-color: #fff;
 }

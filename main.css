@@ -1,219 +1,219 @@
-a.chill { color: var(--foreground); }
-a.chill:not(:hover) { text-decoration: underline solid var(--color-accent) 2px; }
+*{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: #fff9 transparent;}
+.pixelart {image-rendering:pixelated;}
 
-.icons-grid {
-  display: grid;
-  --columns: 8;
-  gap: 1em;
-  grid-template-columns: repeat(var(--columns), calc((100% - 1em * (var(--columns) - 1)) / var(--columns)));
-}
-.icons-grid > a {
-  color: var(--foreground);
-  text-align: center;
-  font-weight: normal;
-  font-size: .9em;
-  background-color: #034a4d;
-  background-image: repeating-linear-gradient(30deg, #08423aaa 0, #2c1733aa 20em, #08423aaa 40em);
-  background-position: -12em 0;
-  background-size: 200%;
-  background-attachment: fixed;
-  padding: .5em 0;
-  border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
-  transition: background-position .3s, background-color .3s, letter-spacing .2s;
-}
-.icons-grid > a > img {
-  display: block;
-  margin: 0 auto;
-  width: 48px;
-  height: 48px;
-  padding: 4px;
-  transition: scale .3s;
-}
-.icons-grid > a:hover > img { scale: 1.2; }
-.icons-grid > a:hover {
-  background-position: 0 0;
-  background-color: #0088a0;
-  letter-spacing: .05em;
-}
-
-.icon {
-  height: 1.2em; vertical-align: middle;
-}
-
-.bunny {
-  height: 96px;
-  position: absolute;
-  inset: 0 0 auto auto;
-}
-
-
-header {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-
-  margin: 1em auto;
-  max-width: 640px;
-  padding: .5em .8em;
-  box-shadow: var(--card-shadow);
-  border-radius: var(--border-radius);
-  background-image: linear-gradient(20deg, #04524e, #17384e 70%);
-  color: var(--foreground-strong);
-  border: 1px solid transparent;
-}
-header a {
+a {
   color: unset;
-  text-shadow: 0 1px #000, 0 1px 5px #0003;
-}
-header > img {
-  height: 96px;
-  width: 96px;
-  position: absolute;
-  inset: -48px auto auto auto;
-  align-self: center;
-  border-radius: 999px;
-  border: 4px solid #000;
-  box-shadow: 0 0 0 2px #fff;
-}
-header > p {
-  margin-top: 50px;
-  margin-bottom: .5em;
-}
-#statuscafe {
-  position: absolute;
-  inset: 0 0 auto auto;
-  line-height: 1.5;
-  translate: 0 -50%;
-  margin-right: calc(50% + 64px);
-  width: 50%;
-  border-radius: var(--border-radius);
-  background-color: var(--surface-background);
-  border: 1px solid var(--foreground-border);
-  box-shadow: -1px 2px 5px #0002;
-  padding: .5em .6em;
-  font-weight: unset;
+  font-weight: 700;
   text-decoration: none;
 }
-#statuscafe::after {
+a:hover:not(.no-deco) { text-decoration: underline wavy currentColor 1px; }
+a:focus,[tabindex]:focus{outline:#fff 3px solid;}
+@supports selector(:focus-visible){a:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none;}}
+a:focus-visible{outline:#fff 3px solid;}
+
+:root {
+  font-family: Inter, 'Noto Sans', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+	color-scheme: dark;
+  --foreground-hint: #fff8;
+  --border-radius: 24px;
+  background-color: #000;
+  background-image: url('assets/textures/starry.png');
+  color: #fff;
+}
+::selection {
+  background-color: #fff;
+  color: #000;
+}
+
+body {
+  margin: 64px 0;
+}
+section {
+  max-width: 512px;
+  margin: 0 auto;
+  padding: 2em;
+  background-color: #000;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+}
+hr {
+  margin: 2em -2em;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+p {
+  margin: 1em 0 .5em;
+}
+p > .extra {
+  color: var(--foreground-hint);
+  margin-left: 1ch;
+}
+
+
+#me {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+#avatar {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+}
+#avatar > img {
+  height: 96px;
+  width: 96px;
+  border-radius: 999px;
+  border: 4px solid #000;
+  box-shadow: 0 0 0 3px #fff;
+}
+#statuscafe {
+  font-weight: unset;
+  text-decoration: none;
+  margin-left: 20px;
+  margin-top: -1.5em;
+  text-shadow: none;
+}
+#statuscafe > .content {
+  position: relative;
+  line-height: 1.5;
+  border-radius: .5em;
+  background-color: #ddd;
+  color: #222;
+  padding: .5em .6em;
+  font-weight: 700;
+}
+#statuscafe > .content::after {
   position: absolute;
   content: "";
   width: 10px;
   height: 10px;
   rotate: 45deg;
-  background-color: var(--surface-background);
-  box-shadow: 1px -1px var(--foreground-border);
-  inset: 50% -5px 50% auto;
+  background-color: #ddd;
+  inset: 50% auto 50% -5px;
   translate: 0 -50%;
 }
-.status-face {
-  position: absolute;
-  inset: -.2rem -.2rem auto auto;
-  line-height: 1;
-  font-size: 1.5rem;
+#statuscafe > .header {
+  color: var(--foreground-hint);
 }
-.status-header {
-  color: var(--foreground-weak);
-}
-#statuscafe:hover > .status-header {
+#statuscafe:hover > .header {
   text-decoration: underline wavy currentColor 1px;
 }
-@keyframes float {
-  0%   { translate: 0 0;}
-  25%  { translate: 0 -.1em;}
-  50%  { translate: 0 0;}
-  75%  { translate: 0 .1em;}
-  100% { translate: 0 0;}
-}
-.trans {
-  position: absolute;
-  inset: 0 0 auto auto;
-  text-align: center;
-  font-weight: 900;
-  margin: .3em .6em;
 
-  background-image: linear-gradient(to bottom, #2fbdff 35%, #ffa4ce 35%, #ffa4ce 45%, #ffffff 45%, #ffffff 55%, #ffa4ce 55%, #ffa4ce 65%, #2fbdff 65%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  display: inline-block;
-  animation: float 1s ease-in-out 0s infinite forwards running;
-}
-
-
-#character-sheet dl > article {
+.icons-grid {
   display: grid;
-  grid-template-columns: 15ch auto;
+  --columns: 7;
+  gap: 1em;
+  grid-template-columns: repeat(var(--columns), calc((100% - 1em * (var(--columns) - 1)) / var(--columns)));
+  margin: -1px auto;
+  max-width: 960px;
 }
-#character-sheet dl > article > dt {
-  font-weight: bold;
+.icons-grid > a {
+  text-align: center;
+  font-size: .9em;
+  padding: .5em 0;
+  transition: background-position .3s, background-color .3s, letter-spacing .2s;
 }
-
-
-.blahaj { height: 1em; vertical-align: middle; }
+.icons-grid > a > img {
+  display: block;
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  padding: 4px;
+  transition: scale .3s;
+  image-rendering: pixelated;
+}
+.icons-grid > a:hover > img { scale: 1.2; }
+.icons-grid > a:hover {
+  letter-spacing: .05em;
+}
 
 .webrings {
-  max-width: 480px;
+  font-family: monospace;
   margin: 0 auto;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 .webring {
   display: flex;
   flex-direction: row;
+  line-height: 1;
 }
 .webring:not(:first-child) {
-  margin-top: .5em;
+  margin-top: 1em;
 }
 .webring .center {
   flex-grow: 1;
   text-align: center;
 }
 
-
-table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  width: 100%;
+.webring .center a:hover {
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
 }
-table td, table th {
+
+.webring .center a:hover::before {
+  content: "▓▒░ ";
   text-align: start;
-  padding: 3px 0;
-}
-table th {
-  padding-right: 1ch;
-  font-weight: normal;
-}
-table th img {
-  margin-right: 1ch;
-  opacity: .6;
 }
 
+.webring .center a:hover::after {
+  content: " ░▒▓";
+  text-align: end;
+}
 
-@media only screen and (max-width:840px) {
+@media only screen and (max-width:960px) {
+  .icons-grid { --columns: 5; }
+}
+@media only screen and (max-width:560px) {
+  #avatar {
+    place-items: start;
+    flex-direction: column;
+  }
   #statuscafe {
-    position: relative;
-    line-height: 1.5;
-    translate: unset;
     margin: 0;
-    margin-top: 56px;
-    width: unset;
   }
-  header > p {
-    margin-top: .5em;
+  #statuscafe > .header {
+    text-align: end;
   }
-  #statuscafe::after {
+  #statuscafe > .content::after {
     position: absolute;
     content: "";
     width: 10px;
     height: 10px;
     rotate: 45deg;
-    box-shadow: -1px -1px #0002;
-    inset: 0 50% auto 50%;
+    inset: 0 auto auto 45px;
     margin-left: -5px;
     translate: 0 -50%;
   }
-  .icons-grid { --columns: 5; }
+  :root { background-image: none; }
+  .icons-grid { border-radius: 0; --columns: 3; }
 }
-@media only screen and (max-width:512px) {
-  .icons-grid { --columns: 3; }
+
+table {
+  font-family: monospace;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  margin: -.25em 0;
 }
+table td, table th {
+  text-align: start;
+  padding: .25em 0;
+}
+table th {
+  padding-right: 1ch;
+  font-weight: normal;
+}
+table td::before {
+  content: ":: ";
+}
+.icon {
+  margin-right: 1ch;
+  height: 1.2em;
+  vertical-align: middle;
+}
+
+.blahaj { height: 1.4em; vertical-align: middle; }

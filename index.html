@@ -2,7 +2,7 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <meta http-equiv=Content-Security-Policy content="default-src 'self' https://status.cafe https://tech.lgbt;frame-src https://john.citrons.xyz/embed?ref=zagura.one;img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
+    <meta http-equiv=Content-Security-Policy content="default-src 'self' https://status.cafe;img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
     <meta name=copyright content=Zagura>
     <meta name=language content=en>
     <meta name=author content=Zagura>
@@ -14,18 +14,36 @@
     <meta name=color-scheme content=dark>
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel=icon href=assets/me/icon.gif>
-    <link rel=stylesheet href=style.css>
     <link rel=stylesheet href=main.css>
     <title>Zagura</title>
   </head>
   <body>
     <script src=index.js defer></script>
-    <header>
-      <img src=assets/me/avatar.jpg>
-      <a id=statuscafe href=https://status.cafe/users/zagura></a>
-      <div class=trans>TRANS RIGHTS!</div>
+    <section id=me>
+      <div id=avatar>
+        <img src=assets/me/avatar.jpg>
+        <a id=statuscafe href=https://status.cafe/users/zagura></a>
+      </div>
       <p>
-        Hi, I'm Zagura, and this is my little website for my <a href=/art>drawings</a>, <a href=/wiki>world building</a>, <a href=/projects>programming</a>…
+        I'm <b>Zagura</b>
+        <span class=extra>/ˈðɑɡurɑ/</span>
+        <span class=extra>they/them&nbsp;|&nbsp;she/her</span>
+      </p>
+      <p>
+        I like <a href=art>drawing</a>, <a href=wiki>world building</a>, <a href=projects>programming</a>,
+        3D&nbsp;engines, conlangs
+      </p>
+      <p>
+        I live in Barcelona (Catalonia, Spain) <span class=extra>(UTC+1)</span>
+      </p>
+      <p>
+        My favorite color is purple
+      </p>
+      <p>
+        I speak: en, es, cat, ru, <a href=https://tokipona.org>tok</a>
+      </p>
+      <p>
+        I rly like changing up my hair, website and avatar
       </p>
       <div>
         <img class=pixelart src=assets/badges/smol/shethey.gif>
@@ -33,170 +51,86 @@
         <img class=pixelart src=assets/badges/smol/linux2.gif>
         <img class=pixelart src=assets/badges/smol/tea.gif>
       </div>
-    </header>
-    <div class=grid>
-      <section>
-        <h2>About me</h2>
-        I like trying to make cool stuff, some of the things I'm
-        interested in are compilers, 3D engines, conlangs, world building &amp; digital drawing.<br>
-        Also, I love dyeing &amp; cutting my hair!<br>
-        If I had to describe myself with 2 words, it'd be: curious &amp; lazy
-      </section>
-      <section>
-        <img src=assets/gif/bunny.gif decoding=async class="pixelart bunny" alt="A GIF of a holographic bunny, jumping &amp; rotating">
-        <table>
-          <tr>
-            <th><img class=icon src=assets/icons/small/heart.png>fav color</th>
-            <td>Purple</td>
-          </tr>
-          <tr>
-            <th><img class=icon src=assets/icons/small/clock.png>timezone</th>
-            <td>UTC+1</td>
-          </tr>
-          <tr>
-            <th><img class=icon src=assets/icons/small/gender.png>pronouns</th>
-            <td>they/them | she/her</td>
-          </tr>
-          <tr>
-            <th><img class=icon src=assets/icons/small/gender.png>labels</th>
-            <td>transfem, enby</td>
-          </tr>
-          <tr>
-            <th><img class=icon src=assets/icons/small/lips.png>speaks</th>
-            <td>en, es, cat, ru, <a href=https://tokipona.org>tok</a></td>
-          </tr>
-          <tr>
-            <th><img class=icon src=assets/icons/small/house.png>lives in</th>
-            <td>Barcelona (Catalonia, Spain)</td>
-          </tr>
-          <tr>
-            <th><img class=icon src=assets/icons/small/aesh.png>name IPA</th>
-            <td>/ˈðɑɡurɑ/</td>
-          </tr>
-        </table>
-      </section>
-    </div>
-    <div class=icons-grid>
+    </section>
+    <section class=icons-grid>
       <a href=faves>
         <img src=assets/icons/big/heart.png>
         Stuff I like
       </a>
-      <a href=wiki>
-        <img src=assets/icons/big/earth.png>
-        Fictional Wiki
-      </a>
       <a href=art>
-        <img src=assets/icons/big/drawwrite.png>
+        <img src=assets/icons/big/paint-brush.png>
         Art
       </a>
       <a href=projects>
-        <img src=assets/icons/big/bracelamda.png>
-        Programming
+        <img src=assets/icons/big/lamda.png>
+        Projects
+      </a>
+      <a href=wiki>
+        <img src=assets/icons/big/wiki.png>
+        Fictional Wiki
       </a>
       <a href=website-templates>
         <img src=assets/icons/big/earth.png>
         Templates
       </a>
       <a href=tools/oc>
-        <img src=assets/icons/big/character-creator.png>
+        <img src=assets/icons/big/character.png>
         OC Generator
       </a>
-      <a href=tools/cake>
-        <img src=assets/icons/big/sqrtx.png>
-        Cake
-      </a>
       <a href=tools/color-light>
-        <img src=assets/icons/big/keylight.png>
+        <img src=assets/icons/big/light.png>
         Key Light
       </a>
-    </div>
-    <div class=grid>
-      <div>
-        <section>
-          <h2>What I'm up to now</h2>
-          Trying to learn Swahili on duolingo every once in a while.<br>
-          Currently jobless, and going to uni (regretting my life choices).<br>
-          Also trying to write a parser for a made up programming language in c<br>
-        </section>
-        <section>
-          <h2>Buttons</h2>
-          <img class=pixelart src=assets/badges/bring-back-the-headphone-jack-green.png>
-          <a class=no-deco href=https://web.archive.org/web/20000817070058/http://www.early.com/~emackey/linux>
-            <img class=pixelart src=assets/badges/CGG_small.png alt="Xenia">
-          </a>
-          <a class=no-deco href=https://blacklivesmatter.com>
-            <img class=pixelart src=assets/badges/black-lives-matter.gif>
-          </a>
-          <a class=no-deco href=https://fediverse.party>
-            <img class=pixelart src=assets/badges/neo-fedi.gif>
-          </a>
-          <img class=pixelart src=assets/badges/powered-by-e.gif>
-          <img class=pixelart height=31px src=assets/badges/acrossthespiderverse.png>
-          <img class=pixelart height=31px src=assets/badges/endfastfashion.png>
-          <br>You can link to this site with this button if u want:<br>
-          <img class=pixelart src=button.gif alt="Zagura's Site">
-        </section>
-      </div>
-      <div>
-        <section>
-          <h2>Me Elsewhere</h2>
-          <table id=contact>
-            <tr>
-              <th><img class=icon src=assets/icons/small/mail.png>email</th>
-              <td><a rel="me nofollow" href=mailto:me@zagura.one>me@zagura.one</a></td>
-            </tr>
-            <tr>
-              <th><img class=icon src=assets/icons/small/fedi.png>fedi</th>
-              <td><a rel=me href=https://tech.lgbt/@zagura>@zagura@tech.lgbt</a></td>
-            </tr>
-            <tr>
-              <th><img class=icon src=assets/icons/small/femgit.png>femgit</th>
-              <td><a rel=me href=https://fem.mint.lgbt/zagura>zagura</a></td>
-            </tr>
-            <tr>
-              <th><img class=icon src=assets/icons/small/cup.png>status cafe</th>
-              <td><a rel=me href=https://status.cafe/users/zagura>zagura</a></td>
-            </tr>
-            <tr>
-              <th><img class=icon src=assets/icons/small/discord.png>discord</th>
-              <td>.zagura</td>
-            </tr>
-            <tr>
-              <th><img class=icon src=assets/icons/small/youtube.png>youtube</th>
-              <td><a rel=me href=https://www.youtube.com/channel/UClXGZGHP1adu7vBDYwJvznQ>@_zagura</a></td>
-            </tr>
-            <tr>
-              <th><img class=icon src=assets/icons/small/bandcamp.png>bandcamp</th>
-              <td><a rel=me href=https://bandcamp.com/_zagura>_zagura</a></td>
-            </tr>
-          </table>
-          <hr>
-          <details>
-            <summary>My (very) Little Discord Server</summary>
-            <a href=https://discord.gg/mkjQepWfVJ>JOIN IT NOW!</a><br>
-            (I would create a matrix one, but matrix is so janky that discord still seems ok despite <a href=https://www.reddit.com/r/privacy/comments/rsxeee/you_should_never_use_discord_and_heres_why>everything</a>)
-          </details>
-        </section>
-      </div>
-    </div>
+    </section>
     <section class=webrings>
+      <table id=contact>
+        <tr>
+          <th><img class=icon src=assets/icons/small/mail.png>email</th>
+          <td><a rel="me nofollow" href=mailto:me@zagura.one>me@zagura.one</a></td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/fedi.png>fedi</th>
+          <td><a rel=me href=https://cathode.church/@zagura>@zagura@cathode.church</a></td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/femgit.png>femgit</th>
+          <td><a rel=me href=https://fem.mint.lgbt/zagura>zagura</a></td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/cup.png>status cafe</th>
+          <td><a rel=me href=https://status.cafe/users/zagura>zagura</a></td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/discord.png>discord</th>
+          <td>.zagura</td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/youtube.png>youtube</th>
+          <td><a rel=me href=https://www.youtube.com/channel/UClXGZGHP1adu7vBDYwJvznQ>@_zagura</a></td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/bandcamp.png>bandcamp</th>
+          <td><a rel=me href=https://bandcamp.com/_zagura>_zagura</a></td>
+        </tr>
+      </table>
+      <hr>
       <div class=webring>
         <a class=arrow href="https://webring.bucketfish.me/redirect.html?to=prev&name=Zagura">⥼&nbsp;prev</a>
-        <a class="center chill" href=https://webring.bucketfish.me>bucket webring</a>
+        <span class=center><a href=https://webring.bucketfish.me>bucket webring</a></span>
         <a class=arrow href="https://webring.bucketfish.me/redirect.html?to=next&name=Zagura">next&nbsp;⥽</a>
       </div>
       <div class=webring>
-        <a class=arrow href="https://fediring.net/previous?host=zagura.one">&lt;-&nbsp;prev</a>
-        <a class="center chill" href=https://fediring.net>Fediring</a>
-        <a class=arrow href="https://fediring.net/next?host=zagura.one">next&nbsp;-&gt;</a>
+        <a class=arrow href="https://fediring.net/previous?host=zagura.one">⥼&nbsp;prev</a>
+        <span class=center><a href=https://fediring.net>Fediring</a></span>
+        <a class=arrow href="https://fediring.net/next?host=zagura.one">next&nbsp;⥽</a>
       </div>
       <div class=webring>
-        <a class=arrow href=https://hotlinewebring.club/zagura/previous referrerpolicy=origin>&lt;-&nbsp;prev</a>
-        <a class="center chill" href=https://hotlinewebring.club>Hotline Webring</a>
-        <a class=arrow href=https://hotlinewebring.club/zagura/next referrerpolicy=origin>next&nbsp;-&gt;</a>
+        <a class=arrow href=https://hotlinewebring.club/zagura/previous referrerpolicy=origin>⥼&nbsp;prev</a>
+        <span class=center><a href=https://hotlinewebring.club>Hotline Webring</a></span>
+        <a class=arrow href=https://hotlinewebring.club/zagura/next referrerpolicy=origin>next&nbsp;⥽</a>
       </div>
+      <hr>
+      <img src=assets/gif/blahaj.png class=blahaj> Certified Good Website by Blåhaj
     </section>
-    <iframe class=add src="https://john.citrons.xyz/embed?ref=zagura.one"></iframe>
-    <img src=assets/gif/blahaj.png class=blahaj> Certified Good Website by Blåhaj
   </body>
 </html>

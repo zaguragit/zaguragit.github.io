@@ -5,37 +5,32 @@ a:focus-visible{outline:#fff 3px solid;}
 .float-right{float:right;}
 
 a {
-  color: #a5e471;
+  /* color: #a5e471; */
+  color: unset;
+  font-weight: 700;
   text-decoration: none;
 }
 a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
 
 :root {
-  --card-shadow:
-      inset 0 0 0 1px var(--foreground-border),
-      0 1px 0 0 #0002,
-      0 3px 3px 0 #0002,
-      0 4px 5px 3px #0002;
-  color: #ffffffec;
-  --foreground-weak: #ffffff93;
-  --foreground-strong: #ffffff;
-  --foreground-border: #fff1;
-  --accent: #71e4a528;
-  --surface-background: #11212b;
-  --surface-background-dim: #0c1722;
-  --border-radius: 8px;
-  --serif: Tinos, Times, serif;
   font-family: Cantarell, Inter, 'Noto Sans', system-ui, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  background-color: #181719;
-  background-color: #0d141f;
-  background-image: url('../assets/textures/abstrpurpl.png');
 	color-scheme: dark;
+  --foreground-weak: #ffffff93;
+  --foreground-border: #fff4;
+  --border-radius: 8px;
+  --serif: Tinos, Times, serif;
+  --border-radius: 24px;
+  background-color: #000;
+  background-image: url('../assets/textures/starry.png');
+  color: #ffffff;
 }
 ::selection {
-  background-color: var(--accent);
+  /* background-color: var(--accent); */
+  background-color: #fff;
+  color: #000;
 }
 
 #page-container {
@@ -68,9 +63,9 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   line-height: 1.8;
   padding: 1.2em 2em;
   margin-top: 1em;
-  background-color: var(--surface-background);
   border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
+  background-color: #000;
+  border: 1px solid #ddd;
 }
 #sidebar ul > li::before { content: unset; }
 #sidebar ul ul > li { margin-left: 1em; }
@@ -83,9 +78,9 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   flex-shrink: 1;
   margin: 1em;
   padding: 1.8em 2em;
-  background-color: var(--surface-background);
   border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
+  background-color: #000;
+  border: 1px solid #ddd;
 }
 h1, h2, h3, h4 {
   color: var(--foreground-weak);
@@ -116,7 +111,6 @@ h2 + p, h3 + p {
   font-style: italic;
   margin-top: .5em;
 }
-b { color: var(--foreground-strong); }
 p, :not(li) > ul {
   margin: .5em 0;
 }
@@ -126,7 +120,7 @@ p + ul {
 ul {
   list-style-type: none;
 }
-ul li::before { content: "•"; margin: 0 1ch; color: var(--accent); font-weight: bold; }
+ul li::before { content: "•"; margin: 0 1ch; color: var(--foreground-weak); font-weight: bold; }
 
 
 .article-info, h2, h3 {
@@ -146,9 +140,7 @@ ul li::before { content: "•"; margin: 0 1ch; color: var(--accent); font-weight
   float: right;
   clear: right;
   width: fit-content;
-  background-color: var(--surface-background-dim);
-  border: 1px dashed var(--foreground-border);
-  border-radius: var(--border-radius);
+  border: 1px solid #ddd;
   margin: 1em 0 1em 1em;
   border-collapse: separate;
   border-spacing: .5em .5em;
@@ -156,10 +148,10 @@ ul li::before { content: "•"; margin: 0 1ch; color: var(--accent); font-weight
 }
 #info-box th {
   text-align: center;
-  background-color: var(--accent);
   padding: .5em;
   font-weight: bold;
   line-height: 1;
+  border-bottom: 1px dashed #ddd;
 }
 #info-box img {
   width: 280px;
