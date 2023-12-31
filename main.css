@@ -164,6 +164,33 @@ p > .extra {
   text-align: end;
 }
 
+table {
+  font-family: monospace;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  margin: -.25em 0;
+}
+table td, table th {
+  text-align: start;
+  padding: .25em 0;
+}
+table th {
+  padding-right: 1ch;
+  font-weight: normal;
+  min-width: 12ch;
+}
+table td::before {
+  content: ":: ";
+}
+.icon {
+  margin-right: 1ch;
+  height: 1.2em;
+  vertical-align: middle;
+}
+
+.blahaj { height: 1.4em; vertical-align: middle; }
+
 @media only screen and (max-width:960px) {
   .icons-grid { --columns: 5; }
 }
@@ -190,30 +217,7 @@ p > .extra {
   }
   :root { background-image: none; }
   .icons-grid { border-radius: 0; --columns: 3; }
+  table td::before {
+    content: none;
+  }
 }
-
-table {
-  font-family: monospace;
-  border-spacing: 0;
-  border-collapse: collapse;
-  width: 100%;
-  margin: -.25em 0;
-}
-table td, table th {
-  text-align: start;
-  padding: .25em 0;
-}
-table th {
-  padding-right: 1ch;
-  font-weight: normal;
-}
-table td::before {
-  content: ":: ";
-}
-.icon {
-  margin-right: 1ch;
-  height: 1.2em;
-  vertical-align: middle;
-}
-
-.blahaj { height: 1.4em; vertical-align: middle; }
