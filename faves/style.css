@@ -33,3 +33,7 @@ section article > img {
     margin: .3em 0;
     border: 1px solid #ddd;
 }
+
+@media only screen and (max-width:480px) {
+    section .grid { display: flex; flex-direction: column; gap: 1em; }
+}

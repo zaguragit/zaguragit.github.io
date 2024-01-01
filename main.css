@@ -191,10 +191,10 @@ table td::before {
 
 .blahaj { height: 1.4em; vertical-align: middle; }
 
-@media only screen and (max-width:960px) {
+@media only screen and (max-width:860px) {
   .icons-grid { --columns: 5; }
 }
-@media only screen and (max-width:560px) {
+@media only screen and (max-width:620px) {
   #avatar {
     place-items: start;
     flex-direction: column;
@@ -220,4 +220,6 @@ table td::before {
   table td::before {
     content: none;
   }
+  #me { border-top: none; }
+  section { max-width: none; border-left: none; border-right: none; border-bottom: none; }
 }

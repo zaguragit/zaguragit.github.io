@@ -84,12 +84,6 @@ ul li::before { content: "•"; margin-right: .5em; font-weight: bold; color: va
   grid-template-columns: repeat(var(--columns), calc((100% - 1em * (var(--columns) - 1)) / var(--columns)));
 }
 
-@media only screen and (max-width:720px) {
-  .grid, section .grid { display: flex; flex-direction: column; gap: 0; }
-  :not(section) > .grid > :not(:first-child) { margin-top: -1em; }
-  main { margin-bottom: 32px; }
-}
-
 .add {
   display: block;
   margin: 16px auto;
@@ -98,4 +92,9 @@ ul li::before { content: "•"; margin-right: .5em; font-weight: bold; color: va
   width: 100%;
   border: none;
   aspect-ratio: 728/90;
+}
+
+@media only screen and (max-width:720px) {
+  :root { background-image: none; }
+  body { border: none; max-width: none; }
 }

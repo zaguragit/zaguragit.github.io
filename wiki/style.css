@@ -47,7 +47,6 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   flex-shrink: 0;
   margin-left: 1em;
   display: inline;
-  position: relative;
 }
 
 #sidebar > header {
@@ -81,6 +80,17 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   border-radius: var(--border-radius);
   background-color: #000;
   border: 1px solid #ddd;
+}
+.article-info, h2, h3 {
+  border-bottom: 1px solid var(--foreground-border);
+}
+.article-info {
+  padding-bottom: .7em;
+  padding: 0 .2ch .7em;
+  color: var(--foreground-weak);
+  line-height: 1.2;
+  text-align: right;
+  margin-top: -1.2em;
 }
 h1, h2, h3, h4 {
   color: var(--foreground-weak);
@@ -122,26 +132,24 @@ ul {
 }
 ul li::before { content: "•"; margin: 0 1ch; color: var(--foreground-weak); font-weight: bold; }
 
-
-.article-info, h2, h3 {
-  border-bottom: 1px solid var(--foreground-border);
-}
-.article-info {
-  padding-bottom: .7em;
-  padding: 0 .2ch .7em;
-  color: var(--foreground-weak);
-  line-height: 1.2;
-  text-align: right;
-  margin-top: -1.2em;
-}
-
-#info-box {
+#info-box img, figure img {
+  width: 100%;
+  max-width: 280px;
   display: block;
+  border: 1px solid var(--foreground-border);
+}
+#info-box, figure {
   float: right;
   clear: right;
-  width: fit-content;
-  border: 1px solid #ddd;
   margin: 1em 0 1em 1em;
+  border: 1px solid #ddd;
+}
+figure + figure { margin-top: 0; }
+figure { padding: 5px; }
+figure > figcaption { padding: 0 1px; }
+#info-box {
+  display: block;
+  width: fit-content;
   border-collapse: separate;
   border-spacing: .5em .5em;
   line-height: 1.2;
@@ -153,10 +161,12 @@ ul li::before { content: "•"; margin: 0 1ch; color: var(--foreground-weak); fo
   line-height: 1;
   border-bottom: 1px dashed #ddd;
 }
-#info-box img {
-  width: 280px;
-  min-width: 100%;
-  display: block;
+#info-box figure {
+  float: none;
+  clear: none;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -210,15 +220,24 @@ dt {
 dt, dd { min-height: 2em; }
 
 
-@media only screen and (max-width:760px) {
-  #sidebar {
-    border-bottom: 1px solid var(--foreground-border);
+@media only screen and (max-width:830px) {
+  :root { background-image: none; }
+  #sidebar > nav {
     position: unset;
-  }
-  #sidebar > nav { position: unset; }
-  #page-container {
-    display: block; 
+    border: none;
     border-radius: 0;
-    box-shadow: none;
+    border-bottom: 1px solid #ddd;
   }
+  #page-container {
+    display: block;
+  }
+  #content {
+    border: none;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width:500px) {
+  #info-box, figure { float: none; margin-left: 0; }
+  #info-box img, figure img { max-width: none; }
 }
