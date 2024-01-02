@@ -21,6 +21,7 @@ a:focus-visible{outline:#fff 3px solid;}
   --border-radius: 24px;
   background-color: #000;
   background-image: url('assets/textures/starry.png');
+  background-attachment: fixed;
   color: #fff;
 }
 ::selection {

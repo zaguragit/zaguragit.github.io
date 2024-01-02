@@ -27,6 +27,7 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   --border-radius: 24px;
   background-color: #000;
   background-image: url('assets/textures/starry.png');
+  background-attachment: fixed;
   color: var(--foreground);
 }
 ::selection {

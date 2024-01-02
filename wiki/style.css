@@ -25,6 +25,7 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   --border-radius: 24px;
   background-color: #000;
   background-image: url('../assets/textures/starry.png');
+  background-attachment: fixed;
   color: #ffffff;
 }
 ::selection {
@@ -42,29 +43,32 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
 }
 
 #sidebar {
-  flex-basis: 18em;
+  flex-basis: 16em;
   flex-grow: 0;
   flex-shrink: 0;
-  margin-left: 1em;
+  margin: 0 1em;
   display: inline;
 }
 
 #sidebar > header {
   font-size: 1.2em;
-  margin-top: 1.6rem;
   line-height: 1;
   font-weight: 700;
   text-align: center;
+  padding-top: 1.6rem;
+  background-color: #000;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 #sidebar > nav {
   padding-top: .8em;
   position: sticky;
   line-height: 1.8;
   padding: 1.2em 2em;
-  margin-top: 1em;
-  border-radius: var(--border-radius);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
   background-color: #000;
   border: 1px solid #ddd;
+  border-top: none;
 }
 #sidebar ul > li::before { content: unset; }
 #sidebar ul ul > li { margin-left: 1em; }
@@ -222,6 +226,7 @@ dt, dd { min-height: 2em; }
 
 @media only screen and (max-width:830px) {
   :root { background-image: none; }
+  #sidebar > header { border: none; }
   #sidebar > nav {
     position: unset;
     border: none;
