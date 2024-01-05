@@ -145,16 +145,23 @@ table {
 table td, table th {
   text-align: start;
   border: 1px solid #ddd;
-  /* border: 1px solid var(--foreground-border); */
   padding: .2em .5em;
 }
 
 table th {
-  text-align: start;
-  padding: .5em;
   font-weight: bold;
-  line-height: 1;
-  border-bottom: 1px dashed #ddd;
+  background-color: #ddd;
+  color: #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+table tr > th:last-child {
+  border-right: none;
+}
+
+table tr {
+  border: 1px solid #ddd;
 }
 
 #info-box img, figure img {
@@ -179,10 +186,17 @@ figure > figcaption { padding: 0 1px; }
   border-spacing: .5em .5em;
   line-height: 1.2;
 }
+#info-box td, #info-box th {
+  padding: 0;
+  border: none;
+}
 #info-box th {
+  border: none;
+  background: none;
+  color: unset;
   text-align: center;
-  padding: .5em;
   font-weight: bold;
+  padding: .5em;
   line-height: 1;
   border-bottom: 1px dashed #ddd;
 }
