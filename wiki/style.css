@@ -136,6 +136,27 @@ ul {
 }
 ul li::before { content: "•"; margin: 0 1ch; color: var(--foreground-weak); font-weight: bold; }
 
+table {
+  border-collapse: collapse;
+  line-height: 1.2;
+  margin: 1em 0;
+}
+
+table td, table th {
+  text-align: start;
+  border: 1px solid #ddd;
+  /* border: 1px solid var(--foreground-border); */
+  padding: .2em .5em;
+}
+
+table th {
+  text-align: start;
+  padding: .5em;
+  font-weight: bold;
+  line-height: 1;
+  border-bottom: 1px dashed #ddd;
+}
+
 #info-box img, figure img {
   width: 100%;
   max-width: 280px;
@@ -194,24 +215,6 @@ span.fract > span {display: none;}
 var {
   font-style: italic;
 }
-
-
-/* table {
-  border-spacing: 0;
-  border-collapse: collapse;
-} */
-/* table td, table th {
-  text-align: start;
-}
-table th {
-  width: min-content;
-  padding-right: 2ch;
-  font-weight: normal;
-  color: #bca4bcac;
-}
-table td {
-  width: max-content;
-} */
 
 
 dl {
