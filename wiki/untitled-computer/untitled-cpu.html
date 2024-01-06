@@ -29,6 +29,7 @@
             <li><a href=#goals>Goals</a></li>
             <li><a href=#registers>Registers</a></li>
             <li><a href=#instructions>Instructions</a></li>
+            <li><a href=#interrupts>Interrupts</a></li>
           </ul>
         </nav>
       </div>
@@ -36,10 +37,10 @@
         <section>
           <h1>Untitled CPU</h1>
           <div class=article-info>
-            Last Updated: <time>Jan 5, 2024</time>
+            Last Updated: <time>Jan 6, 2024</time>
           </div>
           <p>
-            A 32-bit RISC processor
+            A 32-bit RISC processor, programmed in <a href=assembly>Untitled Assembly</a>
           </p>
         </section>
         <section id=goals>
@@ -54,14 +55,13 @@
           <table>
             <tr><th>Name(s)</th><th>Purpose</th></tr>
             <tr><td>0</td><td>immutable, always zero</td></tr>
-            <tr><td>max</td><td>immutable, always max unsigned value (all 1s)</td></tr>
             <tr><td>ra</td><td>return address</td></tr>
             <tr><td>sp</td><td>stack pointer</td></tr>
             <tr><td>fp</td><td>frame pointer</td></tr>
             <tr><td>r0-4</td><td>work registers, calee must preserve</td></tr>
-            <tr><td>a0-3</td><td>used for arguments, calee doesn't have to preserve</td></tr>
+            <tr><td>a0-4</td><td>used for arguments, calee doesn't have to preserve</td></tr>
             <tr><td>v0-1</td><td>used for returned values, also v0 for operations
-              (mul: gives high 32 bits | div: gives remainder | sum: gives carry)
+              (mul: high 32 bits | sum: carry | sub: borrow)
             </td></tr>
           </table>
           <p>
@@ -73,7 +73,7 @@
           <table>
             <tr><th>F</th><th>31-28</th><th>27-24</th><th>23-20</th><th>19</th><th>18</th><th>17-16</th><th>15-4</th><th>3-0</th><th>Comment</th></tr>
             <tr><td>J</td><td rowspan=5>op</td><td colspan=7>label28</td><td></td></tr>
-            <tr><td>R</td><td rowspan=4>rd</td><td rowspan=4>rt</td><td colspan=3>rs</td><td></td><td>fn</td><td>12 free bits. not sure what to do with them yet, MIPS has a thing here, maybe ill steal it, but idk</td></td></tr>
+            <tr><td>R</td><td rowspan=4>reg dest</td><td rowspan=4>reg a</td><td colspan=3>reg b</td><td></td><td>fn</td><td>12 free bits. not sure what to do with them yet, MIPS has a thing here, maybe ill steal it, but idk</td></td></tr>
             <tr><td>I</td><td colspan=5>imm</td><td></td></tr>
             <tr><td>L</td><td rowspan=2>bytes</td><td>sign</td><td colspan=3>imm</td><td>Special thing for a load instruction to specify whether to load 2 or 1 byte and how to extend it</td></tr>
             <tr><td>S</td><td colspan=4>imm</td><td>Special thing for a store instruction to specify whether to store 2 or 1 byte</td></tr>
@@ -86,6 +86,8 @@
             <tr><td>mul</td><td>gives low 32 bits of multiplication, stores 32 high bits in v0</td><td>R</td><td>0000</td><td>0011</td></tr>
             <tr><td>div</td><td>gives quotient of signed division</td><td>R</td><td>0000</td><td>0100</td></tr>
             <tr><td>duv</td><td>gives quotient of unsigned division</td><td>R</td><td>0000</td><td>0101</td></tr>
+            <tr><td>rem</td><td>gives remainder of signed division</td><td>R</td><td>0000</td><td>0100</td></tr>
+            <tr><td>rum</td><td>gives remainder of unsigned division</td><td>R</td><td>0000</td><td>0101</td></tr>
             <tr><td>slz</td><td>shift left</td><td>R</td><td>0000</td><td>0110</td></tr>
             <tr><td>srz</td><td>shift right unsigned/logical (zero extend)</td><td>R</td><td>0000</td><td>0111</td></tr>
             <tr><td>srs</td><td>shift right arithmetic (sign extend)</td><td>R</td><td>0000</td><td>1000</td></tr>
@@ -94,11 +96,11 @@
             <tr><td>xor</td><td>bitwise XORs numbers</td><td>R</td><td>0000</td><td>1011</td></tr>
             <tr><td>lts</td><td>gives 1 if left is less than right, otherwise 0 (signed)</td><td>R</td><td>0000</td><td>1100</td></tr>
             <tr><td>ltu</td><td>gives 1 if left is less than right, otherwise 0 (unsigned)</td><td>R</td><td>0000</td><td>1101</td></tr>
-            <tr><td>add</td><td>same as non-immediate counterpart</td><td>I</td><td>0001</td><td>--</td></tr>
-            <tr><td>slz</td><td>same as non-immediate counterpart</td><td>I</td><td>0010</td><td>--</td></tr>
-            <tr><td>srz</td><td>same as non-immediate counterpart</td><td>I</td><td>0011</td><td>--</td></tr>
-            <tr><td>and</td><td>same as non-immediate counterpart</td><td>I</td><td>0100</td><td>--</td></tr>
-            <tr><td>or</td><td>same as non-immediate counterpart</td><td>I</td><td>0101</td><td>--</td></tr>
+            <tr><td>add</td><td>same as non-immediate counterpart (sign-extends imm)</td><td>I</td><td>0001</td><td>--</td></tr>
+            <tr><td>slz</td><td>same as non-immediate counterpart (zero-extends imm)</td><td>I</td><td>0010</td><td>--</td></tr>
+            <tr><td>srz</td><td>same as non-immediate counterpart (zero-extends imm)</td><td>I</td><td>0011</td><td>--</td></tr>
+            <tr><td>and</td><td>same as non-immediate counterpart (sign-extends imm)</td><td>I</td><td>0100</td><td>--</td></tr>
+            <tr><td>or</td><td>same as non-immediate counterpart (sign-extends imm)</td><td>I</td><td>0101</td><td>--</td></tr>
             <tr><td>jmp</td><td>goes to the instruction at label</td><td>J</td><td>0110</td><td>--</td></tr>
             <tr><td>jlk</td><td>store (PC + &lt;instruction width&gt;) in register ra, jump to label</td><td>J</td><td>0111</td><td>--</td></tr>
             <tr><td>jre</td><td>goes to the instruction at address in the register passed (might make it virtual if jlr is single-cycle)</td><td>R</td><td>0000</td><td>1110</td></tr>
@@ -115,6 +117,21 @@
             I'm not sure what to do with the spare bits inside instructions that only
             use 1 register, or which of the 2/3 registers to use
           </p>
+          <p>
+            Branch &amp; load instructions have delay slots, to not break pipelining
+          </p>
+        </section>
+        <section id=interrupts>
+          <h2>Interrupts</h2>
+          <p>
+            Not sure how I'll wanna do the interrupts, probably something like
+          </p>
+          <ul>
+            <li>about to shut down</li>
+            <li>unauthorized operation</li>
+            <li>syscall</li>
+            <li>hardware button???</li>
+          </ul>
         </section>
       </main>
     </div>
