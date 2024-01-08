@@ -124,7 +124,6 @@ p > .extra {
   height: 64px;
   padding: 4px;
   transition: scale .3s;
-  image-rendering: pixelated;
 }
 .icons-grid > a:hover > img { scale: 1.2; }
 .icons-grid > a:hover {

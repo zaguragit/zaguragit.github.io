@@ -5,7 +5,6 @@ a:focus-visible{outline:#fff 3px solid;}
 .float-right{float:right;}
 
 a {
-  /* color: #a5e471; */
   color: unset;
   font-weight: 700;
   text-decoration: none;
@@ -29,9 +28,11 @@ a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
   color: #ffffff;
 }
 ::selection {
-  /* background-color: var(--accent); */
   background-color: #fff;
   color: #000;
+}
+code, pre {
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 }
 
 #page-container {
