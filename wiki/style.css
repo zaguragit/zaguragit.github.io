@@ -37,7 +37,7 @@ code, pre {
 
 #page-container {
   width: 100%;
-  max-width: 1420px;
+  max-width: 1080px;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
@@ -86,7 +86,7 @@ code, pre {
   background-color: #000;
   border: 1px solid #ddd;
 }
-.article-info, h2, h3 {
+.article-info, h2 {
   border-bottom: 1px solid var(--foreground-border);
 }
 .article-info {
@@ -242,7 +242,7 @@ dt {
 dt, dd { min-height: 2em; }
 
 
-@media only screen and (max-width:830px) {
+@media only screen and (max-width:860px) {
   :root { background-image: none; }
   #sidebar > header { border: none; }
   #sidebar > nav {
