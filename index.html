@@ -19,7 +19,7 @@
   </head>
   <body>
     <script src=index.js defer></script>
-    <section id=me>
+    <section>
       <div id=avatar>
         <img src=assets/me/avatar.jpg>
         <a id=statuscafe href=https://status.cafe/users/zagura></a>
@@ -30,52 +30,115 @@
         <span class=extra>they/them&nbsp;|&nbsp;she/her</span>
       </p>
       <p>
-        I like <a href=art>drawing</a>, <a href=wiki>world building</a>, <a href=projects>programming</a>,
-        3D&nbsp;engines, conlangs
+        I like <a href=art>drawing</a>, <a href=wiki>world building</a>,
+        <a title="My Git" rel=me href=https://gitlab.com/_zagura>programming</a> &amp;
+        changing up my hair/website/avatar
       </p>
       <p>
-        I live in Barcelona (Catalonia, Spain) <span class=extra>(UTC+1)</span>
+        I live in Barcelona (Catalonia, Spain) <span class=extra>(UTC+1)</span><br>
+        and speak: <abbr title=English><code>en</code></abbr>,
+          <abbr title=Spanish><code>es</code></abbr>,
+          <abbr title=Catalan><code>cat</code></abbr>,
+          <abbr title=Russian><code>ru</code></abbr>,
+          <a href=https://tokipona.org><abbr title="toki pona"><code>tok</code></abbr></a>
       </p>
-      <p>
-        My favorite color is purple
-      </p>
-      <p>
-        I speak: en, es, cat, ru, <a href=https://tokipona.org>tok</a>
-      </p>
-      <p>
-        I rly like changing up my hair, website and avatar
-      </p>
-      <div>
-        <img class=pixelart src=assets/badges/smol/shethey.gif>
-        <img class=pixelart src=assets/badges/smol/handcoded.png>
-        <img class=pixelart src=assets/badges/smol/linux2.gif>
-        <img class=pixelart src=assets/badges/smol/tea.gif>
-      </div>
-    </section>
-    <section class=icons-grid>
-      <a href=faves>
-        <img src=assets/icons/big/heart.png>Stuff I like
+      <p>My favorite color is purple</p>
+      <ul>
+        <li>
+          <a rel="me nofollow" href=mailto:me@zagura.one>
+            <img class=icon alt="My email" src=assets/icons/small/mail.png>me@zagura.one
+          </a>
+        </li>
+        <li>
+          <a rel=me href=https://cathode.church/@zagura>
+            <img class=icon alt="Me on the Fediverse" src=assets/icons/small/fedi.png>zagura@cathode.church
+          </a>
+        </li>
+        <li>
+          <a rel=me href=https://liberapay.com/zagura>
+            <img class=icon src=assets/icons/small/coin.png>My Liberapay
+          </a>
+        </li>
+      </ul>
+      <a class=featured href=art>
+        <img class=icon src=assets/icons/big/paint-brush.png>
+        <span>
+          <h2>My Art</h2>
+          <p>A gallery of everything I draw</p>
+        </span>
       </a>
-      <a href=art>
-        <img src=assets/icons/big/paint-brush.png>Art
+      <a class=featured href=wiki>
+        <img class=icon src=assets/icons/big/wiki.png>
+        <span>
+          <h2>Wiki</h2>
+          <p>A place where I dump my ideas &amp; do my worldbuilding</p>
+        </span>
       </a>
-      <a href=projects>
-        <img src=assets/icons/big/lamda.png>Projects
+      <a class=featured href=https://gitlab.com/_zagura/ion-launcher>
+        <img class=icon src=assets/icons/big/lamda.png>
+        <span>
+          <h2>Ion Launcher</h2>
+          <p>A minimalist, pretty & functional launcher</p>
+        </span>
       </a>
-      <a href=wiki>
-        <img src=assets/icons/big/wiki.png>Wiki
+      <a class=featured href=https://gitlab.com/_zagura/code-rain-wallpaper>
+        <img class=icon src=assets/icons/big/lamda.png>
+        <span>
+          <h2>Code Rain Wallpaper</h2>
+          <p>A live wallpaper inspired by the matrix falling code effect</p>
+        </span>
       </a>
-      <a href=website-templates>
-        <img src=assets/icons/big/earth.png>Templates
+      <a class=featured href=https://gitlab.com/posidon_software/paper>
+        <img class=icon src=assets/icons/big/lamda.png>
+        <span>
+          <h2>Paper</h2>
+          <p>A markdown notes app</p>
+        </span>
       </a>
-      <a href=tools/oc>
-        <img src=assets/icons/big/character.png>Random OC
+      <a class=featured href=website-templates>
+        <img class=icon src=assets/icons/big/earth.png>
+        <span>
+          <h2>Website Templates</h2>
+          <p>Some templates I made in case you wanna create a pure html site, but don't know where to start</p>
+        </span>
       </a>
-      <a href=tools/color-light>
-        <img src=assets/icons/big/light.png>Key Light
+      <a class=featured href=tools>
+        <img class=icon src=assets/icons/big/character.png>
+        <span>
+          <h2>Tools</h2>
+          <p>Some simple online utilities I made for personal use</p>
+        </span>
       </a>
-    </section>
-    <section class=webrings>
+      <a class=featured href=faves>
+        <img class=icon src=assets/icons/big/heart.png>
+        <span>
+          <h2>Bookmarks</h2>
+          <p>A lot of links to stuff I liked</p>
+        </span>
+      </a>
+      <!-- <table id=contact>
+        <tr>
+          <th><img class=icon src=assets/icons/small/mail.png>Email</th>
+          <td><a rel="me nofollow" href=mailto:me@zagura.one>me@zagura.one</a></td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/fedi.png>Fedi</th>
+          <td><a rel=me href=https://cathode.church/@zagura>zagura@cathode.church</a></td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/git.png>Git</th>
+          <td><a rel=me href=https://gitlab.com/_zagura>_zagura@gitlab.com</a></td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/youtube.png>Youtube</th>
+          <td><a rel=me href=https://www.youtube.com/channel/UClXGZGHP1adu7vBDYwJvznQ>_zagura@youtube.com</a></td>
+        </tr>
+        <tr>
+          <th><img class=icon src=assets/icons/small/coin.png>Liberapay</th>
+          <td><a rel=me href=https://liberapay.com/zagura>zagura@liberapay.com</a></td>
+        </tr>
+      </table>
+      <hr>
       <table id=contact>
         <tr>
           <th><img class=icon src=assets/icons/small/mail.png>email</th>
@@ -83,7 +146,7 @@
         </tr>
         <tr>
           <th><img class=icon src=assets/icons/small/fedi.png>fedi</th>
-          <td><a rel=me href=https://cathode.church/@zagura>@zagura@cathode.church</a></td>
+          <td><a rel=me href=https://cathode.church/@zagura>zagura@cathode.church</a></td>
         </tr>
         <tr>
           <th><img class=icon src=assets/icons/small/git.png>git</th>
@@ -91,7 +154,7 @@
         </tr>
         <tr>
           <th><img class=icon src=assets/icons/small/cup.png>status cafe</th>
-          <td><a rel=me href=https://status.cafe/users/zagura>zagura</a></td>
+          <td><a rel=me href=https://status.cafe/users/zagura>zagura@status.cafe</a></td>
         </tr>
         <tr>
           <th><img class=icon src=assets/icons/small/discord.png>discord</th>
@@ -99,18 +162,29 @@
         </tr>
         <tr>
           <th><img class=icon src=assets/icons/small/youtube.png>youtube</th>
-          <td><a rel=me href=https://www.youtube.com/channel/UClXGZGHP1adu7vBDYwJvznQ>@_zagura</a></td>
+          <td><a rel=me href=https://www.youtube.com/channel/UClXGZGHP1adu7vBDYwJvznQ>_zagura@youtube.com</a></td>
         </tr>
         <tr>
           <th><img class=icon src=assets/icons/small/bandcamp.png>bandcamp</th>
-          <td><a rel=me href=https://bandcamp.com/_zagura>_zagura</a></td>
+          <td><a rel=me href=https://bandcamp.com/_zagura>_zagura@bandcamp.com</a></td>
         </tr>
         <tr>
           <th><img class=icon src=assets/icons/small/coin.png>liberapay</th>
-          <td><a rel=me href=https://liberapay.com/zagura>zagura</a></td>
+          <td><a rel=me href=https://liberapay.com/zagura>zagura@liberapay.com</a></td>
         </tr>
       </table>
-      <hr>
+         -->
+      <p>
+        <img src=assets/gif/blahaj.png class=blahaj> Certified Good Website by Blåhaj
+      </p>
+      <p>
+        <img class=pixelart src=assets/badges/smol/shethey.gif>
+        <img class=pixelart src=assets/badges/smol/handcoded.png>
+        <img class=pixelart src=assets/badges/smol/linux2.gif>
+        <img class=pixelart src=assets/badges/smol/tea.gif>
+      </p>
+    </section>
+    <section>
       <div class=webring>
         <a class=arrow href="https://webring.bucketfish.me/redirect.html?to=prev&name=Zagura">⥼&nbsp;prev</a>
         <span class=center><a href=https://webring.bucketfish.me>bucket webring</a></span>
@@ -126,8 +200,6 @@
         <span class=center><a href=https://hotlinewebring.club>Hotline Webring</a></span>
         <a class=arrow href=https://hotlinewebring.club/zagura/next referrerpolicy=origin>next&nbsp;⥽</a>
       </div>
-      <hr>
-      <img src=assets/gif/blahaj.png class=blahaj> Certified Good Website by Blåhaj
     </section>
   </body>
 </html>

@@ -13,6 +13,7 @@ a:focus-visible{outline:#fff 3px solid;}
 
 :root {
   font-family: Inter, 'Noto Sans', system-ui, sans-serif;
+  --serif: Tinos, Times, serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
@@ -33,20 +34,21 @@ body {
   margin: 64px 0;
 }
 section {
-  max-width: 512px;
+  max-width: 540px;
   margin: 0 auto;
   padding: 2em;
   background-color: #000;
   border: 1px solid #ddd;
   border-radius: var(--border-radius);
 }
+section + section { margin-top: 2em; }
 hr {
   margin: 2em -2em;
   border: none;
   border-top: 1px solid #ddd;
 }
 
-p {
+p, ul {
   margin: 1em 0 .5em;
 }
 p > .extra {
@@ -54,10 +56,6 @@ p > .extra {
   margin-left: 1ch;
 }
 
-
-#me {
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-}
 #avatar {
   display: flex;
   flex-direction: row;
@@ -85,6 +83,7 @@ p > .extra {
   color: #222;
   padding: .5em .6em;
   font-weight: 700;
+  font-family: monospace;
 }
 #statuscafe > .content::after {
   position: absolute;
@@ -103,39 +102,35 @@ p > .extra {
   text-decoration: underline wavy currentColor 1px;
 }
 
-.icons-grid {
-  display: grid;
-  --columns: 7;
-  gap: 1em;
-  grid-template-columns: repeat(var(--columns), calc((100% - 1em * (var(--columns) - 1)) / var(--columns)));
-  margin: -1px auto;
-  max-width: 960px;
+ul { list-style: none; }
+ul > li + li { margin-top: .5em; }
+ul a { font-weight: unset; }
+ul li { opacity: .8; }
+
+a.featured {
+  border-radius: 12px;
+  border: 1px solid var(--foreground-hint);
+  padding: 1em;
+  position: relative;
+  font-weight: unset;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2em;
 }
-.icons-grid > a {
-  text-align: center;
-  font-size: .9em;
-  padding: .5em 0;
-  transition: background-position .3s, background-color .3s, letter-spacing .2s;
+a.featured + a.featured {
+  margin-top: 1em;
 }
-.icons-grid > a > img {
-  display: block;
-  margin: 0 auto;
-  width: 64px;
-  height: 64px;
-  padding: 4px;
-  transition: scale .3s;
+a.featured:hover { text-decoration: none; }
+a.featured:hover h2 { text-decoration: underline wavy currentColor 1px; }
+a.featured h2 {
+  font-size: 1em;
 }
-.icons-grid > a:hover > img { scale: 1.2; }
-.icons-grid > a:hover {
-  letter-spacing: .05em;
+a.featured p {
+  margin: 0;
 }
 
-.webrings {
-  font-family: monospace;
-  margin: 0 auto;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-}
 .webring {
+  font-family: monospace;
   display: flex;
   flex-direction: row;
   line-height: 1;
@@ -165,7 +160,6 @@ p > .extra {
 }
 
 table {
-  font-family: monospace;
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%;
@@ -176,17 +170,16 @@ table td, table th {
   padding: .25em 0;
 }
 table th {
-  padding-right: 1ch;
   font-weight: normal;
   min-width: 12ch;
 }
-table td::before {
-  content: ":: ";
+table th::after {
+  content: ":";
 }
 .icon {
   margin-right: 1ch;
-  height: 1.2em;
-  vertical-align: middle;
+  height: 1.5em;
+  vertical-align: top;
 }
 
 .blahaj { height: 1.4em; vertical-align: middle; }
@@ -216,10 +209,8 @@ table td::before {
     translate: 0 -50%;
   }
   :root { background-image: none; }
-  .icons-grid { border-radius: 0; --columns: 3; }
   table td::before {
     content: none;
   }
-  #me { border-top: none; }
-  section { max-width: none; border-left: none; border-right: none; border-bottom: none; }
+  section { max-width: none; border: none; }
 }
