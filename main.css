@@ -1,5 +1,6 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: #fff9 transparent;}
-.pixelart {image-rendering:pixelated;}
+.pixelart{image-rendering:pixelated;}
+.float-right{float:right;}
 
 a {
   color: unset;
@@ -13,7 +14,15 @@ a:focus-visible{outline:#fff 3px solid;}
 
 :root {
   font-family: Inter, 'Noto Sans', system-ui, sans-serif;
-  --serif: Tinos, Times, serif;
+  --monospace: 'JetBrains Mono', ui-monospace,
+    "Cascadia Mono", "Segoe UI Mono", 
+    "Roboto Mono", 
+    "Oxygen Mono", 
+    "Ubuntu Monospace", 
+    "Source Code Pro",
+    "Fira Mono", 
+    "Droid Sans Mono", 
+    "Courier New", monospace;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
@@ -31,11 +40,10 @@ a:focus-visible{outline:#fff 3px solid;}
 }
 
 body {
-  margin: 64px 0;
+  margin: 64px auto;
+  max-width: 540px;
 }
 section {
-  max-width: 540px;
-  margin: 0 auto;
   padding: 2em;
   background-color: #000;
   border: 1px solid #ddd;
@@ -48,13 +56,15 @@ hr {
   border-top: 1px solid #ddd;
 }
 
-p, ul {
+p {
   margin: 1em 0 .5em;
 }
 p > .extra {
   color: var(--foreground-hint);
   margin-left: 1ch;
 }
+code { font-family: var(--monospace); }
+body > p { margin: 1em 2em .5em; }
 
 #avatar {
   display: flex;
@@ -83,7 +93,7 @@ p > .extra {
   color: #222;
   padding: .5em .6em;
   font-weight: 700;
-  font-family: monospace;
+  font-family: var(--monospace);
 }
 #statuscafe > .content::after {
   position: absolute;
@@ -102,11 +112,15 @@ p > .extra {
   text-decoration: underline wavy currentColor 1px;
 }
 
-ul { list-style: none; }
+ul { list-style: none; margin-top: 1em; }
 ul > li + li { margin-top: .5em; }
 ul a { font-weight: unset; }
 ul li { opacity: .8; }
 
+.my-stuff {
+  display: block;
+  margin-top: 2em;
+}
 a.featured {
   border-radius: 12px;
   border: 1px solid var(--foreground-hint);
@@ -115,7 +129,6 @@ a.featured {
   font-weight: unset;
   display: flex;
   flex-direction: row;
-  margin-top: 2em;
 }
 a.featured + a.featured {
   margin-top: 1em;
@@ -126,14 +139,16 @@ a.featured h2 {
   font-size: 1em;
 }
 a.featured p {
+  color: #ddd;
   margin: 0;
 }
 
 .webring {
-  font-family: monospace;
+  font-family: var(--monospace);
   display: flex;
   flex-direction: row;
   line-height: 1;
+  color: #ddd;
 }
 .webring:not(:first-child) {
   margin-top: 1em;
@@ -141,19 +156,17 @@ a.featured p {
 .webring .center {
   flex-grow: 1;
   text-align: center;
+  color: #fff;
 }
-
 .webring .center a:hover {
   background-color: #fff;
   color: #000;
   text-decoration: none;
 }
-
 .webring .center a:hover::before {
   content: "▓▒░ ";
   text-align: start;
 }
-
 .webring .center a:hover::after {
   content: " ░▒▓";
   text-align: end;
@@ -184,10 +197,40 @@ table th::after {
 
 .blahaj { height: 1.4em; vertical-align: middle; }
 
+@media only screen and (min-width:860px) {
+  body {
+    position: absolute;
+    inset: 0 calc(100vw / 2 + 1em) auto auto;
+    max-width: 540px;
+  }
+  
+  .my-stuff {
+    max-width: 540px;
+    position: absolute;
+    --w: min(540px, 100vw / 2);
+    inset: 0 calc(0px - (min(540px, (100vw / 2) - 1em) + 2em)) auto calc(min(540px, (100vw / 2) - 1em) + 2em);
+  
+    background-color: #000;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    margin: 0;
+  }
+
+  a.featured {
+    border-radius: 0;
+    border: none;
+    padding: 2em;
+    padding-left: 1.6em;
+  }
+  a.featured + a.featured {
+    margin: 0;
+    border-top: 1px solid var(--foreground-hint);
+  }
+}
 @media only screen and (max-width:860px) {
   .icons-grid { --columns: 5; }
 }
-@media only screen and (max-width:620px) {
+@media only screen and (max-width:512px) {
   #avatar {
     place-items: start;
     flex-direction: column;
