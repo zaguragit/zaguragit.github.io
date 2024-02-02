@@ -2,6 +2,7 @@
 a:focus,[tabindex]:focus{outline:#fff 3px solid;}
 @supports selector(:focus-visible){a:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none;}}
 a:focus-visible{outline:#fff 3px solid;}
+.pixelart{image-rendering:pixelated;}
 .float-right{float:right;}
 
 a {
@@ -168,6 +169,7 @@ table tr {
 #info-box img, figure img {
   width: 100%;
   max-width: 280px;
+  min-height: 96px;
   display: block;
   border: 1px solid var(--foreground-border);
 }
