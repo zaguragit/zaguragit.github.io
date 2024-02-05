@@ -13,8 +13,6 @@ th {
 
 td { text-align: end; }
 
-td::before { content: ":: " }
-
 th, td { padding: .25em 0; }
 
 td > a {
