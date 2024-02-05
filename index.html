@@ -2,7 +2,7 @@
 <html lang=en>
   <head>
     <meta charset=utf-8>
-    <meta http-equiv=Content-Security-Policy content="default-src 'self' https://status.cafe;img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
+    <meta http-equiv=Content-Security-Policy content="default-src 'self' https://status.cafe;img-src 'self' https://status.cafe;form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
     <meta name=copyright content=Zagura>
     <meta name=language content=en>
     <meta name=author content=Zagura>
@@ -27,14 +27,13 @@
       <p>
         I'm <b>Zagura</b>
         <span class=extra>/ˈðɑɡurɑ/</span>
-        <span class=extra>(they/them&nbsp;|&nbsp;she/her)</span>
+        <span class=extra>they/them|she/her</span>
       </p>
       <p>
         I like <a href=art>drawing</a>, <a href=wiki>world building</a>,
         <a title="My Git" rel=me href=https://gitlab.com/_zagura>programming</a> &amp;
-        changing up my hair/website/avatar
-      </p>
-      <p>
+        changing up my hair/website/avatar, and my favorite color is purple.
+        <br>
         I live in Barcelona (Catalonia, Spain) <span class=extra>(UTC+1)</span><br>
         and speak: <abbr title=English><code>en</code></abbr>,
           <abbr title=Spanish><code>es</code></abbr>,
@@ -42,77 +41,84 @@
           <abbr title=Russian><code>ru</code></abbr>,
           <a href=https://tokipona.org><abbr title="toki pona"><code>tok</code></abbr></a>
       </p>
-      <p>My favorite color is purple</p>
       <img class="pixelart float-right" height=90px src=assets/gif/xeniacomputer.gif>
-      <ul>
-        <li>
-          <a rel="me nofollow" href=mailto:me@zagura.one>
-            <img class=icon alt="My email" src=assets/icons/small/mail.png>me@zagura.one
-          </a>
-        </li>
-        <li>
-          <a rel=me href=https://cathode.church/@zagura>
-            <img class=icon alt="Me on the Fediverse" src=assets/icons/small/fedi.png>zagura@cathode.church
-          </a>
-        </li>
-        <li>
-          <a rel=me href=https://liberapay.com/zagura>
-            <img class=icon src=assets/icons/small/coin.png>My Liberapay
-          </a>
-        </li>
-      </ul>
+      <address id=contact>
+        <ul>
+          <li>
+            <a rel="me nofollow" href=mailto:me@zagura.one>
+              <svg class=icon role="img" aria-label="My email" viewBox="0 0 61.44 61.44">
+                <path fill=currentColor d="M 19.55907,51.565876 C 3.7736672,50.890523 4.3028714,51.230091 4.3051461,29.279999 4.307231,9.1610334 1.3415598,11.132901 30.669853,11.750167 60.295476,12.373691 57.372578,10.1206 56.939394,31.999824 56.511815,53.595952 57.59676,53.193257 19.55907,51.565876 Z M 52.642274,33.360507 c 0.215911,-7.784985 0.269632,-14.79336 0.269632,-14.79336 -1.056244,0.852738 -18.578779,14.166004 -22.191907,14.11742 -2.890541,-0.03887 -15.427045,-8.421034 -22.1697043,-13.510587 0,0 0.2004976,6.049572 0.068189,12.587606 -0.3006383,14.85605 -0.446875,15.622813 20.9971294,15.647254 22.900208,0.0261 22.660164,-0.833734 23.026661,-14.048333 z M 49.362408,16.137746 c 0,0 -8.263605,-0.284437 -19.678357,-0.663936 -16.085971,-0.5348 -18.902237,-0.119776 -18.902237,-0.119776 5.625557,3.772415 16.559185,12.18397 19.938185,12.209512 3.42676,0.0259 15.425112,-8.663855 18.642409,-11.4258 z"/>
+              </svg>me@zagura.one
+            </a>
+          </li>
+          <li>
+            <a rel=me href=https://cathode.church/@zagura>
+              <svg class=icon role="img" aria-label="Me on the Fediverse" viewBox="0 0 61.44 61.44">
+                <path fill=currentColor d="m 36.528793,56.218792 c -0.72695,-0.875922 -0.971387,-2.477145 -0.602511,-3.946861 0.732365,-2.917974 4.910068,-3.037794 6.691979,-0.191932 2.211105,3.53132 -3.418262,7.357399 -6.089468,4.138793 z M 23.596957,52.927553 c -7.31529,-2.017777 -8.694927,-4.542157 -1.927792,-3.527362 6.318655,0.947541 11.223663,2.675082 11.69737,4.119808 0.516783,1.576101 -2.590917,1.387644 -9.769578,-0.592446 z M 8.8319998,50.687999 c -3.1039955,-3.103996 1.6827652,-8.394094 5.0595702,-5.591594 2.727378,2.263522 1.151837,6.743594 -2.37157,6.743594 -0.8448,0 -2.0544002,-0.5184 -2.6880002,-1.152 z M 43.199999,49.008085 c 0,-1.175772 4.222909,-9.789282 6.519249,-13.297378 3.329148,-5.085907 2.886575,-0.07134 -0.577836,6.547151 -3.405758,6.506439 -5.941413,9.387277 -5.941413,6.750227 z M 34.2465,27.610064 l -9.162258,-0.78205 -4.055367,7.794928 c -3.70557,7.122573 -5.887434,9.638499 -7.210939,8.314993 -0.274592,-0.274592 1.256039,-3.990371 3.401403,-8.257287 4.721557,-9.390711 4.714959,-8.607747 0.07878,-9.349102 -5.302793,-0.84795 -9.6018417,-5.036725 0.34391,-3.178639 5.7781,0.773634 6.077571,0.80504 8.414082,-4.477032 4.193731,-9.4806241 4.577165,-3.39616 2.449918,1.518863 l -1.667719,3.85328 6.761688,0.566444 v -5.087231 c 0,-7.210561 2.655063,-7.251411 3.069831,-0.04723 l 0.304673,5.257911 6.008291,0.673704 c 7.480035,0.83873 7.357647,2.842525 -0.163966,3.238241 l -5.284945,5.02e-4 0.27046,2.879498 c 0.936858,9.974407 1.867656,19.261125 0.01941,17.235522 -1.189889,-1.304077 -2.048137,-7.251722 -2.290211,-9.294505 z M 6.9290885,26.149696 C 8.5972575,26.705752 11.077461,41.146538 9.7353086,42.48869 7.2383994,44.985601 4.296483,25.27216 6.9290885,26.149696 Z m 45.2795905,4.14638 c -1.440286,-3.753325 2.073226,-7.64671 5.15132,-5.70827 3.625295,2.283042 2.060481,7.092193 -2.307677,7.092193 -1.27192,0 -2.55156,-0.622765 -2.843643,-1.383923 z M 3.8838535,23.57284 C 1.725917,20.972685 3.0281304,17.76 6.2399999,17.76 c 3.5034096,0 4.6881861,3.854564 1.8276865,5.946213 C 5.8892573,25.299119 5.3009741,25.280366 3.8838535,23.57284 Z M 48.433525,18.48 C 41.510791,12.066138 37.267149,5.3460998 41.382596,7.3144698 44.543756,8.8264154 56.020836,22.08 54.168961,22.08 c -1.017398,0 -3.598344,-1.62 -5.735436,-3.6 z M 10.946384,17.128526 c -0.766113,-1.239597 -0.369968,-1.576164 9.041112,-7.681385 6.911078,-4.4834023 11.203042,-3.9357656 5.452503,0.695717 -5.13875,4.138748 -13.702211,8.266186 -14.493615,6.985668 z M 30.911999,9.4079998 c -2.587496,-2.5874967 -0.570337,-6.5279999 3.34171,-6.5279999 2.329122,0 3.905213,3.4618283 2.839953,6.2378533 -0.662142,1.7255118 -4.563195,1.9086148 -6.181663,0.2901466 z"/>
+              </svg>zagura@cathode.church
+            </a>
+          </li>
+          <li>
+            <a rel=me href=https://liberapay.com/zagura>
+              <svg class=icon viewBox="0 0 61.44 61.44">
+                <path fill=currentColor d="M 30.853516 3.5507812 C 15.791355 3.5507812 3.6660156 15.67612 3.6660156 30.738281 L 3.6660156 31.09375 C 3.6660156 46.155911 15.791355 58.28125 30.853516 58.28125 C 45.915677 58.28125 58.041016 46.155911 58.041016 31.09375 L 58.041016 30.738281 C 58.041016 15.67612 45.915677 3.5507813 30.853516 3.5507812 z M 30.853516 7.84375 C 43.553353 7.84375 53.777344 18.067741 53.777344 30.767578 L 53.777344 31.064453 C 53.777344 43.764291 43.553353 53.990234 30.853516 53.990234 C 18.153677 53.990234 7.9296875 43.764291 7.9296875 31.064453 L 7.9296875 30.767578 C 7.9296875 18.067741 18.153677 7.84375 30.853516 7.84375 z M 28.298828 16.978516 L 28.298828 21.464844 C 24.699358 22.504217 22.149402 26.173226 21.912109 30 C 21.370518 34.586209 23.079744 39.656794 28.451172 40.855469 L 28.451172 44.798828 L 33.005859 44.798828 L 33.005859 41.023438 C 34.499703 40.83673 35.976865 40.400405 37.291016 39.625 L 36.181641 36.113281 C 32.119587 38.09718 27.084712 37.101463 26.548828 31.900391 C 25.997951 26.55379 29.804883 23.627237 36.181641 26.132812 L 37.214844 22.142578 C 35.839215 21.498133 34.353943 21.130696 32.853516 20.998047 L 32.853516 16.978516 C 31.335385 16.978513 29.816958 16.978528 28.298828 16.978516 z"/>
+              </svg>My Liberapay
+            </a>
+          </li>
+        </ul>
+      </address>
       <span class=my-stuff>
         <a class=featured href=art>
-          <img class=icon src=assets/icons/big/paint-brush.png>
+          <img class=icon src=assets/icons/big/paint-brush.svg>
           <span>
             <h2>Art Gallery</h2>
             <p>A gallery of everything I draw</p>
           </span>
         </a>
         <a class=featured href=wiki>
-          <img class=icon src=assets/icons/big/wiki.png>
+          <img class=icon src=assets/icons/big/wiki.svg>
           <span>
             <h2>Wiki</h2>
             <p>A place where I dump my ideas &amp; do my worldbuilding</p>
           </span>
         </a>
         <a class=featured href=https://gitlab.com/_zagura/ion-launcher>
-          <img class=icon src=assets/icons/big/lamda.png>
+          <img class=icon src=assets/icons/big/lamda.svg>
           <span>
             <h2>Ion Launcher</h2>
             <p>A minimalist, pretty & functional launcher</p>
           </span>
         </a>
         <a class=featured href=website-templates>
-          <img class=icon src=assets/icons/big/earth.png>
+          <img class=icon src=assets/icons/big/earth.svg>
           <span>
             <h2>Website Templates</h2>
             <p>Some templates I made in case you wanna create a pure html site, but don't know where to start</p>
           </span>
         </a>
         <a class=featured href=tools>
-          <img class=icon src=assets/icons/big/character.png>
+          <img class=icon src=assets/icons/big/character.svg>
           <span>
             <h2>Utilities</h2>
             <p>Some simple online utilities I made for personal use</p>
           </span>
         </a>
-        <a class=featured href=faves>
-          <img class=icon src=assets/icons/big/heart.png>
+        <a class=featured href=bookmarks>
+          <img class=icon src=assets/icons/big/heart.svg>
           <span>
             <h2>Bookmarks</h2>
             <p>A lot of links to stuff I liked</p>
           </span>
         </a>
         <a class=featured href=https://gitlab.com/_zagura/code-rain-wallpaper>
-          <img class=icon src=assets/icons/big/lamda.png>
+          <img class=icon src=assets/icons/big/lamda.svg>
           <span>
             <h2>Code Rain Wallpaper</h2>
             <p>A live wallpaper inspired by the matrix falling code effect</p>
           </span>
         </a>
         <a class=featured href=https://gitlab.com/posidon_software/paper>
-          <img class=icon src=assets/icons/big/lamda.png>
+          <img class=icon src=assets/icons/big/lamda.svg>
           <span>
             <h2>Paper</h2>
             <p>A markdown notes app</p>
@@ -120,31 +126,38 @@
         </a>
       </span>
     </section>
-    <section>
-      <div class=webring>
-        <a class=arrow href="https://webring.bucketfish.me/redirect.html?to=prev&name=Zagura">&lt;--</a>
-        <span class=center><a href=https://webring.bucketfish.me>bucket webring</a></span>
-        <a class=arrow href="https://webring.bucketfish.me/redirect.html?to=next&name=Zagura">--&gt;</a>
+    <footer>
+      <p>
+        <img class=pixelart src=assets/badges/smol/estropower.png>
+        <img class=pixelart src=assets/badges/smol/shethey.gif>
+        <img class=pixelart src=assets/badges/smol/prochoice.gif>
+        <img class=pixelart src=assets/badges/smol/handcoded.png>
+        <img class=pixelart src=assets/badges/smol/fuckgender.png>
+      </p>
+      <!-- <p>
+        <img src=assets/gif/blahaj.png class=blahaj> Certified Good Website by Blåhaj
+      </p> -->
+      <p>
+        🄯 Website's code &amp; icons are <a href=licenses/unlicense>unlicensed</a>
+      </p>
+      <hr>
+      <div class=webrings>
+        <div class=webring>
+          <a class=arrow href="https://webring.bucketfish.me/redirect.html?to=prev&name=Zagura">&lt;--</a>
+          <span class=center><a href=https://webring.bucketfish.me>bucket webring</a></span>
+          <a class=arrow href="https://webring.bucketfish.me/redirect.html?to=next&name=Zagura">--&gt;</a>
+        </div>
+        <div class=webring>
+          <a class=arrow href="https://fediring.net/previous?host=zagura.one">&lt;--</a>
+          <span class=center><a href=https://fediring.net>Fediring</a></span>
+          <a class=arrow href="https://fediring.net/next?host=zagura.one">--&gt;</a>
+        </div>
+        <div class=webring>
+          <a class=arrow href=https://hotlinewebring.club/zagura/previous referrerpolicy=origin>&lt;--</a>
+          <span class=center><a href=https://hotlinewebring.club>Hotline Webring</a></span>
+          <a class=arrow href=https://hotlinewebring.club/zagura/next referrerpolicy=origin>--&gt;</a>
+        </div>
       </div>
-      <div class=webring>
-        <a class=arrow href="https://fediring.net/previous?host=zagura.one">&lt;--</a>
-        <span class=center><a href=https://fediring.net>Fediring</a></span>
-        <a class=arrow href="https://fediring.net/next?host=zagura.one">--&gt;</a>
-      </div>
-      <div class=webring>
-        <a class=arrow href=https://hotlinewebring.club/zagura/previous referrerpolicy=origin>&lt;--</a>
-        <span class=center><a href=https://hotlinewebring.club>Hotline Webring</a></span>
-        <a class=arrow href=https://hotlinewebring.club/zagura/next referrerpolicy=origin>--&gt;</a>
-      </div>
-    </section>
-    <p>
-      <img class=pixelart src=assets/badges/smol/shethey.gif>
-      <img class=pixelart src=assets/badges/smol/handcoded.png>
-      <img class=pixelart src=assets/badges/smol/linux2.gif>
-      <img class=pixelart src=assets/badges/smol/tea.gif>
-    </p>
-    <p>
-      <img src=assets/gif/blahaj.png class=blahaj> Certified Good Website by Blåhaj
-    </p>
+    </footer>
   </body>
 </html>

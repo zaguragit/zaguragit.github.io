@@ -18,7 +18,7 @@ section .grid article {
 
 section article {
     /* border: 1px dashed #ddd; */
-    border-left: 1px solid #ddd;
+    border-left: 1px solid var(--foreground-weak);
     border-radius: 0;
     margin: 1em 0;
     padding: 0 .8em;

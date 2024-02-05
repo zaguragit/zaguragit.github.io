@@ -64,7 +64,6 @@ p > .extra {
   margin-left: 1ch;
 }
 code { font-family: var(--monospace); }
-body > p { margin: 1em 2em .5em; }
 
 #avatar {
   display: flex;
@@ -93,7 +92,6 @@ body > p { margin: 1em 2em .5em; }
   color: #222;
   padding: .5em .6em;
   font-weight: 700;
-  font-family: var(--monospace);
 }
 #statuscafe > .content::after {
   position: absolute;
@@ -113,9 +111,9 @@ body > p { margin: 1em 2em .5em; }
 }
 
 ul { list-style: none; margin-top: 1em; }
-ul > li + li { margin-top: .5em; }
+ul > li + li { margin-top: .3em; }
 ul a { font-weight: unset; }
-ul li { opacity: .8; }
+ul li { color: #ddd; }
 
 .my-stuff {
   display: block;
@@ -143,12 +141,24 @@ a.featured p {
   margin: 0;
 }
 
-.webring {
+footer {
+  margin: 1em 2em .5em;
+  color: #ddd;
+}
+footer hr {
+  margin: 3em 4em;
+  border-top: 1px dashed var(--foreground-hint);
+}
+.webrings {
   font-family: var(--monospace);
+}
+.webring a {
+  font-weight: unset;
+}
+.webring {
   display: flex;
   flex-direction: row;
   line-height: 1;
-  color: #ddd;
 }
 .webring:not(:first-child) {
   margin-top: 1em;
@@ -156,20 +166,6 @@ a.featured p {
 .webring .center {
   flex-grow: 1;
   text-align: center;
-  color: #fff;
-}
-.webring .center a:hover {
-  background-color: #fff;
-  color: #000;
-  text-decoration: none;
-}
-.webring .center a:hover::before {
-  content: "▓▒░ ";
-  text-align: start;
-}
-.webring .center a:hover::after {
-  content: " ░▒▓";
-  text-align: end;
 }
 
 table {
@@ -194,8 +190,6 @@ table th::after {
   height: 1.5em;
   vertical-align: top;
 }
-
-.blahaj { height: 1.4em; vertical-align: middle; }
 
 @media only screen and (min-width:860px) {
   body {

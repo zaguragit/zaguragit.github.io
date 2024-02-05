@@ -1,56 +1,8 @@
 
-
-:root {
-    font-family: Inter, 'Noto Sans', system-ui, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-      color-scheme: dark;
-    --foreground-hint: #fff8;
-    --foreground-strong: #ffffff;
-    --foreground-border: #fff5;
-    --surface-background: #000;
-    --surface-background-dim: #000;
-    --border-radius: 24px;
-    background-color: #000;
-    background-image: url('../assets/textures/starry.png');
-    color: #fff;
-}
-::selection {
-    background-color: #fff;
-    color: #000;
-}
-
-
-a {
-    color: unset;
-    text-decoration: none;
-}
-a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
-
-body {
-    width: 100%;
-    margin: 64px auto 0 auto;
-}
-
-h1 {
-    margin: 0;
-    font-size: 1.5em;
-}
-
-section {
-    background-color: var(--surface-background);
-    border-radius: var(--border-radius);
-    border: 1px solid #fff;
-    padding: 2em;
-    max-width: 512px;
-    margin: 1em auto;
-}
-
 dl {
     margin: 0;
 }
-dl a { display: block; line-height: 2; }
+dl a { display: block; line-height: 2; font-weight: unset; }
 dl dt {
     display: inline;
     font-weight: 700;
@@ -60,14 +12,3 @@ dl dd {
     display: inline;
     margin: 0;
 }
-
-.add {
-    display: block;
-    margin: 16px auto;
-    max-width: 728px;
-    max-height: 90px;
-    width: 100%;
-    border: none;
-    aspect-ratio: 728/90;
-}
-  

@@ -1,5 +1,5 @@
 *{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--foreground-weak) transparent;}
-h1,h2,h3,h4,em{color:var(--foreground-strong);font-weight:700;}
+
 a:focus,[tabindex]:focus{outline:#fff 3px solid;}
 @supports selector(:focus-visible){a:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none;}}
 a:focus-visible{outline:#fff 3px solid;}
@@ -12,15 +12,23 @@ a {
 }
 
 :root {
-  --foreground: #ffffffcc;
-  --foreground-weak: #ffffff6e;
+  --foreground: #ffffffdd;
+  --foreground-weak: #ffffff93;
   --foreground-border: #ffffff23;
   --foreground-strong: #ffffff;
   --background: #000;
-  font-family: Inter, 'Noto Sans', system-ui, sans-serif;
+  font-family: 'JetBrains Mono', ui-monospace,
+    "Cascadia Mono", "Segoe UI Mono", 
+    "Roboto Mono", 
+    "Oxygen Mono", 
+    "Ubuntu Monospace", 
+    "Source Code Pro",
+    "Fira Mono", 
+    "Droid Sans Mono", 
+    "Courier New", monospace;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   background-color: var(--background);
   color: var(--foreground);
 	color-scheme: dark;
@@ -32,6 +40,29 @@ body {
   padding: 4em;
 }
 
+h1 {
+  line-height: 1.2;
+  font-family: Tinos, Times, serif;
+  font-size: 3em;
+  font-weight: 900;
+  color: var(--foreground-weak);
+}
+h1 > span {
+  font-weight: normal;
+  opacity: 0.5;
+}
+a.back:not(:hover) { color: var(--foreground-weak); text-decoration: unset; }
+a.back::before { content: "⥼ "; }
+h2 {
+  font-size: unset;
+  margin-bottom: .5em;
+  color: var(--foreground-weak);
+  font-weight: 900;
+}
+section, header {
+  max-width: 640px;
+  margin: 0 auto;
+}
 .image-grid + section::before, section::after, header::after {
   content: "";
   border-top: 1px solid var(--foreground-border);
@@ -43,15 +74,6 @@ body {
 img { border-radius: 5px; }
 
 a.img { text-decoration: none; }
-
-h2 {
-  font-size: unset;
-  margin-bottom: .5em;
-  text-decoration: underline solid currentColor .1em;
-}
-h1 { font-size: 2em; line-height: 1.2; }
-.back-to-main { color: var(--foreground-weak); }
-.back-to-main::before { content: "main page: "; }
 
 
 .grid {
@@ -74,6 +96,7 @@ h1 { font-size: 2em; line-height: 1.2; }
   gap: 10em;
   grid-template-columns: repeat(2, auto);
   image-rendering: auto;
+  margin: 5em 0;
 }
 @media only screen and (max-width:720px) {
   body { padding: 2em; }
