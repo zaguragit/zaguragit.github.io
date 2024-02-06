@@ -27,9 +27,10 @@ a:focus-visible{outline:#fff 3px solid;}
   font-weight: 400;
   line-height: 1.5;
 	color-scheme: dark;
-  --foreground-weak: #ffffff93;
-  --foreground-border: #fff4;
-  --border-radius: 24px;
+  --foreground-weak: #888;
+  --foreground-border: #555;
+  --foreground-subtler: #ddd;
+  --border-radius: 12px;
   background-color: #000;
   background-image: url('assets/textures/starry.png');
   background-attachment: fixed;
@@ -42,12 +43,16 @@ a:focus-visible{outline:#fff 3px solid;}
 
 body {
   margin: 64px auto;
-  max-width: 720px;
-  padding: 2em;
+  max-width: 640px;
   background-color: #000;
   box-shadow: 0 0 128px 128px #000;
+  padding: 2em;
+  margin-top: calc(100vh / 5);
 }
-section + section, footer { margin-top: 2em; }
+#me {
+  margin-bottom: 4em;
+}
+section + section, footer { margin-top: 4em; }
 
 p {
   margin: 1em 0 .5em;
@@ -69,7 +74,7 @@ code { font-family: var(--monospace); }
   width: 96px;
   border-radius: 999px;
   border: 4px solid #000;
-  box-shadow: 0 0 0 3px #fff;
+  box-shadow: 0 0 0 3px currentColor;
 }
 #statuscafe {
   font-weight: unset;
@@ -82,7 +87,7 @@ code { font-family: var(--monospace); }
   position: relative;
   line-height: 1.5;
   border-radius: .5em;
-  background-color: #ddd;
+  background-color: var(--foreground-subtler);
   color: #222;
   padding: .5em .6em;
   font-weight: 700;
@@ -93,7 +98,7 @@ code { font-family: var(--monospace); }
   width: 10px;
   height: 10px;
   rotate: 45deg;
-  background-color: #ddd;
+  background-color: var(--foreground-subtler);
   inset: 50% auto 50% -5px;
   translate: 0 -50%;
 }
@@ -107,10 +112,10 @@ code { font-family: var(--monospace); }
 #contact ul { list-style: none; margin-top: 1em; }
 #contact ul > li + li { margin-top: .3em; }
 #contact ul a { font-weight: unset; }
-#contact ul li { color: #ddd; }
+#contact ul li { color: var(--foreground-subtler); }
 
 .my-stuff {
-  border: 1px solid #ddd;
+  border: 1px solid var(--foreground-subtler);
   border-radius: var(--border-radius);
   /* box-shadow: inset 0 0 0 1px #ddd; */
 }
@@ -131,8 +136,11 @@ a.featured:hover h2 { text-decoration: underline wavy currentColor 1px; }
   font-size: 1em;
 }
 .featured p {
-  color: #ddd;
+  color: var(--foreground-subtler);
   margin: 0;
+}
+.featured p + p, .featured p + dl {
+  margin-top: 1em;
 }
 .featured h3:not(:first-child) { margin-top: 1em; }
 .featured h3 {
@@ -159,10 +167,7 @@ a.link + a.link {
 }
 .featured ul li::before { content: "•"; margin: 0 1ch; color: var(--foreground-weak); font-weight: bold; }
 
-dl {
-  margin: 0;
-}
-dl a { display: block; line-height: 2; font-weight: unset; }
+dl a { display: block; font-weight: unset; }
 dl dt {
   display: inline;
   font-weight: 700;
@@ -176,7 +181,6 @@ dl dd {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  line-height: 2;
 }
 .webring .spacer {
   flex-grow: 1;
@@ -188,7 +192,7 @@ dl dd {
 }
 
 footer {
-  color: #ddd;
+  color: var(--foreground-subtler);
 }
 footer nav {
   display: flex;
@@ -198,7 +202,6 @@ footer nav > span {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  color: var(--foreground-weak);
 }
 footer nav a { font-weight: unset; }
 footer nav a + a::before {
@@ -212,23 +215,6 @@ footer hr {
   border-top: 1px dashed var(--foreground-weak);
 }
 
-table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  width: 100%;
-  margin: -.25em 0;
-}
-table td, table th {
-  text-align: start;
-  padding: .25em 0;
-}
-table th {
-  font-weight: normal;
-  min-width: 12ch;
-}
-table th::after {
-  content: ":";
-}
 .icon {
   height: 1.5em;
   width: 1.5em;
