@@ -23,23 +23,25 @@ a:focus-visible{outline:currentColor 3px solid;}
     "Fira Mono", 
     "Droid Sans Mono", 
     "Courier New", monospace;
+  --serif: Tinos, Times, serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
 	color-scheme: dark;
-  --background: #000;
-  --foreground-border: #555;
-  --foreground-weak: #888;
-  --foreground-subtler: #ddd;
+  --background: #1d110f;
+  --foreground-border: #584843;
+  --foreground-weak: #a58180;
+  --foreground-subtler: #e4cbca;
   background-color: var(--background);
   background-image: url('assets/textures/starry.png');
+  background-blend-mode: screen;
   background-size: 768px;
   background-attachment: fixed;
   color: #fff;
 }
 ::selection {
   background-color: #fff;
-  color: #000;
+  color: #1d110f;
 }
 
 body {
@@ -49,14 +51,27 @@ body {
   padding: 2em;
   background-color: var(--background);
   box-shadow: 0 0 128px 128px var(--background);
+  border-radius: 2em;
 }
 
-section + section, header + section, footer {
+section + section, header + section, header + nav + section, footer {
   margin-top: 4em;
 }
 section:not(.flat) {
-  border: 1px solid var(--foreground-subtler);
+  border: 1px solid var(--foreground-weak);
   border-radius: 12px;
+}
+
+code, pre { font-family: var(--monospace); }
+
+.icon {
+  height: 1.5em;
+  width: 1.5em;
+  min-height: 1.5em;
+  min-width: 1.5em;
+  vertical-align: top;
+  text-align: center;
+  font-weight: 700;
 }
 
 @media only screen and (prefers-color-scheme:light) {
@@ -87,19 +102,20 @@ footer nav {
 }
 footer nav > span {
   flex-grow: 1;
+  flex-basis: 0;
   display: flex;
-  justify-content: center;
+}
+footer nav > span:last-child {
+  justify-content: end;
 }
 footer nav a { font-weight: unset; }
 footer nav a + a::before {
   content: "";
-  border-left: 1px solid currentColor;
+  border-left: 1px solid var(--foreground-border);
   margin: 0 1em;
 }
 
 @media only screen and (max-width:512px) {
-  :root { background-image: none; }
-
   footer nav {
     display: block;
   }

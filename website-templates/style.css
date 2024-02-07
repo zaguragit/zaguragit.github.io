@@ -1,5 +1,5 @@
 
-
+/* 
 table {
   font-family: monospace;
   width: 100%;
@@ -16,13 +16,6 @@ td { text-align: end; }
 th, td { padding: .25em 0; }
 
 td > a {
-  box-shadow: 0 0 0 1px var(--foreground-subtler);
-  color: currentColor;
-  padding: 0 .5em;
   margin-left: 1em;
 }
-
-td > a:hover {
-  background-color: var(--foreground-subtler);
-  color: var(--background);
-}
+*/

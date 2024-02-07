@@ -13,131 +13,142 @@
     <meta name=theme-color content=#2a2344>
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel=icon href=../../assets/me/icon.gif>
+    <link rel=stylesheet href=../../shared.css>
+    <link rel=stylesheet href=../../style.css>
     <link rel=stylesheet href=../style.css>
     <title>Assembly</title>
   </head>
   <body>
-    <div id=page-container>
-      <div id=sidebar>
-        <header>
-          <a rel=me href=/wiki>Zagura's Wiki</a>
-        </header>
-        <nav>
-          <h3>Contents</h3>
-          <ul>
-            <li><a href=#>(Top)</a></li>
-            <li><a href=#registers>Registers</a></li>
-            <li><a href=#instructions>Instructions</a></li>
-            <li><a href=#syntax-sugar>Syntax Sugar</a></li>
-          </ul>
-        </nav>
+    <header>
+      <h1>Assembly</h1>
+      <a class=back rel=me href=..>Zagura's Wiki</a>
+      <div class=comment>
+        Last Updated: <time>Jan 7, 2024</time>
       </div>
-      <main id=content>
-        <section>
-          <h1>Assembly</h1>
-          <div class=article-info>
-            Last Updated: <time>Jan 7, 2024</time>
-          </div>
-          <p>
-            The assembly language for the <a href=untitled-cpu>Untitled CPU</a>
-          </p>
-        </section>
-        <section id=registers>
-          <h2>Registers</h2>
-          <div class=heading-note>More in: <a href=untitled-cpu#registers>Untitled CPU</a></div>
-          <p>There are 32 registers in total</p>
-          <table>
-            <tr><td>0</td><td>ra</td><td>sp</td><td>fp</td><td>r0-11</td><td>a0-11</td><td>v0-3</td></tr>
-          </table>
-          <p>
-            To reference a register put a dot followed by its name, like <code>.r2</code>
-          </p>
-        </section>
-        <section id=instructions>
-          <h2>Instructions</h2>
-          <table>
-            <tr><th>Instruction</th><th>Meaning</th><th>F</th><th>OP</th><th>FN</th></tr>
-            <tr><td><code>add .a .b > .c</code></td><td>adds ints, puts carry into v0</td><td>R</td><td>0000</td><td>0001</td></tr>
-            <tr><td><code>sub .a .b > .c</code></td><td>subtracts ints, puts borrow into v0</td><td>R</td><td>0000</td><td>0010</td></tr>
-            <tr><td><code>mul</code></td><td>gives low 32 bits of multiplication, stores 32 high bits in v0</td><td>R</td><td>0000</td><td>0011</td></tr>
-            <tr><td><code>div</code></td><td>gives quotient of signed division</td><td>R</td><td>0000</td><td>0100</td></tr>
-            <tr><td><code>duv</code></td><td>gives quotient of unsigned division</td><td>R</td><td>0000</td><td>0101</td></tr>
-            <tr><td><code>rem</code></td><td>gives remainder of signed division</td><td>R</td><td>0000</td><td>0100</td></tr>
-            <tr><td><code>rum</code></td><td>gives remainder of unsigned division</td><td>R</td><td>0000</td><td>0101</td></tr>
-            <tr><td><code>slz</code></td><td>shift left</td><td>R</td><td>0000</td><td>0110</td></tr>
-            <tr><td><code>srz</code></td><td>shift right unsigned/logical (zero extend)</td><td>R</td><td>0000</td><td>0111</td></tr>
-            <tr><td><code>srs</code></td><td>shift right arithmetic (sign extend)</td><td>R</td><td>0000</td><td>1000</td></tr>
-            <tr><td><code>and</code></td><td>bitwise ANDs numbers</td><td>R</td><td>0000</td><td>1001</td></tr>
-            <tr><td><code>or</code></td><td>bitwise ORs numbers</td><td>R</td><td>0000</td><td>1010</td></tr>
-            <tr><td><code>xor</code></td><td>bitwise XORs numbers</td><td>R</td><td>0000</td><td>1011</td></tr>
-            <tr><td><code>lts</code></td><td>gives 1 if left is less than right, otherwise 0 (signed)</td><td>R</td><td>0000</td><td>1100</td></tr>
-            <tr><td><code>ltu</code></td><td>gives 1 if left is less than right, otherwise 0 (unsigned)</td><td>R</td><td>0000</td><td>1101</td></tr>
-            <tr><td><code>add</code></td><td>same as non-immediate counterpart (sign-extends imm)</td><td>I</td><td>0001</td><td>--</td></tr>
-            <tr><td><code>slz</code></td><td>same as non-immediate counterpart (zero-extends imm)</td><td>I</td><td>0010</td><td>--</td></tr>
-            <tr><td><code>srz</code></td><td>same as non-immediate counterpart (zero-extends imm)</td><td>I</td><td>0011</td><td>--</td></tr>
-            <tr><td><code>and</code></td><td>same as non-immediate counterpart (sign-extends imm)</td><td>I</td><td>0100</td><td>--</td></tr>
-            <tr><td><code>or</code></td><td>same as non-immediate counterpart (sign-extends imm)</td><td>I</td><td>0101</td><td>--</td></tr>
-            <tr><td><code>jmp</code></td><td>goes to the instruction at label</td><td>J</td><td>0110</td><td>--</td></tr>
-            <tr><td><code>jlk</code></td><td>store (PC + &lt;instruction width&gt;) in register ra, jump to label</td><td>J</td><td>0111</td><td>--</td></tr>
-            <tr><td><code>jre</code></td><td>goes to the instruction at address in the register passed (might make it virtual if jlr is single-cycle)</td><td>R</td><td>0000</td><td>1110</td></tr>
-            <tr><td><code>jlr</code></td><td>store (PC + &lt;instruction width&gt;) in register a, jump to address in register b</td><td>R</td><td>0000</td><td>1111</td></tr>
-            <tr><td><code>beq</code></td><td>if a is equal to b, jump to label (represented as offset in memory)</td><td>I</td><td>1000</td><td>--</td></tr>
-            <tr><td><code>bne</code></td><td>if a is not equal to b, jump to label (represented as offset in memory)</td><td>I</td><td>1001</td><td>--</td></tr>
-            <tr><td><code>lod</code></td><td>load 4B at imm + .ptr as a 32-bit value into .a</td><td>I</td><td>1010</td><td>--</td></tr>
-            <tr><td><code>sto</code></td><td>store value of .a starting at imm + .ptr</td><td>I</td><td>1011</td><td>--</td></tr>
-            <tr><td><code>lod</code></td><td>load {b} bytes at address in .ptr as a 32-bit value into .a (if s = z zero-extends if s = s, sign-extends)</td><td>I</td><td>1100</td><td>--</td></tr>
-            <tr><td><code>sto</code></td><td>store low {b} bytes of .a starting at address in .ptr</td><td>I</td><td>1101</td><td>--</td></tr>
-            <tr><td><code>sys</code></td><td>runs the system call of the number in the register</td><td>I</td><td>1110</td><td>--</td></tr>
-          </table>
-          <p>
-            Branch &amp; load instructions have delay slots, to not break pipelining
-          </p>
-        </section>
-        <section id=syntax-sugar>
-          <h2>Syntax Sugar</h2>
-          <table>
-            <tr><th>Feature</th><th>Example</th><th>Comment</th></tr>
-            <tr><td>compile-time consts</td><td><code>const-name = 4</code></td><td></td></tr>
-            <tr><td>labels</td><td><code>label-name:</code></td><td>address to anything that goes after</td></tr>
-            <tr><td>comments</td><td><code># ends at end of line</code></td><td></td></tr>
-            <tr><td>strings</td><td><code>str Hello world!\n\0</code></td><td></td></tr>
-            <tr><td>arrays</td><td><code>dat [4] 3 0b0101 0xf3</code></td><td>dat [item-bit-width] a b c ...</td></tr>
-            <tr><td>global variables</td><td><code>dat [32] 0x42f4d3</code></td><td>data [bit-width] a</td></tr>
-            <tr><td>const expressions</td><td><code>set (3 + 5 * (4 + 3)) > .r1</code></td><td>You can write constant expressions inside parentheses</td></tr>
-          </table>
-          <p>There's a wide variety of constant expressions</p>
-          <table>
-            <tr><th><code>name</code></th><td>references a constant or a label</td></tr>
-            <tr><th><code>12</code></th><td>decimal numbers</td></tr>
-            <tr><th><code>0xf3</code></th><td>hexadecimal numbers</td></tr>
-            <tr><th><code>0b0101</code></th><td>binary numbers</td></tr>
-            <tr><th><code>(a)</code></th><td>parentheses, you know what they do I hope</td></tr>
-            <tr><th><code>-a</code></th><td>negate value</td></tr>
-            <tr><th><code>+a</code></th><td>absolute value</td></tr>
-            <tr><th><code>~a</code></th><td>flip bits in value</td></tr>
-            <tr><th><code>a + b</code></th><td>plus</td></tr>
-            <tr><th><code>a - b</code></th><td>minus</td></tr>
-            <tr><th><code>a * b</code></th><td>times</td></tr>
-            <tr><th><code>a / b</code></th><td>divide</td></tr>
-            <tr><th><code>a % b</code></th><td>remainder</td></tr>
-            <tr><th><code>a & b</code></th><td>and bits</td></tr>
-            <tr><th><code>a | b</code></th><td>or bits</td></tr>
-            <tr><th><code>a ^ b</code></th><td>xor bits</td></tr>
-            <tr><th><code>a &lt;&lt;0 b</code></th><td>shift left</td></tr>
-            <tr><th><code>a &gt;&gt;0 b</code></th><td>shift right (unsigned/logical/zero-extend)</td></tr>
-            <tr><th><code>a &gt;&gt;s b</code></th><td>shift right (signed/arithmetic/sign-extend)</td></tr>
-            <tr><th><code>a = b</code></th><td>1 if equal, 0 if not</td></tr>
-            <tr><th><code>a &lt;> b</code></th><td>0 if equal, 1 if not</td></tr>
-            <tr><th><code>a &gt;= b</code></th><td>1 if a &gt;= b, otherwise 0</td></tr>
-            <tr><th><code>a &lt;= b</code></th><td>1 if a &lt;= b, otherwise 0</td></tr>
-            <tr><th><code>a &gt; b</code></th><td>1 if a &gt; b, otherwise 0</td></tr>
-            <tr><th><code>a &lt; b</code></th><td>1 if a &lt; b, otherwise 0</td></tr>
-            <tr><th><code>a &lt;=&gt; b</code></th><td>if a &lt; b then 1, if a &gt; b then -1, if a = b then 0</td></tr>
-            <tr><th><code>a &lt;? b</code></th><td>picks smallest</td></tr>
-            <tr><th><code>a &gt;? b</code></th><td>picks biggest</td></tr>
-          </table>
-        </section>
-      </main>
-    </div>
+    </header>
+    <nav>
+      <ul>
+        <li><a href=#registers>Registers</a></li>
+        <li><a href=#instructions>Instructions</a></li>
+        <li><a href=#syntax-sugar>Syntax Sugar</a></li>
+      </ul>
+    </nav>
+    <section class=flat>
+      <p>
+        The assembly language for the <a href=untitled-cpu>Untitled CPU</a>
+      </p>
+    </section>
+    <section id=registers>
+      <h2>Registers</h2>
+      <div class=heading-note>More in: <a href=untitled-cpu#registers>Untitled CPU</a></div>
+      <p>There are 32 registers in total</p>
+      <table>
+        <tr><td>0</td><td>ra</td><td>sp</td><td>fp</td><td>r0-11</td><td>a0-11</td><td>v0-3</td></tr>
+      </table>
+      <p>
+        To reference a register put a dot followed by its name, like <code>.r2</code>
+      </p>
+    </section>
+    <section id=instructions>
+      <h2>Instructions</h2>
+      <table>
+        <tr><th>Instruction</th><th>Meaning</th><th>F</th><th>OP</th><th>FN</th></tr>
+        <tr><td><code>add .a .b > .c</code></td><td>adds ints, puts carry into v0</td><td>R</td><td>0000</td><td>0001</td></tr>
+        <tr><td><code>sub .a .b > .c</code></td><td>subtracts ints, puts borrow into v0</td><td>R</td><td>0000</td><td>0010</td></tr>
+        <tr><td><code>mul</code></td><td>gives low 32 bits of multiplication, stores 32 high bits in v0</td><td>R</td><td>0000</td><td>0011</td></tr>
+        <tr><td><code>div</code></td><td>gives quotient of signed division</td><td>R</td><td>0000</td><td>0100</td></tr>
+        <tr><td><code>duv</code></td><td>gives quotient of unsigned division</td><td>R</td><td>0000</td><td>0101</td></tr>
+        <tr><td><code>rem</code></td><td>gives remainder of signed division</td><td>R</td><td>0000</td><td>0100</td></tr>
+        <tr><td><code>rum</code></td><td>gives remainder of unsigned division</td><td>R</td><td>0000</td><td>0101</td></tr>
+        <tr><td><code>slz</code></td><td>shift left</td><td>R</td><td>0000</td><td>0110</td></tr>
+        <tr><td><code>srz</code></td><td>shift right unsigned/logical (zero extend)</td><td>R</td><td>0000</td><td>0111</td></tr>
+        <tr><td><code>srs</code></td><td>shift right arithmetic (sign extend)</td><td>R</td><td>0000</td><td>1000</td></tr>
+        <tr><td><code>and</code></td><td>bitwise ANDs numbers</td><td>R</td><td>0000</td><td>1001</td></tr>
+        <tr><td><code>or</code></td><td>bitwise ORs numbers</td><td>R</td><td>0000</td><td>1010</td></tr>
+        <tr><td><code>xor</code></td><td>bitwise XORs numbers</td><td>R</td><td>0000</td><td>1011</td></tr>
+        <tr><td><code>lts</code></td><td>gives 1 if left is less than right, otherwise 0 (signed)</td><td>R</td><td>0000</td><td>1100</td></tr>
+        <tr><td><code>ltu</code></td><td>gives 1 if left is less than right, otherwise 0 (unsigned)</td><td>R</td><td>0000</td><td>1101</td></tr>
+        <tr><td><code>add</code></td><td>same as non-immediate counterpart (sign-extends imm)</td><td>I</td><td>0001</td><td>--</td></tr>
+        <tr><td><code>slz</code></td><td>same as non-immediate counterpart (zero-extends imm)</td><td>I</td><td>0010</td><td>--</td></tr>
+        <tr><td><code>srz</code></td><td>same as non-immediate counterpart (zero-extends imm)</td><td>I</td><td>0011</td><td>--</td></tr>
+        <tr><td><code>and</code></td><td>same as non-immediate counterpart (sign-extends imm)</td><td>I</td><td>0100</td><td>--</td></tr>
+        <tr><td><code>or</code></td><td>same as non-immediate counterpart (sign-extends imm)</td><td>I</td><td>0101</td><td>--</td></tr>
+        <tr><td><code>jmp</code></td><td>goes to the instruction at label</td><td>J</td><td>0110</td><td>--</td></tr>
+        <tr><td><code>jlk</code></td><td>store (PC + &lt;instruction width&gt;) in register ra, jump to label</td><td>J</td><td>0111</td><td>--</td></tr>
+        <tr><td><code>jre</code></td><td>goes to the instruction at address in the register passed (might make it virtual if jlr is single-cycle)</td><td>R</td><td>0000</td><td>1110</td></tr>
+        <tr><td><code>jlr</code></td><td>store (PC + &lt;instruction width&gt;) in register a, jump to address in register b</td><td>R</td><td>0000</td><td>1111</td></tr>
+        <tr><td><code>beq</code></td><td>if a is equal to b, jump to label (represented as offset in memory)</td><td>I</td><td>1000</td><td>--</td></tr>
+        <tr><td><code>bne</code></td><td>if a is not equal to b, jump to label (represented as offset in memory)</td><td>I</td><td>1001</td><td>--</td></tr>
+        <tr><td><code>lod</code></td><td>load 4B at imm + .ptr as a 32-bit value into .a</td><td>I</td><td>1010</td><td>--</td></tr>
+        <tr><td><code>sto</code></td><td>store value of .a starting at imm + .ptr</td><td>I</td><td>1011</td><td>--</td></tr>
+        <tr><td><code>lod</code></td><td>load {b} bytes at address in .ptr as a 32-bit value into .a (if s = z zero-extends if s = s, sign-extends)</td><td>I</td><td>1100</td><td>--</td></tr>
+        <tr><td><code>sto</code></td><td>store low {b} bytes of .a starting at address in .ptr</td><td>I</td><td>1101</td><td>--</td></tr>
+        <tr><td><code>sys</code></td><td>runs the system call of the number in the register</td><td>I</td><td>1110</td><td>--</td></tr>
+      </table>
+      <p>
+        Branch &amp; load instructions have delay slots, to not break pipelining
+      </p>
+    </section>
+    <section id=syntax-sugar>
+      <h2>Syntax Sugar</h2>
+      <table>
+        <tr><th>Feature</th><th>Example</th><th>Comment</th></tr>
+        <tr><td>compile-time consts</td><td><code>const-name = 4</code></td><td></td></tr>
+        <tr><td>labels</td><td><code>label-name:</code></td><td>address to anything that goes after</td></tr>
+        <tr><td>comments</td><td><code># ends at end of line</code></td><td></td></tr>
+        <tr><td>strings</td><td><code>str Hello world!\n\0</code></td><td></td></tr>
+        <tr><td>arrays</td><td><code>dat [4] 3 0b0101 0xf3</code></td><td>dat [item-bit-width] a b c ...</td></tr>
+        <tr><td>global variables</td><td><code>dat [32] 0x42f4d3</code></td><td>data [bit-width] a</td></tr>
+        <tr><td>const expressions</td><td><code>set (3 + 5 * (4 + 3)) > .r1</code></td><td>You can write constant expressions inside parentheses</td></tr>
+      </table>
+      <p>There's a wide variety of constant expressions</p>
+      <table>
+        <tr><th><code>name</code></th><td>references a constant or a label</td></tr>
+        <tr><th><code>12</code></th><td>decimal numbers</td></tr>
+        <tr><th><code>0xf3</code></th><td>hexadecimal numbers</td></tr>
+        <tr><th><code>0b0101</code></th><td>binary numbers</td></tr>
+        <tr><th><code>(a)</code></th><td>parentheses, you know what they do I hope</td></tr>
+        <tr><th><code>-a</code></th><td>negate value</td></tr>
+        <tr><th><code>+a</code></th><td>absolute value</td></tr>
+        <tr><th><code>~a</code></th><td>flip bits in value</td></tr>
+        <tr><th><code>a + b</code></th><td>plus</td></tr>
+        <tr><th><code>a - b</code></th><td>minus</td></tr>
+        <tr><th><code>a * b</code></th><td>times</td></tr>
+        <tr><th><code>a / b</code></th><td>divide</td></tr>
+        <tr><th><code>a % b</code></th><td>remainder</td></tr>
+        <tr><th><code>a & b</code></th><td>and bits</td></tr>
+        <tr><th><code>a | b</code></th><td>or bits</td></tr>
+        <tr><th><code>a ^ b</code></th><td>xor bits</td></tr>
+        <tr><th><code>a &lt;&lt;0 b</code></th><td>shift left</td></tr>
+        <tr><th><code>a &gt;&gt;0 b</code></th><td>shift right (unsigned/logical/zero-extend)</td></tr>
+        <tr><th><code>a &gt;&gt;s b</code></th><td>shift right (signed/arithmetic/sign-extend)</td></tr>
+        <tr><th><code>a = b</code></th><td>1 if equal, 0 if not</td></tr>
+        <tr><th><code>a &lt;> b</code></th><td>0 if equal, 1 if not</td></tr>
+        <tr><th><code>a &gt;= b</code></th><td>1 if a &gt;= b, otherwise 0</td></tr>
+        <tr><th><code>a &lt;= b</code></th><td>1 if a &lt;= b, otherwise 0</td></tr>
+        <tr><th><code>a &gt; b</code></th><td>1 if a &gt; b, otherwise 0</td></tr>
+        <tr><th><code>a &lt; b</code></th><td>1 if a &lt; b, otherwise 0</td></tr>
+        <tr><th><code>a &lt;=&gt; b</code></th><td>if a &lt; b then 1, if a &gt; b then -1, if a = b then 0</td></tr>
+        <tr><th><code>a &lt;? b</code></th><td>picks smallest</td></tr>
+        <tr><th><code>a &gt;? b</code></th><td>picks biggest</td></tr>
+      </table>
+    </section>
+    <footer>
+      <nav>
+        <span>
+          <a href="/">
+            <svg class=icon height=1.5em viewBox="0 0 360 360">
+              <path fill=currentColor d="m251.25 40.311-189.69 50.828 5.1406 19.18 189.69-50.828zm14.656 54.699-189.69 50.828 138.86 138.86 25.412-94.846zm35.52 9.5176-50.826 189.69 19.18 5.1387 50.826-189.69zm-63.6 18.564-16.514 61.625-16.512 61.625-90.227-90.227 61.627-16.512zm-187.61 48.748-14.039 14.041 138.86 138.86 14.039-14.041z"/>
+            </svg>
+          </a>
+        </span>
+          <a href=/art>Art Gallery</a>
+          <a href=/website-templates>Website Templates</a>
+          <a href=/bookmarks>Bookmarks</a>
+        <span>
+        <a class=icon title=Copyright href=licenses/copyright>©</a>
+        </span>
+      </nav>
+    </footer>
   </body>
 </html>

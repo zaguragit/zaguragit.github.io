@@ -47,3 +47,12 @@ a {
   text-decoration: none;
   text-decoration: underline wavy #fff 1px;
 }
+.icon {
+  height: 1.5em;
+  width: 1.5em;
+  min-height: 1.5em;
+  min-width: 1.5em;
+  vertical-align: top;
+  text-align: center;
+  font-weight: 700;
+}

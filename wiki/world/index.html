@@ -13,139 +13,148 @@
     <meta name=theme-color content=#2a2344>
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel=icon href=../../assets/me/icon.gif>
+    <link rel=stylesheet href=../../shared.css>
+    <link rel=stylesheet href=../../style.css>
     <link rel=stylesheet href=../style.css>
     <title>World</title>
   </head>
   <body>
-    <div id=page-container>
-      <div id=sidebar>
-        <header>
-          <a rel=me href=/wiki>Zagura's Wiki</a>
-        </header>
-        <nav>
-          <h3>Contents</h3>
-          <ul>
-            <li><a href=#>(Top)</a></li>
-            <li><a href=#sky>Sky</a></li>
-            <li><a href=#plants>Plants</a></li>
-            <li><a href=#animals>Animals</a></li>
-            <li><a href=#climate>Climate</a></li>
-            <li><a href=#moon>Moon</a></li>
-          </ul>
-        </nav>
+    <header>
+      <h1>World</h1>
+      <a class=back rel=me href=..>Zagura's Wiki</a>
+      <div class=comment>
+        Last Updated: <time>Jan 18, 2024</time>
       </div>
-      <div id=content>
-        <main>
-          <section>
-            <h1>World</h1>
-            <div class=article-info>
-              Last Updated: <time>Jan 18, 2024</time>
-            </div>
-            <table id=info-box>
-              <tr><th colspan=2>World</th></tr>
-              <tr><td colspan=2>
-                <figure>
-                  <img alt="The map of the world (height-based)" src=../../assets/maps/height.png>
-                  <figcaption>The map of the world (height-based)</figcaption>
-                </figure>
-              </td></tr>
-              <tr><td>Mass:</td><td>0.6 🜨</td></tr>
-              <tr><td>CMF:</td><td>37.4%</td></tr>
-              <!-- <tr><td>Density:</td><td>5.134 g/cm<sup>3</sup></td></tr> -->
-              <tr><td>Radius:</td><td>0.864 🜨</td></tr>
-              <tr><td>Gravity:</td><td>0.805 🜨</td></tr>
-              <tr><td>Escape velocity:</td><td>0.834 🜨</td></tr>
-              <!-- <tr><td>Axial tils:</td><td>20.2º</td></tr> -->
-              <!-- <tr><td>Tropics:</td><td>0 - 20.2º</td></tr> -->
-              <!-- <tr><td>Polar circles:</td><td>69.8 - 90º</td></tr> -->
-              <tr><td>Rotation Period:</td><td>25.4 🜨h</td></tr>
-              <!-- <tr><td>Albedo:</td><td>0.36</td></tr> -->
-              <tr><td>Greenhouse Effect:</td><td>1.13</td></tr>
-              <tr><td>Avg. Surface Temperature:</td><td>288K (15ºC)</td></tr>
-              <tr><td>Atmospheric Pressure:</td><td>1.8atm</td></tr>
-              <tr><td>Atmospheric Density:</td><td>2.208 kg/m³</td></tr>
-              <tr><td>Semi-Major axis:</td><td>0.59 AU</td></tr>
-              <tr><td>Star:</td><td><a href=star>World's Star</a></td></tr>
-              <tr><td colspan=2>
-                <details>
-                  <summary>Equations</summary>
-                  <table>
-                    <tr><td>Gravity</td><td>= <span class=fract><sup><var>Mass</var></sup><span>&frasl;</span><sub><var>Radius</var><sup>2</sup></sub></span> = <var>Radius</var> * <var>Density</var></td></tr>
-                    <tr><td>Circumference</td><td>= 2π <var>Radius</var></td></tr>
-                    <tr><td>SurfaceArea</td><td>= 4π <var>Radius</var><sup>2</sup></td></tr>
-                    <tr><td>Volume</td><td>= <span class=fract><sup>4π</sup><span>&frasl;</span><sub>3</sub></span> <var>Radius</var><sup>3</sup></td></tr>
-                  </table>
-                </details>
-              </td></tr>
+    </header>
+    <nav>
+      <ul>
+        <li><a href=#sky>Sky</a></li>
+        <li><a href=#plants>Plants</a></li>
+        <li><a href=#animals>Animals</a></li>
+        <li><a href=#climate>Climate</a></li>
+        <li><a href=#moon>Moon</a></li>
+      </ul>
+    </nav>
+    <section class=flat>
+      <table id=info-box>
+        <tr><th colspan=2>World</th></tr>
+        <tr><td colspan=2>
+          <figure>
+            <img width=100% alt="The map of the world (height-based)" src=../../assets/maps/height.png>
+            <figcaption>The map of the world (height-based)</figcaption>
+          </figure>
+        </td></tr>
+        <tr><td>Mass:</td><td>0.6 🜨</td></tr>
+        <tr><td>CMF:</td><td>37.4%</td></tr>
+        <!-- <tr><td>Density:</td><td>5.134 g/cm<sup>3</sup></td></tr> -->
+        <tr><td>Radius:</td><td>0.864 🜨</td></tr>
+        <tr><td>Gravity:</td><td>0.805 🜨</td></tr>
+        <tr><td>Escape velocity:</td><td>0.834 🜨</td></tr>
+        <!-- <tr><td>Axial tils:</td><td>20.2º</td></tr> -->
+        <!-- <tr><td>Tropics:</td><td>0 - 20.2º</td></tr> -->
+        <!-- <tr><td>Polar circles:</td><td>69.8 - 90º</td></tr> -->
+        <tr><td>Rotation Period:</td><td>25.4 🜨h</td></tr>
+        <!-- <tr><td>Albedo:</td><td>0.36</td></tr> -->
+        <tr><td>Greenhouse Effect:</td><td>1.13</td></tr>
+        <tr><td>Avg. Surface Temperature:</td><td>288K (15ºC)</td></tr>
+        <tr><td>Atmospheric Pressure:</td><td>1.8atm</td></tr>
+        <tr><td>Atmospheric Density:</td><td>2.208 kg/m³</td></tr>
+        <tr><td>Semi-Major axis:</td><td>0.59 AU</td></tr>
+        <tr><td>Star:</td><td><a href=star>World's Star</a></td></tr>
+        <tr><td colspan=2>
+          <details>
+            <summary>Equations</summary>
+            <table>
+              <tr><td>Gravity</td><td>= <span class=fract><sup><var>Mass</var></sup><span>&frasl;</span><sub><var>Radius</var><sup>2</sup></sub></span> = <var>Radius</var> × <var>Density</var></td></tr>
+              <tr><td>Circumference</td><td>= 2π <var>Radius</var></td></tr>
+              <tr><td>SurfaceArea</td><td>= 4π <var>Radius</var><sup>2</sup></td></tr>
+              <tr><td>Volume</td><td>= <span class=fract><sup>4π</sup><span>&frasl;</span><sub>3</sub></span> <var>Radius</var><sup>3</sup></td></tr>
             </table>
-            <p>
-              I haven't made a name for it yet, and I'm not sure how I will, but here's my conworld.
-              The world is a small terrestrial planet with a single moon. It has 2 main landmasses.
-              These are populated by, along with other creatures, the <a href=people-species>{people species}</a>,
-              an inteligent anthropomorphic species.
-            </p>
-          </section>
-          <section id=sky>
-            <h2>Sky</h2>
-            <h3>During The Day</h3>
-            <div class=heading-note>See also: <a href=star>World's Star</a></div>
-            <p>
-              During the day the sky color ranges from gray to blueish gray, depending on the weather.
-              The sun looks larger and brighter than it does on Earth.
-              The shadows are blurrier than on Earth.
-            </p>
-            <h3>At Sunset</h3>
-            <p>
-              The sky color is usually red, the stars aren't visible at this stage yet.
-            </p>
-            <h3>At Night</h3>
-            <p>
-              At night the skies are a very dark warm brownish color, or a really dark gray at high places.
-              The moon is slightly reddish, and the stars are quite visible.
-            </p>
-          </section>
-          <section id=plants>
-            <h2>Plants</h2>
-            <p>
-              Plants tipically range from warm green to red, but can also be a blue-ish color in more
-              shady places.
-            </p>
-            <p>
-              During the cold times, they may turn a grayish red color, as they loose their main pigment.
-            </p>
-          </section>
-          <section id=animals>
-            <h2>Animals</h2>
-            <p>
-              The creatures of this world have evolved to be hermaphroditic most of the time. All though,
-              in very rare cases, an individual may only develop one half of the reproductive system.
-            </p>
-            <p>
-              There's a very high bio-diversity, and, since the gravity is slightly lower than on earth and the
-              atmospheric pressure is slightly higher, the animals tend to be a bit lankier than on Earth.
-            </p>
-          </section>
-          <section id=climate>
-            <h2>Climate</h2>
-            <figure>
-              <img src=../../assets/maps/temperature.png>
-              <figcaption>Temperature map</figcaption>
-            </figure>
-            <figure>
-              <img src=../../assets/maps/humidity.png>
-              <figcaption>Humidity map</figcaption>
-            </figure>
-            <figure>
-              <img src=../../assets/maps/biome.png>
-              <figcaption>Biome map</figcaption>
-            </figure>
-            <p>
-              Since the planet is smaller than earth and closer to the sun, it's warmer on the poles,
-              but quite similar to earth in the equator, temperature-wise.
-            </p>
-          </section>
-        </main>
-      </div>
-    </div>
+          </details>
+        </td></tr>
+      </table>
+      <p>
+        I haven't made a name for it yet, and I'm not sure how I will, but here's my conworld.
+        The world is a small terrestrial planet with a single moon. It has 2 main landmasses.
+        These are populated by, along with other creatures, the <a href=people-species>{people species}</a>,
+        an inteligent anthropomorphic species.
+      </p>
+    </section>
+    <section id=sky>
+      <h2>Sky</h2>
+      <h3>During The Day</h3>
+      <div class=heading-note>See also: <a href=star>World's Star</a></div>
+      <p>
+        During the day the sky color ranges from gray to blueish gray, depending on the weather.
+        The sun looks larger and brighter than it does on Earth.
+        The shadows are blurrier than on Earth.
+      </p>
+      <h3>At Sunset</h3>
+      <p>
+        The sky color is usually red, the stars aren't visible at this stage yet.
+      </p>
+      <h3>At Night</h3>
+      <p>
+        At night the skies are a very dark warm brownish color, or a really dark gray at high places.
+        The moon is slightly reddish, and the stars are quite visible.
+      </p>
+    </section>
+    <section id=plants>
+      <h2>Plants</h2>
+      <p>
+        Plants tipically range from warm green to red, but can also be a blue-ish color in more
+        shady places.
+      </p>
+      <p>
+        During the cold times, they may turn a grayish red color, as they loose their main pigment.
+      </p>
+    </section>
+    <section id=animals>
+      <h2>Animals</h2>
+      <p>
+        The creatures of this world have evolved to be hermaphroditic most of the time. All though,
+        in very rare cases, an individual may only develop one half of the reproductive system.
+      </p>
+      <p>
+        There's a very high bio-diversity, and, since the gravity is slightly lower than on earth and the
+        atmospheric pressure is slightly higher, the animals tend to be a bit lankier than on Earth.
+      </p>
+    </section>
+    <section id=climate>
+      <h2>Climate</h2>
+      <figure>
+        <img width=100% src=../../assets/maps/temperature.png>
+        <figcaption>Temperature map</figcaption>
+      </figure>
+      <figure>
+        <img width=100% src=../../assets/maps/humidity.png>
+        <figcaption>Humidity map</figcaption>
+      </figure>
+      <figure>
+        <img width=100% src=../../assets/maps/biome.png>
+        <figcaption>Biome map</figcaption>
+      </figure>
+      <p>
+        Since the planet is smaller than earth and closer to the sun, it's warmer on the poles,
+        but quite similar to earth in the equator, temperature-wise.
+      </p>
+    </section>
+    <footer>
+      <nav>
+        <span>
+          <a href="/">
+            <svg class=icon height=1.5em viewBox="0 0 360 360">
+              <path fill=currentColor d="m251.25 40.311-189.69 50.828 5.1406 19.18 189.69-50.828zm14.656 54.699-189.69 50.828 138.86 138.86 25.412-94.846zm35.52 9.5176-50.826 189.69 19.18 5.1387 50.826-189.69zm-63.6 18.564-16.514 61.625-16.512 61.625-90.227-90.227 61.627-16.512zm-187.61 48.748-14.039 14.041 138.86 138.86 14.039-14.041z"/>
+            </svg>
+          </a>
+        </span>
+          <a href=/art>Art Gallery</a>
+          <a href=/website-templates>Website Templates</a>
+          <a href=/bookmarks>Bookmarks</a>
+        <span>
+        <a class=icon title=Copyright href=licenses/copyright>©</a>
+        </span>
+      </nav>
+    </footer>
   </body>
 </html>
