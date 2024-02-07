@@ -1,43 +1,3 @@
-*{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--foreground-weak) transparent;}
-a:focus,[tabindex]:focus{outline:#fff 3px solid;}
-@supports selector(:focus-visible){a:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none;}}
-a:focus-visible{outline:#fff 3px solid;}
-.float-right{float:right;}
-.pixelart{image-rendering:pixelated;}
-
-a {
-  color: unset;
-  font-weight: 700;
-  text-decoration: none;
-}
-a:hover:not(.no-deco) { text-decoration: underline wavy #fff 1px; }
-
-:root {
-  font-family: Inter, 'Noto Sans', system-ui, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-	color-scheme: dark;
-  --foreground: #ffffff;
-  --foreground-weak: #ffffff93;
-  --border-radius: 24px;
-  background-color: #000;
-  background-image: url('assets/textures/starry.png');
-  background-attachment: fixed;
-  color: var(--foreground);
-}
-::selection {
-  background-color: #fff;
-  color: #000;
-}
-body {
-  width: 100%;
-  max-width: 640px;
-  margin: 64px auto 0 auto;
-  padding: 2em;
-  background-color: #000;
-  box-shadow: 0 0 128px 128px #000;
-}
 
 h1, h2, h3 {
   color: var(--foreground-weak);
@@ -50,26 +10,16 @@ h1 {
   font-size: 2.5em;
   font-weight: 900;
 }
-a.back-to-main {
+header a.back {
   color: var(--foreground-weak);
   font-weight: unset;
 }
-a.back-to-main::before { content: "⥼ "; }
-a.back-to-main:hover {
-  color: var(--foreground);
-}
+header a.back::before { content: "⥼ "; }
+header a.back:hover { color: unset; }
 
-section::before {
-  content: "";
-  border-top: 1px solid #ffffff23;
-  width: 48px;
-  display: block;
-  margin: 1rem 0;
-}
 h2 {
   margin-bottom: .5em;
 }
-
 p { margin:1em 0; }
 ul {
   list-style-type: none;
@@ -77,11 +27,15 @@ ul {
 }
 ul li::before { content: "•"; margin-right: .5em; font-weight: bold; color: var(--foreground-weak); }
 
-.grid {
-  display: grid;
-  --columns: 2;
-  gap: 1em;
-  grid-template-columns: repeat(var(--columns), calc((100% - 1em * (var(--columns) - 1)) / var(--columns)));
+section article {
+  border-left: 1px solid var(--foreground-weak);
+  border-radius: 0;
+  margin: 1em 0;
+  padding: 0 .8em;
+}
+
+section:not(.flat) {
+  padding: 2em;
 }
 
 .add {
@@ -92,9 +46,4 @@ ul li::before { content: "•"; margin-right: .5em; font-weight: bold; color: va
   width: 100%;
   border: none;
   aspect-ratio: 728/90;
-}
-
-@media only screen and (max-width:720px) {
-  :root { background-image: none; }
-  body { border: none; max-width: none; }
 }

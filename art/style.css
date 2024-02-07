@@ -7,16 +7,11 @@ a:focus-visible{outline:#fff 3px solid;}
 .pixelart{image-rendering:pixelated;}
 
 a {
-  color: var(--foreground-strong);
-  text-decoration: underline wavy #fff 1px;
+  color: unset;
+  text-decoration: underline wavy currentColor 1px;
 }
 
 :root {
-  --foreground: #ffffffdd;
-  --foreground-weak: #ffffff93;
-  --foreground-border: #ffffff23;
-  --foreground-strong: #ffffff;
-  --background: #000;
   font-family: 'JetBrains Mono', ui-monospace,
     "Cascadia Mono", "Segoe UI Mono", 
     "Roboto Mono", 
@@ -29,10 +24,29 @@ a {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  background-color: var(--background);
-  color: var(--foreground);
 	color-scheme: dark;
+  --foreground-weak: #ffffff93;
+  --foreground-border: #ffffff23;
+  --background: #111;
+  background-color: var(--background);
+  color: #ffffff;
 }
+
+@media only screen and (prefers-color-scheme:light) {
+  :root {
+    color-scheme: light;
+    --background: #c0c0c0;
+    --foreground-border: #afafaf;
+    --foreground-weak: #5f5f5f;
+    background-image: none;
+    color: #000;
+  }
+  ::selection {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
 body {
   width: 100%;
   max-width: 1280px;
