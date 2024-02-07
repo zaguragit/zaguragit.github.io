@@ -45,6 +45,3 @@ span.fract > span {display: none;}
   #info-box, figure { float: none; margin-left: 0; }
   #info-box img, figure img { max-width: none; }
 }
-
-section {
-}
