@@ -1,0 +1,116 @@
+*{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--foreground-weak) transparent;}
+.pixelart{image-rendering:pixelated;}
+.float-right{float:right;}
+
+a {
+  color: unset;
+  font-weight: 700;
+  text-decoration: none;
+}
+a:hover:not(.no-deco) { text-decoration: underline wavy currentColor 1px; }
+a:focus,[tabindex]:focus{outline:currentColor 3px solid;}
+@supports selector(:focus-visible){a:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none;}}
+a:focus-visible{outline:currentColor 3px solid;}
+
+:root {
+  font-family: Cantarell, Inter, 'Noto Sans', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+	color-scheme: dark;
+  --background: #0f111d;
+  --foreground-border: #434358;
+  --foreground-weak: #8089a5;
+  --foreground-subtler: #cadee4;
+  background-color: var(--background);
+  color: #fff;
+}
+::selection {
+  background-color: #fff;
+  color: #0f111d;
+}
+
+/* In case the user is in light mode, change the colors */
+@media only screen and (prefers-color-scheme:light) {
+  :root {
+    color-scheme: light;
+    --background: #dddddd;
+    --foreground-border: #b8b8b8;
+    --foreground-weak: #8a8a8a;
+    --foreground-subtler: #333333;
+    background-image: none;
+    color: #000;
+  }
+  ::selection {
+    background-color: #000;
+    color: #fff;
+  }
+  section:not(.flat) {
+    background-color: #eeeeee;
+  }
+}
+
+body {
+  max-width: 640px;
+  margin: 64px auto;
+  margin-top: calc(100vh / 5);
+  padding: 2em;
+  background-color: var(--background);
+  box-shadow: 0 0 128px 128px var(--background);
+  border-radius: 2em;
+}
+
+section + section, header + section, header + nav + section, footer {
+  margin-top: 4em;
+}
+section:not(.flat) {
+  border: 1px solid var(--foreground-weak);
+  border-radius: 12px;
+}
+
+.icon {
+  height: 1.5em;
+  width: 1.5em;
+  min-height: 1.5em;
+  min-width: 1.5em;
+  vertical-align: top;
+  text-align: center;
+  font-weight: 700;
+}
+
+footer {
+  color: var(--foreground-subtler);
+}
+footer nav {
+  display: flex;
+  justify-content: center;
+}
+footer nav > span {
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+}
+footer nav > span:last-child {
+  justify-content: end;
+}
+footer nav a { font-weight: unset; }
+footer nav a + a::before {
+  content: "";
+  border-left: 1px solid var(--foreground-border);
+  margin: 0 1em;
+}
+
+@media only screen and (max-width:512px) {
+  footer nav {
+    display: block;
+  }
+  footer nav > span {
+    display: block;
+  }
+  footer nav a {
+    display: block;
+  }
+  footer nav a + a::before {
+    content: none;
+  }
+}

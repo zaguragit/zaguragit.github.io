@@ -1,0 +1,97 @@
+
+section { overflow: auto; }
+section:not(.flat) {
+  padding: 2em;
+}
+
+h1, h2, h3 {
+  color: var(--foreground-weak);
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 1em;
+}
+h2 {
+  border-bottom: 1px solid var(--foreground-border);
+  margin-bottom: .5em;
+}
+.heading-note {
+  font-style: italic;
+  margin-left: 2em;
+  margin-bottom: .5em;
+}
+h3 { margin-top: 1em; }
+
+h1 {
+  line-height: 1.2;
+  font-family: Tinos, Times, serif;
+  font-size: 2.5em;
+  font-weight: 900;
+}
+header {
+  border-bottom: 1px solid var(--foreground-border);
+  padding-bottom: .7em;
+}
+header a.back {
+  color: var(--foreground-weak);
+  font-weight: unset;
+}
+header a.back::before { content: "⥼"; margin-right: .2em; }
+header a.back:hover { color: unset; }
+header .comment {
+  color: var(--foreground-weak);
+  line-height: 1.2;
+  text-align: right;
+  margin-top: -1.2em;
+}
+
+header + nav > ul {
+  margin-top: .5em;
+}
+header + nav a { color: unset; font-weight: unset; }
+header + nav ul li {
+  color: var(--foreground-weak);
+}
+header + nav > ul li::before {
+  content: "#";
+  font-weight: unset;
+  margin-left: .5em;
+  margin-right: .2em;
+}
+header + nav > ul ul {
+  margin-left: 1.5ch;
+}
+header + nav > ul > li > ul > li::before {
+  content: "@";
+}
+
+
+p + p, ul + p { margin-top: 1em; }
+ul { list-style-type: none; }
+ul li::before { content: "•"; margin: 0 1ch; color: var(--foreground-weak); font-weight: bold; }
+
+
+section.table table {
+  margin: 0;
+  border-radius: 12px;
+  width: 100%;
+}
+td.end a.button { margin-left: 1em; }
+table {
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+table td, table th {
+  text-align: start;
+  border: 1px solid var(--foreground-subtler);
+  padding: .2em .5em;
+}
+table td.end { text-align: end; }
+table th {
+  font-weight: bold;
+  background-color: var(--foreground-subtler);
+  color: var(--background);
+  border-right: 1px solid var(--background);
+  border-bottom: 1px solid var(--background);
+}
+table tr > th:last-child { border-right: none; }
+table tr { border: 1px solid var(--foreground-subtler); }

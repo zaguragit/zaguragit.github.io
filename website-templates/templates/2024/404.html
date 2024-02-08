@@ -1,0 +1,43 @@
+<!-- This page will be shown when someone tries to see a page that doesn't exist in ur site -->
+<!doctype html>
+<meta charset="utf-8">
+<meta http-equiv=Content-Security-Policy content="default-src 'self';frame-src https://john.citrons.xyz/embed?ref=zagura.one;">
+<title>404</title>
+<meta name="theme-color" content="#000000">
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<!--
+  Rly important to have all the links be absolute (start with /) (specifically on a 404 page).
+  That's cause the 404 pages at blabla/bla and blabla/bla/bla will try to get the assets from
+  different places if the links are relative.
+-->
+<link rel=stylesheet href=/shared.css>
+<link rel=stylesheet href=/style.css>
+<link rel=icon href=/avatar.png>
+<body>
+  <header>
+    <h1>404</h1>
+    <p>Page not found</p>
+  </header>
+  <section>
+    <p>Stuff could be added here for fun</p>
+  </section>
+  <footer>
+    <nav>
+      <span>
+        <a href="/">
+          <svg height=1.5em class=icon viewBox="0 0 245.76 245.76">
+            <path fill=currentColor d="m 102.24,224.58803 c -6.336002,-0.38767 -16.920002,-1.38111 -23.520002,-2.20764 -6.6,-0.82654 -18.346558,-2.01904 -26.103463,-2.65 -17.521566,-1.42523 -16.081431,-0.20643 -16.984737,-14.37439 -1.381392,-21.66655 -2.16089,-20.25064 16.208201,-29.44113 31.634214,-15.82734 63.275251,-24.09385 82.054111,-21.43739 23.20338,3.28236 36.17928,7.35602 57.58964,18.07972 24.82672,12.43483 23.55723,11.37321 23.55128,19.69484 -0.0145,20.24314 -0.95593,25.57688 -4.69948,26.62453 -15.77897,4.41582 -76.67974,7.63365 -108.09555,5.71146 z m 17.4273,-92.17865 C 87.65934,127.20346 67.906825,53.017289 93.131399,32.746269 120.73765,10.561282 159.13204,22.861012 163.20603,55.194835 c 1.11295,8.833043 0.95001,12.038169 -1.58205,31.119426 -3.4809,26.231659 -24.19106,48.984589 -41.95668,46.095119 z"/>
+          </svg>
+        </a>
+      </span>
+        <a href=/SOME_PAGE_LINK>SOME_PAGE</a>
+        <a href=/SOME_PAGE_LINK>SOME_PAGE</a>
+        <a href=/SOME_PAGE_LINK>SOME_PAGE</a>
+      <span>
+      <a class=icon title=Copyright href=LINK_TO_COPYRIGHT_INFO>©</a>
+      </span>
+    </nav>
+  </footer>
+</body>
