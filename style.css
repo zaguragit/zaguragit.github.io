@@ -76,7 +76,7 @@ a.button {
   padding: 0 .5em;
 }
 a.button:hover {
-  background-color: var(--foreground-subtler);
+  background: var(--foreground-subtler);
   color: var(--background);
 }
 
@@ -99,7 +99,7 @@ table td, table th {
 table td.end { text-align: end; }
 table th {
   font-weight: bold;
-  background-color: var(--foreground-subtler);
+  background: var(--foreground-subtler);
   color: var(--background);
   border-right: 1px solid var(--background);
   border-bottom: 1px solid var(--background);

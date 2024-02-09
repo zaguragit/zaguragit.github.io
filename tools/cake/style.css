@@ -72,11 +72,11 @@ main {
     font-family: monospace;
 }
 
-@media only screen and (max-width: 840px) {
+@media(max-width: 840px) {
     #form input { border-radius: 0; }
     main { border-radius: 0; max-width: unset; box-shadow: none; }
 }
-@media only screen and (max-height: 840px) {
+@media(max-height: 840px) {
     #form input { border-radius: 0; }
     main { border-radius: 0; max-height: unset; box-shadow: none; }
 }

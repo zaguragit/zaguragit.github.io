@@ -1,0 +1,52 @@
+
+#statuscafe {
+  font-weight: unset;
+  text-decoration: none;
+  margin-left: 20px;
+  margin-top: -1.5em;
+  text-shadow: none;
+}
+#statuscafe > .content {
+  position: relative;
+  line-height: 1.5;
+  border-radius: .5em;
+  background: var(--foreground-subtler);
+  color: var(--background);
+  padding: .5em .6em;
+  font-weight: 700;
+}
+#statuscafe > .content::after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  rotate: 45deg;
+  background: var(--foreground-subtler);
+  inset: 50% auto 50% -5px;
+  translate: 0 -50%;
+}
+#statuscafe > .header {
+  color: var(--foreground-weak);
+}
+#statuscafe:hover > .header {
+  text-decoration: underline wavy currentColor 1px;
+}
+
+@media(max-width:512px) {
+  #statuscafe {
+    margin: 0;
+  }
+  #statuscafe > .header {
+    text-align: end;
+  }
+  #statuscafe > .content::after {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    rotate: 45deg;
+    inset: 0 auto auto 45px;
+    margin-left: -5px;
+    translate: 0 -50%;
+  }
+}

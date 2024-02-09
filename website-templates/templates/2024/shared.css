@@ -31,7 +31,7 @@ a:focus-visible{outline:currentColor 3px solid;}
 }
 
 /* In case the user is in light mode, change the colors */
-@media only screen and (prefers-color-scheme:light) {
+@media(prefers-color-scheme:light) {
   :root {
     color-scheme: light;
     --background: #dddddd;
@@ -100,7 +100,7 @@ footer nav a + a::before {
   margin: 0 1em;
 }
 
-@media only screen and (max-width:512px) {
+@media(max-width:512px) {
   footer nav {
     display: block;
   }

@@ -41,7 +41,7 @@ span.fract > sup::after {
 span.fract > span {display: none;}
 
 
-@media only screen and (max-width:500px) {
+@media(max-width:500px) {
   #info-box, figure { float: none; margin-left: 0; }
   #info-box img, figure img { max-width: none; }
 }

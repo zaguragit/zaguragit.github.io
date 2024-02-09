@@ -1,3 +1,4 @@
+document.head.innerHTML += "<link rel=stylesheet href=status.css>";
 fetch("https://status.cafe/users/zagura/status.json")
   .then(r => r.json())
   .then(r => {
