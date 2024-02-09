@@ -15,11 +15,11 @@
 		<id>https://zagura.one/art/2024/0209-AM1.png</id>
         <published>2024-02-09T00:00:00Z</published>
 		<summary>This creature lives in the desert</summary>
-		<content type="xhtml">
-			<img xmlns="http://www.w3.org/1999/xhtml"
+		<content type="html">
+  			<![CDATA[<img xmlns="http://www.w3.org/1999/xhtml"
 				decoding="async"
 				src="https://zagura.one/art/2024/0209-AM1.png"
-				alt="AM1 walking in the desert dunes">
+				alt="AM1 walking in the desert dunes">]]>
 		</content>
 	</entry>
 	<entry>
@@ -28,11 +28,11 @@
 		<id>https://zagura.one/art/2024/0117-AS1.png</id>
         <published>2024-02-09T00:00:00Z</published>
 		<summary>This little guy lives in the mountains</summary>
-		<content type="xhtml">
-			<img xmlns="http://www.w3.org/1999/xhtml"
+		<content type="html">
+			<![CDATA[<img xmlns="http://www.w3.org/1999/xhtml"
 				decoding="async"
 				src="https://zagura.one/art/2024/0117-AS1.png"
-				alt="A Gray AS1 climbing a rocky mountain, with the sky and clouds in the background">
+				alt="A Gray AS1 climbing a rocky mountain, with the sky and clouds in the background">]]>
 		</content>
 	</entry>
 	<entry>
@@ -41,11 +41,11 @@
 		<id>https://zagura.one/art/2024/0114-avatar.png</id>
         <published>2024-02-09T00:00:00Z</published>
 		<summary>So that our user pictures on my laptop match</summary>
-		<content type="xhtml">
-			<img xmlns="http://www.w3.org/1999/xhtml"
+		<content type="html">
+			<![CDATA[<img xmlns="http://www.w3.org/1999/xhtml"
 				decoding="async"
 				src="https://zagura.one/art/2024/0114-avatar.png"
-				alt="Jair, beautiful as always">
+				alt="Jair, beautiful as always">]]>
 		</content>
 	</entry>
 </feed>
