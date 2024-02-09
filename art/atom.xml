@@ -2,19 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<title>Zagura's Art</title>
 	<subtitle>Mostly drawings</subtitle>
-	<link href="https://zagura.one/art/atom" rel="self"/>
-	<link href="https://zagura.one/art"/>
+    <id>https://zagura.one/art</id>
+	<link rel="self" href="https://zagura.one/art/atom"/>
+	<link rel="alternate" href="https://zagura.one/art" type="text/html"/>
+	<category term="art"/>
 	<author>
 		<name>Zagura</name>
 		<email>me@zagura.one</email>
+		<uri>https://zagura.one</uri>
 	</author>
+    <icon>https://zagura.one/assets/me/favicon.svg</icon>
+    <logo>https://zagura.one/assets/me/avatar.jpg</logo>
 	<updated>2024-02-09T00:00:00Z</updated>
 	<entry>
-		<title>Made another animal for my conworld</title>
-		<link>https://zagura.one/art/2024/0209-AM1.png</link>
 		<id>https://zagura.one/art/2024/0209-AM1.png</id>
-        <published>2024-02-09T00:00:00Z</published>
+		<title>Made another animal for my conworld</title>
 		<summary>This creature lives in the desert</summary>
+        <updated>2024-02-09T00:00:00Z</updated>
+		<link rel="alternate" type="image/png">https://zagura.one/art/2024/0209-AM1.png</link>
 		<content type="html">
   			<![CDATA[<img xmlns="http://www.w3.org/1999/xhtml"
 				decoding="async"
@@ -23,11 +28,11 @@
 		</content>
 	</entry>
 	<entry>
-		<title>Made an animal for my conworld</title>
-		<link>https://zagura.one/art/2024/0117-AS1.png</link>
 		<id>https://zagura.one/art/2024/0117-AS1.png</id>
-        <published>2024-02-09T00:00:00Z</published>
+		<title>Made an animal for my conworld</title>
 		<summary>This little guy lives in the mountains</summary>
+        <updated>2024-02-09T00:00:00Z</updated>
+		<link rel="alternate" type="image/png">https://zagura.one/art/2024/0117-AS1.png</link>
 		<content type="html">
 			<![CDATA[<img xmlns="http://www.w3.org/1999/xhtml"
 				decoding="async"
@@ -36,11 +41,11 @@
 		</content>
 	</entry>
 	<entry>
-		<title>Drew an avatar for my BF</title>
-		<link>https://zagura.one/art/2024/0114-avatar.png</link>
 		<id>https://zagura.one/art/2024/0114-avatar.png</id>
-        <published>2024-02-09T00:00:00Z</published>
+		<title>Drew an avatar for my BF</title>
 		<summary>So that our user pictures on my laptop match</summary>
+        <updated>2024-02-09T00:00:00Z</updated>
+		<link rel="alternate" type="image/png">https://zagura.one/art/2024/0114-avatar.png</link>
 		<content type="html">
 			<![CDATA[<img xmlns="http://www.w3.org/1999/xhtml"
 				decoding="async"
