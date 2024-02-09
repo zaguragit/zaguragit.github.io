@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Zagura's Art</title>
+	<subtitle>Mostly drawings</subtitle>
+	<link href="https://zagura.one/art/atom" rel="self"/>
+	<link href="https://zagura.one/art"/>
+	<author>
+		<name>Zagura</name>
+		<email>me@zagura.one</email>
+	</author>
+	<updated>2024-02-09T00:00:00Z</updated>
+	<entry>
+		<title>Made another animal for my conworld</title>
+		<link>https://zagura.one/art/2024/0209-AM1.png</link>
+		<id>https://zagura.one/art/2024/0209-AM1.png</id>
+        <published>2024-02-09T00:00:00Z</published>
+		<summary>This creature lives in the desert</summary>
+		<content type="xhtml">
+			<img xmlns="http://www.w3.org/1999/xhtml"
+				decoding="async"
+				src="https://zagura.one/art/2024/0209-AM1.png"
+				alt="AM1 walking in the desert dunes">
+		</content>
+	</entry>
+	<entry>
+		<title>Made an animal for my conworld</title>
+		<link>https://zagura.one/art/2024/0117-AS1.png</link>
+		<id>https://zagura.one/art/2024/0117-AS1.png</id>
+        <published>2024-02-09T00:00:00Z</published>
+		<summary>This little guy lives in the mountains</summary>
+		<content type="xhtml">
+			<img xmlns="http://www.w3.org/1999/xhtml"
+				decoding="async"
+				src="https://zagura.one/art/2024/0117-AS1.png"
+				alt="A Gray AS1 climbing a rocky mountain, with the sky and clouds in the background">
+		</content>
+	</entry>
+	<entry>
+		<title>Drew an avatar for my BF</title>
+		<link>https://zagura.one/art/2024/0114-avatar.png</link>
+		<id>https://zagura.one/art/2024/0114-avatar.png</id>
+        <published>2024-02-09T00:00:00Z</published>
+		<summary>So that our user pictures on my laptop match</summary>
+		<content type="xhtml">
+			<img xmlns="http://www.w3.org/1999/xhtml"
+				decoding="async"
+				src="https://zagura.one/art/2024/0114-avatar.png"
+				alt="Jair, beautiful as always">
+		</content>
+	</entry>
+</feed>
