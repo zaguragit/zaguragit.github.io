@@ -6,9 +6,9 @@
     font-weight: 400;
     line-height: 1.5;
       color-scheme: dark;
-    --foreground-hint: #fff8;
-    --foreground-strong: #ffffff;
-    --foreground-border: #fff5;
+    --fg-hint: #fff8;
+    --fg-strong: #ffffff;
+    --fg-border: #fff5;
     --surface-background: #000;
     --surface-background-dim: #000;
     --border-radius: 24px;

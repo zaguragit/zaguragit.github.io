@@ -1,13 +1,9 @@
-*{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--foreground-weak) transparent;}
+*{padding:0;margin:0;left:0;top:0;box-sizing:border-box;scrollbar-color: var(--fg-weak) transparent;}
 .pixelart{image-rendering:pixelated;}
 .float-right{float:right;}
 
-a {
-  color: unset;
-  font-weight: 700;
-  text-decoration: none;
-}
-a:hover:not(.no-deco) { text-decoration: underline wavy currentColor 1px; }
+a{color:unset;text-decoration: none;font-weight:700;}
+a:hover:not(.no-deco){text-decoration:underline wavy currentColor 1px;}
 a:focus,[tabindex]:focus{outline:currentColor 3px solid;}
 @supports selector(:focus-visible){a:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none;}}
 a:focus-visible{outline:currentColor 3px solid;}
@@ -23,16 +19,15 @@ a:focus-visible{outline:currentColor 3px solid;}
     "Fira Mono", 
     "Droid Sans Mono", 
     "Courier New", monospace;
-  --serif: Tinos, Times, serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
 	color-scheme: dark;
-  --background: #1d110f;
-  --foreground-border: #584843;
-  --foreground-weak: #a58180;
-  --foreground-subtler: #e4cbca;
-  background-color: var(--background);
+  --bg: #1d110f;
+  --fg-border: #584843;
+  --fg-weak: #a58180;
+  --fg-subtler: #e4cbca;
+  background-color: var(--bg);
   background-image: url('assets/textures/starry.png');
   background-blend-mode: screen;
   background-size: 768px;
@@ -49,8 +44,8 @@ body {
   margin: 64px auto;
   margin-top: calc(100vh / 5);
   padding: 2em;
-  background: var(--background);
-  box-shadow: 0 0 128px 128px var(--background);
+  background: var(--bg);
+  box-shadow: 0 0 128px 128px var(--bg);
   border-radius: 2em;
 }
 
@@ -58,7 +53,7 @@ section + section, header + section, header + nav + section, footer {
   margin-top: 4em;
 }
 section:not(.flat) {
-  border: 1px solid var(--foreground-weak);
+  border: 1px solid var(--fg-weak);
   border-radius: 12px;
 }
 
@@ -77,10 +72,10 @@ code, pre { font-family: var(--monospace); }
 @media(prefers-color-scheme:light) {
   :root {
     color-scheme: light;
-    --background: #f0e5d8;
-    --foreground-border: #c7baa3;
-    --foreground-weak: #8f8884;
-    --foreground-subtler: #472920;
+    --bg: #f0e5d8;
+    --fg-border: #c7baa3;
+    --fg-weak: #8f8884;
+    --fg-subtler: #472920;
     background-image: none;
     color: #000;
   }
@@ -94,7 +89,7 @@ code, pre { font-family: var(--monospace); }
 }
 
 footer {
-  color: var(--foreground-subtler);
+  color: var(--fg-subtler);
 }
 footer nav {
   display: flex;
@@ -111,7 +106,7 @@ footer nav > span:last-child {
 footer nav a { font-weight: unset; }
 footer nav a + a::before {
   content: "";
-  border-left: 1px solid var(--foreground-border);
+  border-left: 1px solid var(--fg-border);
   margin: 0 1em;
 }
 

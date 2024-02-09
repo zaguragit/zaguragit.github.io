@@ -1,0 +1,1 @@
+document.head.innerHTML+="<link rel=stylesheet href=status.css>",fetch("https://status.cafe/users/zagura/status.json").then(t=>t.json()).then(t=>t.content.length&&(document.getElementById("status").innerHTML=`<div id=h>${t.timeAgo}</div><div id=c>${t.content}</div>`))

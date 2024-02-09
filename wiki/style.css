@@ -2,14 +2,14 @@
   width: 100%;
   min-height: 96px;
   display: block;
-  border: 1px solid var(--foreground-border);
+  border: 1px solid var(--fg-border);
 }
 #info-box, figure {
   max-width: 280px;
   float: right;
   clear: right;
   margin: 0 0 0 1em;
-  border: 1px solid var(--foreground-subtler);
+  border: 1px solid var(--fg-subtler);
 }
 figure + figure { margin-top: 0; }
 figure { padding: 5px; }

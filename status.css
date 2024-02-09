@@ -1,52 +1,36 @@
-
-#statuscafe {
+#status {
   font-weight: unset;
   text-decoration: none;
   margin-left: 20px;
   margin-top: -1.5em;
-  text-shadow: none;
 }
-#statuscafe > .content {
+#c {
   position: relative;
   line-height: 1.5;
   border-radius: .5em;
-  background: var(--foreground-subtler);
-  color: var(--background);
+  background: var(--fg-subtler);
+  color: var(--bg);
   padding: .5em .6em;
   font-weight: 700;
 }
-#statuscafe > .content::after {
+#c::after {
   position: absolute;
   content: "";
   width: 10px;
   height: 10px;
   rotate: 45deg;
-  background: var(--foreground-subtler);
+  background: var(--fg-subtler);
   inset: 50% auto 50% -5px;
   translate: 0 -50%;
 }
-#statuscafe > .header {
-  color: var(--foreground-weak);
-}
-#statuscafe:hover > .header {
-  text-decoration: underline wavy currentColor 1px;
-}
-
-@media(max-width:512px) {
-  #statuscafe {
-    margin: 0;
-  }
-  #statuscafe > .header {
-    text-align: end;
-  }
-  #statuscafe > .content::after {
-    position: absolute;
-    content: "";
-    width: 10px;
-    height: 10px;
-    rotate: 45deg;
-    inset: 0 auto auto 45px;
-    margin-left: -5px;
-    translate: 0 -50%;
-  }
-}
+#h{color:var(--fg-weak);}#status:hover>#h{text-decoration:underline wavy currentColor 1px;}
+@media(max-width:512px){#status{margin:0;}#h{text-align:end;}#c::after{
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  rotate: 45deg;
+  inset: 0 auto auto 45px;
+  margin-left: -5px;
+  translate: 0 -50%;
+}}

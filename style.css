@@ -5,13 +5,13 @@ section:not(.flat) {
 }
 
 h1, h2, h3 {
-  color: var(--foreground-weak);
+  color: var(--fg-weak);
   overflow: hidden;
   font-weight: 700;
   font-size: 1em;
 }
 h2 {
-  border-bottom: 1px solid var(--foreground-border);
+  border-bottom: 1px solid var(--fg-border);
   margin-bottom: .5em;
 }
 .heading-note {
@@ -28,17 +28,17 @@ h1 {
   font-weight: 900;
 }
 header {
-  border-bottom: 1px solid var(--foreground-border);
+  border-bottom: 1px solid var(--fg-border);
   padding-bottom: .7em;
 }
 header a.back {
-  color: var(--foreground-weak);
+  color: var(--fg-weak);
   font-weight: unset;
 }
 header a.back::before { content: "⥼"; margin-right: .2em; }
 header a.back:hover { color: unset; }
 header .comment {
-  color: var(--foreground-weak);
+  color: var(--fg-weak);
   line-height: 1.2;
   text-align: right;
   margin-top: -1.2em;
@@ -49,7 +49,7 @@ header + nav > ul {
 }
 header + nav a { color: unset; font-weight: unset; }
 header + nav ul li {
-  color: var(--foreground-weak);
+  color: var(--fg-weak);
 }
 header + nav > ul li::before {
   content: "#";
@@ -67,19 +67,18 @@ header + nav > ul > li > ul > li::before {
 
 p + p, ul + p { margin-top: 1em; }
 ul { list-style-type: none; }
-ul li::before { content: "•"; margin: 0 1ch; color: var(--foreground-weak); font-weight: bold; }
+ul li::before { content: "•"; margin: 0 1ch; color: var(--fg-weak); font-weight: bold; }
 
 
 a.button {
-  box-shadow: 0 0 0 1px var(--foreground-subtler);
+  box-shadow: 0 0 0 1px var(--fg-subtler);
   color: currentColor;
   padding: 0 .5em;
 }
 a.button:hover {
-  background: var(--foreground-subtler);
-  color: var(--background);
+  background: var(--fg-subtler);
+  color: var(--bg);
 }
-
 
 section.table table {
   margin: 0;
@@ -93,20 +92,19 @@ table {
 }
 table td, table th {
   text-align: start;
-  border: 1px solid var(--foreground-subtler);
+  border: 1px solid var(--fg-subtler);
   padding: .2em .5em;
 }
 table td.end { text-align: end; }
 table th {
   font-weight: bold;
-  background: var(--foreground-subtler);
-  color: var(--background);
-  border-right: 1px solid var(--background);
-  border-bottom: 1px solid var(--background);
+  background: var(--fg-subtler);
+  color: var(--bg);
+  border-right: 1px solid var(--bg);
+  border-bottom: 1px solid var(--bg);
 }
 table tr > th:last-child { border-right: none; }
-table tr { border: 1px solid var(--foreground-subtler); }
-
+table tr { border: 1px solid var(--fg-subtler); }
 
 .add {
   display: block;

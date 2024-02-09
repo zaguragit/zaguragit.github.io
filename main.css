@@ -6,7 +6,7 @@ p {
   margin: 1em 0 .5em;
 }
 p > .extra {
-  color: var(--foreground-weak);
+  color: var(--fg-weak);
   margin-left: 1ch;
 }
 .compat { font-family: sans-serif; }
@@ -20,15 +20,15 @@ p > .extra {
   height: 96px;
   width: 96px;
   border-radius: 999px;
-  border: 4px solid var(--background);
+  border: 4px solid var(--bg);
   box-shadow: 0 0 0 3px currentColor;
-  background: var(--foreground-subtler);
+  background: var(--fg-subtler);
 }
 
 #contact ul { list-style: none; margin-top: 1em; }
 #contact ul > li + li { margin-top: .3em; }
 #contact ul a { font-weight: unset; }
-#contact ul li { color: var(--foreground-subtler); }
+#contact ul li { color: var(--fg-subtler); }
 
 .featured {
   font-weight: unset;
@@ -38,7 +38,7 @@ p > .extra {
   padding-left: 1.4em;
 }
 .featured + .featured {
-  border-top: 1px solid var(--foreground-border);
+  border-top: 1px solid var(--fg-border);
 }
 .featured > span:nth-child(2) { flex-grow: 1; }
 a.featured:hover { text-decoration: none; }
@@ -47,7 +47,7 @@ a.featured:hover h2 { text-decoration: underline wavy currentColor 1px; }
   font-size: 1em;
 }
 .featured p {
-  color: var(--foreground-subtler);
+  color: var(--fg-subtler);
   margin: 0;
 }
 .featured p + p, .featured p + dl {
@@ -55,9 +55,9 @@ a.featured:hover h2 { text-decoration: underline wavy currentColor 1px; }
 }
 .featured h3:not(:first-child) { margin-top: 1em; }
 .featured h3 {
-  color: var(--foreground-weak);
+  color: var(--fg-weak);
   font-size: 1em;
-  border-bottom: 1px solid var(--foreground-border);
+  border-bottom: 1px solid var(--fg-border);
 }
 .featured .heading-note {
   margin-left: 2em;
@@ -67,7 +67,7 @@ a.featured:hover h2 { text-decoration: underline wavy currentColor 1px; }
 a.link::before {
   content: "=> ";
   font-weight: normal;
-  color: var(--foreground-border);
+  color: var(--fg-border);
 }
 a.link + a.link {
   margin-left: 1em;
@@ -76,7 +76,7 @@ a.link + a.link {
   list-style-type: none;
   margin: .5em 0;
 }
-.featured ul li::before { content: "•"; margin: 0 1ch; color: var(--foreground-weak); font-weight: bold; }
+.featured ul li::before { content: "•"; margin: 0 1ch; color: var(--fg-weak); font-weight: bold; }
 
 dl a { display: block; font-weight: unset; }
 dl dt {
@@ -87,7 +87,7 @@ dl dt::after { content: ": "; }
 dl dd {
   display: inline;
   margin: 0;
-  color: var(--foreground-subtler);
+  color: var(--fg-subtler);
 }
 .webring {
   display: flex;
@@ -107,7 +107,7 @@ dl dd {
   margin-right: 1ch;
 }
 .featured .icon {
-  color: var(--foreground-subtler);
+  color: var(--fg-subtler);
 }
 
 @media(max-width:512px) {
