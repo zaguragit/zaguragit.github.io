@@ -16,15 +16,13 @@ p+p,p+dl{margin-top:1em;}
   font-weight: 400;
   line-height: 1.5;
 	color-scheme: dark;
-  --bg: #1d110f;
+  --bg: #1d0f0f;
   --fg-border: #584843;
   --fg-weak: #a58180;
   --fg-subtler: #e4cbca;
   background-color: var(--bg);
-  background-image: url('assets/textures/starry.png');
-  background-blend-mode: screen;
-  background-size: 768px;
-  background-attachment: fixed;
+  background-image: url('assets/textures/starry.png'), url('assets/textures/fog.png');
+  background-size: 768px, 960px;
   color: #fff;
 }
 ::selection {
@@ -38,7 +36,7 @@ body {
   margin-top: calc(100vh / 5);
   padding: 2em;
   background: var(--bg);
-  box-shadow: 0 0 128px 128px var(--bg);
+  box-shadow: 0 0 64px 64px var(--bg);
   border-radius: 2em;
 }
 
@@ -48,6 +46,7 @@ section + section, header + section, header + nav + section, footer {
 section:not(.flat) {
   border: 1px solid var(--fg-weak);
   border-radius: 12px;
+  background: #251313;
 }
 
 .icon {
@@ -63,11 +62,10 @@ section:not(.flat) {
 @media(prefers-color-scheme:light) {
   :root {
     color-scheme: light;
-    --bg: #f0e5d8;
+    --bg: #faddd0;
     --fg-border: #c7baa3;
-    --fg-weak: #8f8884;
-    --fg-subtler: #472920;
-    background-image: none;
+    --fg-weak: #917e74;
+    --fg-subtler: #472320;
     color: #000;
   }
   ::selection {
@@ -75,7 +73,7 @@ section:not(.flat) {
     color: #fff;
   }
   section:not(.flat) {
-    background: #f7ede1;
+    background: #fde6db;
   }
 }
 

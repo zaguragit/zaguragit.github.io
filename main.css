@@ -17,6 +17,7 @@ p > .extra {
   box-shadow: 0 0 0 3px currentColor;
   background: var(--fg-subtler);
 }
+@media(prefers-color-scheme:light){#avatar>img{background:#d8775f;}}
 
 #contact ul { list-style: none; margin-top: 1em; }
 #contact ul > li + li { margin-top: .3em; }
@@ -83,13 +84,5 @@ dl dd {
   #avatar {
     place-items: start;
     flex-direction: column;
-  }
-}
-
-@media(prefers-color-scheme:light) {
-  #avatar > img {
-    background: none;
-    border: 4px solid currentColor;
-    box-shadow: none;
   }
 }
