@@ -8,8 +8,8 @@
   position: relative;
   line-height: 1.5;
   border-radius: .5em;
-  background: var(--fg-subtler);
-  color: var(--bg);
+  background: var(--f-subtler);
+  color: var(--b);
   padding: .5em .6em;
   font-weight: 700;
 }
@@ -19,12 +19,12 @@
   width: 10px;
   height: 10px;
   rotate: 45deg;
-  background: var(--fg-subtler);
+  background: var(--f-subtler);
   inset: 50% auto 50% -5px;
   translate: 0 -50%;
 }
-#h{color:var(--fg-weak);}#status:hover>#h{text-decoration:underline wavy currentColor 1px;}
-@media(max-width:512px){#status{margin:0;}#h{text-align:end;}#c::after{
+#h{color:var(--f-weak);}#status:hover>#h{text-decoration:underline wavy currentColor 1px;}
+@media(width<=512px){#status{margin:0;}#h{text-align:end;}#c::after{
   position: absolute;
   content: "";
   width: 10px;
