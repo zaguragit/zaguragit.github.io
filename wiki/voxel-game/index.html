@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta http-equiv=Content-Security-Policy content="default-src 'none';img-src 'self';form-action 'self';base-uri 'self';style-src 'self';font-src 'self';">
+    <meta name=description content="My thoughts about a potential voxel game I could make">
+    <meta name=no-email-collection>
+    <meta name=referrer content=no-referrer>
+    <meta name=theme-color content=#1d110f>
+    <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel=icon type=image/svg+xml href=/assets/me/favicon.svg>
+    <link rel=icon type=image/png href=/assets/me/favicon.png>
+    <link rel=stylesheet href=../../shared.css>
+    <link rel=stylesheet href=../../style.css>
+    <link rel=stylesheet href=../style.css>
+    <title>Voxel Game</title>
+  </head>
+  <body>
+    <header>
+      <h1>Voxel Game</h1>
+      <a class=back rel=me href=low-fantasy>Zagura's Wiki</a>
+      <div class=comment>
+        Last Updated: <time>Feb 11, 2024</time>
+      </div>
+    </header>
+    <nav>
+      <ul>
+        <li><a href=#art>Art Direction</a></li>
+        <li><a href=#voxels>Voxels</a></li>
+      </ul>
+    </nav>
+    <section class=flat>
+      <p>
+        The basic concept is a 1024×1024×512 voxel world with horizontal wrap around,
+        where the voxels are half a meter (1 minecraft voxel = 2<sup>3</sup> of my voxels).
+      </p>
+    </section>
+    <section id=art>
+      <h2>Art Direction</h2>
+      <p>
+        Procedural pixelart textures for the voxels, dynamically render pixelart bilboards
+        where possible. Limited color palette.
+      </p>
+    </section>
+    <section id=voxels>
+      <h2>Voxels</h2>
+      <p>
+        The current idea is maybe 8 bits per voxel, 0–31 are air with different light values,
+        32–39 are different water levels, while 40–255 are block types.
+      </p>
+      <p>
+        List of blocks:
+      </p>
+      <ul>
+        <li>Bedrock</li>
+        <li>Stone</li>
+        <li>Basalt</li>
+        <li>Limestone</li>
+        <li>Granite</li>
+        <li>Quartz</li>
+        <li>Marble</li>
+        <li>Halite</li>
+        <li>Dolomite</li>
+        <li>Coal</li>
+        <li>Fluorite</li>
+        <li>Amethist</li>
+        <li>Ruby</li>
+        <li>Diamond Ore</li>
+        <li>Gold Ore</li>
+        <li>Sandstone</li>
+
+        <li>Gravel</li>
+        <li>Soil</li>
+        <li>Grass</li>
+        <li>Sand</li>
+        <li>Clay</li>
+        <li>Terracotta</li>
+
+        <li>Wood Log</li>
+        <li>Leaves</li>
+
+        <li>Wood Planks</li>
+        <li>Cobblestone/Stone Bricks</li>
+        <li>Clay Bricks</li>
+        <li>Sandstone Bricks</li>
+        <li>Wool</li>
+      </ul>
+    </section>
+    <footer>
+      <nav>
+        <span>
+          <a href="/">
+            <svg class=icon height=1.5em viewBox="0 0 360 360">
+              <path fill=currentColor d="m251.25 40.311-189.69 50.828 5.1406 19.18 189.69-50.828zm14.656 54.699-189.69 50.828 138.86 138.86 25.412-94.846zm35.52 9.5176-50.826 189.69 19.18 5.1387 50.826-189.69zm-63.6 18.564-16.514 61.625-16.512 61.625-90.227-90.227 61.627-16.512zm-187.61 48.748-14.039 14.041 138.86 138.86 14.039-14.041z"/>
+            </svg>
+          </a>
+        </span>
+          <a href=/art>Art Gallery</a>
+          <a href=/website-templates>Website Templates</a>
+          <a href=/bookmarks>Bookmarks</a>
+        <span>
+        <a class=icon title=Copyright href=licenses/copyright>©</a>
+        </span>
+      </nav>
+    </footer>
+  </body>
+</html>
